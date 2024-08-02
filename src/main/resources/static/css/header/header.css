@@ -1,0 +1,108 @@
+/*헤더부분 시작*/
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Jua", sans-serif;
+}
+
+.header {
+
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    flex-direction: column;
+
+
+    .header-top {
+        display: flex;
+        min-width: 950px;
+        align-items: center;
+        max-width: 1400px;
+        padding: 0 24px;
+        margin: 0 auto;
+
+    }
+
+    .header-font {
+        font-size: 20px;
+
+    }
+
+    .logo {
+        /*font-size: 40px;*/
+        /*font-weight: bold;*/
+        color: #000;
+        text-decoration: none;
+
+    }
+
+    .logo-img {
+        width: 100px;
+        height: 100px;
+
+    }
+
+    .nav {
+        display: flex;
+        margin-left: auto;
+
+    }
+
+    .nav-item {
+        font-size: 20px;
+        color: #000000;
+        text-decoration: none;
+        margin-left: 20px;
+
+        border-radius: 5px;
+        padding: 7px;
+    }
+
+    .nav-item:hover {
+        transform: scale(1.1);
+        transition-duration: 0.5s;
+
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        position: relative;
+        max-width: 1200px;
+        padding-left: 24px;
+
+    }
+
+    .menu-button:hover {
+        transform: scale(1.1);
+        transition-duration: 0.5s;
+
+    }
+
+    .menu-box {
+        display: flex;
+        list-style-type: none;
+        margin: 10px;
+        padding: 0px;
+
+    }
+
+    .menu-button {
+        padding: 0 20px;
+
+
+    }
+
+    .menu-text {
+        text-decoration: none;
+        color: #000000;
+
+    }
+
+    .login {
+
+
+    }
+}
+/*헤더 부분 끝*/

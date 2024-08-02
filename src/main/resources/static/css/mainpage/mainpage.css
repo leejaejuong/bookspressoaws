@@ -1,0 +1,222 @@
+*{
+    font-family: "Jua", sans-serif;
+}
+
+.book-cover{
+    margin: -16px -16px 0;
+}
+.book-cover-in{
+    padding-top: 10px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box
+}
+.manpage-main-box{
+    max-width: 1400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin: 0 auto;
+    flex-direction: column;
+    position: relative;
+}
+.manpage-debate-total-box {
+    display: inline-flex;
+    padding: 20px;
+}
+.show-style{
+    overflow: hidden;
+    padding: 16px;
+    position: relative;
+    z-index: 1;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, .06), 2px 2px 10px rgba(0, 0, 0, .04);
+}
+.book-box {
+
+padding: 20px 0;
+}
+.swiper-wrapper {
+/*background-color: #5C667B;*/
+}
+
+.manpage-debate-box{
+    height: auto;
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    list-style-type: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+
+}
+.manpage-debate-box1{
+    height: 400px;
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    list-style-type: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transform: translate(0, 0);
+
+}
+.manpage-debate-text{
+    padding-top:30px ;
+font-size : 30px;
+    font-weight : bolder;
+
+}
+.book-ul-st{
+    list-style-type: none;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap:wrap;
+    width:auto ;
+    height: auto;
+    padding-bottom: 5px;
+}
+.book-button{
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+    font-size: 15px;
+    color: #8b8b8b;
+}
+.meeting-type{
+    list-style-type: none;
+    border-radius: 4px;
+    font-size: 10px;
+    min-width: 22px;
+    height: 20px;
+    background-color:#efefef;
+    margin-top: 10px ;
+}
+.debate-type{
+    list-style-type: none;
+    border-radius: 4px;
+    font-size: 10px;
+    min-width: 22px;
+    height: 20px;
+    background-color:#ffeb60;
+    margin-top: 10px ;
+}
+.meeting-date{
+    display: flex;
+    border-radius: 4px;
+    font-size: 10px;
+    background-color:#40a9ff85;
+}
+.book-ul-style{
+    padding:0 10px;
+    margin: 5px;
+    line-height:23px;
+}
+.book-title{
+    padding: 10px 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+.book-content{
+    display:block;
+    padding-top: 10px;
+    overflow: hidden;
+}
+.book-content-con{
+    max-width: 280px;
+    height: 100%;
+    margin-top: 8px;
+    padding: 8px 8px;
+    background-color: #efefe7;
+    border-radius: 8px;
+
+}
+.debate-title{
+    font-size: 20px;
+
+}
+.debate-user{
+    color:#6f6f6f;
+}
+.book-content-style{
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+.book-content-title{
+    padding: 5px 0;
+}
+.back-style{
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: 200%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.box-in-style{
+
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+    padding-top: 0;
+    height: 86px;
+    background-color: #8b8b8b;
+}
+.img-size{
+    width: 150px;
+    height: 220px;
+}
+
+.manpage-debate-object-box{
+    width: 320px;
+    padding-right: 1rem;
+    list-style: none;
+    user-select: none;
+    height: 100%;
+    padding-bottom: 10px;
+
+ }
+.post-book-cover{
+    margin: -16px -16px 0;
+}
+.post-content-title{
+    padding-bottom: 16px;
+}
+.post-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.box{
+    margin:40px ;
+}
+
+.img-style{
+scale:110%;
+    width: 125px;
+    height: 181px;
+    overflow: hidden;
+    position: relative;
+
+}
+.swiper-slide{
+
+  overflow: hidden;
+    width: 125px;
+    height: 181px;
+}

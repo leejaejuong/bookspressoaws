@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>북스 프레소 - 책향이 머무는 공간</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer th:src="@{/js/main/mainpage.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/mainpage/mainpage.css}"/>
+    <link rel="stylesheet" th:href="@{/css/debate/postobject.css}"/>
+    <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<!-- 메인박스 -->
+<div class="manpage-main-box">
+    <div class="manpage-debate-text">진행중인 온라인 토론</div>
+    <section>
+        <div class="manpage-debate-total-box ">
+            <ul class="manpage-debate-box" id="debate">
+                <!-- 반복되는 토론 항목 -->
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="https://image.aladin.co.kr/product/34407/6/coversum/k222932926_1.jpg"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="https://image.aladin.co.kr/product/34407/6/coversum/k222932926_1.jpg"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/1.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/1.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/2.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/2.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/3.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/3.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/4.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/4.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/5.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/5.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/6.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/6.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/2.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/2.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/3.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/3.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/4.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/4.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="manpage-debate-text">진행중인 오프라인 토론</div>
+    </section>
+    <section>
+        <div class="manpage-debate-total-box ">
+            <ul class="manpage-debate-box" id="offline">
+                <!-- 반복되는 토론 항목 -->
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/XL.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/XL.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/3.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/3.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/4.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/4.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/5.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/5.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/6.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/6.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/4.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/4.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/1.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/1.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/2.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/2.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/2.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/2.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="show-style">
+                        <!--                            사진부분 -->
+                        <div class="post-book-cover">
+                            <div class="post-object-book-box">
+                                <div class="post-object-back-book">
+                                    <div class="post-object-book-back">
+                                        <img class="post-object-book" src="/img/3.png"/>
+                                    </div>
+                                    <div class="post-object-book-box">
+                                        <img class="post-object-book-img" src="/img/3.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">
+                            <ul class="book-ul-st">
+                                <li class="meeting-type book-ul-style">혼자 하기</li>
+                                <li class="meeting-type book-ul-style">자유형</li>
+                                <li class="debate-type book-ul-style">오프라인</li>
+                                <div class="meeting-date book-ul-style">
+                                    <li>2023-07-03 </li>
+                                    <li>~</li>
+                                    <li>2023-07-30</li>
+                                </div>
+                            </ul>
+                            <div class="debate-title">돼지책</div>
+                            <div class="debate-user">아기 돼지 3형제</div>
+                        </div>
+                        <div class="book-content">
+                            <div class=>모임 타이틀</div>
+                            <div class="book-content-con">
+
+                                <div class="book-content-style">
+                                    과제를 많이 낼 수 있는 법을 만들어주세요."
+                                    당신의 교수님이 표를 넣으며 말합니다.
+                                    과제를 많이 내는 법을 만들지 말아주세요.
+                                    오늘 표를 넣지 않은 당신이 말합니다.
+                                    여의도에 둘러앉아 있는 그들은 표를 아주 좋아합니다.
+                                    그들은 표를 준 사람의 말을 듣습니다.
+                                    그들은 표를 주지 않은 사람의 말은 듣지 않습니다.
+                                    오늘 뽑지 않으면 당신의 과제가 늘어날지도 모르겠습니다.
+                                    당신의 소중한 한 표로 당신의 과제를 지켜주세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+    <div class="manpage-debate-text">포스트</div>
+    <section>
+        <div class="manpage-debate-total-box ">
+            <ul class="post-object-man" id="post">
+                <li class="manpage-debate-object-box">
+                    <div class="post-object-box post-object-style">
+                        <div class="post-object-title">
+                            <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
+                            <div class="post-title-user">
+                                <div>사용자 닉네임</div>
+                                <div> 단체포스트</div>
+                            </div>
+                            <div class="junjun"><img class="junjun-img" src="/img/junjun.png"/></div>
+                        </div>
+                        <!--                        사진부분-->
+                        <div class="post-object-book-box">
+                            <div class="post-object-back-book">
+                                <div class="post-object-book-back">
+                                    <img class="post-object-book" src="/img/nami.png"/>
+                                </div>
+                                <div class="post-object-book-box">
+                                    <img class="post-object-book-img" src="/img/nami.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-object-content-box">
+                            <div class="post-content-title"><div class="post-title">나미야 잡화점의 비밀 을 읽고</div></div>
+                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
+                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
+
+                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
+                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
+
+                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
+                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
+
+                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
+                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="post-object-box post-object-style">
+                        <div class="post-object-title">
+                            <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
+                            <div class="post-title-user">
+                                <div>사용자 닉네임</div>
+                                <div> 단체포스트</div>
+                            </div>
+                            <div class="junjun"><img class="junjun-img" src="/img/junjun.png"/></div>
+                        </div>
+                        <!--                        사진부분-->
+                        <div class="post-object-book-box">
+                            <div class="post-object-back-book">
+                                <div class="post-object-book-back">
+                                    <img class="post-object-book" src="/img/1.png"/>
+                                </div>
+                                <div class="post-object-book-box">
+                                    <img class="post-object-book-img" src="/img/1.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-object-content-box">
+                            <div class="post-content-title"><div class="post-title">나미야 잡화점의 비밀 을 읽고</div></div>
+                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
+                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
+
+                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
+                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
+
+                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
+                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
+
+                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
+                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="post-object-box post-object-style">
+                        <div class="post-object-title">
+                            <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
+                            <div class="post-title-user">
+                                <div>사용자 닉네임</div>
+                                <div> 단체포스트</div>
+                            </div>
+                            <div class="junjun"><img class="junjun-img" src="/img/junjun.png"/></div>
+                        </div>
+                        <!--                        사진부분-->
+                        <div class="post-object-book-box">
+                            <div class="post-object-back-book">
+                                <div class="post-object-book-back">
+                                    <img class="post-object-book" src="/img/3.png"/>
+                                </div>
+                                <div class="post-object-book-box">
+                                    <img class="post-object-book-img" src="/img/3.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-object-content-box">
+                            <div class="post-content-title"><div class="post-title">나미야 잡화점의 비밀 을 읽고</div></div>
+                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
+                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
+
+                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
+                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
+
+                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
+                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
+
+                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
+                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="post-object-box post-object-style">
+                        <div class="post-object-title">
+                            <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
+                            <div class="post-title-user">
+                                <div>사용자 닉네임</div>
+                                <div> 단체포스트</div>
+                            </div>
+                            <div class="junjun"><img class="junjun-img" src="/img/junjun.png"/></div>
+                        </div>
+                        <!--                        사진부분-->
+                        <div class="post-object-book-box">
+                            <div class="post-object-back-book">
+                                <div class="post-object-book-back">
+                                    <img class="post-object-book" src="/img/4.png"/>
+                                </div>
+                                <div class="post-object-book-box">
+                                    <img class="post-object-book-img" src="/img/4.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-object-content-box">
+                            <div class="post-content-title"><div class="post-title">나미야 잡화점의 비밀 을 읽고</div></div>
+                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
+                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
+
+                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
+                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
+
+                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
+                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
+
+                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
+                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="post-object-box post-object-style">
+                        <div class="post-object-title">
+                            <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
+                            <div class="post-title-user">
+                                <div>사용자 닉네임</div>
+                                <div> 단체포스트</div>
+                            </div>
+                            <div class="junjun"><img class="junjun-img" src="/img/junjun.png"/></div>
+                        </div>
+                        <!--                        사진부분-->
+                        <div class="post-object-book-box">
+                            <div class="post-object-back-book">
+                                <div class="post-object-book-back">
+                                    <img class="post-object-book" src="/img/5.png"/>
+                                </div>
+                                <div class="post-object-book-box">
+                                    <img class="post-object-book-img" src="/img/5.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-object-content-box">
+                            <div class="post-content-title"><div class="post-title">나미야 잡화점의 비밀 을 읽고</div></div>
+                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
+                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
+
+                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
+                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
+
+                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
+                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
+
+                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
+                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="post-object-box post-object-style">
+                        <div class="post-object-title">
+                            <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
+                            <div class="post-title-user">
+                                <div>사용자 닉네임</div>
+                                <div> 단체포스트</div>
+                            </div>
+                            <div class="junjun"><img class="junjun-img" src="/img/junjun.png"/></div>
+                        </div>
+                        <!--                        사진부분-->
+                        <div class="post-object-book-box">
+                            <div class="post-object-back-book">
+                                <div class="post-object-book-back">
+                                    <img class="post-object-book" src="/img/3.png"/>
+                                </div>
+                                <div class="post-object-book-box">
+                                    <img class="post-object-book-img" src="/img/3.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-object-content-box">
+                            <div class="post-content-title"><div class="post-title">나미야 잡화점의 비밀 을 읽고</div></div>
+                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
+                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
+
+                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
+                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
+
+                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
+                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
+
+                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
+                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+                <li class="manpage-debate-object-box">
+                    <div class="post-object-box post-object-style">
+                        <div class="post-object-title">
+                            <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
+                            <div class="post-title-user">
+                                <div>사용자 닉네임</div>
+                                <div> 단체포스트</div>
+                            </div>
+                            <div class="junjun"><img class="junjun-img" src="/img/junjun.png"/></div>
+                        </div>
+                        <!--                        사진부분-->
+                        <div class="post-object-book-box">
+                            <div class="post-object-back-book">
+                                <div class="post-object-book-back">
+                                    <img class="post-object-book" src="/img/1.png"/>
+                                </div>
+                                <div class="post-object-book-box">
+                                    <img class="post-object-book-img" src="/img/1.png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-object-content-box">
+                            <div class="post-content-title"><div class="post-title">나미야 잡화점의 비밀 을 읽고</div></div>
+                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
+                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
+
+                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
+                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
+
+                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
+                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
+
+                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
+                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            </div>
+                        </div>
+                        <div class="book-button">
+                            자세히 보기
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="manpage-debate-text"> 알라딘 인기도서</div>
+    <div class="book-box" id="book">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34407/6/coversum/k222932926_1.jpg"/></div>
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/87/coversum/k082932925_1.jpg"/></div>
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/53/coversum/k782932728_1.jpg"/></div>
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/51/coversum/k632932728_1.jpg"/></div>
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/49/coversum/k622932728_1.jpg"/></div>
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/44/coversum/k652932728_2.jpg"/></div>
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/36/coversum/k562932728_1.jpg"/></div>
+            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/33/coversum/k442932728_1.jpg"/></div>
+        </div>
+    </div>
+
+<div class="box">푸터자리</div>
+
+
+</div>
+</body>
+</html>

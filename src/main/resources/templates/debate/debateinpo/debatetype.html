@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/debate/debatemack.css}"/>
+    <script defer th:src="@{/js/debate/debatetype.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main class="board-main-box">
+<aside class="aside-total-box">
+    <div class="sticky">
+        <div class="aside-object">
+            <h1>프로필 사진 자리</h1>
+        </div>
+        <div class="aside-text">
+            <h3>아이디</h3>
+        </div>
+        <div class="aside-text">
+            <h2>닉네임</h2>
+        </div>
+    </div>
+</aside>
+<!--토론선택하기-->
+<div class="obtion">
+    <div class="fadeIn">
+        <div class="gather-title"><span class="gather-title-text">어떤 종류의 토론을 하고 싶으세요?</span></div>
+    </div>
+
+<!--        공고형-->
+    <form action="/debate/type" method="post">
+    <div class="gather-box">
+        <label for="com" class="fadeIn-style">
+
+            <div class="gather-create-option">
+                <div class="gather-create-title">
+                    <span class="gather-create-title-text">공고형</span>
+                    <span class="gather-create-content-text">내가 원하는 책으로 토론을하고싶어요</span>
+                </div>
+            </div>
+            <div class="gather-create-radio">
+        <label class="gather-create-radio-box">
+            <input type="radio" id="com" checked="checked" class="gather-create-radio-butten" name="debateType" value="1">
+        </label>
+
+            </div>
+
+        </label>
+<!--        자유형-->
+        <label for="free" class="fadeIn-style">
+
+            <div class="gather-create-option">
+                <div class="gather-create-title">
+                    <span class="gather-create-title-text">자유형</span>
+                    <span class="gather-create-content-text">각자 자유롭게 책을 읽은후 의견을 나누고 싶어요</span>
+                </div>
+            </div>
+            <div class="gather-create-radio">
+                <div class="gather-create-radio-box">
+                    <input type="radio"id="free" class="gather-create-radio-butten" name="debateType" value="2">
+                </div>
+                <label class="gather-create-radio-line">
+                </label>
+            </div>
+
+        </label>
+<!--        장르형 -->
+        <label for="d1" class="fadeIn-style">
+
+        <div class="gather-create-option">
+            <div class="gather-create-title">
+                <span class="gather-create-title-text">장르형</span>
+                <span class="gather-create-content-text">특정 장르만 정한후 팀원과 함께 책을 고르고싶어요</span>
+            </div>
+        </div>
+        <div class="gather-create-radio">
+            <div class="gather-create-radio-box">
+                <input type="radio" id="d1" class="gather-create-radio-butten" name="debateType" value="3">
+            </div>
+            <label class="gather-create-radio-line">
+            </label>
+        </div>
+
+    </label>
+
+
+        <!--            버튼처리-->
+        <div class="gather-create-butten-div">
+            <button type="button" class="gather-create-butten-dv1 type-remove" >
+                이전
+            </button>
+            <button type="submit" class="gather-create-butten-dv1 nexttype" >
+                다음
+            </button>
+
+        </div>
+    </div>
+    </form>
+</div>
+
+</main>
+</body>
+</html>
