@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/member/manageMember.css}">
+    <script defer th:src="@{/js/admin/discussion/discussionAllList.js}"></script>
+</head>
+<body>
+    <div class="full-screen">
+           <!-- 공통 헤더  -->
+        <div class="gnb">
+           <span>logo</span>
+            <span>관리자 페이지</span>
+            <span>
+                <a href="">북스프레소</a>
+            </span>
+            <span>
+                <a href="">toAdmin</a>
+            </span>
+        </div>
+        <!-- /공통 헤더  -->
+        <div class="header">
+            <div class="memberAndAdmin">
+                <ul class="gnb-lists">
+                    <li><a th:href="@{/admin/member/allList}" class="on">전체 멤버 관리</a></li>
+                    <li><a th:href="@{/admin/member/stop-activity}">활동정지 멤버 관리</a></li>
+                    <li><a th:href="@{/admin/member/forced-out}">강제탈퇴 멤버 관리</a></li>
+                </ul>    
+            </div>
+        </div>
+        <!-- 바디  -->
+        
+        <div class="body">
+            <div class="body-content">
+                <h1>전체 멤버 관리</h1>
+
+                <!-- 멤버 검색  -->
+                <div class="search">
+                    <div class="search_box">
+                        <span>멤버 검색</span>
+                        <form action="">
+                            <select name="findMember" size="1">
+                                <option value="loginId">아이디</option>
+                                <option value="nickname">별명</option>
+                            </select>
+                            <input type="text" name="">
+                            <button>검색</button>
+                        </form>
+                    </div>
+                    <!-- <div class="detail-search">
+
+                    </div> -->
+                </div>
+
+                <!-- 멤버 리스트 -->
+                <div class="member_board">
+                    <div class="board-title">
+                        <span><strong>전체 회원 수</strong></span>
+                        <span>num</span>
+                    </div>
+                    <div class="board-action">
+                        <span>선택 멤버를</span>
+                        <span>활동 정지</span>
+                        <span>강제 탈퇴</span>
+                    </div>
+                    <!-- 회원 정보  -->
+                    <div class="board-content">
+                        <table>
+                            <colgroup>
+                                <col width="23px"/>
+                                <col width="307px"/>
+                                <col width="135px"/>
+                                <col width="135px"/>
+                                <col width="210px"/>
+                                <col width="105px"/>
+                                <col width="105px"/>
+                            </colgroup>
+                        
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <input type="checkbox" class="checkAction" name="check" value="">
+                                    </th>
+                                    <th scope="col">별명(아이디)</th>
+                                    <th scope="col">가입일</th>
+                                    <th scope="col">최종방문일</th>
+                                    <th scope="col">참여 토론 수</th>
+                                    <th scope="col">포스터 수</th>
+                                    <th scope="col">댓글 수</th>
+                                </tr>                               
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
+                                    <td class="tc">
+                                        <input type="checkbox" class="checkAction" name="check" value="">                                        
+                                    </td>
+                                    <td class="tl user">user1</td>
+                                    <td class="tc">2024-08-03</td>
+                                    <td class="tc">2024-08-03</td>
+                                    <td class="tr">4</td>
+                                    <td class="tr">3</td>
+                                    <td class="tr">9</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지 버튼 -->
+<!--        <div class="page">-->
+<!--            <span class="page-line">-->
+<!--                <span class="">&lt;&lt;</span>-->
+<!--                <span class="">&lt;</span>-->
+<!--                <span class="page-battom"><a href="">1</a></span>-->
+<!--                <span class="page-battom"><a href="">2</a></span>-->
+<!--                <span class="page-battom"><a href="">3</a></span>-->
+<!--                <span class="page-battom"><a href="">4</a></span>-->
+<!--                <span class="page-battom"><a href="">5</a></span>-->
+<!--                <span class="">&gt;</span>-->
+<!--                <span class="">&gt;&gt;</span>-->
+<!--            </span>-->
+<!--        </div>-->
+
+        
+    </div>
+</body>
+</html>

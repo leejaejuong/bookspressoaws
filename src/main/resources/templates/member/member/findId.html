@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--  폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
+    <!--  /폰트 -->
+    <link rel="stylesheet" th:href="@{/css/header/header.css}">
+    <link rel="stylesheet" th:href="@{/css/member/member/findPassword.css}">
+    <script defer th:src="@{/js/member/member/find.js}"></script>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+    <div class="full-screen">
+        <div class="title">아이디 찾기</div>
+        
+            <!-- 아이디 / 비밀번호 찾기 선택 -->
+        <!-- <ul class="tap-find">
+            <li class=" ">
+                <a href="" class="findId" >아이디 찾기</a>
+            </li>
+            <li class=" ">
+                <a href="" class="findPassword">비밀번호 찾기</a>
+            </li>
+        </ul> -->
+
+        <!-- 데이터 입력 -->
+        <div class="itemBoxs">    
+            <p>회원정보에 등록된 정보로 아이디를 찾을 수 있습니다.</p>
+            <form action="" method="post" id="findId-form">
+                <ul>
+                    <!-- 이름 입력 -->
+                    <li class="item">
+                        <span class="box-text">
+                            <label class="text">이름</label>
+                        </span>
+                        <div class="box-input">
+                            <input type="text" name="userName" class="name">
+                        </div>
+                    </li>
+                    <!-- 이메일 입력 -->
+                    <li class="item">
+                        <span class="box-text">
+                            <label class="text">이메일</label>
+                        </span> 
+                        <div class="box-input"> 
+                            <input type="email" name="email" class="email">
+                            <button class="certifi-btn">인증번호 발송</button>
+                        </div>
+                        <!-- 클릭하고 입력 안할 시 출력 -->
+                        <!-- <div class="msgInvalid">이메일 주소를 다시 입력해주세요.</div> -->
+                    </li>
+                    <!-- 인증번호 입력 -->
+                    <li class="item">
+                        <span class="box-text">
+                            <label class="text" >인증번호</label>
+                        </span>
+                        <div class="box-input">
+                            <input type="text" name="number" class="certifi-num">
+                        </div>
+                    </li>
+                </ul>
+                <!-- 데이터 입력 전송 버튼 -->
+                <div class="button">
+                    <button type="button" id="find-btn">인증확인</button>
+                </div>   
+            </form>
+        
+        </div>
+        <!-- 로그인 찾기/회원가입 으로 이동 -->
+        <div class="item-under">
+            <a th:href="@{/member/login}" class="loginBtn">로그인</a>
+            <a th:href="@{/member/findId}" class="loginBtn">아이디 찾기</a>
+            <a th:href="@{/member/join}" class="joinBtn">회원가입</a>
+            <a href="" class="qaBtn">자주 묻는 질문</a>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
