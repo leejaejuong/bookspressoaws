@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    font-family: "Jua", sans-serif;
+}
+
+.header{
+    background-color: #fff;
+    border-bottom: 1px solid #ebebeb;
+    padding: 20px 0;
+}
+.header-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+.nav{
+    display: flex;
+}
+.nav{
+    font-size: 16px;
+    text-decoration: none;
+    margin-left: 20px;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.msg > * {
+}
+
+/* 회원가입 */
+
+.full-screen {
+    display: flex;
+    flex-direction: column;
+}
+
+.join {
+    width: 100% ;
+    font-size: 26px;
+    font-weight: normal;
+    padding-top: 55px;
+    margin-bottom: 32px;
+    text-align: center;
+
+    border-bottom: 3px black;
+}
+
+.items {
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.item {
+    padding-top: 24px;
+}
+
+
+
+.input-date{
+    font-weight: bold;
+    margin-bottom: 18px;
+    
+}
+
+.input-date,
+.typoBox{
+    font-size: 16px;
+    color: #373f57;
+    margin: 8px 0 ;
+}
+
+.inputBox > input {
+    width: 334px;
+    height: 46px;
+    border: 1px solid #8491a7;
+    border-radius: 4px;
+    /* color: var(--gray100); */
+    padding-left: 10px;
+}
+/*input 메세지 전달 받은 div*/
+.inputMsg{
+    font-size: 13px;
+    width: 345px;
+    word-break: keep-all;
+    padding: 2px 0 0 3px;
+}
+/*에러 문자 메세지*/
+.error {
+    color: #d64141;
+}
+/* 안내 문자 메세지 */
+/*.msgInfo{*/
+/*    */
+/*}*/
+
+.button {
+    padding: 12px 15px 14px;
+    margin-top: 50px;
+    height: 48px;
+    width: 347px;
+    font-size: 18px;
+    line-height: 24px;
+
+    border-radius: 4px;
+
+    background-color: #212529;
+    color: #e9c9ab;
+
+}
+/* 기본 배경은 흰색에 버튼은 이 색으로 가주세요
+글자 :#ffd200
+배경: #212529 */
+
+/* 클릭하면 나오는 메세지 모두 안보이게 처리 */
+.msg{
+    display: none;
+}
+
+.item > p {
+    color: #5C667B;
+    font-size: 13px;
+    
+    padding-top: 4px;
+}

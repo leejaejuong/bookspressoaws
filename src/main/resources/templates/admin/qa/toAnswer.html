@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/admin/qa/toAnswer.css}"/>
+  </head>
+  <body>
+    <div class="full-screen">
+      <div class="screen">
+        <h1>Q&A 게시판</h1>
+
+        <h4>Q&A 게시판</h4>
+        <div class="detail-board">
+          <div class="detail-title">title</div>
+          <div class="view-info">
+            <span class="text">작성자 : <span>wirter</span></span>
+            <span class="text">작성일 : <span>wirte-date 14:59:35</span></span>
+          </div>
+          <div class="content-box">
+            <div class="content">
+              writeQ에서 class="content-box"에 작성했던 내용
+            </div>
+          </div>
+          <div class="answer-box">
+            <span class="answer-title">
+              관리자 답변
+              <span text="sysdate">(2024-07-29)</span>
+            </span>
+            <form action="">
+            <div class="answer-content">
+                <textarea name="QandAcont" id="" cols="30" rows="10"></textarea>
+            </div>
+            </form>
+          </div>
+          <div class="write-btn">
+            <button type="button">작성완료</button>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
