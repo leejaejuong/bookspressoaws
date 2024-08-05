@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/poster/poster.css}">
+    <script defer th:src="@{/js/admin/poster/poster.js}"></script>
+</head>
+<body>
+    <div class="full-screen">
+           <!-- 공통 헤더  -->
+        <div class="gnb">
+           <span>logo</span>
+            <span>관리자 페이지</span>
+            <span>
+                <a href="">북스프레소</a>
+            </span>
+            <span>
+                <a th:href="@{/admin/main}">toAdmin</a>
+            </span>
+        </div>
+        <!-- /공통 헤더  -->
+        <div class="header">
+            <div class="sub">
+                <ul class="gnb-lists">
+                    <li><a th:href="@{/admin/poster/public}">공개 포스터</a></li>
+                    <li><a th:href="@{/admin/poster/private}" class="on">비공개 포스트</a></li>
+                    <li><a th:href="@{/admin/poster/drop}">강제 삭제된 포스트</a></li>
+                </ul>    
+            </div>
+        </div>
+        <!-- 바디  -->
+        
+        <div class="body">
+            <div class="body-content">
+                <h1>공개 포스트</h1>
+
+                <!-- 포스터 검색  -->
+                <div class="search">
+                    <div class="search_box">
+                        <span>포스터 검색</span>
+                        <form action="">
+                            <select name="findMember" size="1">
+                                <option value="loginId">포스트 제목</option>
+                                <option value="nickname">책 제목</option>
+                                <option value="nickname">작성회원</option>
+                            </select>
+                            <input type="text" name="">
+                            <button>검색</button>
+                        </form>
+                    </div>
+                    <!-- <div class="detail-search">
+
+                    </div> -->
+                </div>
+
+                <!-- 포스트 리스트 -->
+                <div class="board">
+                    <div class="board-title">
+                        <span><strong>포스트 리스트</strong></span>
+                        <span>num</span>
+                    </div>
+                    <div class="board-action">
+                        <span>선택 포스트를</span>
+                        <span>삭제</span>
+                    </div>
+                    <!-- 포스터 정보  -->
+                    <div class="board-content">
+                        <table>
+                            <colgroup>
+                                <col width="23px"/>
+                                <col width="283px"/>
+<!--                                <col width="23px"/>-->
+                                <col width="264px"/>
+                                <col width="100px"/>
+                                <col width="100px"/>
+                                <col width="100px"/>
+                                <col width="50px"/>
+                            </colgroup>
+                        
+                            <thead>
+                                <tr class="table-header">
+                                    <th scope="col">
+                                        <input type="checkbox" class="checkAction" name="check" value="">
+                                    </th>
+                                    <th scope="col">포스트 제목</th>
+<!--                                    <th scope="col">-->
+<!--                                        <a href="" class="view-info_btn">-->
+<!--                                            <img class="search-icon" src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.44339 14.378C11.7226 14.3764 14.3796 11.7168 14.3779 8.43756C14.3763 5.15837 11.7167 2.50138 8.4375 2.50301C5.15831 2.50463 2.50132 5.16426 2.50294 8.44345C2.50457 11.7226 5.1642 14.3796 8.44339 14.378Z' stroke='%23131518' stroke-width='1.5'/%3E%3Cpath d='M16.9623 18.0436C17.2552 18.3365 17.7301 18.3365 18.023 18.0436C18.3159 17.7507 18.3159 17.2758 18.023 16.9829L16.9623 18.0436ZM11.9623 13.0436L16.9623 18.0436L18.023 16.9829L13.023 11.9829L11.9623 13.0436Z' fill='%23131518'/%3E%3C/svg%3E" alt="검색창 아이콘">-->
+<!--                                        </a>-->
+<!--                                    </th>-->
+                                    <th scope="col">책 제목</th>
+                                    <th scope="col">개인/단체</th>
+                                    <th scope="col">작성회원</th>
+                                    <th scope="col">작성일자</th>
+                                    <th scope="col">조회수</th>
+                                </tr>                               
+                            </thead>
+                            <tbody>
+                                <tr class="check-info">
+                                    <!-- 토론 리스트 뿌려지는 곳 -->
+                                    <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
+                                    <td class="tc">
+                                        <input type="checkbox" class="checkAction" name="check" value="">                                        
+                                    </td>
+                                    <td class="tl">삼국지</td>
+<!--                                    <td class="tc">-->
+<!--                                        <div class="view-info_btn detail-btn">-->
+<!--                                            <img class="search-icon" src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.44339 14.378C11.7226 14.3764 14.3796 11.7168 14.3779 8.43756C14.3763 5.15837 11.7167 2.50138 8.4375 2.50301C5.15831 2.50463 2.50132 5.16426 2.50294 8.44345C2.50457 11.7226 5.1642 14.3796 8.44339 14.378Z' stroke='%23131518' stroke-width='1.5'/%3E%3Cpath d='M16.9623 18.0436C17.2552 18.3365 17.7301 18.3365 18.023 18.0436C18.3159 17.7507 18.3159 17.2758 18.023 16.9829L16.9623 18.0436ZM11.9623 13.0436L16.9623 18.0436L18.023 16.9829L13.023 11.9829L11.9623 13.0436Z' fill='%23131518'/%3E%3C/svg%3E" alt="검색창 아이콘">-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+                                    <td class="tl">skfmesali sljkfjselifjs s feifjlseif slfsdfslkfmnls sldkjfslfie fmslef</td>
+                                    <td class="tr">개인</td>
+                                    <td class="tr">user1</td>
+                                    <td class="tr">2024-02-01</td>
+                                    <td class="tr">3</td>
+                                </tr>
+                                <tr class="check-info">
+                                    <!-- 토론 리스트 뿌려지는 곳 -->
+                                    <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
+                                    <td class="tc">
+                                        <input type="checkbox" class="checkAction" name="check" value="">
+                                    </td>
+                                    <td class="tl">삼국지 werwrewfes  fsf  s fsefwer3 wre w3fdw wfwef wefwf</td>
+<!--                                    <td class="tc">-->
+<!--                                        <div class="view-info_btn detail-btn">-->
+<!--                                            <img class="search-icon" src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.44339 14.378C11.7226 14.3764 14.3796 11.7168 14.3779 8.43756C14.3763 5.15837 11.7167 2.50138 8.4375 2.50301C5.15831 2.50463 2.50132 5.16426 2.50294 8.44345C2.50457 11.7226 5.1642 14.3796 8.44339 14.378Z' stroke='%23131518' stroke-width='1.5'/%3E%3Cpath d='M16.9623 18.0436C17.2552 18.3365 17.7301 18.3365 18.023 18.0436C18.3159 17.7507 18.3159 17.2758 18.023 16.9829L16.9623 18.0436ZM11.9623 13.0436L16.9623 18.0436L18.023 16.9829L13.023 11.9829L11.9623 13.0436Z' fill='%23131518'/%3E%3C/svg%3E" alt="검색창 아이콘">-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+                                    <td class="tl">skfmesali sljkfjselifjs s feifjlseif slfsdfslkfmnls sldkjfslfie fmslef</td>
+                                    <td class="tr">개인</td>
+                                    <td class="tr">user1</td>
+                                    <td class="tr">2024-02-01</td>
+                                    <td class="tr">3</td>
+                                </tr>
+
+<!--                                토론장 디테일 정보 -->
+<!--                                <tr class="view-info">-->
+<!--                                    <td colspan="3">-->
+<!--                                        <div class="met-type">-->
+<!--                                            <div>모임 종류 : <span>온라인</span></div>-->
+<!--                                            <div>토론 종류 : <span>공고형</span></div>-->
+<!--                                            <div>토론 책 : <span>적정한 삶</span></div>-->
+<!--                                            <div>토론 개요 : <span>돈의 흐름을 알아보자!!!</span></div>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--&lt;!&ndash;                                    colspan="4"&ndash;&gt;-->
+<!--                                    <td colspan="5">-->
+<!--                                        <div class="met-attend">-->
+<!--                                            <div>토론 참여 회원</div>-->
+<!--                                            <div class="met-attend-list">-->
+<!--                                                <span>userName</span>-->
+<!--                                                <span>user2</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지 버튼 -->
+        <div class="page">
+            <span class="page-line">
+                <span class="">&lt;&lt;</span>
+                <span class="">&lt;</span>
+                <span class="page-battom"><a href="">1</a></span>
+                <span class="page-battom"><a href="">2</a></span>
+                <span class="page-battom"><a href="">3</a></span>
+                <span class="page-battom"><a href="">4</a></span>
+                <span class="page-battom"><a href="">5</a></span>
+                <span class="">&gt;</span>
+                <span class="">&gt;&gt;</span>
+            </span>
+        </div>
+
+        <!-- js : 토론 제목 눌렀을 때 나오는 리스트 
+        
+        -->
+        
+
+    </div>
+</body>
+</html>
