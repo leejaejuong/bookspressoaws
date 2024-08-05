@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>북스프레소 - 책향 가득한 공간</title>
+    <link rel="shortcut icon" th:href="@{/img/타이틀로고.png}">
+    <link rel="stylesheet" th:href="@{/css/header/header.css}">
+    <link rel="stylesheet" th:href="@{/css/mypage/sidebar.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/mypage/myBook.css}">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<!-- 전체 화면 -->
+<div class="layout_container">
+    <div class="layout">
+        <div class="layout_content">
+            <!-- 사이드바 -->
+        <div th:replace="~{mypage/sidebar :: layout_sidebar}"></div>
+            <main class="layout_main">
+                <div class="library">
+                    <div class="library_content">
+                        <div class="library_container">
+                            <div class="library_header">
+                                <div class="library_header_user">
+                                    <div class="user-img-box">
+                                        <span class="user-img" style="width: 35px; height: 35px; line-height: 35px; font-size: 17px" >
+                                        <img th:src="@{/img/사용자이미지.PNG}">
+                                    </span>
+                                    </div>
+                                    <span class="library_header_nickname">
+                                        송호님의 서재
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="library_divider"></div>
+                            <div class="library_box">
+                                <div class="library_box_tabs">
+                                    <div class="library_box_title">책</div>
+                                </div>
+
+                                <div class="library_tabs">
+                                    <div class="library_tabs_content_holder">
+                                        <div class="library_tabs_content">
+                                            <div class="library_book-list">
+                                                <div class="library_book-list_header">
+                                                    <span class="library_book-list_header_title">
+                                                        읽은책(0)
+                                                        <span role="img" aria-label="info-circle" class="library__book-list__header__info-icon" style="margin-left: 5px;"><svg viewBox="64 64 896 896" focusable="false" data-icon="info-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="library_book-list">
+                                                <div class="library_book-list_header">
+                                                    <span class="library_book-list_header_title">
+                                                        관심책(0)
+                                                        <span role="img" aria-label="info-circle" class="library__book-list__header__info-icon" style="margin-left: 5px;"><svg viewBox="64 64 896 896" focusable="false" data-icon="info-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+</body>
+</html>
