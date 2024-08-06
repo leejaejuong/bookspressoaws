@@ -11,12 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/member")
 public class MemberController {
 
-    private final PosterController posterController;
-
-    public MemberController(PosterController posterController) {
-        this.posterController = posterController;
-    }
-
     @GetMapping("/join")
     public String join(){
         return "member/member/join";

@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+    font-size: 14px;
+}
+a{
+    
+    text-decoration-line:none;
+    text-decoration-color: black;
+}
+
+.screen,
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gnb-lists .on{
+    color:chocolate;
+}
+
+/* .memberAndAdmin
+.body 
+{
+    display: flex;
+    justify-content: center;  
+} */
+
+/* 상단 회원관리 메뉴 */
+
+
+.sub{
+    width: 100%;
+    padding: 8px 0;
+    background-color: #FAFAFB;
+    border-top:1px solid #9B9B9C;
+    border-bottom:1px solid #9B9B9C;
+    display: flex;
+    justify-content: center;  
+    
+}
+
+.gnb-lists{
+    width: 920px;
+    overflow: hidden;
+    list-style-type: none;
+
+    display: flex;
+    
+    
+}
+
+.gnb-lists > li:not(:first-child)::before{
+    content: "|";
+    padding: 5px 8px;
+}
+
+/* /상단 회원관리 메뉴 */
+
+/* 바디 부분 */
+.body{
+    margin-top: 38px;
+}
+.body-content > h1 {
+    width: 920px;
+    font-size: 20px;
+    margin: 0 0 17px 2px;
+    padding: 0 0 10px 2px;
+
+    border-bottom: 3px solid #565B61;
+}
+
+.noti-area{
+    width: 920px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.explanation > p {
+    padding-bottom: 3px;
+}
+
+/* 전체 관리 페이지 말고 다른 페이지의 버튼  */
+/*  정지 하러가기 버튼 */
+/* .noti-area > span {
+    height: 32px;
+    padding: 0 23px 0 24px;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+/* 토론장 검색 */
+.search_box{
+    display: flex;
+    align-items: center;
+
+    padding: 18px 21px;
+    border: 1px solid #D3D4D7;
+}
+
+.search_box > *{
+    padding-right: 10px;
+}
+
+.search_box input{
+    width: 250px;
+    padding: 1px 0;
+}
+
+.search_box button {
+    font-size: 12px;
+    padding: 2px 8px;
+    margin-left: 4px;
+}
+
+select {
+    width: 84px;
+    height: 18px;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 3px;
+    margin-top: 3px;
+    font-size: 13px;
+}
+
+/* 회원 board */
+.board{
+    width: 920px;
+    margin-top: 23px;
+}
+.board-title,
+.board-action{
+    border-bottom: 1px solid #D3D4D7;
+    padding: 8px 0;
+    margin-top: 20px;
+}
+
+.board-action > span:not(:first-child){
+    padding: 1.5px 7px;
+    border: 1px solid #9B9B9C;
+    border-radius: 1px;
+    font-size: 12px;
+    margin-left: 3px;
+    
+}
+
+/* 회원정보 내용 */
+/* .board-content th:not(:first-child)::after{
+    content: "|";
+    padding: 0 10px;
+    color: #9B9B9C;
+    
+} */
+
+/* / board */
+table{
+    border-collapse:collapse;
+}
+.board-content .tc{
+    text-align: center;
+    font-size: 12px;
+}
+.board-content .tl{
+    text-align: start;
+    font-size: 12px;
+}
+.board-content .tr{
+    text-align:end;
+    font-size: 12px;
+}
+.board-content .tl:last-child{
+    padding-left: 5px;
+}
+
+img {
+    width: 15px;
+    height: 15px;
+    padding: 0 3px;
+}
+
+thead th {
+    padding: 5px 0;
+    font-size: 13px;
+    color: #666666;
+    background-color: #F1F6FA;
+    border-bottom: 1px solid #D3D4D7;
+}
+tbody td{
+    border-bottom: 1px solid #D3D4D7;
+    height: 25px;
+}
+
+.check-info {
+    height: 33px;
+}
+.tr{
+    padding-right: 7px;
+}
+
+/* 토론 제목을 누르면 나오는 토론 상세 정보 */
+/* 버튼 */
+
+.detailOff{
+    display: none;
+}
+
+
+/* 토론 제목을 누르면 나오는 토론 상세 정보 */
+.view-info td{
+     height: 120px;
+    padding: 12px 20px;
+
+}
+
+.view-info *{
+    /* font-size: 12px; */
+    margin: 6px 0 4px 0;
+}
+
+.met-type,
+.met-attend{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* 토론 참여 회원 리스트  */
+
+/*.met-attend-list{*/
+/*    font-size: 14px;*/
+
+/*    white-space: normal;*/
+/*    word-break: keep-all;*/
+
+/*    display: flex;*/
+
+/*}*/
+
+/*.met-attend-list > span {*/
+/*    padding: 3px 4px;*/
+/*}*/
+
+
+
+
+
+/* /바디 부분 */
+
+/* 페이지 버튼  */
+.page {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 50px;
+}
+
+.page-battom {
+    padding: 3px 6px;
+    margin: 4px 4px;
+    font-size: 18px;
+}
+
