@@ -1,5 +1,6 @@
 package com.example.bookspresso.service.debate;
 
+import com.example.bookspresso.dto.debate.BookinpoDTO;
 import com.example.bookspresso.dto.debate.DebateInpoDTO;
 import com.example.bookspresso.dto.debate.DebateTypeDTO;
 import com.example.bookspresso.dto.debate.MettingTypeDTO;
@@ -17,6 +18,9 @@ public class Debateservice {
     private final DebateMapper debateMapper;
     //토론정보입력
     public void addInpo(DebateInpoDTO debateinpoDTO){ debateMapper.insertDebateInpo(debateinpoDTO);}
+    //검색
+    public BookinpoDTO searchBookinpo(String title){return debateMapper.selectbookinpo(title);}
+
     //로론 정보찾기
     public List<DebateInpoDTO> findInpo(Long debateId){return debateMapper.selectdebateinpo(debateId);}
 
