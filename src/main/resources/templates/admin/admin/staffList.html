@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/member/manageMember.css}">
+    <script defer th:src="@{/js/admin/discussion/discussionAllList.js}"></script>
+</head>
+<body>
+    <div class="full-screen">
+           <!-- 공통 헤더  -->
+        <div class="gnb">
+           <span>logo</span>
+            <span>관리자 페이지</span>
+            <span>
+                <a href="">북스프레소</a>
+            </span>
+            <span>
+                <a th:href="@{/admin/main}">toAdmin</a>
+            </span>
+        </div>
+        <!-- /공통 헤더  -->
+        <div class="header">
+            <div class="memberAndAdmin">
+                <ul class="gnb-lists">
+                    <li><a th:href="@{/admin/staff/list}" class="on">관리자 리스트</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 바디  -->
+        
+        <div class="body">
+            <div class="body-content">
+                <h1>관리자 명단</h1>
+
+                <!-- 관리자 검색  -->
+                <div class="search">
+                    <div class="search_box">
+                        <span>관리자 검색</span>
+                        <form action="">
+                            <select name="findMember" size="1">
+                                <option value="loginId">아이디</option>
+                                <option value="nickname">이름</option>
+                            </select>
+                            <input type="text" name="">
+                            <button>검색</button>
+                        </form>
+                    </div>
+                    <!-- <div class="detail-search">
+
+                    </div> -->
+                </div>
+
+                <!-- 멤버 리스트 -->
+                <div class="member_board">
+                    <div class="board-title">
+                        <span><strong>전체 관리자 수</strong></span>
+                        <span>num</span>
+                    </div>
+                    <div class="board-action">
+                        <span>선택 직원의</span>
+                        <span>권한 해제</span>
+                    </div>
+                    <!-- 관리자 정보  -->
+                    <div class="board-content">
+                        <table>
+                            <colgroup>
+                                <col width="23px"/>
+                                <col width="307px"/>
+                                <col width="300px"/>
+                                <col width="290px"/>
+<!--                                <col width="210px"/>-->
+<!--                                <col width="105px"/>-->
+<!--                                <col width="105px"/>-->
+                            </colgroup>
+                        
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <input type="checkbox" class="checkAction" name="check" value="">
+                                    </th>
+                                    <th scope="col">이름</th>
+                                    <th scope="col">아이디</th>
+                                    <th scope="col">등록일</th>
+
+                                </tr>                               
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
+                                    <td class="tc">
+                                        <input type="checkbox" class="checkAction" name="check" value="">                                        
+                                    </td>
+                                    <td class="tc user">admin1</td>
+                                    <td class="tc">admin1234</td>
+                                    <td class="tc">2024-08-03</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지 버튼 -->
+<!--        <div class="page">-->
+<!--            <span class="page-line">-->
+<!--                <span class="">&lt;&lt;</span>-->
+<!--                <span class="">&lt;</span>-->
+<!--                <span class="page-battom"><a href="">1</a></span>-->
+<!--                <span class="page-battom"><a href="">2</a></span>-->
+<!--                <span class="page-battom"><a href="">3</a></span>-->
+<!--                <span class="page-battom"><a href="">4</a></span>-->
+<!--                <span class="page-battom"><a href="">5</a></span>-->
+<!--                <span class="">&gt;</span>-->
+<!--                <span class="">&gt;&gt;</span>-->
+<!--            </span>-->
+<!--        </div>-->
+
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/admin/main/main.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
+</head>
+<body>
+
+    <div class="full-screen">
+
+        <!-- 관리자 페이지 상단 헤더 -->
+        <div class="gnb">
+            <span>logo</span>
+             <span>관리자 페이지</span>
+             <span>
+                 <a href="">북스프레소</a>
+             </span>
+             <span>
+                <a th:href="@{/admin/main}">toAdmin</a>
+             </span>
+         </div>
+        <!-- /관리자 페이지 상단 헤더 -->
+
+         <!-- 관리자 정보  -->
+        <div class="info_area">
+            <div class="info_area-img">
+                <img src="https://ssl.pstatic.net/static/cafe/thumb/make_cafe_thumb_default.png" alt="관리자 아이콘">
+            </div>
+            <div class="info_area-cont">
+                <ul class="count">
+<!--                    <img src="" alt=""/>-->
+                    <li>회원수 : <span>70</span></li>
+<!--                    <img src="" alt=""/>-->
+                    <li>게시글 수 : <span>100</span></li>
+
+                    <!-- 이미지 찾으면 li삭제  -->
+                </ul>
+
+                <ul class="admin_info">
+                    <li>
+                        <strong>관리자정보1</strong>
+                        <span>관리자정보1</span>
+                    </li>
+                    <li>
+                        <strong>관리자 정보2</strong>
+                        <span>관리자정보1</span>
+                    </li>
+                    <li>
+                        <strong>관리자 정보3</strong>
+                        <span>관리자정보1</span>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <!-- 메인 보드  -->
+        <div class="main_area">
+            <div class="member_manage">
+                <strong>멤버 관리</strong>
+                <ul>
+                    <li><a th:href="@{/admin/member/allList}">전체 멤버 관리</a></li>
+                    <li><a th:href="@{/admin/member/stop-activity}">활동정지 멤버 관리</a></li>
+                    <li><a th:href="@{/admin/member/forced-out}">강제탈퇴 멤버 관리</a></li>
+                </ul>
+            </div>
+            <div class="admin_manage">
+                <strong>관리자 직원 관리</strong>
+                <ul>
+                    <li><a th:href="@{/admin/staff/list}">관리자 리스트</a></li>
+                </ul>
+            </div>
+            <div class="devate_manage">
+                <strong>토론 관리</strong>
+                <ul>
+                    <li><a th:href="@{/admin/discussion/onGoing}">현재 진행 중인 토론</a></li>
+                    <li><a th:href="@{/admin/discussion/finished}">종료된 토론</a></li>
+                    <li><a th:href="@{/admin/discussion/forcedOut}">삭제된 토론</a></li>
+                </ul>
+            </div>
+            <div class="poster_manage">
+                <strong>포스트 관리</strong>
+                <ul>
+                    <li><a th:href="@{/admin/poster/public}">공개 포스트</a></li>
+                    <li><a th:href="@{/admin/poster/private}">비공개 포스트</a></li>
+                    <li><a th:href="@{/admin/poster/drop}">포스트 삭제</a></li>
+                </ul>
+            </div>
+
+            <div class="qa_manage">
+                <strong>Q&A</strong>
+                <ul>
+                    <li><a th:href="@{/admin/qa/question}">Q&A 리스트</a></li>
+<!--                    <li><a href="">답글 미완료 Q&A</a></li>-->
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

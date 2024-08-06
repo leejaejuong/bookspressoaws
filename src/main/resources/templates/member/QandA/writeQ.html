@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header/header.css}">
+
+    <link rel="stylesheet" th:href="@{/css/member/QandA/writeQ.css}">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+    <div class="full-screen">
+        <div class="screen">
+            <h1>Q&A 게시판</h1>
+
+            <h4>Q&A 게시판</h4>
+            <div class="write-board">
+                
+            <!-- 작성 글 -->
+                <form action="">
+                    <div class="tr">
+                        <div class="th">글제목</div>
+                        <div class="title">
+                            <input type="text" name="" placeholder="게시글 제목">
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">작성자</div>
+                        <div class="td">아이디 or 닉네임</div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">공개 여부</div>
+                        <div class="public">
+                            공개<input type="radio" name="" value="">
+                            비공개<input type="radio" name="" value="">   
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">첨부파일</div>
+                        <div class="attachment">
+                            <input type="text" name="">  
+                        </div>
+                    </div>
+                    <div class="tr content-row">
+                        <div class="th">내용</div>
+                        <div class="content-box">
+                            <textarea name="QandAcont" id="" cols="30" rows="10"></textarea>
+                        </div>
+                    
+                    </div>
+
+                    <div class="write-btn">
+                        <button type="button" class="back"><a th:href="@{/qa/list}">취소</a></button>
+                        <button class="submit">작성완료</button>  
+                    </div>
+                </form>
+                
+
+
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

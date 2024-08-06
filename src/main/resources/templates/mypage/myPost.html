@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>북스프레소 - 책향 가득한 공간</title>
+    <link rel="shortcut icon" th:href="@{/img/타이틀로고.png}">
+    <link rel="stylesheet" th:href="@{/css/header/header.css}">
+    <link rel="stylesheet" th:href="@{/css/mypage/sidebar.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/mypage/myPost.css}">
+    <script defer th:href="@{/js/mypage/myPost.js}"></script>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<!-- 전체 화면 -->
+<div class="layout_container">
+    <div class="layout">
+        <div class="layout_content">
+            <!-- 사이드바 -->
+            <div th:replace="~{mypage/sidebar :: layout_sidebar}"></div>
+            <main class="layout_main">
+                <div class="post">
+                    <div class="post_content">
+                        <div class="post_banner">
+                            <div class="post_banner_container">
+                                <span>"우리가 사라지면 암흑이 찾아온다"</span>
+                                <div class="post_banner_edit">
+                                    <span>
+                                        <div class="upload-select-img">
+                                            <span class="upload-img" role="button" onclick="document.getElementById('fileInput').click();">
+                                                <input type="file" accept="image/*" id="fileInput" style="display: none">
+                                                <div class="post_banner_edit_button">
+                                                    <span role="img" aria-label="picture" class="post_banner_color"><svg style="margin-top: 3px" viewBox="64 64 896 896" focusable="false" data-icon="picture" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 632H136v-39.9l138.5-164.3 150.1 178L658.1 489 888 761.6V792zm0-129.8L664.2 396.8c-3.2-3.8-9-3.8-12.2 0L424.6 666.4l-144-170.7c-3.2-3.8-9-3.8-12.2 0L136 652.7V232h752v430.2zM304 456a88 88 0 100-176 88 88 0 000 176zm0-116c15.5 0 28 12.5 28 28s-12.5 28-28 28-28-12.5-28-28 12.5-28 28-28z"></path></svg></span>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post_header">
+                            <div class="post_header_profile">
+                                <div class="post_header_img">
+                                    <div class="user-img">
+                                        <img th:src="@{/img/사용자이미지.PNG}">
+                                    </div>
+                                </div>
+                                <div class="post_header_title">
+                                    <h1 class="post_header_title-primary">송호님의 포스트</h1>
+                                    <span class="post_header_title-second">글로 남기는 나만의 기록장</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post_body">
+                            <div class="post_body_list">
+                                <div class="post_list">
+                                <div class="post_content_empty">
+                                    <span class="content-empty_title">
+                                        아직 작성된 글이 없습니다.
+                                    </span>
+                                </div>
+                                    <div style="display: none">
+                                        <div class="post_note">
+                                            <div class="post_note_info">
+                                                <div class="post_note_header">
+                                                    <div class="post_note_header_title">
+                                                        <span>코딩테스트</span>
+                                                    </div>
+                                                </div>
+                                                <div class="post_note_body">
+                                                    <div class="post_note_body_container">
+                                                        <div class="post_note_body_info">
+                                                            <div class="post_description">
+                                                                <p>코딩테스트</p>
+                                                            </div>
+                                                            <div class="post_note_footer">
+                                                                <div class="footer_author">
+                                                                    <div class="user-img-box">
+                                                                        <span class="user-img" style="width: 20px; height: 20px; line-height: 25px; font-size: 12px">
+                                                                            <img th:src="@{/img/사용자이미지.PNG}">
+                                                                        </span>
+                                                                        <span style="margin-left: 10px" class="profile_nickname">송유</span>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="post_topic">
+                                                    <div class="post_topic_book">
+                                                        <img src="https://image.aladin.co.kr/product/34093/56/cover150/k982931181_1.jpg" alt="프런트엔드 개발을 위한 테스트 입문 - 프런트엔드 테스트 기초 지식부터 UI 컴포넌트 테스트, E2E 테스트 등 상황에 맞는 테스트 전략까지">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                                </div>
+                            <div class="content-empty_action">
+                                <button type="button" class="post_button">포스트 만들기</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+</body>
+</html>
