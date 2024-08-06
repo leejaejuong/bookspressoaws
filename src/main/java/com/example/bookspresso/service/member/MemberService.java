@@ -9,13 +9,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class memberService {
+public class MemberService {
 
     private final MemberMapper memberMapper;
 
     public void addMember(MemberJoinDTO memberJoinDTO){
 
+        int idCnt = memberMapper.selectLoginIdCount(memberJoinDTO.getLoginId());
 
+        if(idCnt == 1){
+            throw new IllegalStateException("@@@중복된 회원아이디 입니다. ");
+        }
 
         memberMapper.insertMember(memberJoinDTO);
 
