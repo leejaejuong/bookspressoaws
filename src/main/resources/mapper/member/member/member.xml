@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.TimeMapper">
+
+    <insert id="insertMember" >
+        <selectKey resultType="long" keyProperty="memberId" order="BEFORE">
+            SELECT SEQ_MEMBER_ID.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_MEMBER (MEMBER_ID, LOGIN_ID, PASSWORD, NICKNAME, EMAIL)
+        VALUES (#{memberId}, #{loginId},#{password},#{nickname},#{email})
+    </insert>
+
+    <select id="selectLoginIdCount">
+        SELECT COUNT(MEMBER_ID)
+        FROM TBL_MEMBER
+        WHERE LOGIN_ID = #{loginId}
+    </select>
+
+</mapper>
