@@ -114,9 +114,15 @@
 }
 
 .content-content-box {
-    /*border: 1px solid#dee2e6;*/
-    padding: 10px;
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    margin: 10px;
     border-radius: 10px;
+    height: 80%;
 }
 
 .board-object-user-btn {

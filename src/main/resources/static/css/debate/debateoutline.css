@@ -73,6 +73,7 @@
 .recruitment-period{
     padding :10px 0;
     font-size: 25px;
+
 }
 
 .gather-create-debate-style{
@@ -80,6 +81,23 @@
 
 
 }
+.book-search-out{
+ display: flex;
+    flex-direction: column;
+}
+.book-img{
+/*    책 이미지 */
+    width: 200px;
+    height: 200px;
+}
+.book-search-in{
+    display: none;
+}
+.book-search-text{
+    font-size: 20px;
+    padding-top: 20px;
+}
+
 /*.gather-group {*/
 /*    !* 기본 CSS 스타일을 적용하지 않기 위해서 *!*/
 /*    width: 700px; !* 슬라이더 길이 *!*/
@@ -103,8 +121,11 @@ input[type=range]{
     transition: border-color .3s, box-shadow .6s, transform .3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 .title-count-box{
+    display: flex;
     font-size: 20px;
     color: #36363a;
+    width: 800px;
+    justify-content: space-between;
 }
 datalist{
     display: grid;
@@ -241,10 +262,34 @@ datalist{
 
 }
 .pather-value-box{
+    display: none;
     color: #8491a7;
     font-size: 20px;
 }
-.gather-value-in{
-
+.pather-value-box2{
+    display: none;
+    color: #8491a7;
+    font-size: 20px;
 }
+.content-err{
+    display: none;
+    font-size: 20px;
+    color: #ff4d4f;
+}
+.content-err2{
+    display: none;
+    font-size: 20px;
+    color: #ff4d4f;
+}
+.content-err3{
+    display: none;
+    font-size: 20px;
+    color: #ff4d4f;
+}
+.content-err4{
+    display: none;
+    font-size: 20px;
+    color: #ff4d4f;
+}
+
 

@@ -1350,16 +1350,9 @@
         </div>
     </section>
     <div class="manpage-debate-text"> 알라딘 인기도서</div>
-    <div class="book-box" id="book">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34407/6/coversum/k222932926_1.jpg"/></div>
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/87/coversum/k082932925_1.jpg"/></div>
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/53/coversum/k782932728_1.jpg"/></div>
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/51/coversum/k632932728_1.jpg"/></div>
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/49/coversum/k622932728_1.jpg"/></div>
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/44/coversum/k652932728_2.jpg"/></div>
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/36/coversum/k562932728_1.jpg"/></div>
-            <div class="swiper-slide"><img class="book-object-book-img img-style" src="https://image.aladin.co.kr/product/34406/33/coversum/k442932728_1.jpg"/></div>
+    <div  class="book-box" id="book">
+        <div  class="swiper-wrapper">
+            <div th:each="img:${aladin}" class="swiper-slide"><img class="img-style" th:src="${img.cover}" th:alt="${img.title}"/></div>
         </div>
     </div>
 
