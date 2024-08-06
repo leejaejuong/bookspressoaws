@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/header/header.css}">
+    <link rel="stylesheet" th:href="@{/css/member/QandA/answerDetail.css}"/>
+  </head>
+  <body>
+
+
+  <header th:replace="~{fragments/header :: header}"></header>
+    <div class="full-screen">
+      <div class="screen">
+        <h1>Q&A 게시판</h1>
+
+        <h4>Q&A 게시판</h4>
+        <div class="detail-board">
+          <div class="detail-title">title</div>
+          <div class="view-info">
+            <span class="text">작성자 : <span>wirter</span></span>
+            <span class="text">작성일 : <span>wirte-date 14:59:35</span></span>
+            <span class="text">조회수 : <span>view-num</span></span>
+          </div>
+          <div class="content-box">
+            <div class="content">
+              writeQ에서 class="content-box"에 작성했던 내용
+            </div>
+          </div>
+          <div class="answer-box">
+            <span class="answer-title">
+              관리자 답변
+              <span text="sysdate">(2024-07-29)</span>
+            </span>
+            <div class="answer-content">답변이다ㅏㅏ</div>
+          </div>
+        </div>
+
+        <div class="btns">
+          <!-- 작성한 회원이 아니라면 수정, 삭제 버튼은 보이지 않음  -->
+          <span class=""><a href="">목록으로</a></span>
+          <span class=""><a href="">수정</a></span>
+          <span class=""><a href="">삭제</a></span>
+          <span class=""><a href="">글쓰기</a></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

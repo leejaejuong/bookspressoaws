@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/member/manageMember.css}">
+</head>
+<body>
+    <div class="full-screen">
+           <!-- 공통 헤더  -->
+        <div class="gnb">
+           <span>logo</span>
+            <span>관리자 페이지</span>
+            <span>
+                <a href="">북스프레소</a>
+            </span>
+            <span>
+                <a th:href="@{/admin/main}">toAdmin</a>
+            </span>
+        </div>
+        <!-- /공통 헤더  -->
+        <div class="header">
+            <div class="memberAndAdmin">
+                <ul class="gnb-lists">
+                    <li><a th:href="@{/admin/member/allList}" >전체 멤버 관리</a></li>
+                    <li><a th:href="@{/admin/member/stop-activity}">활동정지 멤버 관리</a></li>
+                    <li><a th:href="@{/admin/member/forced-out}" class="on">강제탈퇴 멤버 관리</a></li>
+                </ul>    
+            </div>
+        </div>
+        <!-- 바디  -->
+        
+        <div class="body">
+            <div class="body-content">
+                <h1>강제탈퇴 멤버 관리</h1>
+                <div class="noti-area">
+                    <div class="explanation">
+                        <p>운영자가 강제 탈퇴시킨 멤버로 3개월간만 보관되며, 멤버 스스로 탈퇴한 기록은 남지 않습니다.</p>
+                        <p>카페 멤버를 가입 불가처리하면 자동으로 탈퇴 처리됩니다. 멤버에 대한 강제탈퇴는 전체 멤버 관리에서 하실 수 있습니다.</p>
+                    </div>
+                    <span><a th:href="@{/admin/member/allList}">강제탈퇴 하러가기</a></span>
+                </div>
+
+                <!-- 멤버 검색  -->
+                <div class="search_box">
+                    <span>멤버 검색</span>
+                    <form action="">
+                        <input type="text" name="" placeholder="아이디 검색">
+                        <button>검색</button>
+                    </form>
+                </div>
+
+                <!-- 활동 정지 멤버 리스트 -->
+                <div class="member_board">
+                    <div class="board-title">
+                        <span><strong>강제탈퇴 멤버</strong></span>
+                        <span>num</span>
+                    </div>
+                    <div class="board-action">
+                        <span>선택 멤버를</span>
+                        <span>가입불가 해제</span>
+                        <span>가입불가</span>
+                    </div>
+                    <!-- 회원 정보  -->
+                    <div class="board-content">
+                        <table>
+                            <colgroup>
+                                <col width="23px"/>
+                                <col width="155px"/>
+                                <col width="304px"/>
+                                <col width="118px"/>
+                                <col width="207px"/>
+                                <col width="113px"/>
+                            </colgroup>
+                        
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <input type="checkbox" class="checkAction" name="check" value="">
+                                    </th>
+                                    <th scope="col">별명(아이디)</th>
+                                    <th scope="col">사유</th>
+                                    <th scope="col">처리일</th>
+                                    <th scope="col">처리자</th>
+                                    <th scope="col">가입불가 여부</th>
+                                </tr>                               
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
+                                    <td class="tc">
+                                        <input type="checkbox" class="checkAction" name="check" value="">                                        
+                                    </td>
+                                    <td class="tl user">
+                                        <div>                                  
+                                            <span class="memberName"></span>                                        
+                                        </div>
+                                    </td>
+                                    <td class="tl"></td>
+                                    <td class="tc"></td>
+                                    <td class="tc"></td>
+                                    <td class="tl"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지 버튼 -->
+        <div class="page">
+            <span class="page-line">
+                <span class="">&lt;&lt;</span>
+                <span class="">&lt;</span>
+                <span class="page-battom"><a href="">1</a></span>
+                <span class="page-battom"><a href="">2</a></span>
+                <span class="page-battom"><a href="">3</a></span>
+                <span class="page-battom"><a href="">4</a></span>
+                <span class="page-battom"><a href="">5</a></span>
+                <span class="">&gt;</span>
+                <span class="">&gt;&gt;</span>
+            </span>
+        </div>
+
+
+    </div>
+</body>
+</html>
