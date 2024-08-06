@@ -149,7 +149,7 @@ let cancelEdit = () => editMode(false);
 // 탈퇴 체크박스 및 버튼 관련 로직
     document.getElementById('deleteBtn').addEventListener('click', function () {
         let agreeCheckbox = document.getElementById('agreeCheckBox');
-        let erorrMeg = document.getElementById('error-message')
+        let erorrMeg = document.querySelector('.error-message')
         let deleteBtn = document.getElementById('deleteBtn')
 
         if (!agreeCheckbox.checked) {
@@ -161,6 +161,7 @@ let cancelEdit = () => editMode(false);
                 erorrMeg.style.display = "none"
             })
             alert('탈퇴가 완료되었습니다.');
+            d_modal.style.display = "none"
         }
     });
 

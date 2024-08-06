@@ -73,9 +73,7 @@ a{
     font-size: 16px;
     color: #adb5bd;
     font-weight: 500;
-    margin: 0;
     padding: 0 12px 3px;
-    border-bottom: 4px solid black;
     transition: all .2s ease-out;
     cursor: pointer;
 }
