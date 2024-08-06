@@ -11,7 +11,7 @@
     //
     // });
     $typeRemove.addEventListener("click",function (){
-        location.href = `/member/debatemake`;
+        location.href = `/debate/make`;
 
     });
 

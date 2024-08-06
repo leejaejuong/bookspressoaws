@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.search.aladin.AladenUpdateMapper">
+    <insert id="insertBook">
+        INSERT INTO TBL_BOOK(ISBN13, TITLE, DESCRIPTION, AUTHOR, COVER, LINK, PUBDATE)
+        VALUES(#{isbn13},#{title},#{description},#{author},#{cover},#{link},#{pubDate})
+
+</insert>
+    <select id="selectBooknumber">
+        select ISBN13, TITLE, DESCRIPTION, AUTHOR, COVER, LINK, PUBDATE
+            from TBL_BOOK
+        where ISBN13=#{isbn13}
+    </select>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

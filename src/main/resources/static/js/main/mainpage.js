@@ -238,8 +238,8 @@
         // Optional parameters
         direction: "horizontal",
         loop: true,
-        slidesPerView: 6.5,
-        spaceBetween: 100,
+        slidesPerView: 6,
+        spaceBetween: 50,
 
     });
 }
