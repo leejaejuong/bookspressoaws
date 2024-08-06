@@ -2,6 +2,8 @@ package com.example.bookspresso.controller.member;
 
 import com.example.bookspresso.controller.admin.PosterController;
 import com.example.bookspresso.dto.member.MemberJoinDTO;
+import com.example.bookspresso.service.member.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/member")
+@RequiredArgsConstructor
 public class MemberController {
+
+    private final MemberService memberService;
 
     @GetMapping("/join")
     public String join(){
@@ -18,6 +23,11 @@ public class MemberController {
 
     @PostMapping("/join")
     public String join(MemberJoinDTO memberJoinDTO){
+
+
+
+        memberService.addMember(memberJoinDTO);
+        // 소개글 기본값 안녕하세요
 
         return null;
     }
