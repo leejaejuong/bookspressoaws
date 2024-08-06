@@ -11,5 +11,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class BooksaerchApi {
     private final Debateservice debateservice;
-    @GetMapping("/")
 }
