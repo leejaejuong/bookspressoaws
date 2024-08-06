@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Jua", sans-serif;
+}
+
+.full-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 900px;
+  margin-top: 50px;
+}
+.screen {
+  width: 1040px;
+}
+.screen > h1 {
+  text-align: center;
+  font-size: 40px;
+
+  margin-bottom: 40px;
+}
+
+.detail-title {
+  border-top: 1px solid black;
+  border-bottom: 1px solid #dddddd;
+  text-align: center;
+  font-size: 19px;
+
+  padding: 15px;
+  margin-top: 5px;
+}
+
+.view-info {
+  /* height: 44px; */
+  padding: 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.text:not(:last-child)::after {
+  content: "|";
+  padding: 0 12px;
+}
+
+.content {
+  width: 1020px;
+
+  padding: 25px 15px;
+}
+
+.answer-box {
+  border: 1px solid #e9c9ab;
+  padding: 20px;
+  margin-top: 30px;
+  position: relative;
+}
+
+.answer-title {
+  position: absolute;
+  top: -15px;
+  padding: 6px 20px;
+  background-color: #e9c9ab;
+  font-size: 17px;
+}
+
+.answer-content {
+  margin: 35px 0 10px 0;
+}
+
+/*  버튼  */
+.btns {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.btns > span {
+  border-radius: 3px;
+  padding: 10px 18px;
+  margin: 0 4px;
+
+  background-color: #212529;
+  font-size: 15px;
+}
+
+a {
+  color: #e9c9ab;
+  text-decoration: none;
+}

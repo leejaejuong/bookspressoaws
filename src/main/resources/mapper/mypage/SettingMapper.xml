@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.mypage.SettingMapper">
+    <!-- 회원정보 가져오기 -->
+    <select id="selectSetting">
+        SELECT M.MEMBER_ID, M.LOGIN_ID, M.PASSWORD, M.NICKNAME, M.EMAIL , P.PROFILE_UUID
+        FROM TBL_MEMBER M JOIN TBL_PROFILE P
+            ON M.MEMBER_ID = P.MEMBER_ID
+        WHERE M.MEMBER_ID = #{memberId}
+    </select>
+    <!-- 소개글 수정 -->
+    <update id="updateIntroduce">
+        UPDATE TBL_PROFILE
+        SET INTRODUCE = #{introduce}
+        WHERE MEMBER_ID = #{memberId}
+    </update>
+    <!-- 닉네임 변경 -->
+    <update id="updateNickname">
+        UPDATE TBL_MEMBER
+        SET NICKNAME = #{nickname}
+        WHERE MEMBER_ID = #{memberId}
+    </update>
+    <!-- 프로필 변경 -->
+    <update id="updateProfile">
+        UPDATE TBL_PROFILE
+        SET PROFILE_UUID = #{profileUuid}
+        WHERE MEMBER_ID = #{memberId}
+    </update>
+    <!-- 이메일 변경 -->
+    <update id="updateEmail">
+        UPDATE TBL_MEMBER
+        SET EMAIL = #{email}
+        WHERE MEMBER_ID = #{memberId}
+    </update>
+    <!-- 회원정보 삭제하기 -->
+    <delete id="deleteMember">
+        DELETE FROM TBL_MEMBER
+        WHERE MEMBER_ID = #{memberId}
+    </delete>
+</mapper>

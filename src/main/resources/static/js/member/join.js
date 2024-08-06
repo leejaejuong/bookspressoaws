@@ -42,12 +42,37 @@ let $inputMsg = document.querySelectorAll('.inputMsg');
 
         })
 
+        // $InputBox[i].addEventListener('blur', function (){
+        //     let inputName = this.getAttribute("name");
+        //     console.log("focusOut ::: "+inputName);
+        //
+        //     if (!this.value){
+        //         let errorMsg = document.getElementById(inputName+"Invalid").innerText;
+        //         console.log(errorMsg);
+        //
+        //         // document.getElementsByClassName('inputMsg')
+        //
+        //         // ++ 빈칸으로 focus out 시 inputMsg의 폰트 색상이 빨간색으로 변화되어얌!!
+        //         // class에 error추가 해서 하면 될꺼 같은디?
+        //         $inputMsg[i].classList.add('error');
+        //
+        //         $inputMsg[i].innerHTML = errorMsg;
+        //
+        //     }else{
+        //         $inputMsg[i].innerHTML="";
+        //     }
+
+    }}
+
+
+{
+    for (let i = 0; i < $InputBox.length; i++) {
         $InputBox[i].addEventListener('blur', function (){
             let inputName = this.getAttribute("name");
             console.log("focusOut ::: "+inputName);
 
             if (!this.value){
-                let errorMsg = document.getElementById(inputName+"Invalid").innerText;
+                let errorMsg = document.getElementById(inputName+"Invalid").innerHTML;
                 console.log(errorMsg);
 
                 // document.getElementsByClassName('inputMsg')
@@ -61,21 +86,9 @@ let $inputMsg = document.querySelectorAll('.inputMsg');
             }else{
                 $inputMsg[i].innerHTML="";
             }
-
-
-
-            // console.log("#######"+this.value);
-
-
-
-        })
-
-
-    }
-
-
+    })
 }
-
+}
 
 
 // 오류 문자 => font-color : red

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>북스프레소 - 책향 가득한 공간</title>
-    <link rel="shortcut icon" th:href="@{img/타이틀로고.png}">
+    <link rel="shortcut icon" th:href="@{/img/타이틀로고.png}" >
     <link rel="stylesheet" th:href="@{/css/header/header.css}">
     <link rel="stylesheet" th:href="@{/css/mypage/sidebar.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,6 +125,60 @@
                                                             <a class="debate_button" th:href="@{/}">모집 찾아보기</a>
                                                         </div>
                                                     </div>
+                                                    <div style="display: none">
+                                                        <div class="debate_tags">
+                                                            <div class="tag_container">
+                                                                <div class="tag_container_tags">
+                                                                    <div class="tag_container_type">혼자읽기</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="debate_book">
+                                                            <!-- <a 진행중인 토론 페이지로 넘기기></a>-->
+                                                            <div class="debate_book_info">
+                                                                <div class="debate_book_header">
+                                                                <span class="debate_badge">
+                                                                    <div class="debate_book_header_title">
+                                                                        <span>안녕하세요.</span>
+                                                                    </div>
+                                                                </span>
+                                                                </div>
+                                                                <div class="debate_book_body">
+                                                                    <div class="debate_book_body_container">
+                                                                        <div class="debate_book_body_info">
+                                                                            <div class="debate_description">
+                                                                                반갑습니다.
+                                                                            </div>
+                                                                            <div class="debate_book_footer">
+                                                                                <div class="footer_author">
+                                                                                    <div class="user-img-box">
+                                                                                     <span class="user-img" style="width: 20px; height: 20px; line-height: 25px; font-size: 12px">
+                                                                                        <img th:src="@{/img/사용자이미지.PNG}">
+                                                                                    </span>
+                                                                                        <span style="margin-left: 10px" class="profile_nickname">송유</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="footer_items">
+                                                                                    <div class="footer_item"><span role="img" aria-label="field-time" class="field-time" style="font-size: 15px; margin-right: 5px;"><svg viewBox="64 64 896 896" focusable="false" data-icon="field-time" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M945 412H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h256c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM811 548H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h122c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM477.3 322.5H434c-6.2 0-11.2 5-11.2 11.2v248c0 3.6 1.7 6.9 4.6 9l148.9 108.6c5 3.6 12 2.6 15.6-2.4l25.7-35.1v-.1c3.6-5 2.5-12-2.5-15.6l-126.7-91.6V333.7c.1-6.2-5-11.2-11.1-11.2z"></path><path d="M804.8 673.9H747c-5.6 0-10.9 2.9-13.9 7.7a321 321 0 01-44.5 55.7 317.17 317.17 0 01-101.3 68.3c-39.3 16.6-81 25-124 25-43.1 0-84.8-8.4-124-25-37.9-16-72-39-101.3-68.3s-52.3-63.4-68.3-101.3c-16.6-39.2-25-80.9-25-124 0-43.1 8.4-84.7 25-124 16-37.9 39-72 68.3-101.3 29.3-29.3 63.4-52.3 101.3-68.3 39.2-16.6 81-25 124-25 43.1 0 84.8 8.4 124 25 37.9 16 72 39 101.3 68.3a321 321 0 0144.5 55.7c3 4.8 8.3 7.7 13.9 7.7h57.8c6.9 0 11.3-7.2 8.2-13.3-65.2-129.7-197.4-214-345-215.7-216.1-2.7-395.6 174.2-396 390.1C71.6 727.5 246.9 903 463.2 903c149.5 0 283.9-84.6 349.8-215.8a9.18 9.18 0 00-8.2-13.3z"></path></svg></span>
+                                                                                        <span class="debate_date">D-17</span>
+                                                                                    </div>
+                                                                                    <div class="footer_item">
+                                                                                        <span role="img" aria-label="message" class="message" style="font-size: 14px; margin-right: 5px;"><svg viewBox="64 64 896 896" focusable="false" data-icon="message" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M464 512a48 48 0 1096 0 48 48 0 10-96 0zm200 0a48 48 0 1096 0 48 48 0 10-96 0zm-400 0a48 48 0 1096 0 48 48 0 10-96 0zm661.2-173.6c-22.6-53.7-55-101.9-96.3-143.3a444.35 444.35 0 00-143.3-96.3C630.6 75.7 572.2 64 512 64h-2c-60.6.3-119.3 12.3-174.5 35.9a445.35 445.35 0 00-142 96.5c-40.9 41.3-73 89.3-95.2 142.8-23 55.4-34.6 114.3-34.3 174.9A449.4 449.4 0 00112 714v152a46 46 0 0046 46h152.1A449.4 449.4 0 00510 960h2.1c59.9 0 118-11.6 172.7-34.3a444.48 444.48 0 00142.8-95.2c41.3-40.9 73.8-88.7 96.5-142 23.6-55.2 35.6-113.9 35.9-174.5.3-60.9-11.5-120-34.8-175.6zm-151.1 438C704 845.8 611 884 512 884h-1.7c-60.3-.3-120.2-15.3-173.1-43.5l-8.4-4.5H188V695.2l-4.5-8.4C155.3 633.9 140.3 574 140 513.7c-.4-99.7 37.7-193.3 107.6-263.8 69.8-70.5 163.1-109.5 262.8-109.9h1.7c50 0 98.5 9.7 144.2 28.9 44.6 18.7 84.6 45.6 119 80 34.3 34.3 61.3 74.4 80 119 19.4 46.2 29.1 95.2 28.9 145.8-.6 99.6-39.7 192.9-110.1 262.7z"></path></svg></span>
+                                                                                        <span class="debate_comment">0</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="debate_topic">
+                                                                <div class="debate_topic_book">
+                                                                    <img src="https://image.aladin.co.kr/product/34207/82/cover150/896088457x_1.jpg" alt="파이썬 + AI - 코드조각과 실행화면으로 배우는 코딩">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         <div role="tabpanel" class="body_tab" id="tab-closed" aria-labelledby="tab-closed" aria-hidden="true">
@@ -133,6 +187,60 @@
                                                         <span class="content-empty_title">
                                                             <div class="content-empty_item-primary">이미 참여해서 끝난 토론은 이곳에서 한꺼번에 확인할 수 있어요.</div>
                                                         </span>
+                                                    </div>
+                                                    <div style="display: none">
+                                                        <div class="debate_tags">
+                                                            <div class="tag_container">
+                                                                <div class="tag_container_tags">
+                                                                    <div class="tag_container_type">혼자읽기</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="debate_book">
+                                                            <!-- <a 진행중인 토론 페이지로 넘기기></a>-->
+                                                            <div class="debate_book_info">
+                                                                <div class="debate_book_header">
+                                                                <span class="debate_badge">
+                                                                    <div class="debate_book_header_title">
+                                                                        <span>안녕하세요.</span>
+                                                                    </div>
+                                                                </span>
+                                                                </div>
+                                                                <div class="debate_book_body">
+                                                                    <div class="debate_book_body_container">
+                                                                        <div class="debate_book_body_info">
+                                                                            <div class="debate_description">
+                                                                                반갑습니다.
+                                                                            </div>
+                                                                            <div class="debate_book_footer">
+                                                                                <div class="footer_author">
+                                                                                    <div class="user-img-box">
+                                                                                     <span class="user-img" style="width: 20px; height: 20px; line-height: 25px; font-size: 12px">
+                                                                                        <img th:src="@{/img/사용자이미지.PNG}">
+                                                                                    </span>
+                                                                                        <span style="margin-left: 10px" class="profile_nickname">송유</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="footer_items">
+                                                                                    <div class="footer_item"><span role="img" aria-label="field-time" class="field-time" style="font-size: 15px; margin-right: 5px;"><svg viewBox="64 64 896 896" focusable="false" data-icon="field-time" width="1em" height="1em" fill="currentColor" aria-hidden="true"><defs><style></style></defs><path d="M945 412H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h256c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM811 548H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h122c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM477.3 322.5H434c-6.2 0-11.2 5-11.2 11.2v248c0 3.6 1.7 6.9 4.6 9l148.9 108.6c5 3.6 12 2.6 15.6-2.4l25.7-35.1v-.1c3.6-5 2.5-12-2.5-15.6l-126.7-91.6V333.7c.1-6.2-5-11.2-11.1-11.2z"></path><path d="M804.8 673.9H747c-5.6 0-10.9 2.9-13.9 7.7a321 321 0 01-44.5 55.7 317.17 317.17 0 01-101.3 68.3c-39.3 16.6-81 25-124 25-43.1 0-84.8-8.4-124-25-37.9-16-72-39-101.3-68.3s-52.3-63.4-68.3-101.3c-16.6-39.2-25-80.9-25-124 0-43.1 8.4-84.7 25-124 16-37.9 39-72 68.3-101.3 29.3-29.3 63.4-52.3 101.3-68.3 39.2-16.6 81-25 124-25 43.1 0 84.8 8.4 124 25 37.9 16 72 39 101.3 68.3a321 321 0 0144.5 55.7c3 4.8 8.3 7.7 13.9 7.7h57.8c6.9 0 11.3-7.2 8.2-13.3-65.2-129.7-197.4-214-345-215.7-216.1-2.7-395.6 174.2-396 390.1C71.6 727.5 246.9 903 463.2 903c149.5 0 283.9-84.6 349.8-215.8a9.18 9.18 0 00-8.2-13.3z"></path></svg></span>
+                                                                                        <span class="debate_date">D-17</span>
+                                                                                    </div>
+                                                                                    <div class="footer_item">
+                                                                                        <span role="img" aria-label="message" class="message" style="font-size: 14px; margin-right: 5px;"><svg viewBox="64 64 896 896" focusable="false" data-icon="message" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M464 512a48 48 0 1096 0 48 48 0 10-96 0zm200 0a48 48 0 1096 0 48 48 0 10-96 0zm-400 0a48 48 0 1096 0 48 48 0 10-96 0zm661.2-173.6c-22.6-53.7-55-101.9-96.3-143.3a444.35 444.35 0 00-143.3-96.3C630.6 75.7 572.2 64 512 64h-2c-60.6.3-119.3 12.3-174.5 35.9a445.35 445.35 0 00-142 96.5c-40.9 41.3-73 89.3-95.2 142.8-23 55.4-34.6 114.3-34.3 174.9A449.4 449.4 0 00112 714v152a46 46 0 0046 46h152.1A449.4 449.4 0 00510 960h2.1c59.9 0 118-11.6 172.7-34.3a444.48 444.48 0 00142.8-95.2c41.3-40.9 73.8-88.7 96.5-142 23.6-55.2 35.6-113.9 35.9-174.5.3-60.9-11.5-120-34.8-175.6zm-151.1 438C704 845.8 611 884 512 884h-1.7c-60.3-.3-120.2-15.3-173.1-43.5l-8.4-4.5H188V695.2l-4.5-8.4C155.3 633.9 140.3 574 140 513.7c-.4-99.7 37.7-193.3 107.6-263.8 69.8-70.5 163.1-109.5 262.8-109.9h1.7c50 0 98.5 9.7 144.2 28.9 44.6 18.7 84.6 45.6 119 80 34.3 34.3 61.3 74.4 80 119 19.4 46.2 29.1 95.2 28.9 145.8-.6 99.6-39.7 192.9-110.1 262.7z"></path></svg></span>
+                                                                                        <span class="debate_comment">0</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="debate_topic">
+                                                                <div class="debate_topic_book">
+                                                                    <img src="https://image.aladin.co.kr/product/34207/82/cover150/896088457x_1.jpg" alt="파이썬 + AI - 코드조각과 실행화면으로 배우는 코딩">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
