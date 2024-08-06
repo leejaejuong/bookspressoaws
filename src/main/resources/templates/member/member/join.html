@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" th:href="@{/css/member/member/join.css}"/>
 
-    <script defer th:src="@{/js/member/member/join.js}"></script>
+    <script defer th:src="@{/js/member/join.js}"></script>
 </head>
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
@@ -21,7 +21,7 @@
     <span class="join">회원가입</span>
     <div class="items">
 
-        <form action="" method="post">
+        <form th:action="@{/member/join}" method="post">
             <!-- 아이디 -->
             <div class="item">
                 <span class="input-date">아이디</span>
@@ -36,7 +36,7 @@
                 <!--input 창 focus 시 출력 -->
                 <div id="loginIdMsg" class="msg msgInfo">4 ~ 20자의 영문, 숫자와 특수문자 '_'만 사용해주세요.</div>
                 <!--input 창 blur 후 아무것도 입력 안했을 시-->
-                <div id="loginIdInvalid" class="msg msgInvalid">@@@@4 ~ 20자의 영문, 숫자와 특수문자 '_'만 사용해주세요.</div>
+                <div id="loginIdInvalid" class="msg msgInvalid">@@@4 ~ 20자의 영문, 숫자와 특수문자 '_'만 사용해주세요.</div>
                 <!--  중복 없이 입력 후-->
                 <p class="msg">사용가능한 ID입니다.</p>
 
@@ -53,6 +53,7 @@
                 <!-- js -->
                 <div class="inputMsg basicMsg"></div>
                 <div id="passwordMsg" class="msg magInfo">8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합으로 만들어주세요.</div>
+                <div id="passwordInvalid" class="msg msgInvalid">8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합으로 만들어주세요.</div>
 
             </div>
 
@@ -69,18 +70,6 @@
                 <div id="nickNameMsg"></div>
                 <div id="nickNameInvalid" class="msg msgInvalid">닉네임은 필수 입력 정보입니다. </div>
                 <div id="" class="msg msgInvalid">이미 사용하고 있는 닉네임입니다.</div>
-            </div>
-
-            <!-- 이름 -->
-            <div class="item">
-                <span class="input-date">이름</span>
-                <div class="inputBox">
-                    <input type="text" id="name" name="name" class="typoBox invalid"
-                           placeholder="이름 입력">
-                </div>
-                <!-- js -->
-                <div class="inputMsg"></div>
-                <div id="nameInvalid" class="msg msgInvalid">이름은 필수 입력 정보 입니다.</div>
             </div>
 
             <!-- 이메일 -->
