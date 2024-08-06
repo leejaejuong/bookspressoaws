@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>북스프레소 - 책향 가득한 공간</title>
+    <title>Title</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
@@ -13,102 +13,121 @@
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
 <!-- 토론정보 시작-->
-<form action="/debate/inpo" method="post">
-<div class="book-modal">
-    <div class="book-modal-body">
-        <div class="modal-search">
-            <span><img id="dimg_303" class="modal-search-img" src="data:image/png;base64,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"data-csiid="fiqhZu-LGrzj2roPpM-6iA0_25" data-atf="1"></span>
-            <div>
-                <input type="text" placeholder="검색어를 입력하세요"id="caret" class="modal-search-text caret"></inputtext>
+<form id="submitbtn" action="/debate/inpo" method="post">
+    <div class="book-modal">
+        <div class="book-modal-body">
+            <div class="modal-search">
+                <span><img id="dimg_303" class="modal-search-img"
+                           src="data:image/png;base64,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"
+                           data-csiid="fiqhZu-LGrzj2roPpM-6iA0_25" data-atf="1"></span>
+                <div>
+                    <input type="text" placeholder="검색어를 입력하세요" id="caret" class="modal-search-text caret"></inputtext>
+                </div>
+            </div>
+            <div class="modal-text-box">
+                <div class="modal-text-img">사진자리</div>
+                <div class="modal-comtent-box">
+                    <div class="modal-text-title">미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)</div>
+                    <div class="modal-text-author">기시미 이치로.고가 후미타케 지음, 전경아 옮김</div>
+                    <div class="modal-text-content"> 내가짱</div>
+                </div>
+                <div class="modal-select">
+                    <button type="button" class="modal-select-btn">선택</button>
+                </div>
+
+            </div>
+            <div class="book-modal-close-btn">
+                <button type="button" class="book-modal-body-close"> 닫기</button>
             </div>
         </div>
-        <div class="modal-text-box">
-            <div class="modal-text-img">사진자리</div>
-            <div class="modal-comtent-box">
-                <div class="modal-text-title">미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)</div>
-                <div class="modal-text-author">기시미 이치로.고가 후미타케 지음, 전경아 옮김</div>
-                <div class="modal-text-content"> 내가짱</div>
+    </div>
+    <div class="gather-create-outlin-box">
+
+        <div class="gather-create-outlin-top">
+            <div class="title">토론 정보를 입력해주세요</div>
+        </div>
+        <!--        책정보 칸-->
+
+        <button type="button" class="gather-create-book">
+            <div class="book-search-out">
+                <img class="book-img" src="/img/debate/book.svg">
+                <div class="book-search-text">읽고싶은 책을 찾아보세요</div>
+
             </div>
-            <div class="modal-select">
-                <button class="modal-select-btn">선택</button>
-             </div>
-
-        </div >
-        <div class="book-modal-close-btn">
-            <button class="book-modal-body-close"> 닫기 </button>
-        </div>
-        </div>
-</div>
-<div class="gather-create-outlin-box">
-    
-    <div class="gather-create-outlin-top">
-        <div class="title">토론 정보를 입력해주세요</div>
-    </div>
-    <!--        책정보 칸-->
-
-    <button class="gather-create-book">
-        <span><img src="https://image.aladin.co.kr/product/34048/98/cover150/k872931273_1.jpg" alt="미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)"></span>
-        <div class="gather__create__selected-topic__info"><h2>미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)</h2><div ><h3>기시미 이치로.고가 후미타케 지음, 전경아 옮김</h3><span style="display: inline-block; margin: 0px 3px;"></span><h3>인플루엔셜(주)</h3></div></div>
-
-    </button>
-
-
-    <div class="gather-create-debate-style">
-        <div class="debate-centent-title">토론제목</div>
-        <textarea class="title-box" maxlength="50">
-        </textarea>
-        <div class="title-count-box">
-            <p><span class="title-count">0</span>/50</p>
-        </div>
-    </div>
-<!--    토론개요-->
-    <div class="gather-create-debate-style">
-        <div class="debate-centent-title">토론 개요</div>
-        <textarea class="content-box">
-
-        </textarea>
-    </div>
-<!--    토론 모집기간-->
-    <div class="debate-centent-title paa">모집기간</div>
-    <!--     모집 기간-->
-    <div class="recruitment-period">
-        <p> <span class="gather-value"></span> 일 동안 모집합니다 </p>
-        <div class="pather-value-box">
-        <span class="gather-value-in"></span>
-            <span>&ensp; ~ &ensp;</span>
-        <span class="gather-value-out"></span></div>
-        <input type="range" min="1" max="30" value="1" class="gather-group" name="groupdate">
-        <datalist >
-            <option value="1">1 일</option>
-            <option value="2">30 일</option>
-        </datalist>
-    </div>
-<!--    토론 진행기간-->
-    <div class="debate-centent-title paa">토론 기간</div>
-    <div class="recruitment-period">
-        <p> <span class="gather-value-d"></span> 일 동안 진행합니다 </p>
-        <div class="pather-value-box">
-            <span class="gather-value-ind"></span>
-            <span>&ensp; ~ &ensp;</span>
-            <span class="gather-value-outd"></span></div>
-        <input type="range" min="1" max="30" value="1" class="gather-group-d" name="debatedate">
-        <datalist >
-            <option value="1">1 일</option>
-            <option value="1">30 일</option>
-        </datalist>
-    </div>
-    <!--            버튼처리-->
-    <div class="gather-create-butten-div">
-        <button type="button" class="gather-create-butten-dv1 type-remove" >
-            이전
-        </button>
-        <button type="submit" class="gather-create-butten-dv1 nexttype" >
-            다음
+            <div class="book-search-in">
+            <div><img src=""
+                       alt="미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)"></div>
+            <div class="gather__create__selected-topic__info"><h2>미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)</h2>
+                <div><h3>기시미 이치로.고가 후미타케 지음, 전경아 옮김</h3><span style="display: inline-block; margin: 0px 3px;"></span>
+                    <h3>인플루엔셜(주)</h3></div>
+            </div>
+            </div>
         </button>
 
-    </div>
+        <div class="gather-create-debate-style">
+            <div class="debate-centent-title">토론제목</div>
 
-</div>
+            <textarea class="title-box" maxlength="50" name="title"></textarea>
+            <div class="title-count-box">
+                <div class="content-err ">제목을 입력해주세요</div>
+                <p><span class="title-count">0</span>/50</p>
+            </div>
+        </div>
+        <!--    토론개요-->
+        <div class="gather-create-debate-style">
+            <div class="debate-centent-title">토론 개요</div>
+            <textarea class="content-box" name="outLine"></textarea>
+            <div class="content-err2 ">개요를 입력해주세요</div>
+        </div>
+        <!--    토론 모집기간-->
+        <div class="debate-centent-title paa">모집기간</div>
+        <!--     모집 기간-->
+        <div class="recruitment-period">
+            <p><span class="gather-value"></span> 일 동안 모집합니다 </p>
+            <div class="pather-value-box">
+                <span class="gather-value-in"></span>
+                 <span>&ensp; ~ &ensp;</span>
+                <span class="gather-value-out"></span>
+            </div>
+            <input type="range" min="1" max="30" value="1" class="gather-group" name="groupdate">
+            <datalist>
+                <option value="1">1 일</option>
+                <option value="2">30 일</option>
+            </datalist>
+            <div class="content-err3">모집 기간을 설정해주세요</div>
+        </div>
+            <input type="hidden" name="groupStartDate"class="groupStartDate">
+            <input type="hidden" name="groupEndDate"class="groupEndDate">
+        <!--    토론 진행기간-->
+        <div class="debate-centent-title paa">토론 기간</div>
+        <div class="recruitment-period">
+            <p><span class="gather-value-d"></span> 일 동안 진행합니다 </p>
+            <div class="pather-value-box2">
+                <span class="gather-value-ind"></span>
+               <span>&ensp; ~ &ensp;</span>
+                <div class="gather-value-outd"></div>
+            </div>
+            <input type="range" min="1" max="30" value="1" class="gather-group-d" name="debatedate">
+            <datalist>
+                <option value="1">1 일</option>
+                <option value="1">30 일</option>
+            </datalist>
+            <div class="content-err4">토론 기간을 설정해주세요</div>
+        </div>
+        <input type="hidden" name="debateStartDate" class="debateStartDate">
+        <input type="hidden" name="debateEndDate" class="debateEndDate">
+        <!--            버튼처리-->
+        <div class="gather-create-butten-div">
+            <button type="button" class="gather-create-butten-dv1 type-remove">
+                이전
+            </button>
+            <button type="button" class="gather-create-butten-dv1 next">
+                다음
+            </button>
+
+        </div>
+
+    </div>
 </form>
 </body>
 </html>

@@ -30,6 +30,6 @@
 {
     let $button=document.querySelector('.aside-button')
     $button.addEventListener('click',function(){
-        location.href=`/debate/debatewrite`;
+        location.href=`/debate/write`;
     });
 }
