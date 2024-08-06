@@ -20,4 +20,6 @@ function openTab(tabName) {
     // 선택한 탭을 활성화합니다.
     const activeTab = document.getElementById('tab-' + tabName);
     activeTab.classList.add('active');
+
 }
+

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.bookspresso.mapper.mypage.settingMapper">
-    <select id="selectdebateinpo">
-         SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, TITLE, OUTLINE, TO_CHAR(I.GROUP_START_DATE,'YYYY-MM-DD') AS GROUP_START_DATE, TO_CHAR(GROUP_END_DATE,'YYYY-MM-DD')AS GROUP_END_DATE, TO_CHAR(DEBATE_START_DATE,'YYYY-MM-DD')AS DEBATE_START_DATE, TO_CHAR(DEBATE_END_DATE,'YYYY-MM-DD')AS DEBATE_END_DATE FROM TBL_DEBATE I JOIN TBL_MEETING_TYPE T ON I.MEETING_ID = T.MEETING_ID JOIN TBL_DEBATE_TYPE P ON I.DEBATE_TYPE_ID = P.DEBATE_TYPE_ID WHERE I.DEBATE_ID=#{debateId}
-         </select>
-    <insert id="insertDebateType"> INSERT INTO TBL_DEBATE_TYPE(DEBATE_TYPE_ID, DEBATE_TYPE) VALUES (#{debateTypeId},#{debateType}) </insert>
-    <insert id="insertMettingType"> INSERT INTO TBL_MEETING_TYPE(MEETING_ID, MEETING_TYPE) VALUES( #{mettingId},#{mettingType}) </insert>
-</mapper>
