@@ -36,6 +36,12 @@ dependencies {
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    // Oracle Security Developer Tools (OSDT) Certificate 라이브러리 (인증서 관련)
+    implementation 'com.oracle.database.security:osdt_cert'
+    // Oracle Public Key Infrastructure(PKI) 라이브러리
+    implementation 'com.oracle.database.security:oraclepki'
+    // OSDT Core 라이브러리 (기본 보안 기능 담당)
+    implementation 'com.oracle.database.security:osdt_core'
 }
 
 tasks.named('test') {
