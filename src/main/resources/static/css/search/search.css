@@ -21,13 +21,16 @@ body {
 
 .header_top_inner {
   height: 65px;
-  margin: 0 270px;
-  margin-left: auto;
+  margin: 0 270px 0 auto;
   padding-top: 20px;
   color: #000000;
   font-size: 16px;
   font-weight: 1000;
-  cursor: pointer;
+}
+
+.close_btn {
+  text-decoration: none;
+  color: black;
 }
 
 .header_bottom {
@@ -76,6 +79,7 @@ input:focus {
 
 .search_book {
   width: 1920px;
+  display: none;
 }
 
 .search_book_list {
@@ -97,7 +101,7 @@ input:focus {
   display: inline-block;
   width: 400px;
   height: 400px;
-  margin: 20px 0px 80px 20px;
+  margin: 20px 0 80px 20px;
   background-color: antiquewhite;
 }
 
@@ -109,18 +113,18 @@ input:focus {
   display: inline-block;
   width: 800px;
   height: 400px;
-  margin: 20px 0px 80px 40px;
+  margin: 20px 0 80px 40px;
 }
 
 .search_book_title {
   width: 650px;
   height: 50px;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0 0 0;
 }
 
 .search_book_content {
   margin: 0;
-  width: 650px;
+  width: 400px;
   height: 300px;
 }
 
@@ -129,7 +133,7 @@ input:focus {
   width: 50px;
   height: 400px;
   line-height: 400px;
-  margin: 20px 0px 0px 60px;
+  margin: 20px 0 0 60px;
 }
 
 .choose {
