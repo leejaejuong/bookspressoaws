@@ -1,17 +1,15 @@
-package com.example.bookspresso.service.aladen;
+package com.example.bookspresso.service.api.aladen;
 
-import com.example.bookspresso.api.Aladen.AladinBody;
-import com.example.bookspresso.api.Aladen.Aladinitem;
+import com.example.bookspresso.dto.api.aladin.AladinBody;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.List;
 @Service
-public class AladenService {
+public class AladinService {
     @Value("${api.key}")
     private String apiKey;
-    public List<Aladinitem> getApialadin(){
+    public AladinBody getApialadin(){
         WebClient wc= WebClient.builder()
                 .baseUrl("http://www.aladin.co.kr")
                 .build();
@@ -23,13 +21,14 @@ public class AladenService {
                                 .queryParam("QueryType", "Bestseller")
                                 .queryParam("Version", "20131101")
                                 .queryParam("SearchTarget", "Book")
-                                .queryParam("MaxResults", "100")
+                                .queryParam("Start", 1)
+                                .queryParam("MaxResults", 100)
                                 .queryParam("cover", "200px")
                                 .build()
                 ).retrieve()
                 .bodyToMono(AladinBody.class)
                 .block();
-        List<Aladinitem> item = api.getItem();
-        return item;
+        System.out.println("api = " + api);
+        return api;
     }
 }

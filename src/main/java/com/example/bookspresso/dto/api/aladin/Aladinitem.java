@@ -1,4 +1,4 @@
-package com.example.bookspresso.api.Aladen;
+package com.example.bookspresso.dto.api.aladin;
 
 import lombok.*;
 
