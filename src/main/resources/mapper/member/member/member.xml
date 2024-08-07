@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bookspresso.mapper.member.MemberMapper">
-
+<!--회원가입 쿼리-->
     <insert id="insertMember" >
         <selectKey resultType="long" keyProperty="memberId" order="BEFORE">
             SELECT SEQ_MEMBER_ID.nextval FROM DUAL
@@ -16,11 +16,13 @@
         WHERE LOGIN_ID = #{loginId}
     </select>
 
-    <select id="checkLoginId">
-        SELECT LOGIN_ID
+    <select id="selectNicknameCount">
+        SELECT COUNT(MEMBER_ID)
         FROM TBL_MEMBER
-        WHERE LOGIN_ID = #{loginId}
+        WHERE NICKNAME = #{nickname}
     </select>
+
+<!--  로그인 통과 처리 쿼리  -->
 
 
 </mapper>
