@@ -27,12 +27,13 @@
                                 <div class="library_header_user">
                                     <div class="user-img-box">
                                         <span class="user-img" style="width: 35px; height: 35px; line-height: 35px; font-size: 17px" >
-                                        <img th:src="@{/img/사용자이미지.PNG}">
-                                    </span>
+                                            <img th:if="${memberDto.profileId == null}"
+                                                 th:src="@{/img/사용자이미지.PNG}">
+                                            <img th:unless="${memberDto.profileId == null}"
+                                                 th:src="@{'/pfp/' + ${memberDto.profileUpload} + '/' + ${memberDto.profileUuid + '_' + memberDto.profileName}}">
+                                        </span>
                                     </div>
-                                    <span class="library_header_nickname">
-                                        송호님의 서재
-                                    </span>
+                                    <span th:text="${memberDto.nickname + ' 님의 서재'}" class="library_header_nickname"></span>
                                 </div>
                             </div>
                             <div class="library_divider"></div>
