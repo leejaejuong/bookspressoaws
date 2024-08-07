@@ -7,7 +7,7 @@
             SELECT SEQ_MEMBER_ID.nextval FROM DUAL
         </selectKey>
         INSERT INTO TBL_MEMBER (MEMBER_ID, LOGIN_ID, PASSWORD, NICKNAME, EMAIL)
-        VALUES (#{memberId}, #{loginId},#{password},#{nickname},#{email})
+        VALUES (#{memberId}, #{loginId},#{password}, #{nickname}, #{email})
     </insert>
 
     <select id="selectLoginIdCount">
@@ -15,5 +15,12 @@
         FROM TBL_MEMBER
         WHERE LOGIN_ID = #{loginId}
     </select>
+
+    <select id="checkLoginId">
+        SELECT LOGIN_ID
+        FROM TBL_MEMBER
+        WHERE LOGIN_ID = #{loginId}
+    </select>
+
 
 </mapper>
