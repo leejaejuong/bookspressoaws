@@ -3,9 +3,10 @@
 <mapper namespace="com.example.bookspresso.mapper.mypage.SettingMapper">
     <!-- 회원정보 가져오기 -->
     <select id="selectSetting">
-        SELECT M.MEMBER_ID, M.LOGIN_ID, M.PASSWORD, M.NICKNAME, M.EMAIL , P.PROFILE_UUID
-        FROM TBL_MEMBER M JOIN TBL_PROFILE P
-            ON M.MEMBER_ID = P.MEMBER_ID
+        SELECT M.MEMBER_ID, M.EMAIL, M.NICKNAME,
+               P.PROFILE_ID, P.PROFILE_UUID, P.PROFILE_UPLOAD, P.PROFILE_NAME, P.INTRODUCE
+        FROM TBL_MEMBER M LEFT JOIN TBL_PROFILE P
+                                    ON M.MEMBER_ID = P.MEMBER_ID
         WHERE M.MEMBER_ID = #{memberId}
     </select>
     <!-- 소개글 수정 -->

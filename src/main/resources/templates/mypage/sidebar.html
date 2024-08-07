@@ -16,13 +16,16 @@
                 <div class="sidebar_header_account_img">
                     <div class="user-img-box">
                         <span class="user-img" style="width: 50px; height: 50px; line-height: 50px; font-size: 25px" >
-                            <img th:src="@{/img/사용자이미지.PNG}">
+                            <img th:if="${memberDto.profileId == null}"
+                                 th:src="@{/img/사용자이미지.PNG}">
+                            <img th:unless="${memberDto.profileId == null}"
+                                 th:src="@{'/pfp/' + ${memberDto.profileUpload} + '/' + ${memberDto.profileUuid + '_' + memberDto.profileName}}">
                         </span>
                     </div>
                 </div>
                 <div class="sidebar_header_account_user">
                     <div class="sidebar_header_account_detail">
-                        <span class="profile_nickname">송호</span>
+                        <span th:text="${memberDto.nickname}" class="profile_nickname"></span>
                         <a class="profile" th:href="@{/myPage/setting}">프로필 관리</a>
                     </div>
                 </div>

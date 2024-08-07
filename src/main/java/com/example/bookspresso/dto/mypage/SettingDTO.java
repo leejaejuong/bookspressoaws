@@ -6,10 +6,14 @@ import lombok.*;
 @NoArgsConstructor @AllArgsConstructor @Builder
 public class SettingDTO {
     private Long memberId;
-    private String loginId;
-    private String password;
-    private String nickName;
     private String email;
-    private String introduce;
+    private String nickname;
+    private Long profileId;
     private String profileUuid;
+    private String profileUpload;
+    private String profileName;
+    private String introduce;
+
+
+
 }
