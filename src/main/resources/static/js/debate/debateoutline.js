@@ -110,64 +110,92 @@
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
     }
-
-
-
-
 }
+//책검색
+{
+    let $searchText=document.querySelector('.modal-search-text');
+    $searchText.addEventListener('keydown',function (e){
+       let list;
+        if(e.key==='Enter'){
+           console.log(getList($searchText.value,list));
+
+       }
+    });
+
+
+
+
+
+    function getList(title,callback) {
+        fetch(`/debate/inpos/${title}`, {
+            method: 'GET'
+        }).then(resp => {
+            if (!resp.ok) {
+                throw new Error('응답 오류');
+            }
+
+            return resp.json();
+        }).then(obj => {
+            callback(obj)
+        }).catch(error => {
+            console.error("문제 발생 : ", error)
+        });
+
+    }
 
 
 // 글쓰기가 비어있을때
-{
-    let $nexttype=document.querySelector('.next');
-    let $titleBox = document.querySelector('.title-box');
-    let $contentBox=document.querySelector('.content-box');
-    let $groupEndDate=document.querySelector('.groupStartDate');
-    let $debateStartDate=document.querySelector('.debateStartDate');
-    let $contentErr =document.querySelector('.content-err');
-    let $contentErr2 =document.querySelector('.content-err2');
-    let $contentErr3 =document.querySelector('.content-err3');
-    let $contentErr4 =document.querySelector('.content-err4');
+    {
+        let $nexttype = document.querySelector('.next');
+        let $titleBox = document.querySelector('.title-box');
+        let $contentBox = document.querySelector('.content-box');
+        let $groupEndDate = document.querySelector('.groupStartDate');
+        let $debateStartDate = document.querySelector('.debateStartDate');
+        let $contentErr = document.querySelector('.content-err');
+        let $contentErr2 = document.querySelector('.content-err2');
+        let $contentErr3 = document.querySelector('.content-err3');
+        let $contentErr4 = document.querySelector('.content-err4');
 
 
-    $nexttype.addEventListener("click", ()=>{
+        $nexttype.addEventListener("click", () => {
 
-       //타이틀 값검사
-        if($titleBox.value===''){
-            $titleBox.style.border="1px solid #ff4d4f";
-            $contentErr.style.display="flex";
-        }else{
-            $titleBox.style.border="1px solid #dee2e6";
-            $contentErr.style.display="none";
-        }
-        //컨텐트값검사
-        if($contentBox.value===''){
-            $contentBox.style.border="1px solid #ff4d4f";
-            $contentErr2.style.display="flex";
-        }else {
-            $contentBox.style.border="1px solid #dee2e6";
-            $contentErr2.style.display="none";
-        }
-        //날자검사
-        if($groupEndDate.value===''){
-            $contentErr3.style.display="flex";
-        }else {
-            $contentErr3.style.display="none";
-        }
-        //날자검사
-        if($debateStartDate.value===''){
-            $contentErr4.style.display="flex";
-        }else {
-            $contentErr4.style.display="none";
-        }
+            //타이틀 값검사
+            if ($titleBox.value === '') {
+                $titleBox.style.border = "1px solid #ff4d4f";
+                $contentErr.style.display = "flex";
+            } else {
+                $titleBox.style.border = "1px solid #dee2e6";
+                $contentErr.style.display = "none";
+            }
+            //컨텐트값검사
+            if ($contentBox.value === '') {
+                $contentBox.style.border = "1px solid #ff4d4f";
+                $contentErr2.style.display = "flex";
+            } else {
+                $contentBox.style.border = "1px solid #dee2e6";
+                $contentErr2.style.display = "none";
+            }
+            //날자검사
+            if ($groupEndDate.value === '') {
+                $contentErr3.style.display = "flex";
+            } else {
+                $contentErr3.style.display = "none";
+            }
+            //날자검사
+            if ($debateStartDate.value === '') {
+                $contentErr4.style.display = "flex";
+            } else {
+                $contentErr4.style.display = "none";
+            }
 
-        if(!($titleBox.value ===''||$contentBox.value===''||
-            $groupEndDate.value==='' ||$debateStartDate.value==='' )){
-            document.getElementById('submitbtn').submit();
+            if (!($titleBox.value === '' || $contentBox.value === '' ||
+                $groupEndDate.value === '' || $debateStartDate.value === '')) {
+                document.getElementById('submitbtn').submit();
 
-        }
+            }
 
 
-    });
+        });
 
+    }
 }

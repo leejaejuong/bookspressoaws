@@ -13,7 +13,7 @@ public interface DebateMapper {
     //토론정보 입력(토론만들기)
     void insertDebateInpo(DebateInpoDTO debateinpoDTO);
     //검색
-    BookinpoDTO selectbookinpo(String title);
+    List<BookinpoDTO> selectbookinpo(String title);
 
     List<DebateInpoDTO> selectdebateinpo(Long debateId);
 
