@@ -21,7 +21,7 @@
     <span class="join">회원가입</span>
     <div class="items">
 
-        <form th:action="@{/member/join}" method="post">
+        <form th:action="@{/member/join}" method="post" id="join-form">
             <!-- 아이디 -->
             <div class="item">
                 <span class="input-date">아이디</span>
@@ -62,13 +62,13 @@
                 <span class="input-date">닉네임</span>
                 <p>다른 유저와 겹치지 않도록 입력해주세요. (2-20자)</p>
                 <div class="inputBox">
-                    <input type="text" id="nickName" name="nickName" class="typoBox invalid"
+                    <input type="text" id="nickname" name="nickname" class="typoBox invalid"
                            placeholder="별명 입력">
                 </div>
                 <!-- js -->
                 <div class="inputMsg"></div>
-                <div id="nickNameMsg"></div>
-                <div id="nickNameInvalid" class="msg msgInvalid">닉네임은 필수 입력 정보입니다. </div>
+                <div id="nicknameMsg"></div>
+                <div id="nicknameInvalid" class="msg msgInvalid">닉네임은 필수 입력 정보입니다. </div>
                 <div id="" class="msg msgInvalid">이미 사용하고 있는 닉네임입니다.</div>
             </div>
 
@@ -85,7 +85,7 @@
                 <div id="emailInvalid" class="msg msgInvalid">이메일 주소를 입력해주세요.</div>
             </div>
 
-            <button class="button">회원가입 완료</button>
+            <button type="button" id="join-btn" class="button">회원가입 완료</button>
 
         </form>
     </div>
