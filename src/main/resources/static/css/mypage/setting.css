@@ -1,0 +1,542 @@
+*{
+    box-sizing: inherit;
+    font-family: "Jua", sans-serif;
+
+}
+h1,h3{
+    margin-bottom: .5em;
+    font-weight: 500;
+}
+html{
+    --vh : 125vh;
+}
+
+a{
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    color: black;
+}
+
+.layout_container{
+    position: relative;
+}
+.layout{
+    max-width: 1256px;
+    display: block;
+    margin: auto;
+}
+.layout_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/*------------------------------main 시작-------------------------------------*/
+.layout_main{
+    flex: 1 1 auto;
+    max-width: 1400px;
+}
+.settings{
+    padding: 0 2rem;
+}
+.settings_content{
+    max-width: 700px;
+    margin: auto;
+}
+.settings_container{
+    padding: 3rem 0;
+}
+.setting-img{
+    display: inline-block;
+    color: inherit;
+    font-style: normal;
+    text-align: center;
+}
+.page-title_title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.page-title_title>span, .page-title_title>h1{
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    margin: 0;
+}
+.setting_user_container{
+    padding : 2rem 0 1rem;
+    height: 100px;
+}
+.setting_user{
+    display: flex;
+}
+.setting_user_img{
+    margin: 0 16px;
+}
+.setting_user_info{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+.setting_user_detail{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.setting_user_detail span{
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+.setting_user_detail div{
+    height: 20px;
+    font-size: 12px;
+    color: #373434;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+}
+.setting_user_links{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 82px;
+}
+.setting_user_links>*{
+   margin-right: 10px;
+}
+.setting_body_content{
+    display: flex;
+    margin-bottom: 10px;
+}
+.setting_body_profile{
+    color: black;;
+    font-weight: 500;
+    border-bottom: 4px solid black;
+    font-size: 18px;
+    padding: 0 12px 3px;
+}
+.body_content_top{
+    box-sizing: border-box;
+    color: #000000d9;
+    font-size: 16px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    display: flex;
+}
+.body_tab_content{
+    flex: auto;
+    min-height: 0;
+    min-width: 0;
+}
+.body_content{
+    position: relative;
+    width: 100%;
+}
+.profile_container{
+    border: 1px solid #e5eaea;
+    border-radius: 8px;
+    padding: 1rem 1.5rem 2rem;
+    margin-top: 2rem;
+    background-color: #ffff;
+}
+.profile_container_title{
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e9ecef;
+}
+.hidden{
+    display: none;
+}
+.button_container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.edit_textarea{
+    padding: 6px 11px;
+    font-size: 16px;
+    width: 100%;
+    height: 200px;
+    resize: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.edit_textarea:focus {
+    border-color: #8bb0ff;
+}
+
+.edit_textarea:hover{
+    border-color: #8bb0ff;
+
+}
+.profile_container_title> span{
+    display: block;
+}
+.profile_title{
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+}
+.profile_container>div{
+    margin-top: 2rem;
+}
+.settings_profile_description{
+    color: black;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+.settings_profile_button{
+    text-align: center;
+    margin-top: 3rem !important;
+}
+.button_cancel{
+    border: 1px solid #adb5bd;
+    color: black;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.button_save{
+    border: 1px solid black;
+    background-color: #212529;
+    color: #ffd200;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.profile_button{
+    display: inline-block;
+    border: 1px solid #adb5bd;
+    color: black;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.profile_letter_button{
+    border: 1px solid #adb5bd;
+    color: black;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.user-img{
+    box-sizing: border-box;
+    font-size: 14px;
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    background: #ccc;
+    border-radius: 50%;
+}
+.profile_img_button{
+    display: inline-block;
+    border: 1px solid #adb5bd;
+    color: black;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.profile_container_item{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+.profile_container_modify{
+    display: flex;
+    align-items: center;
+}
+
+.setting_profile_nickname{
+    color:gray;
+}
+
+.profile_img_modify{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color:gray;
+}
+.delete_button{
+    color: #ff4d4f;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+    height: 32px;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+/* ---------------------- 닉네임 모달 ---------------------- */
+/* 모달 배경 */
+.modal-nickname {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* 블랙 투명 배경 */
+}
+
+/* 모달 콘텐츠 */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* 가운데 정렬 */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px; /* 테두리 둥글게 */
+    width: 350px; /* 고정 너비 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 */
+    position: relative;
+}
+
+/* 닫기 버튼 */
+.nickname_close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nickname_close:hover,
+.nickname_close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 라벨 스타일 */
+label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.nickname{
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.nickname-input{
+    padding: 6px 11px;
+    font-size: 16px;
+    resize: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.nickname-input:hover{
+    border-color: #8bb0ff;
+}
+.nickname-input:focus {
+    border-color: #8bb0ff;
+}
+
+/* 확인 버튼 스타일 */
+.profile_nickname_button {
+    border: 1px solid #adb5bd;
+    color: black;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#nickname_confirmBtn{
+    margin-top: 20px;
+    width: calc(100% - 50px);
+    border: 1px solid black;
+    background-color: #212529;
+    color: #ffd200;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* ---------------------- 이메일 모달 ---------------------- */
+/* 모달 배경 */
+.modal-email {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* 블랙 투명 배경 */
+}
+
+.profile_email_button{
+    border: 1px solid #adb5bd;
+    color: black;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* 닫기 버튼 */
+.email_close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.email_close:hover,
+.email_close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.email{
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#email_confirmBtn{
+    margin-top: 20px;
+    width: calc(100% - 50px);
+    border: 1px solid black;
+    background-color: #212529;
+    color: #ffd200;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* ---------------------- 탈퇴 모달 ---------------------- */
+.modal-delete{
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* 블랙 투명 배경 */
+}
+
+/* 모달 콘텐츠 */
+.modal-delete-content {
+    background-color: #fff;
+    margin: 10% auto; /* 가운데 정렬 */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px; /* 테두리 둥글게 */
+    width: 350px; /* 고정 너비 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 */
+    position: relative;
+}
+
+h2{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+    margin: 10px 0 5px;
+}
+.delete_textarea{
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    resize: none;
+    font-size: 12px;
+}
+.delete-reason{
+    background-color: #e3e3e3;
+    font-weight: 400;
+    margin: 24px 0px 10px;
+    padding: 10px;
+}
+/* 닫기 버튼 */
+.delete_close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.delete{
+    margin: 10px 0;
+}
+.delete_close:hover,
+.delete_close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#cancelBtn{
+    border: 1px solid #adb5bd;
+    color: black;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#deleteBtn{
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.error-message{
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+
+}
+
+.reason label,
+.confirm label{
+    font-size: 12px;
+    display: block;
+    margin-bottom: 10px;
+}

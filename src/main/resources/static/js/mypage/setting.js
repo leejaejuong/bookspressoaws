@@ -64,7 +64,7 @@ let cancelEdit = () => editMode(false);
 // 닉네임 변경 버튼을 클릭하면 모달을 엶
     btn.onclick = function () {
         n_modal.style.display = "block";
-        nicknameInput.value = changeNickname[0].textContent;
+        nicknameInput.value = changeNickname[1].textContent;
     };
 
 // 닫기 버튼(X)을 클릭하면 모달을 닫음
