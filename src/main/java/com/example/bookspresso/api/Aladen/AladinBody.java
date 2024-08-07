@@ -1,4 +1,4 @@
-package com.example.bookspresso.dto.api.aladin;
+package com.example.bookspresso.api.Aladen;
 
 import lombok.Getter;
 import lombok.Setter;

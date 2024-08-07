@@ -1,7 +1,7 @@
 package com.example.bookspresso.controller.main;
 
-import com.example.bookspresso.dto.api.aladin.Aladinitem;
-import com.example.bookspresso.service.api.aladen.AladinService;
+import com.example.bookspresso.api.Aladen.Aladinitem;
+import com.example.bookspresso.service.aladen.AladenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +12,11 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class MainController {
-    private final AladinService aladinService;
+    private final AladenService aladenService;
     @GetMapping("/")
     public String mainpage(Model model)throws Exception{
-//        List<Aladinitem> aladin = aladinService.getApialadin();
-//        model.addAttribute("aladin", aladin);
+        List<Aladinitem> aladin = aladenService.getApialadin();
+        model.addAttribute("aladin", aladin);
 
 
         return "mainpage/mainpage";
