@@ -15,25 +15,49 @@ class MemberMapperTest {
 
     @Autowired MemberMapper memberMapper;
 
+    MemberJoinDTO memberJoinDTO;
+
+    @BeforeEach
+    void setUp() {
+        memberJoinDTO = MemberJoinDTO.builder()
+//                .memberId(1L)
+                .loginId("test")
+                .password("test1234")
+                .nickname("test!!")
+                .email("test@naver.com")
+                .build();
+
+    }
+
     @Test
     void insertMember() {
 
-
-        MemberJoinDTO memberJoinDTO = new MemberJoinDTO();
-        memberJoinDTO.setMemberId(1L);
-        memberJoinDTO.setEmail("test@example.com");
-        memberJoinDTO.setPassword("password");
-        memberJoinDTO.setNickname("test");
-        memberJoinDTO.setLoginId("test");
-        memberJoinDTO.setIntroduction("안녕하세요");
+//        memberJoinDTO.setIntroduction("안녕하세요");
 //        memberJoinDTO.getProfileUuid("11111111");
 
 
         memberMapper.insertMember(memberJoinDTO);
-        System.out.println("memberJoinDTO: " + memberJoinDTO);
+        System.out.println("@@@@memberJoinDTO = " + memberJoinDTO);
+
+
     }
 
     @Test
     void selectLoginIdCount() {
+
+        memberMapper.insertMember(memberJoinDTO);
+
+        int count = memberMapper.selectLoginIdCount("test");
+        System.out.println("LoginIdCount = " + count);
+
+
+    }
+
+    @Test
+    void checkLoginId() {
+        memberMapper.insertMember(memberJoinDTO);
+        String loginId = memberMapper.checkLoginId("tes33t");
+        System.out.println(loginId +"@@@@@@@@@@@@@@ ");
+
     }
 }
