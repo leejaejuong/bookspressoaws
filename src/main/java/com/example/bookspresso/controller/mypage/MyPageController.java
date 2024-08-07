@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/myPage")
+@RequestMapping("/mypage")
 public class MyPageController {
     private final MypageService mypageService;
 
@@ -25,17 +25,30 @@ public class MyPageController {
 
         return "mypage/setting";
     }
+
     @GetMapping("/myDebate")
-    public String myDebate() {
+    public String myDebate(HttpSession session, Model model) {
+        Long memberId = 1L;
+        SettingDTO member = mypageService.findMember(memberId);
+
+        model.addAttribute("memberDto", member);
         return "mypage/myDebate";
     }
 
     @GetMapping("/myBook")
-    public String myBook(){
+    public String myBook(HttpSession session, Model model){
+        Long memberId = 1L;
+        SettingDTO member = mypageService.findMember(memberId);
+
+        model.addAttribute("memberDto", member);
         return "mypage/myBook";
     }
     @GetMapping("/myPost")
-    public String myPost(){
+    public String myPost(HttpSession session, Model model){
+        Long memberId = 1L;
+        SettingDTO member = mypageService.findMember(memberId);
+
+        model.addAttribute("memberDto", member);
         return "mypage/myPost";
     }
 
