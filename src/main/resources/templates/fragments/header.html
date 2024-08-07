@@ -23,11 +23,11 @@
                 <li class="menu-button header-font"><a class="menu-text" th:href="@{/debate/}">토론찾기</a></li>
                 <li class="menu-button header-font"><a class="menu-text" th:href="@{/search/}">검색</a></li>
                 <li class="menu-button header-font"><a class="menu-text" th:href="@{/member/postmain}">포스트</a></li>
-                <li class="menu-button header-font"><a class="menu-text" href="">마이페이지</a></li>
+                <li class="menu-button header-font"><a class="menu-text" th:href="@{/mypage/setting}">마이페이지</a></li>
             </ul>
         </div>
         <nav class="nav">
-            <a href="" class="nav-item login">로그인</a>
+            <a th:href="@{/member/login}" class="nav-item login">로그인</a>
             <a th:href="@{/member/join}" class="nav-item signup">회원가입</a>
         </nav>
         <!--      th:unless= if 걸어서 로그인하면 로그아웃 나오게-->

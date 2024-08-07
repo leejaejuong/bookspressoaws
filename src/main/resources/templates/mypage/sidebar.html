@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -16,31 +15,34 @@
                 <div class="sidebar_header_account_img">
                     <div class="user-img-box">
                         <span class="user-img" style="width: 50px; height: 50px; line-height: 50px; font-size: 25px" >
-                            <img th:src="@{/img/사용자이미지.PNG}">
+                            <img th:if="${memberDto.profileId == null}"
+                                 th:src="@{/img/사용자이미지.PNG}">
+                            <img th:unless="${memberDto.profileId == null}"
+                                 th:src="@{'/pfp/' + ${memberDto.profileUpload} + '/' + ${memberDto.profileUuid + '_' + memberDto.profileName}}">
                         </span>
                     </div>
                 </div>
                 <div class="sidebar_header_account_user">
                     <div class="sidebar_header_account_detail">
-                        <span class="profile_nickname">송호</span>
-                        <a class="profile" th:href="@{/myPage/setting}">프로필 관리</a>
+                        <span th:text="${memberDto.nickname}" class="profile_nickname"></span>
+                        <a class="profile" th:href="@{/mypage/setting}">프로필 관리</a>
                     </div>
                 </div>
             </div>
             <div class="sidebar_header_nav">
-                <a href="/myPage/myDebate" class="nav-link sidebar_user-nav">
+                <a href="/mypage/myDebate" class="nav-link sidebar_user-nav">
                                     <span class="sidebar_user-nav_icon">
                                         <svg viewBox="64 64 896 896" focusable="false" data-icon="message" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M924.3 338.4a447.57 447.57 0 00-96.1-143.3 443.09 443.09 0 00-143-96.3A443.91 443.91 0 00512 64h-2c-60.5.3-119 12.3-174.1 35.9a444.08 444.08 0 00-141.7 96.5 445 445 0 00-95 142.8A449.89 449.89 0 0065 514.1c.3 69.4 16.9 138.3 47.9 199.9v152c0 25.4 20.6 46 45.9 46h151.8a447.72 447.72 0 00199.5 48h2.1c59.8 0 117.7-11.6 172.3-34.3A443.2 443.2 0 00827 830.5c41.2-40.9 73.6-88.7 96.3-142 23.5-55.2 35.5-113.9 35.8-174.5.2-60.9-11.6-120-34.8-175.6zM312.4 560c-26.4 0-47.9-21.5-47.9-48s21.5-48 47.9-48 47.9 21.5 47.9 48-21.4 48-47.9 48zm199.6 0c-26.4 0-47.9-21.5-47.9-48s21.5-48 47.9-48 47.9 21.5 47.9 48-21.5 48-47.9 48zm199.6 0c-26.4 0-47.9-21.5-47.9-48s21.5-48 47.9-48 47.9 21.5 47.9 48-21.5 48-47.9 48z"></path></svg>
                                     </span>
                     <span class="sidebar_user-nav_content">내 토론</span>
                 </a>
-                <a href="/myPage/myPost" class="nav-link sidebar_user-nav">
+                <a href="/mypage/myPost" class="nav-link sidebar_user-nav">
                                     <span class="sidebar_user-nav_icon">
                                         <svg viewBox="64 64 896 896" focusable="false" data-icon="profile" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM380 696c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm0-144c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm0-144c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm304 272c0 4.4-3.6 8-8 8H492c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h184c4.4 0 8 3.6 8 8v48zm0-144c0 4.4-3.6 8-8 8H492c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h184c4.4 0 8 3.6 8 8v48zm0-144c0 4.4-3.6 8-8 8H492c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h184c4.4 0 8 3.6 8 8v48z"></path></svg>
                                     </span>
                     <span class="sidebar_user-nav_content">내 포스트</span>
                 </a>
-                <a href="/myPage/myBook" class="nav-link sidebar_user-nav">
+                <a href="/mypage/myBook" class="nav-link sidebar_user-nav">
                                     <span class="sidebar_user-nav_icon">
                                         <svg viewBox="64 64 896 896" focusable="false" data-icon="book" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zM668 345.9L621.5 312 572 347.4V124h96v221.9z"></path></svg>
                                     </span>
@@ -53,7 +55,7 @@
             <a th:href="@{/debate/}"><span class="sidebar_nav_content">토론</span></a>
             <a href=""><span class="sidebar_nav_content">포스트</span></a>
             <div class="sidebar_nav-list_horizon"></div>
-            <a th:href="@{/myPage/setting}"><span class="sidebar_nav_content">설정</span></a>
+            <a th:href="@{/mypage/setting}"><span class="sidebar_nav_content">설정</span></a>
         </div>
     </div>
 </div>
