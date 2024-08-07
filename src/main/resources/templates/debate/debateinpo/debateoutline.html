@@ -13,7 +13,7 @@
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
 <!-- 토론정보 시작-->
-<form id="submitbtn" action="/debate/inpo" method="post">
+
     <div class="book-modal">
         <div class="book-modal-body">
             <div class="modal-search">
@@ -41,11 +41,13 @@
             </div>
         </div>
     </div>
+<form id="submitbtn" action="/debate/inpo" method="post">
     <div class="gather-create-outlin-box">
 
         <div class="gather-create-outlin-top">
             <div class="title">토론 정보를 입력해주세요</div>
         </div>
+
         <!--        책정보 칸-->
 
         <button type="button" class="gather-create-book">

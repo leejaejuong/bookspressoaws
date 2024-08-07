@@ -18,8 +18,8 @@ public class Debateservice {
     private final DebateMapper debateMapper;
     //토론정보입력
     public void addInpo(DebateInpoDTO debateinpoDTO){ debateMapper.insertDebateInpo(debateinpoDTO);}
-    //검색
-    public BookinpoDTO searchBookinpo(String title){return debateMapper.selectbookinpo(title);}
+    //책 검색
+    public List<BookinpoDTO> searchBookinpo(String title){return debateMapper.selectbookinpo(title);}
 
     //로론 정보찾기
     public List<DebateInpoDTO> findInpo(Long debateId){return debateMapper.selectdebateinpo(debateId);}
