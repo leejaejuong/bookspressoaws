@@ -53,11 +53,11 @@ class MemberMapperTest {
 
     }
 
-    @Test
-    void checkLoginId() {
-        memberMapper.insertMember(memberJoinDTO);
-        String loginId = memberMapper.checkLoginId("tes33t");
-        System.out.println(loginId +"@@@@@@@@@@@@@@ ");
-
-    }
+//    @Test
+//    void checkLoginId() {
+//        memberMapper.insertMember(memberJoinDTO);
+//        String loginId = memberMapper.checkLoginId("tes33t");
+//        System.out.println(loginId +"@@@@@@@@@@@@@@ ");
+//
+//    }
 }

@@ -15,13 +15,27 @@ public class MemberService {
 
     public void addMember(MemberJoinDTO memberJoinDTO){
 
-        int idCnt = memberMapper.selectLoginIdCount(memberJoinDTO.getLoginId());
-
-        if(idCnt == 1){
-            throw new IllegalStateException("@@@중복된 회원아이디 입니다. ");
-        }
+//        int idCnt = memberMapper.selectLoginIdCount(memberJoinDTO.getLoginId());
+//
+//        if(idCnt == 1 && nicknameCnt ==1 ){
+//            throw new IllegalStateException("@@@중복된 회원아이디 입니다. ");
+//        }
 
         memberMapper.insertMember(memberJoinDTO);
+    }
+
+    public int findLoginId(String loginId){
+        int loginIdCnt = memberMapper.selectLoginIdCount(loginId);
+        return loginIdCnt;
+    }
+
+
+    public void findNickname(String nickname){
+        int nicknameCnt = memberMapper.selectNicknameCount(nickname);
+
+        if (nicknameCnt == 1 ){
+            throw new IllegalStateException("@@@ 중복된 닉네임 입니다.");
+        }
 
     }
 

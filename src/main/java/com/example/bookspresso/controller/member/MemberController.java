@@ -23,6 +23,8 @@ public class MemberController {
         return "member/member/join";
     }
 
+    //회원가입 시 멤버 테이블의 데이터와 프로필 테이블의 데이터가 모두 들어가야함
+
     @PostMapping("/join")
     public String join(MemberJoinDTO memberJoinDTO){
 
@@ -41,7 +43,8 @@ public class MemberController {
 //
 //        memberService.addMember(memberJoinDTO);
 //
-        return "member/member/login";
+//        return "member/member/login";
+        return null;
     }
 
     @GetMapping("/login")

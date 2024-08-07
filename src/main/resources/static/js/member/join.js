@@ -11,24 +11,37 @@ let $checkLoignId = document.getElementsByName("loginId");
  * 회원가입 정보 작성 데이터 중 아이디와 비밀번호를 입력하기 위해 input창을 클릭 시 자동으로 나오는
  * 아이디와 비밀번호의 작성 기준의 대한 메세지 출력 코드
  */
-// function findBasicMsg(name) {
-//
-//     let basicMag = document.getElementById(name+"Msg").value;
-//     console.log()
-//     return basicMag;
-// }
+{
 
-// {
-//     for
-//     $InputBox.addEventListener('focus', function (){
-//         let inputName = this.getAttribute("name");
-//         console.log("inputName ::: "+inputName);
-//
-//         // let value = document.getElementById(inputName+"Msg").innerHTML;
-//         // console.log("value" + value);
-//
-//         // $InputBox.innerHTML=findBasicMsg(inputName);
-//     })
+    let $inputLoginId = $InputBox[0];
+    // let loginId = $inputLoginId.value;
+// input 데이터의 값이 변동 되었을 때 실행 되는 이벤트
+    $inputLoginId.addEventListener('change', function (){
+
+        let  loginId = this.value;
+        console.log("loginId = " + loginId);
+        let resultMsg = "";
+
+        fetch(`/member/check/${loginId}`, {method: 'POST'})
+            .then(resp=> resp.text())
+            .then(text => {
+                if (text == 1){
+                    // 이미 존재하는 아이디
+                    resultMsg = ""
+                }else{
+                    resultMsg = "사용가능한 ID입니다. ";
+                }
+            })
+    })
+
+
+    // console("loginID @@@@@@@@@@ " + $checkLoignId);
+    // fetch(`/member/${loginId}/checkLoginId`, {method: 'POST'})
+    //     .then()
+
+
+
+}
 
 {
     for (let i = 0; i < $InputBox.length; i++) {
@@ -121,25 +134,7 @@ let $checkLoignId = document.getElementsByName("loginId");
  * fetch로 아이디, 별명 중복 확인 검사
  */
 
-{
 
-    let $inputLoginId = $InputBox[1];
-    let loginId = $inputLoginId.value;
-
-    $inputLoginId.addEventListener('keyup', function (){
-
-        fetch(`/member/${loginId}/checkLoginId`, {method: 'POST'})
-            .then(resp=>text())
-    })
-
-
-    // console("loginID @@@@@@@@@@ " + $checkLoignId);
-    // fetch(`/member/${loginId}/checkLoginId`, {method: 'POST'})
-    //     .then()
-
-
-
-}
 
 
 
