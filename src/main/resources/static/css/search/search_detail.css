@@ -7,6 +7,7 @@ body {
 
 .header {
   height: 100%;
+  padding: 20px 0 5px;
 }
 
 .header_top {
@@ -279,9 +280,19 @@ body {
   border-radius: 16px;
   margin: 98px 20px 0 0;
   text-align: center;
-  line-height: 30px;
+  line-height: 32px;
   font-size: 20px;
+}
+
+.like_img {
+  width: 19px;
+  height: 19px;
+  margin-bottom: -2px;
   cursor: pointer;
+}
+
+.like_cnt {
+  display: inline-block;
 }
 
 .comment_write {
@@ -445,10 +456,9 @@ body {
   border-bottom: 1px solid #dfdfdf;
 }
 
-.library_map {
+#library_map {
   width: 960px;
-  height: 740px;
-  border: 1px solid red;
+  height: 737px;
 }
 
 .post_title {
