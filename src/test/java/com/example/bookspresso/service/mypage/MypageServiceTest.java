@@ -38,5 +38,7 @@ class MypageServiceTest {
 
     @Test
     void fixedIntroduce() {
+        SettingDTO test2 = SettingDTO.builder().introduce("안녕하세요").build();
+        doReturn(test2).when(settingMapper).updateIntroduce(any(), any());
     }
 }

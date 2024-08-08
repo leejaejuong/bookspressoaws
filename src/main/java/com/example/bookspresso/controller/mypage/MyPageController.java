@@ -6,8 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,17 +17,19 @@ public class MyPageController {
     @GetMapping("/setting")
     public String setting(HttpSession session, Model model) {
 //        Long memberId = (Long) session.getAttribute("memberId");
-        Long memberId = 1L;
+        Long memberId = 3L;
+
+//        String introduce = (String)session.getAttribute("introduce");
         SettingDTO member = mypageService.findMember(memberId);
 
+//        model.addAttribute("introduceDto", introduce);
         model.addAttribute("memberDto", member);
-
         return "mypage/setting";
     }
 
     @GetMapping("/myDebate")
     public String myDebate(HttpSession session, Model model) {
-        Long memberId = 1L;
+        Long memberId = 3L;
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);
@@ -37,7 +38,7 @@ public class MyPageController {
 
     @GetMapping("/myBook")
     public String myBook(HttpSession session, Model model){
-        Long memberId = 1L;
+        Long memberId = 3L;
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);
@@ -45,7 +46,7 @@ public class MyPageController {
     }
     @GetMapping("/myPost")
     public String myPost(HttpSession session, Model model){
-        Long memberId = 1L;
+        Long memberId = 3L;
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);
