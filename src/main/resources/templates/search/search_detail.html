@@ -14,9 +14,7 @@
 </head>
 <body>
     <div class="header">
-        <div class="header_top">
             <header th:replace="~{fragments/header :: header}"></header>
-        </div>
         <div class="detail_contents">
             <div class="contents">
                 <!-- 헤더 및 도서 정보 시작 -->
@@ -95,7 +93,7 @@
                                 <span class="review_like">이 리뷰가 마음에 드시나요?</span>
                             </div>
                             <div class="like">
-                                <span class="like_btn">♡</span>
+                                <img class="like_img" th:src="@{/img/search/empty_heart.png}" alt="">
                                 <span class="like_cnt">0</span>
                             </div>
                         </div>
@@ -109,7 +107,7 @@
                                 <span class="review_like">이 리뷰가 마음에 드시나요?</span>
                             </div>
                             <div class="like">
-                                <span class="like_btn">♡</span>
+                                <img class="like_img" th:src="@{/img/search/empty_heart.png}" alt="">
                                 <span class="like_cnt">0</span>
                             </div>
                         </div>
@@ -123,7 +121,7 @@
                                 <span class="review_like">이 리뷰가 마음에 드시나요?</span>
                             </div>
                             <div class="like">
-                                <span class="like_btn">♡</span>
+                                <img class="like_img" th:src="@{/img/search/empty_heart.png}" alt="">
                                 <span class="like_cnt">0</span>
                             </div>
                         </div>
@@ -137,7 +135,7 @@
                                 <span class="review_like">이 리뷰가 마음에 드시나요?</span>
                             </div>
                             <div class="like">
-                                <span class="like_btn">♡</span>
+                                <img class="like_img" th:src="@{/img/search/empty_heart.png}">
                                 <span class="like_cnt">0</span>
                             </div>
                         </div>
@@ -333,7 +331,9 @@
                     </div>
                     <div class="library_map_wrap">
                         <div class="library_type"></div>
-                        <div class="library_map"></div>
+                        <div id="library_map">
+                            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=645fbc8cba0ca0783bdc4b611fc857c3"></script>
+                        </div>
                     </div>
                 </div>
                 <!-- 이 책의 포스트 -->
@@ -346,10 +346,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
     </div>
 </body>
 
