@@ -13,7 +13,4 @@ public class SettingDTO {
     private String profileUpload;
     private String profileName;
     private String introduce;
-
-
-
 }

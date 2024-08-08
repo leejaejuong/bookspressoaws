@@ -23,28 +23,14 @@
             <main class="layout_main">
                 <div class="post">
                     <div class="post_content">
-                        <div class="post_banner">
-                            <div class="post_banner_container">
-                                <span>"우리가 사라지면 암흑이 찾아온다"</span>
-                                <div class="post_banner_edit">
-                                    <span>
-                                        <div class="upload-select-img">
-                                            <span class="upload-img" role="button" onclick="document.getElementById('fileInput').click();">
-                                                <input type="file" accept="image/*" id="fileInput" style="display: none">
-                                                <div class="post_banner_edit_button">
-                                                    <span role="img" aria-label="picture" class="post_banner_color"><svg style="margin-top: 3px" viewBox="64 64 896 896" focusable="false" data-icon="picture" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 632H136v-39.9l138.5-164.3 150.1 178L658.1 489 888 761.6V792zm0-129.8L664.2 396.8c-3.2-3.8-9-3.8-12.2 0L424.6 666.4l-144-170.7c-3.2-3.8-9-3.8-12.2 0L136 652.7V232h752v430.2zM304 456a88 88 0 100-176 88 88 0 000 176zm0-116c15.5 0 28 12.5 28 28s-12.5 28-28 28-28-12.5-28-28 12.5-28 28-28z"></path></svg></span>
-                                                </div>
-                                            </span>
-                                        </div>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="post_header">
                             <div class="post_header_profile">
                                 <div class="post_header_img">
                                     <div class="user-img">
-                                        <img th:src="@{/img/사용자이미지.PNG}">
+                                        <img th:if="${memberDto.profileId == null}"
+                                             th:src="@{/img/사용자이미지.PNG}">
+                                        <img th:unless="${memberDto.profileId == null}"
+                                             th:src="@{'/pfp/' + ${memberDto.profileUpload} + '/' + ${memberDto.profileUuid + '_' + memberDto.profileName}}">
                                     </div>
                                 </div>
                                 <div class="post_header_title">
