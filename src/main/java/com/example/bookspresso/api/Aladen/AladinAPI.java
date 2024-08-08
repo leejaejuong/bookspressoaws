@@ -29,7 +29,7 @@ public class AladinAPI {
             중복되는 값이 들어가면 오류가 날 수 있기 때문에 보통 중복되지 않는 값을 넣기위해 시간을 이용하는
             경우가 많다.
              */
-//            jobLauncher.run(bookRegisterJobConfig.apiJob(),jobParameters);
+            jobLauncher.run(bookRegisterJobConfig.apiJob(),jobParameters);
         } catch (Exception e) {
             e.printStackTrace();
         }

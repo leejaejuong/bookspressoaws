@@ -5,13 +5,11 @@
         INSERT INTO TBL_BOOK(ISBN13, TITLE, DESCRIPTION, AUTHOR, COVER, LINK, PUBDATE)
         VALUES (#{isbn13},#{title},#{description},#{author},#{cover},#{link},#{pubDate})
     </insert>
-    <select id="selectduplication">
-        select ISBN13
+    <select id="selectDuplication">
+        select COUNT(ISBN13)
         from TBL_BOOK
-        where ISBN13=#{isbn13};
+        where ISBN13=#{isbn13}
     </select>
-
-
 
 </mapper>
 

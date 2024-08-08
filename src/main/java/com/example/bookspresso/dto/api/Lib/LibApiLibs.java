@@ -7,6 +7,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LibHeader {
-    private Libbody response;
+public class LibApiLibs {
+    private LibApiLib lib;
 }

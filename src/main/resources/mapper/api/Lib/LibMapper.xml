@@ -3,13 +3,13 @@
 <mapper namespace="com.example.bookspresso.mapper.api.Lib.LibMapper">
     <insert id="insertLib">
         INSERT INTO TBL_LIB(LIBCODE, LIBNAME, ADDRESS, CLOSED, HOMEPAGE, LATITUDE, LONGITUDE, TEL)
-        VALUES(#{libcode},#{libname},#{address},#{closed},#{homepage},#{latitude},#{longitude},#{tel})
-
+        VALUES(#{libCode},#{libName},#{address},#{closed},#{homepage},#{latitude},#{longitude},#{tel})
     </insert>
-    <select id="selectduplication">
-        select LIBCODE
+
+    <select id="libSelectduplication">
+        select COUNT(LIBCODE)
         from TBL_LIB
-        where LIBCODE=#{libcode};
+        where LIBCODE=#{libCode}
     </select>
 
 

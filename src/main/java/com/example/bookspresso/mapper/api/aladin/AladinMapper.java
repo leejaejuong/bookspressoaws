@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AladinMapper {
     void insertBook(Aladinitem aladinitem);
     //중복검사를 위한 코드
-    String selectduplication(String ISBN13);
+   int selectDuplication(String ISBN13);
 }

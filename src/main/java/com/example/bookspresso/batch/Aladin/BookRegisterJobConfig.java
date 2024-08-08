@@ -14,6 +14,7 @@ import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -43,8 +44,8 @@ public class BookRegisterJobConfig {
 //        3.하나씩 뽑아온 데이터를 ItemProcessor<들어와서, 변환후 반환> 여기서 타입변환? 등등을 진행후 아래로넘김
 //        3.5 chunk단위로 묶음처리한다
 //        여기서는 큰의미는없지만 필요한 순서
-//        return new AladinitemProcessor(Aladinitem);
-        return item->item;
+        return new AladinitemProcessor(aladinMapper);
+//        return item->item;
     }
     @Bean
     public ItemWriter<Aladinitem> apiWriter(){
@@ -65,11 +66,11 @@ public class BookRegisterJobConfig {
                 .writer(apiWriter())
                 .build();
     }
-//    @Bean
-//    public Job apiJob(){
-//        return new JobBuilder("apiJob",jobRepository)
-//                .start(apiStep())
-//                .preventRestart()//배치 작업이 실패했을 때 재시작하지 못하도록 설정
-//                .build();
-//    }
+    @Bean
+    public Job apiJob(){
+        return new JobBuilder("apiJob",jobRepository)
+                .start(apiStep())
+                .preventRestart()//배치 작업이 실패했을 때 재시작하지 못하도록 설정
+                .build();
+    }
 }

@@ -9,12 +9,12 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class Libbody {
+public class LibApiResponse {
 
 //             private String pageNo;
 //             private String pageSize;
 //             private String numFound;
 //             private String resultNum;
-             private List<Libitems> libs;
+             private List<LibApiLibs> libs;
 
 }

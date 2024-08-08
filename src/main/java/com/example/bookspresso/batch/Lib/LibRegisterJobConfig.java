@@ -1,7 +1,7 @@
 package com.example.bookspresso.batch.Lib;
 
-import com.example.bookspresso.dto.api.Lib.Libitem;
-import com.example.bookspresso.dto.api.Lib.Libitems;
+import com.example.bookspresso.dto.api.Lib.LibApiLib;
+import com.example.bookspresso.dto.api.Lib.LibApiLibs;
 import com.example.bookspresso.mapper.api.Lib.LibMapper;
 import com.example.bookspresso.service.api.Lib.LibService;
 import lombok.RequiredArgsConstructor;
@@ -28,42 +28,37 @@ public class LibRegisterJobConfig {
     private final LibService libService;
 
     @Bean
-    public ItemReader<Libitems> apiItemReader1() {
+    public ItemReader<LibApiLib> libApiItemReader() {
         return new LibItemReader(libService);
     }
     @Bean
-    public ItemProcessor<Libitems, Libitems> apiItemProcessor1() {
-        return item -> item;
+    public ItemProcessor<LibApiLib, LibApiLib> libApiItemProcessor() {
+        return new LibItemProcessor(libMapper);
     }
+
     @Bean
-    public ItemWriter<Libitems> apiWriter1() {
+    public ItemWriter<LibApiLib> libApiWriter() {
         return items ->{
-            for(Libitems item : items) {
+            for(LibApiLib item : items) {
+                log.info("Register lib: {}", item);
                 libMapper.insertLib(item);
             }
         };
     }
     @Bean
-    public Step apiStep1(){
-        return new StepBuilder("apiStep",jobRepository)
-                .<Libitems,Libitems>chunk(10,transactionManager)
-                .reader(apiItemReader1())
-                .processor(apiItemProcessor1())
-                .writer(apiWriter1())
+    public Step libApiStep(){
+        return new StepBuilder("libApiStep",jobRepository)
+                .<LibApiLib, LibApiLib>chunk(10,transactionManager)
+                .reader(libApiItemReader())
+                .processor(libApiItemProcessor())
+                .writer(libApiWriter())
                 .build();
     }
     @Bean
-    public Job apiJob1(){
-        return new JobBuilder("apiJob",jobRepository)
-                .start(apiStep1())
+    public Job libApiJob(){
+        return new JobBuilder("libApiJob",jobRepository)
+                .start(libApiStep())
                 .preventRestart()
                 .build();
     }
-
-
-
-
-
-
-
 }

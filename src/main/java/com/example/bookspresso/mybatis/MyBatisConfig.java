@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
@@ -40,6 +41,7 @@ public class MyBatisConfig {
 
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
         sqlSessionFactory.getConfiguration().setMapUnderscoreToCamelCase(true);
+        sqlSessionFactory.getConfiguration().setJdbcTypeForNull(JdbcType.VARCHAR);
 
         return sqlSessionFactory;
     }

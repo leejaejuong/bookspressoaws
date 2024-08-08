@@ -22,8 +22,7 @@ public class AladinItemReader implements ItemReader<Aladinitem> {
     @Override
     public Aladinitem read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
         if(items==null){
-            AladinBody apialadin = aladinService.getApialadin();
-            items = apialadin.getItem();
+            items = aladinService.getApialadin();
 //            위에선언한 List<Aladinitem> items 가 비어있으면 aladinService를 가동하여 설정한 개수만큼
 //            가져와서 리스트에 저장(현재설정 100)
 //            1.뭉탱이로 가져와서

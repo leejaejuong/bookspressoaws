@@ -4,11 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString
-public class Libitems {
-    private Libitem lib;
+public class LibApiBody {
+    private LibApiResponse response;
 }
