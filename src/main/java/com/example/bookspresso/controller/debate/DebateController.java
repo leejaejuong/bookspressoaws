@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DebateController {
     private final Debateservice debateservice;
     @GetMapping("/")
-    public String debate() {
+    public String debate(HttpSession session) {
+        session.setAttribute("memberId", 1);
         return "debate/debateboard/debatemain";
     }
 
