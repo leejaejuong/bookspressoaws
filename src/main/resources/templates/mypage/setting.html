@@ -43,7 +43,7 @@
                                     <div class="setting_user_img">
                                         <div class="user-img-box">
                                             <span class="user-img"
-                                                  style="width: 50px; height: 50px; line-height: 50px; font-size: 25px">
+                                                  style="width: 60px; height: 60px; line-height: 50px;">
                                                 <img th:if="${memberDto.profileId == null}" th:src="@{/img/사용자이미지.PNG}">
                                                 <img th:unless="${memberDto.profileId == null}"
                                                      th:src="@{'/pfp/' + ${memberDto.profileUpload} + '/' + ${memberDto.profileUuid + '_' + memberDto.profileName}}">
@@ -118,7 +118,7 @@
                                                             <span class="profile_img_modify">
                                                                 <div class="user-img-box">
                                                                      <span class="user-img"
-                                                                           style="width: 50px; height: 50px; line-height: 50px; font-size: 25px">
+                                                                           style="width: 50px; height: 50px; line-height: 50px;">
                                                                         <img th:if="${memberDto.profileId == null}"
                                                                              th:src="@{/img/사용자이미지.PNG}">
                                                                          <img th:unless="${memberDto.profileId == null}"
