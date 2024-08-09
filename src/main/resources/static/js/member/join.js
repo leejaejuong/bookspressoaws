@@ -7,30 +7,37 @@ let $checkLoignId = document.getElementsByName("loginId");
 let $successJoin = [];
 /**
  * 아이디 중복 검사 후 에러 메세지 출력
+ * 정규표현식 테스트 _> 아이디 이상함 
   */
 {
     let $inputLoginId = $InputBox[0];
-    $inputLoginId.addEventListener('change', function (){
 
-        let loginId = this.value;
-        console.log("loginId = " + loginId);
-        // let resultMsg = "";
+    console.log("loginId = " + loginId);
         //유효성 검사
+    let loginReg = /^[0-9a-zA-Z]{4,20}$/g;
 
-        fetch(`/join/check-loginId/${loginId}`, {method: 'POST'})
-            .then(resp=> resp.text())
-            .then(text => {
-                if (text != 0){
-                    // 이미 존재하는 아이디
-                    $inputMsg[0].innerHTML = "이미 존재하는 아이디입니다. ";
-                    $inputMsg[0].classList.add("error");
+    $inputLoginId.addEventListener('change', function (){
+        let loginId = this.value;
 
-                }else{
-                    $inputMsg[0].innerHTML = "사용가능한 ID입니다. ";
-                    $successJoin[0] = true;
+        console.log(loginReg.test(loginId));
 
-                }
-            })
+        // fetch(`/join/check-loginId/${loginId}`, {method: 'POST'})
+        //     .then(resp=> resp.text())
+        //     .then(text => {
+        //         if (text != 0){
+        //             // 이미 존재하는 아이디
+        //             $inputMsg[0].innerHTML = "이미 존재하는 아이디입니다. ";
+        //             console.log("class name = "+$inputMsg[0].getAttribute("class"));
+        //             msgColorRed(0);
+        //
+        //         }else{
+        //             $inputMsg[0].innerHTML = "사용가능한 ID입니다. ";
+        //             console.log("class name = "+$inputMsg[0].getAttribute("class"));
+        //             $successJoin[0] = true;
+        //             msgColorBlue(0)
+        //
+        //         }
+        //     })
     })
 
 }
@@ -39,6 +46,7 @@ let $successJoin = [];
  * 8-16 자리 영문, 숫자, 특수문자 조합
  */
 {
+    // printBasicMsg(1);
     let pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
 
     $InputBox[1].addEventListener('change', function () {
@@ -47,17 +55,17 @@ let $successJoin = [];
         console.log(pwReg.test(pw));
         if (pwReg.test(pw)){
             $inputMsg[1].innerText= "사용 가능한 비밀번호예요!";
-            // $inputMsg[1].innerText.style.color = rgb(45, 101, 241);
+            msgColorBlue(1);
         }
         else{
-            console.dir($inputMsg[1])
-
+            // console.dir($inputMsg[1])
             $inputMsg[1].innerText =document.querySelector("#passwordInvalid").innerText;
             console.log("sfsf#### = " + $inputMsg[1].innerText);
-            $inputMsg[1].classList.add("error");
+            msgColorRed(1);
         }
-
     })
+
+
 
 }
 
@@ -76,9 +84,10 @@ let $successJoin = [];
                 console.log(text);
                 if (text != 0) {
                     $inputMsg[2].innerText = "사용 중인 닉네임입니다."
-                    $inputMsg[2].classList.add("error");
+                    msgColorRed(2);
                 }else{
                     $inputMsg[2].innerText = "사용 가능한 닉네임입니다 :) ";
+                    msgColorBlue(2);
                     $successJoin[2] = true;
                     console.log("닉네임 중복 검사 통과@@");
                 }
@@ -86,12 +95,11 @@ let $successJoin = [];
     })
 }
 
-
 /**
  *  이메일 유효성 검사 (정규표현식)
  */
 {
-    let emailReg = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    let emailReg = /^[A-Z0-9._]+@[A-Z0-9.-]+\.[A-Z]{2,3}$/i;
 
     $InputBox[3].addEventListener('change', function (){
 
@@ -105,16 +113,17 @@ let $successJoin = [];
                 .then(result =>{
                     if (result != 0) {
                         $inputMsg[3].innerHTML = "이미 존재하는 회원입니다.";
-                        $inputMsg[3].classList.add("error");
+                        msgColorRed(3);
                     }else{
                         $successJoin[3] = true;
+                        msgColorBlue(3);
                         console.log("이메일 입력 성공! == " + $successJoin);
                     }
                 })
         }else{
             $inputMsg[3].innerHTML="잘못된 이메일 주소입니다. 이메일 주소를 정확하게 입력해주세요.";
             console.log($inputMsg[3].innerHTML);
-            $inputMsg[3].classList.add("error");
+            msgColorRed(3);
         }
     })
 }
@@ -129,47 +138,86 @@ let $successJoin = [];
  */
 
 // 함수로 만들어서  개별 칸에 사용
-{
-    for (let i = 0; i < $InputBox.length; i++) {
+// {
+//     for (let i = 0; i < $InputBox.length; i++) {
+//
+//         $InputBox[i].addEventListener('focus', function (){
+//             let inputName = this.getAttribute("name");
+//             console.log("inputName ::: "+inputName);
+//
+//             let className = $inputMsg[i].getAttribute("class");
+//             console.log("class = " + className);
+//
+//             let basicMsg = document.getElementById(inputName+"Msg").innerText;
+//             console.log('basicMsg',basicMsg);
+//
+//             $inputMsg[].innerHTML = basicMsg;
+//
+//             if(className == "inputMsg basicMsg error" || className == "inputMsg error"){
+//                 $inputMsg[i].classList.remove("error");
+//                 console.log("class = " + className);
+//             }
+//         })
+//     }}
 
-        $InputBox[i].addEventListener('focus', function (){
-            let inputName = this.getAttribute("name");
-            console.log("inputName ::: "+inputName);
+ // 함수
+// input 칸에 blur일 때 나오는 기본 에러메서지 출력 함수
+    function printBasicMsg(index){
 
-            let className = $inputMsg[i].getAttribute("class");
-            console.log("class = " + className);
-
-            let basicMsg = document.getElementById(inputName+"Msg").innerText;
-            console.log('basicMsg',basicMsg);
-
-            $inputMsg[i].innerHTML = basicMsg;
-
-            if(className == "inputMsg basicMsg error" || className == "inputMsg error"){
-                $inputMsg[i].classList.remove("error");
-                console.log("class = " + className);
-            }
+        // for (let i = 0; i < $InputBox.length; i++) {
+            $InputBox[index].addEventListener('blur', function (){
+                let inputName = this.getAttribute("name");
+                console.log("focusOut ::: "+inputName);
+                if (!this.value){
+                    let errorMsg = document.getElementById(inputName+"Invalid").innerHTML;
+                    console.log('errorMsg', errorMsg);
+                    msgColorRed(index);
+                    $inputMsg[index].innerHTML = errorMsg;
+                }else{
+                    // $inputMsg[num].innerHTML="";
+                }
         })
-    }}
+    // }
+    }
+//
+// function changeMsgColor(index){
+//     let inputClass = $inputMsg[num].getAttribute("class");
+//     if(inputClass.includes('error')){
+//         $inputMsg[index].classList.replace("error", "pass");
+//         console.log("class = " + inputClass);
+//         // $inputMsg[i].
+//     }else{
+//         $inputMsg[index].classList.add("pass");
+//         console.log("class = " + inputClass);
+//     }
+// }
+//
 
-{
-    for (let i = 0; i < $InputBox.length; i++) {
-        $InputBox[i].addEventListener('blur', function (){
-            let inputName = this.getAttribute("name");
-            console.log("focusOut ::: "+inputName);
-            if (!this.value){
-                let errorMsg = document.getElementById(inputName+"Invalid").innerHTML;
-                console.log('errorMsg', errorMsg);
+    function msgColorBlue(index){
+        let inputClass = $inputMsg[index].getAttribute("class");
+        if(inputClass.includes('error')){
+            $inputMsg[index].classList.replace("error", "pass");
+            console.log("class = " + inputClass);
+            // $inputMsg[i].
+        }else{
+            $inputMsg[index].classList.add("pass");
+            console.log("class = " + inputClass);
+        }
+    }
+// 색 이 없거나 빨간 파랑
+    function msgColorRed(index){
+        let $inputMsgBox = $inputMsg[index];
+        let inputClass = $inputMsgBox.getAttribute("class");
+        if(inputClass.includes('pass')){
+            $inputMsgBox.classList.replace('pass', 'error');
+            console.log("class = " + inputClass);
+        }else{
+            $inputMsg[index].classList.add("error");
+            console.log("class = " + inputClass);
+        }
+    }
 
-                // document.getElementsByClassName('inputMsg')
 
-                $inputMsg[i].classList.add('error');
-                $inputMsg[i].innerHTML = errorMsg;
-            }else{
-                $inputMsg[i].innerHTML="";
-            }
-    })
-}
-}
 
 
 /**

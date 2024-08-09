@@ -102,6 +102,9 @@
 .error {
     color: #d64141;
 }
+.pass{
+    color: #2D65F2;
+}
 /* 안내 문자 메세지 */
 /*.msgInfo{*/
 /*    */
