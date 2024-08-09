@@ -21,10 +21,17 @@
         SET NICKNAME = #{nickname}
         WHERE MEMBER_ID = #{memberId}
     </update>
+
+    <select id="selectProfileByMemberId">
+        SELECT PROFILE_ID, MEMBER_ID, PROFILE_UUID, PROFILE_UPLOAD, PROFILE_NAME
+        FROM TBL_PROFILE
+        WHERE MEMBER_ID = #{memberId}
+    </select>
+
     <!-- 프로필 변경 -->
     <update id="updateProfile">
         UPDATE TBL_PROFILE
-        SET PROFILE_UUID = #{profileUuid}
+        SET PROFILE_UUID = #{profileUuid}, PROFILE_UPLOAD = #{profileUpload}, PROFILE_NAME = #{profileName}
         WHERE MEMBER_ID = #{memberId}
     </update>
     <!-- 이메일 변경 -->

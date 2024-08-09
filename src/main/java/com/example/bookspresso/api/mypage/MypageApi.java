@@ -4,10 +4,14 @@ import com.example.bookspresso.dto.mypage.SettingDTO;
 import com.example.bookspresso.service.mypage.MypageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class MypageApi {
@@ -45,6 +49,19 @@ public class MypageApi {
     public void deleteMember(HttpSession session, @RequestBody Long memberId) {
         Long member = 3L;
 
-        mypageService.delteMembers(member);
+        mypageService.deleteMembers(member);
+    }
+
+    @PatchMapping("/members-pfp-file")
+    public void pfpFilePatch(@RequestParam("file") MultipartFile pfpFile,
+                             HttpSession session){
+        System.out.println("pfpFile = " + pfpFile.getOriginalFilename());
+//        Long memberId = (Long) session.getAttribute("memberId");
+        Long memberId = 3L;
+        try {
+            mypageService.modifyProfile(pfpFile, memberId);
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
     }
 }
