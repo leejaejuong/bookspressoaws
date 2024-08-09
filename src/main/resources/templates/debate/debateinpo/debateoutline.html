@@ -23,23 +23,12 @@
                 <div>
                     <input type="text" placeholder="검색어를 입력하세요" id="caret" class="modal-search-text caret"></inputtext>
                 </div>
-            </div>
-            <div class="modal-text-box">
-                <div class="modal-text-img">사진자리</div>
-                <div class="modal-comtent-box">
-                    <div class="modal-text-title">미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)</div>
-                    <div class="modal-text-author">기시미 이치로.고가 후미타케 지음, 전경아 옮김</div>
-                    <div class="modal-text-content"> 내가짱</div>
-                </div>
-                <div class="modal-select">
-                    <button type="button" class="modal-select-btn">선택</button>
-                </div>
-
-            </div>
-            <div class="book-modal-close-btn">
                 <button type="button" class="book-modal-body-close"> 닫기</button>
             </div>
-        </div>
+            <div class="modal-text-box">
+
+            </div>
+    </div>
     </div>
 <form id="submitbtn" action="/debate/inpo" method="post">
     <div class="gather-create-outlin-box">
@@ -57,14 +46,18 @@
 
             </div>
             <div class="book-search-in">
-            <div><img src=""
-                       alt="미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)"></div>
-            <div class="gather__create__selected-topic__info"><h2>미움받을 용기 2부작 북케이스 세트 - 전2권 (10주년 한정판)</h2>
-                <div><h3>기시미 이치로.고가 후미타케 지음, 전경아 옮김</h3><span style="display: inline-block; margin: 0px 3px;"></span>
-                    <h3>인플루엔셜(주)</h3></div>
+            <div class="book-search-img-box">
+                <img src="" alt="" class="book-search-in-img">
+            </div>
+            <div class="book-search-inpo-box">
+                <div class="book-search-title-text"></div>
+                <div class="book-search-author"></div>
+                <div class="book-search-content"></div>
+                <input type="hidden" value="${comment.isbn13}" class="book-search-isbn13" name="isbn13">
             </div>
             </div>
         </button>
+        <div class="content-err5">책 정보를 입력해주세요</div>
 
         <div class="gather-create-debate-style">
             <div class="debate-centent-title">토론제목</div>
@@ -131,5 +124,7 @@
 
     </div>
 </form>
+
+
 </body>
 </html>

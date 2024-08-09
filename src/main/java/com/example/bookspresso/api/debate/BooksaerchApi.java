@@ -19,7 +19,7 @@ public class BooksaerchApi {
     @GetMapping("/debate/inpos/{title}")
     public List<BookinpoDTO> debate(@PathVariable("title") String title) {
         List<BookinpoDTO> bookinpoDTOS = debateservice.searchBookinpo(title);
-        System.out.println("bookinpoDTOS = " + bookinpoDTOS);
+
         return bookinpoDTOS;
     }
 }
