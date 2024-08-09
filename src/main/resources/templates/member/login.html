@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
     <!--  /폰트 -->
     <link rel="stylesheet" th:href="@{/css/header/header.css}">
-    <link rel="stylesheet" th:href="@{/css/member/member/login.css}">
+    <link rel="stylesheet" th:href="@{/css/member/login.css}">
     <script defer th:src="@{/js/member/login.js}"></script>
 </head>
 <body>
@@ -19,8 +19,8 @@
         <h3 class="top-text">로그인</h3>
 
         <div class="itemBox">
-            <form action="" method="post" id="login-form">
-                <div><input type="text" name="userId" id="idForm" class="inputBox" placeholder="아이디"></div>
+            <form th:action="@{/member/login}" method="post" id="login-form">
+                <div><input type="text" name="loginId" id="idForm" class="inputBox" placeholder="아이디"></div>
                 <div><input type="password" name="password" id="pwForm" class="inputBox" placeholder="비밀번호"></div>
                 <button type="button" class="loginBtn" id="loginBtn">로그인</button>
             </form>
@@ -32,6 +32,16 @@
             <a th:href="@{/member/findPassword}" class="find">비밀번호 찾기</a>
         </div>
 
+<!--   로그인 실패 모달 창     -->
+<!--        <div class="fail-login_modal">-->
+            <div class="modal-layered">
+                <div class="modal-content">
+                    <div class="failedMsg">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+                    <button type="button" id="close-modal_btn">확인</button>
+                </div>
+            </div>
+
+<!--        </div>-->
 
     </div>
 

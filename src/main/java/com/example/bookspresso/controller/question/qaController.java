@@ -1,4 +1,4 @@
-package com.example.bookspresso.controller.member;
+package com.example.bookspresso.controller.question;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
