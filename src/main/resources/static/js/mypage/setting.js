@@ -107,6 +107,15 @@ let cancelEdit = () => editMode(false);
         $imgTags.forEach(imgTag => {
             imgTag.setAttribute('src', src);
         })
+
+    //     서버 통신
+        let formData = new FormData();
+        formData.append("file", file)
+
+        fetch('/members-pfp-file', {
+            method : "PATCH",
+            body : formData
+        }).then(resp => console.log(resp))
     });
 }
 

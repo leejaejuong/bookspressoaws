@@ -1,5 +1,6 @@
 package com.example.bookspresso.mapper.mypage;
 
+import com.example.bookspresso.dto.mypage.MemberProfileDTO;
 import com.example.bookspresso.dto.mypage.SettingDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -16,7 +17,9 @@ public interface SettingMapper {
 
     void updateEmail(@Param("memberId")Long memberId, @Param("email") String email);
 
-    void updateProfile(SettingDTO settingDTO);
+    Optional<MemberProfileDTO> selectProfileByMemberId(Long memberId);
+
+    void updateProfile(MemberProfileDTO memberProfileDTO);
 
     void deleteMember(@Param("memberId") Long memberId);
 

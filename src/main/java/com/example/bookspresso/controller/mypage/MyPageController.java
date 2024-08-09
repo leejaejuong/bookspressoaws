@@ -1,13 +1,16 @@
 package com.example.bookspresso.controller.mypage;
 
+import com.example.bookspresso.dto.mypage.MypageDebateDTO;
 import com.example.bookspresso.dto.mypage.SettingDTO;
 import com.example.bookspresso.service.mypage.MypageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/mypage")
@@ -31,8 +34,16 @@ public class MyPageController {
     public String myDebate(HttpSession session, Model model) {
         Long memberId = 3L;
         SettingDTO member = mypageService.findMember(memberId);
+        MypageDebateDTO debate = null;
+        try {
+            debate = mypageService.findDebate(memberId);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
 
+        System.out.println("debate = " + debate);
         model.addAttribute("memberDto", member);
+        model.addAttribute("debateDto", debate);
         return "mypage/myDebate";
     }
 

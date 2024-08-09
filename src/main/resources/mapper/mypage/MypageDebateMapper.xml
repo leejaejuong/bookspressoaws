@@ -2,6 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bookspresso.mapper.mypage.MypageDebateMapper">
     <select id="selectDebate">
+        SELECT D.DEBATE_ID, D.MEETING_ID, D.TITLE, D.OUTLINE, D.DEBATE_START_DATE, D.DEBATE_END_DATE,
+            M.NICKNAME,
+            P.PROFILE_ID, P.PROFILE_UUID, P.PROFILE_NAME, P.PROFILE_UPLOAD,
+            B.COVER,
+            MT.MEETING_TYPE
+        FROM TBL_DEBATE D JOIN TBL_MEMBER_DEBATE MD
+            ON D.DEBATE_ID = MD.DEBATE_ID
+        JOIN TBL_MEMBER M
+            ON M.MEMBER_ID=#{memberId} AND MD.MEMBER_ID = M.MEMBER_ID
+        JOIN TBL_PROFILE P
+            ON M.MEMBER_ID = P.MEMBER_ID
+        JOIN TBL_DEBATE_BOOK DB
+            ON D.DEBATE_ID = DB.DEBATE_ID AND M.MEMBER_ID = DB.MEMBER_ID
+        JOIN TBL_BOOK B
+            ON DB.ISBN13 = B.ISBN13
+        JOIN TBL_MEETING_TYPE MT
+            ON DB.MEMBER_ID = MT.MEETING_ID
+        <![CDATA[
+        WHERE DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND DEBATE_START_DATE <= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        ]]>
+    </select>
+
+    <select id="selectMeeting">
 
     </select>
 </mapper>
