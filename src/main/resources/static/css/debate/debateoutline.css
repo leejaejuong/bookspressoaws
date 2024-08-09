@@ -92,6 +92,14 @@
 }
 .book-search-in{
     display: none;
+    flex-direction: column;
+}
+.book-search-in-img{
+    width: 80px;
+    height: 120px;
+}
+.book-search-inpo-box{
+    width: 300px;
 }
 .book-search-text{
     font-size: 20px;
@@ -157,7 +165,6 @@ datalist{
 .book-modal{
        position: absolute;
         display: none;
-
         justify-content: center;
         width: 100%;
     height: 200%;
@@ -175,8 +182,12 @@ datalist{
 
 }
 .book-modal-body-close{
-    width: 60px;
-    height: 30px;
+    font-size: 20px;
+    background-color: white;
+    border: none;
+    margin-left:10px ;
+    /*width: 60px;*/
+    /*height: 30px;*/
 }
 .modal-search{
     display: flex;
@@ -189,7 +200,7 @@ datalist{
     margin-top: 10px;
 }
 .modal-search-text{
-    width: 350px;
+    width: 600px;
     height: 40px;
     border: none;
     border-bottom: 1px solid #ccc ;
@@ -197,37 +208,72 @@ datalist{
     padding-left: 10px;
     font-size: 30px;
 
-
-
 }
-
+.modal-text-content-total-box{
+    display: flex;
+    flex-direction: column;
+    position : absolute;
+    width: 700px;
+    height: auto;
+    padding:20px;
+    background-color: rgb(255,255,255); /*모달창 배경색 흰색*/
+    -moz-border-radius-bottomright:10px;
+    -moz-border-radius-bottomleft:10px;/*테두리*/
+    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); /*테두리 그림자*/
+}
 .modal-search-text:focus{
    outline: none;
 }
 .modal-text-box{
     display: flex;
-
-    height: 245px;
+    flex-direction: column;
     padding: 12px 0;
 }
+.modal-text-content-in-box{
+    display: flex;
+    height: 245px;
+    width: auto;
+    padding: 12px 0;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+}
+.modal-text-content-box{
+    display: flex;
+    padding-top: 12px;
+    border-radius: 10px;
+    width: 700px;
+    background-color: rgb(255,255,255);
+
+}
 .modal-text-img{
+    width: 209px;
+    height: 240px;
+}
+.modal-text-img-box{
     width: 210px;
     height: 260px;
-    background-color: #cccccc;
+
     margin-left: 10px
 
 }
+
 .modal-text-title{
     font-size: 20px ;
+    margin-bottom: 15px;
+    margin-top: 5px;
 
 }
 .modal-text-author{
-    font-size: 20px;
-
+    font-size: 14px;
+    margin:5px 0;
+    color: #000000d9;
 }
 .modal-text-content {
-    font-size: 20px;
+    font-size: 14px;
+    color: #212529;
 }
+
 .modal-comtent-box{
     display: flex;
     flex-direction: column;
@@ -240,14 +286,22 @@ datalist{
     border-radius:8px;
 }
 .modal-select-btn{
-    border: 1px solid #000000;
+    background-color: white;
+    /*color: #ffd200;*/
+    border: 1px solid #dee2e6;
     display: flex;
-    width: 60px;
-    height: 32px;
+    width: 70px;
+    /*height: 32px;*/
     align-items: center;
     justify-content: center;
-    border-radius:8px;
-    ;
+    /*border-radius:8px;*/
+    font-size: 20px;
+    padding: 10px 10px 7px 10px;
+    /*border: none;*/
+    margin-right: 5px;
+}
+.none{
+    display: none;
 }
 .book-modal-close-btn{
     display: flex;
@@ -287,6 +341,12 @@ datalist{
     color: #ff4d4f;
 }
 .content-err4{
+    display: none;
+    font-size: 20px;
+    color: #ff4d4f;
+}
+.content-err5{
+    padding-top: 10px;
     display: none;
     font-size: 20px;
     color: #ff4d4f;
