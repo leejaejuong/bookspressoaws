@@ -1,8 +1,8 @@
 package com.example.bookspresso.controller.member;
 
-import com.example.bookspresso.controller.admin.PosterController;
 import com.example.bookspresso.dto.member.MemberJoinDTO;
 import com.example.bookspresso.service.member.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,49 +20,67 @@ public class MemberController {
 
     @GetMapping("/join")
     public String join(){
-        return "member/member/join";
+        return "member/join";
     }
 
     //회원가입 시 멤버 테이블의 데이터와 프로필 테이블의 데이터가 모두 들어가야함
 
     @PostMapping("/join")
     public String join(MemberJoinDTO memberJoinDTO){
+// join.html에서 모든 input에 값을 입력하지 않으면 데이터가 전송되지 않게 설정
+//      // 특정 조건에 알맞은 아이디/이메일 설정 해야함
+        System.out.println("@@@@@ memberJoinDTO = " + memberJoinDTO);
 
-//        memberJoinDTO.setIntroduction("안녕하세요 :) ");
-//        memberJoinDTO.setProfileUuid("uuid");
-//        System.out.println("memberJoinDTO = " + memberJoinDTO);
-//
-//        try {
-//            memberService.addMember(memberJoinDTO);
-//        } catch (Exception e) {
-////            log.error(e.toString());
-//            System.out.println("회원가입 진행 중 오류 발생!!!!!!!!!");
-//            return "member/member/join";
-//        }
-//        // 소개글 기본값 안녕하세요
-//
-//        memberService.addMember(memberJoinDTO);
-//
-//        return "member/member/login";
-        return null;
+        try {
+            memberService.addMember(memberJoinDTO);
+        } catch (IllegalStateException e) {
+            log.error(e.toString());
+
+            return "member/join";
+        }
+
+
+        return "redirect:/member/login";
     }
 
     @GetMapping("/login")
     public String login(){
-        return "member/member/login";
+        return "member/login";
     }
+
+    @PostMapping("/login")
+    public String login(String loginId, String password,
+                        HttpSession session){
+        Long memberId = null;
+
+        try {
+            memberId = memberService.findMemberId(loginId, password);
+        } catch (IllegalArgumentException e) {
+            System.out.println("존재하지 않는 회원정보");
+            return "member/login";
+        } catch (Exception e) {
+            System.out.println("예상치 못한 예외");
+            return "member/login";
+        }
+
+        session.setAttribute("memberId", memberId);
+        System.out.println(loginId+" 회원의 회원번호 = " + session.getAttribute("memberId"));
+        return "redirect:/";
+//        redirect: => html의 경로가 아닌 링크의 주소로 사용할려고 할때
+    }
+// 이메일 검증 => 백 : 검증 라이브러리 사용 and 프론트 : js에서 정규표현식
+
 
     @GetMapping("/findId")
     public String findId(){
-        return "member/member/findId";
+        return "member/findId";
     }
 
     @GetMapping("/findPassword")
     public String findPassword(){
-        return "member/member/findPassword";
+        return "member/findPassword";
     }
 
-//  이미지, 소개글_ 기본값을 form으로 받아서 dto에 넣일때 get으로 dto에 같이 넣는 방식으로 작업
 
 
 }
