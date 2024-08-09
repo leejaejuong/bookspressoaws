@@ -22,7 +22,18 @@
         WHERE NICKNAME = #{nickname}
     </select>
 
+    <select id="selectEmailCount">
+        SELECT COUNT(EMAIL)
+        FROM TBL_MEMBER
+        WHERE EMAIL = #{email}
+    </select>
 <!--  로그인 통과 처리 쿼리  -->
+
+    <select id="selectMemberId">
+        SELECT MEMBER_ID
+        FROM TBL_MEMBER
+        WHERE LOGIN_ID = #{loginId} AND PASSWORD = #{password}
+    </select>
 
 
 </mapper>

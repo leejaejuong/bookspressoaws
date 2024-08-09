@@ -10,7 +10,5 @@ public class MemberJoinDTO {
     private String password;
     private String nickname;
     private String email;
-    private String introduction;
-    private String profileUuid;
     // 기본값을 넣어주는 식
 }
