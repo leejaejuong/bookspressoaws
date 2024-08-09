@@ -9,14 +9,30 @@
     INSERT INTO TBL_DEBATE(DEBATE_ID,MEETING_ID,DEBATE_TYPE_ID,TITLE,OUTLINE,GROUP_START_DATE,GROUP_END_DATE,DEBATE_START_DATE,DEBATE_END_DATE)
     VALUES (#{debateId},#{meetingId},#{debateTypeId},#{title},#{outLine},#{groupStartDate},#{groupEndDate},#{debateStartDate},#{debateEndDate})
 </insert>
-
+<!--debateinpo의 책검색api 쿼리-->
     <select id="selectbookinpo">
         SELECT ISBN13,TITLE,AUTHOR,DESCRIPTION,PUBDATE,COVER
         FROM TBL_BOOK
         WHERE TITLE LIKE '%' || #{title} || '%'
     </select>
 
+<insert id="insertDebateMember">
+    <selectKey resultType="long" keyProperty="memDebInfo" order="BEFORE">
+        select SEQ_MEMBER_DEBATE.nextval from dual
+    </selectKey>
+    INSERT INTO TBL_MEMBER_DEBATE(MEM_DEB_INFO, DEBATE_ID, MEMBER_ID,)
+    VALUES (#{memDebInfo},#{debateId},#{memberId})
+</insert>
+    
+    
+    <insert id="insertDebateBook">
+        <selectKey resultType="long" keyProperty="debateBookId" order="BEFORE">
+            select SEQ_DEBATE_BOOK.nextval from dual
+        </selectKey>
+        INSERT INTO TBL_DEBATE_BOOK(DEBATE_BOOK_ID, DEBATE_ID, ISBN13,MEMBERID)
+        VALUES (#{debateBookId},#{debateId},#{isbn13},#{memberId})
 
+    </insert>
 
 
 

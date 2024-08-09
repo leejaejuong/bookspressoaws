@@ -16,4 +16,5 @@ public class DebateInpoDTO {
    private String groupEndDate;
    private String debateStartDate;
    private String debateEndDate;
+   private String isbn13;
 }
