@@ -4,6 +4,8 @@ import com.example.bookspresso.dto.debate.BookinpoDTO;
 import com.example.bookspresso.dto.debate.DebateInpoDTO;
 import com.example.bookspresso.dto.debate.DebateTypeDTO;
 import com.example.bookspresso.dto.debate.MettingTypeDTO;
+import com.example.bookspresso.dto.debate.N_N.DebateBookDTO;
+import com.example.bookspresso.dto.debate.N_N.MemberdebateDTO;
 import com.example.bookspresso.mapper.debate.DebateMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,16 @@ import java.util.List;
 public class Debateservice {
     private final DebateMapper debateMapper;
     //토론정보입력
-    public void addInpo(DebateInpoDTO debateinpoDTO){ debateMapper.insertDebateInpo(debateinpoDTO);}
+    public void addInpo(DebateInpoDTO debateinpoDTO){
+        debateMapper.insertDebateInpo(debateinpoDTO);
+    }
+    public void addConnection( DebateBookDTO debateBookDTO,
+                               MemberdebateDTO memberDebateDTO){
+        debateMapper.insertDebateBook(debateBookDTO);
+        debateMapper.insertMemberDebate(memberDebateDTO);
+    }
+
+
     //책 검색
     public List<BookinpoDTO> searchBookinpo(String title){return debateMapper.selectbookinpo(title);}
 

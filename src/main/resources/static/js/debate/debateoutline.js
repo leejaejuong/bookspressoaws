@@ -250,7 +250,7 @@
             $contentErr4.style.display = "none";
         }
         //책정보 검사
-        if(isn13===null){
+        if(isn13===''){
             $bookTotalBox.style.border = "1px solid #ff4d4f";
             $contentErr5.style.display="flex";
         }else{
@@ -260,7 +260,7 @@
 
         if (!($titleBox.value === '' || $contentBox.value === '' ||
             $groupEndDate.value === '' || $debateStartDate.value === ''||
-            isn13===null)) {
+            isn13==='')) {
             document.getElementById('submitbtn').submit();
 
         }

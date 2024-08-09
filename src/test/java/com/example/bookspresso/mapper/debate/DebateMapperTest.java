@@ -1,21 +1,20 @@
 package com.example.bookspresso.mapper.debate;
 
 import com.example.bookspresso.dto.debate.N_N.DebateBookDTO;
-import com.example.bookspresso.dto.debate.N_N.MemberDebate;
+import com.example.bookspresso.dto.debate.N_N.MemberdebateDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 
 class DebateMapperTest {
 @Autowired DebateMapper debateMapper;
 DebateBookDTO debateBookDTO;
-MemberDebate MemberDebate;
+MemberdebateDTO MemberdebateDTO;
     @BeforeEach
     void setUp() {
         debateBookDTO=DebateBookDTO.builder()
