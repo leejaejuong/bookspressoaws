@@ -14,8 +14,7 @@ let editMode = (isEditing) => {
         descriptionDiv.classList.add('hidden');
         textarea.classList.remove('hidden');
     } else {
-        descriptionDiv.textContent = isEditing == false ? originalText : textarea.value;
-
+        descriptionDiv.textContent = isEditing === false ? originalText : textarea.value;
         descriptionDiv.classList.remove('hidden');
         textarea.classList.add('hidden');
     }
@@ -28,6 +27,66 @@ let editMode = (isEditing) => {
 let showEditArea = () => editMode(true);
 let saveDescription = () => editMode(null);
 let cancelEdit = () => editMode(false);
+
+
+{   // 자기소개 수정 처리
+    let $saveBtn = document.querySelector('.button_save');
+    let $editTextarea = document.querySelector('.edit_textarea');
+
+    $saveBtn.addEventListener('click', function () {
+        // console.log('click')
+        let value = $editTextarea.value;
+        console.log(value)
+        let object = {introduce : value}
+
+        fetch('/member-introduce', {
+            method : 'PATCH',
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(object)
+        }).then(resp => resp)
+            .then(resp => console.log(resp))
+
+    });
+}
+{   // 닉네임 수정 처리
+    let $nickNameBtn = document.querySelector('.nickname_confirmBtn')
+    let $editNickname = document.querySelector('.nickname-input')
+
+    $nickNameBtn.addEventListener('click' , function (){
+        // console.log('클릭')
+        let value = $editNickname.value;
+        console.log(value)
+
+        let object = {nickname : value}
+
+        fetch('/members-nickname' , {
+            method : 'PATCH',
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(object)
+        }).then(resp => resp)
+            .then(resp => console.log(resp))
+    });
+}
+
+{   // 이메일 수정 처리
+    let $emailBtn = document.querySelector('.email_confirmBtn')
+    let $editEmail = document.querySelector('.email-input')
+
+    $emailBtn.addEventListener('click', function (){
+        // console.log('click')
+        let value = $editEmail.value;
+        console.log(value)
+
+        let object = {email : value}
+
+        fetch('/members-email', {
+            method : 'PATCH',
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(object)
+        }).then(resp => resp)
+            .then(resp => console.log(resp))
+    });
+}
 
 
 {
@@ -52,7 +111,6 @@ let cancelEdit = () => editMode(false);
 }
 
 {
-
 // 닉네임 모달 관련 요소 가져오기
     let n_modal = document.querySelector(".modal-nickname");
     let btn = document.querySelector(".profile_nickname_button");
@@ -80,13 +138,12 @@ let cancelEdit = () => editMode(false);
 
 // 모달 외부를 클릭하면 모달을 닫음
     document.body.onclick = function (event) {
-        console.log('click@@@')
+        // console.log('click@@@')
         if (event.target == n_modal) {
             n_modal.style.display = "none";
         }
     };
 }
-
 
 {
 // 이메일 모달 관련 요소 가져오기

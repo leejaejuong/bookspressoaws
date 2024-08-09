@@ -39,6 +39,7 @@
                             </div>
                             <div class="setting_user_container">
                                 <div class="setting_user">
+                                    <!-- 유저 이미지 정보 -->
                                     <div class="setting_user_img">
                                         <div class="user-img-box">
                                             <span class="user-img"
@@ -49,6 +50,7 @@
                                             </span>
                                         </div>
                                     </div>
+                                    <!-- 유저 닉네임, 이메일 정보 -->
                                     <div class="setting_user_info">
                                         <div class="setting_user_detail">
                                             <span class="profile_nickname" th:text="${memberDto.nickname}"></span>
@@ -62,6 +64,7 @@
                                     <a class="profile" th:href="@{/mypage/myBook}">내 서재</a>
                                 </div>
                             </div>
+                            <!-- 회원 정보 body -->
                             <div class="settings_body">
                                 <div class="setting_body_content">
                                     <div class="setting_body_profile">프로필</div>
@@ -70,30 +73,35 @@
                                     <div class="body_tab_content">
                                         <div class="body_content">
                                             <div class="body_profile">
+                                                <!-- 소개글 창 -->
                                                 <div class="profile_container">
                                                     <h1 class="profile_container_title">
                                                         <span class="profile_title">소개글</span>
                                                     </h1>
                                                     <div class="settings_profile_description"
                                                          th:text="${memberDto.introduce}"></div>
-                                                    <textarea class="edit_textarea hidden"></textarea>
-                                                    <div class="settings_profile_button">
-                                                        <button type="button" class="profile_letter_button"
-                                                                onclick="showEditArea()">
-                                                            수정
-                                                        </button>
-                                                        <button type="button" class="button_save hidden"
-                                                                onclick="saveDescription()">저장
-                                                        </button>
-                                                        <button type="button" class="button_cancel hidden"
-                                                                onclick="cancelEdit()">취소
-                                                        </button>
-                                                    </div>
+                                                    <form method="post" action="/mypage/setting">
+                                                        <textarea name="introduce" class="edit_textarea hidden"></textarea>
+                                                        <div class="settings_profile_button">
+                                                            <button type="button" class="profile_letter_button"
+                                                                    onclick="showEditArea()">
+                                                                수정
+                                                            </button>
+                                                            <button type="button" class="button_save hidden"
+                                                                    onclick="saveDescription()">저장
+                                                            </button>
+                                                            <button type="button" class="button_cancel hidden"
+                                                                    onclick="cancelEdit()">취소
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </div>
+                                                <!-- 회원 설정 창 -->
                                                 <div class="profile_container">
                                                     <h1 class="profile_container_title">
                                                         <span class="profile_title">회원 설정</span>
                                                     </h1>
+                                                    <!-- 닉네임  -->
                                                     <div class="profile_container_item">
                                                         <span class="profile_container_title">닉네임</span>
                                                         <div class="profile_container_modify">
@@ -142,6 +150,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- 회원 탈퇴 창 -->
                                                 <div class="profile_container">
                                                     <h1 class="profile_container_title">
                                                         <span class="profile_title">회원 탈퇴</span>
@@ -167,24 +176,27 @@
     </div>
 </div>
 
+<!-- 닉네임 변경 모달창 -->
 <div id="modal-nickname" class="modal-nickname">
     <div class="modal-content">
         <span class="nickname_close">&times;</span>
         <div class="nickname">닉네임 변경</div>
          <input  type="text" class="nickname-input" id="nickname" name="nickname">
-        <button id="nickname_confirmBtn">확인</button>
+        <button class="nickname_confirmBtn" id="nickname_confirmBtn">확인</button>
     </div>
 </div>
 
+<!-- 이메일 변경 모달창 -->
 <div id="modal-email" class="modal-email">
     <div class="modal-content">
         <span class="email_close">&times;</span>
         <div class="email">이메일 변경</div>
         <input type="text" class="email-input" id="email" name="email">
-        <button id="email_confirmBtn">확인</button>
+        <button class="email_confirmBtn" id="email_confirmBtn">확인</button>
     </div>
 </div>
 
+<!-- 회원 탈퇴 모달창 -->
 <div id="modal-delete" class="modal-delete">
     <div class="modal-delete-content">
         <span class="delete_close">&times;</span>

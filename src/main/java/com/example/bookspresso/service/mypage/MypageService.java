@@ -17,7 +17,19 @@ public class MypageService {
                 .orElseThrow( () -> new IllegalArgumentException("존재하지 않는 회원 번호"));
     }
 
-    public void fixedIntroduce(SettingDTO settingDTO) {
-        settingMapper.updateIntroduce(settingDTO);
+    public void modifyIntroduce(Long memberId, String introduce) {
+       settingMapper.updateIntroduce(memberId, introduce);
+    }
+
+    public void modifyNickname(Long memberId, String nickname){
+        settingMapper.updateNickname(memberId, nickname);
+    }
+
+    public void modifyEmail(Long memberId, String email){
+        settingMapper.updateEmail(memberId, email);
+    }
+
+    public void delteMembers(Long memberId){
+        settingMapper.deleteMember(memberId);
     }
 }
