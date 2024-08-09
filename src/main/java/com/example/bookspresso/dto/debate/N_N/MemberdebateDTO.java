@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MemberDebate {
+public class MemberdebateDTO {
    private Long memDebInfo;
    private Long memberId;
    private Long debateId;

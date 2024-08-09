@@ -1,46 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bookspresso.mapper.debate.DebateMapper">
-<!--    토론만들기 INSERT 쿼리-->
+    <!--    토론만들기 INSERT 쿼리-->
     <insert id="insertDebateInpo">
-    <selectKey resultType="long" keyProperty="debateId" order="BEFORE">
-        select SEQ_DEBATE_INFO.nextval from dual
-    </selectKey>
-    INSERT INTO TBL_DEBATE(DEBATE_ID,MEETING_ID,DEBATE_TYPE_ID,TITLE,OUTLINE,GROUP_START_DATE,GROUP_END_DATE,DEBATE_START_DATE,DEBATE_END_DATE)
-    VALUES (#{debateId},#{meetingId},#{debateTypeId},#{title},#{outLine},#{groupStartDate},#{groupEndDate},#{debateStartDate},#{debateEndDate})
-</insert>
-<!--debateinpo의 책검색api 쿼리-->
+        <selectKey resultType="long" keyProperty="debateId" order="BEFORE">
+            select SEQ_DEBATE_INFO.nextval from dual
+        </selectKey>
+        INSERT INTO TBL_DEBATE(DEBATE_ID,MEETING_ID,DEBATE_TYPE_ID,TITLE,OUTLINE,GROUP_START_DATE,GROUP_END_DATE,DEBATE_START_DATE,DEBATE_END_DATE)
+        VALUES (#{debateId},#{meetingId},#{debateTypeId},#{title},#{outLine},#{groupStartDate},#{groupEndDate},#{debateStartDate},#{debateEndDate})
+    </insert>
+    <!--debateinpo의 책검색api 쿼리-->
     <select id="selectbookinpo">
         SELECT ISBN13,TITLE,AUTHOR,DESCRIPTION,PUBDATE,COVER
         FROM TBL_BOOK
         WHERE TITLE LIKE '%' || #{title} || '%'
     </select>
-
-<insert id="insertDebateMember">
-    <selectKey resultType="long" keyProperty="memDebInfo" order="BEFORE">
-        select SEQ_MEMBER_DEBATE.nextval from dual
-    </selectKey>
-    INSERT INTO TBL_MEMBER_DEBATE(MEM_DEB_INFO, DEBATE_ID, MEMBER_ID,)
-    VALUES (#{memDebInfo},#{debateId},#{memberId})
-</insert>
-    
-    
+    <!-- MemberDebate 다대다 연결 insert-->
+    <insert id="insertMemberDebate">
+        <selectKey resultType="long" keyProperty="memDebInfo" order="BEFORE">
+            select SEQ_MEMBER_DEBATE.nextval from dual
+        </selectKey>
+        INSERT INTO TBL_MEMBER_DEBATE(MEM_DEB_INFO, DEBATE_ID, MEMBER_ID)
+        VALUES (#{memDebInfo},#{debateId},#{memberId})
+    </insert>
+    <!-- DebateBook 다대다 연결 insert-->
     <insert id="insertDebateBook">
         <selectKey resultType="long" keyProperty="debateBookId" order="BEFORE">
             select SEQ_DEBATE_BOOK.nextval from dual
         </selectKey>
-        INSERT INTO TBL_DEBATE_BOOK(DEBATE_BOOK_ID, DEBATE_ID, ISBN13,MEMBERID)
+        INSERT INTO TBL_DEBATE_BOOK(DEBATE_BOOK_ID, DEBATE_ID, ISBN13,MEMBER_ID)
         VALUES (#{debateBookId},#{debateId},#{isbn13},#{memberId})
-
     </insert>
-
-
-
-
-
-
-
-
+    <select id="selectdebateId">
+        SELECT DEBATE_ID
+        FROM TBL_DEBATE
+        WHERE DEBATE_ID=#{debateId}
+    </select>
     <select id="selectdebateinpo">
         SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, TITLE, OUTLINE,
                TO_CHAR(I.GROUP_START_DATE,'YYYY-MM-DD') AS GROUP_START_DATE, TO_CHAR(GROUP_END_DATE,'YYYY-MM-DD')AS GROUP_END_DATE,
@@ -67,10 +62,6 @@
     </insert>
 
 </mapper>
-
-
-
-
 
 
 
