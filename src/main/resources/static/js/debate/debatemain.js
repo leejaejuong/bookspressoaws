@@ -2,6 +2,9 @@
 {let $mackeBtn = document.querySelector('.mack-button')
 
     $mackeBtn.addEventListener('click',function (){
-        if(sessionStorage.getItem(""));
+        if(sessionStorage.getItem("memberId")==null){
+            location.href=`/member/login`
+        }
+        location.href=`/debate/make`
     })
 }

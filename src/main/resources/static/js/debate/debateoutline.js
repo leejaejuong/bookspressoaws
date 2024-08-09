@@ -141,8 +141,10 @@
             // 고유번호
             let $isbn13Tag=$parent.querySelector('.isbn13');
             let $inIsbn13Tag=document.querySelector('.book-search-isbn13');
+            let $isbn13Hidden=document.querySelector('.gather-isbn13-hidden');
             let isbn13=$isbn13Tag.value;
             $inIsbn13Tag.value=isbn13;
+            $isbn13Hidden.value=isbn13;
 
         }
     });
