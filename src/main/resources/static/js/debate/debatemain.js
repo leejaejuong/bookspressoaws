@@ -1,7 +1,7 @@
 //버튼처리
-{let $writebtn = document.querySelector('.debate-button')
+{let $mackeBtn = document.querySelector('.mack-button')
 
-    $writebtn.addEventListener('click',function (){
-        location.href=`/debate/debateboard`;
+    $mackeBtn.addEventListener('click',function (){
+        if(sessionStorage.getItem(""));
     })
 }
