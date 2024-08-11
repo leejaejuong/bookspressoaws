@@ -235,8 +235,8 @@ datalist{
     width: auto;
     padding: 12px 0;
     margin-bottom: 10px;
-    border-radius: 10px;
-    border: 1px solid #dee2e6;
+
+    border-top: 1px solid #dee2e6;
 }
 .modal-text-content-box{
     display: flex;

@@ -189,8 +189,9 @@
                 </div>
                 <div class="modal-select">
                 <button class="modal-select-btn">선택</button>
-                
+               
                 </div>
+               
             </div>
 
         `;
@@ -254,7 +255,7 @@
             $bookTotalBox.style.border = "1px solid #ff4d4f";
             $contentErr5.style.display="flex";
         }else{
-            $bookTotalBox.style.border = "none";
+            $bookTotalBox.style.border = "1px solid #dee2e6";
             $contentErr5.style.display="none";
         }
 
@@ -262,7 +263,6 @@
             $groupEndDate.value === '' || $debateStartDate.value === ''||
             isn13==='')) {
             document.getElementById('submitbtn').submit();
-
         }
 
 

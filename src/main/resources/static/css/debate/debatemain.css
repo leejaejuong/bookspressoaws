@@ -20,12 +20,37 @@
 .debate-object-book-img{
     width: 100px;
     height: 145px;
+    margin: 5px 0;
 }
 .debate-object-book-box{
 display: flex;
 }
+.debate-object-book-back-box{
+
+    position: absolute;
+    width: 325px;
+height: 215px;
+    overflow:hidden;
+    padding: 5px 0;
+}
+
+.debate-object-book-back{
+    filter: blur(80px);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: .15;
+    overflow:hidden;
+}
 .post-title-font{
-  font-size: 25px;
+  font-size: 20px;
 }
 .debate-button{
     display: flex;
@@ -53,10 +78,41 @@ display: flex;
 }
 .debate-main-box{
     width: 320px;
-
     list-style: none;
     user-select: none;
     height: 100%;
     padding: 15px;
+}
+/*페이징 처리*/
+.a-style {
+    text-align: center;
+    text-decoration: none;
+    color: inherit; }
+
+.page-total-box{
+    display: flex;
+    justify-content: center;
+}
+.page-box{
+    display: flex;
+    list-style-type: none;
 
 }
+.page-in-text{
+    /*border: 1px solid #212529;*/
+    width: 30px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 40px;
+    background-color: white;
+    color: #ffd200;
+    cursor: pointer;
+
+}
+.active{
+    background-color: #212529;
+    color: #ffd200;
+}
+

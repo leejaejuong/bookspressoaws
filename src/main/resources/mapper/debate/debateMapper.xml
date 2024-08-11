@@ -11,7 +11,12 @@
     </insert>
     <!--debateinpo의 책검색api 쿼리-->
     <select id="selectbookinpo">
-        SELECT ISBN13,TITLE,AUTHOR,DESCRIPTION,PUBDATE,COVER
+     SELECT ISBN13,TITLE,AUTHOR,DESCRIPTION,PUBDATE,COVER
+                  FROM TBL_BOOK
+                     WHERE TITLE LIKE '%' || #{title} || '%'
+    </select>
+    <select id="selectBookTotal">
+        SELECT COUNT(ISBN13)
         FROM TBL_BOOK
         WHERE TITLE LIKE '%' || #{title} || '%'
     </select>
@@ -31,11 +36,35 @@
         INSERT INTO TBL_DEBATE_BOOK(DEBATE_BOOK_ID, DEBATE_ID, ISBN13,MEMBER_ID)
         VALUES (#{debateBookId},#{debateId},#{isbn13},#{memberId})
     </insert>
-    <select id="selectdebateId">
-        SELECT DEBATE_ID
-        FROM TBL_DEBATE
-        WHERE DEBATE_ID=#{debateId}
+<!--    토론메인 페이지에서 각요소들의 정보를 가져오는 쿼리 페이징 처리-->
+    <select id="selectListWithPage">
+        SELECT  DEBATE_ID, MEETING_TYPE, DEBATE_TYPE, TITLE, DESCRIPTION, DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_BOOK_ID, ISBN13, COVER
+        FROM(SELECT ROWNUM AS RNUM,DEBATE_ID, MEETING_TYPE, DEBATE_TYPE, TITLE, DESCRIPTION, DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_BOOK_ID, ISBN13, COVER
+          FROM(SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, I.TITLE,B.DESCRIPTION,
+                 TO_CHAR(I.DEBATE_START_DATE,'YYYY-MM-DD')AS DEBATE_START_DATE, TO_CHAR(I.DEBATE_END_DATE,'YYYY-MM-DD')AS DEBATE_END_DATE,
+                              DB.DEBATE_BOOK_ID,DB.ISBN13,B.COVER
+                 FROM TBL_DEBATE I JOIN TBL_MEETING_TYPE T
+                                        ON I.MEETING_ID = T.MEETING_ID
+                                 JOIN TBL_DEBATE_TYPE P
+                                      ON I.DEBATE_TYPE_ID = P.DEBATE_TYPE_ID
+                                 JOIN TBL_DEBATE_BOOK DB
+                                        ON I.DEBATE_ID = DB.DEBATE_ID
+                                 JOIN TBL_BOOK B
+                                         ON DB.ISBN13 = B.ISBN13
+                                         ORDER BY DEBATE_ID DESC
+                                      )
+                             <![CDATA[
+                              WHERE ROWNUM <= #{page} * #{amount}
+                              ]]>
+               )
+        WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
+<!--    페이징 처리를 위한 전체 토론검색-->
+<select id="selectTotal">
+    SELECT COUNT(DEBATE_ID)FROM TBL_DEBATE
+</select>
+
+<!--예시쿼리-->
     <select id="selectdebateinpo">
         SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, TITLE, OUTLINE,
                TO_CHAR(I.GROUP_START_DATE,'YYYY-MM-DD') AS GROUP_START_DATE, TO_CHAR(GROUP_END_DATE,'YYYY-MM-DD')AS GROUP_END_DATE,
@@ -46,20 +75,18 @@
                                ON I.DEBATE_TYPE_ID = P.DEBATE_TYPE_ID
         WHERE I.DEBATE_ID=#{debateId}
     </select>
+<!--    SELECT  ISBN13, TITLE, AUTHOR, DESCRIPTION, PUBDATE, COVER-->
+<!--    FROM(SELECT ROWNUM AS RNUM,ISBN13, TITLE, AUTHOR, DESCRIPTION, PUBDATE, COVER-->
+<!--    FROM (SELECT ISBN13,TITLE,AUTHOR,DESCRIPTION,PUBDATE,COVER-->
+<!--    FROM TBL_BOOK-->
+<!--    WHERE TITLE LIKE '%' || #{title} || '%'-->
+<!--    )-->
+<!--    <![CDATA[-->
+<!--             WHERE ROWNUM <= #{page} * #{amount}-->
+<!--                              ]]>-->
+<!--    )-->
+<!--    WHERE RNUM > (#{page} - 1) * #{amount}-->
 
-    <insert id="insertDebateType">
-
-        INSERT INTO TBL_DEBATE_TYPE(DEBATE_TYPE_ID, DEBATE_TYPE)
-        VALUES (#{debateTypeId},#{debateType})
-
-    </insert>
-    <insert id="insertMettingType">
-
-        INSERT INTO TBL_MEETING_TYPE(MEETING_ID, MEETING_TYPE)
-        VALUES( #{mettingId},#{mettingType})
-
-
-    </insert>
 
 </mapper>
 
