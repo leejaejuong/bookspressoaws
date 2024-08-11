@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>토론하기</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/debate/debatewrite.css}"/>
     <script defer th:src="@{/js/debate/debatewrite.js}"></script>
@@ -46,24 +47,42 @@
         </aside>
         <!--    게시판-->
         <div class="board-object-box">
+            <form id="submitbtn" action="/debate/write" method="post">
                 <div class="write-total-box">
                     <div class="write-title-box">
-                        <input type="text" class="write-title-text" placeholder="제목을 입력하세요" maxlength="70"/>
+                        <input type="text" name="title" class="write-title-text" placeholder="제목을 입력하세요" maxlength="70"/>
                         <div class="title-count-box">
                             <p><span class="title-count">0</span>/70</p>
                         </div>
                     </div>
+                    <div class="toolbar">
+                        <button type="button" onclick="execCmd('bold')" title="Bold"><i class="fas fa-bold"></i></button>
+                        <button type="button" onclick="execCmd('italic')" title="Italic"><i class="fas fa-italic"></i></button>
+                        <button type="button"  onclick="execCmd('underline')" title="Underline"><i class="fas fa-underline"></i></button>
+                        <button type="button" onclick="execCmd('createLink')" title="Insert Link"><i class="fas fa-link"></i></button>
+                        <button type="button" onclick="document.getElementById('imageInput').click()" title="Insert Image"><i class="fas fa-image"></i></button>
+                        <input type="file" id="imageInput" style="display:none" onchange="insertImage(this)">
+                        <button type="button" onclick="execCmd('formatBlock', '<h1>')" title="Header 1"><i class="fas fa-heading"></i> H1</button>
+                        <button type="button" onclick="execCmd('formatBlock', '<h2>')" title="Header 2"><i class="fas fa-heading"></i> H2</button>
+                        <button type="button" onclick="execCmd('insertUnorderedList')" title="Unordered List"><i class="fas fa-list-ul"></i></button>
+                        <button type="button" onclick="execCmd('insertOrderedList')" title="Ordered List"><i class="fas fa-list-ol"></i></button>
+                        <button type="button" onclick="execCmd('justifyLeft')" title="Align Left"><i class="fas fa-align-left"></i></button>
+                        <button type="button" onclick="execCmd('justifyCenter')" title="Align Center"><i class="fas fa-align-center"></i></button>
+                        <button type="button" onclick="execCmd('justifyRight')" title="Align Right"><i class="fas fa-align-right"></i></button>
+                    </div>
 
                     <div class="write-content-box">
-                        <textarea class="write-content-text"></textarea>
+                        <div id="editor"  contenteditable="true" class="write-content-text"></div>
+                        <input type="hidden" name="opinion" id="opinion-hidden">
+<!--                        <textarea class="write-content-text" ></textarea>-->
                     </div>
                     <div class="gather-create-butten-div">
-                        <button type="submit" class="gather-create-butten-dv1 nexttype" >
+                        <button type="button" class="gather-create-butten-dv1 nexttype" >
                             저장
                         </button>
-
                     </div>
                 </div>
+            </form>
         </div>
     </main>
 </div>

@@ -2,10 +2,11 @@ package com.example.bookspresso.service.debate;
 
 import com.example.bookspresso.dto.debate.BookinpoDTO;
 import com.example.bookspresso.dto.debate.DebateInpoDTO;
-import com.example.bookspresso.dto.debate.DebateTypeDTO;
-import com.example.bookspresso.dto.debate.MettingTypeDTO;
 import com.example.bookspresso.dto.debate.N_N.DebateBookDTO;
 import com.example.bookspresso.dto.debate.N_N.MemberdebateDTO;
+import com.example.bookspresso.dto.debate.debateMain.DebateMainPageDTO;
+import com.example.bookspresso.dto.debate.page.DebatePageRequestDTO;
+import com.example.bookspresso.dto.debate.page.PageRequestDTO;
 import com.example.bookspresso.mapper.debate.DebateMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,16 +31,22 @@ public class Debateservice {
 
 
     //책 검색
-    public List<BookinpoDTO> searchBookinpo(String title){return debateMapper.selectbookinpo(title);}
+    public List<BookinpoDTO> searchBookinpo(String title){
+        return debateMapper.selectbookinpo(title);}
+    public int findBookTotal(){
+        return debateMapper.selectBookTotal();
+    }
 
-    //로론 정보찾기
-    public List<DebateInpoDTO> findInpo(Long debateId){return debateMapper.selectdebateinpo(debateId);}
+
+
+    public List<DebateMainPageDTO> findMainPage(PageRequestDTO pageRequestDTO){
+        return debateMapper.selectListWithPage(pageRequestDTO);
+    }
+    public int findTotal(){
+        return debateMapper.selectTotal();
+    }
 
 
 
-
-    //테스트코드용
-    public void adddebate(DebateTypeDTO debateTypeDTO){debateMapper.insertDebateType(debateTypeDTO);}
-    public void addmetting(MettingTypeDTO mettingTypeDTO){debateMapper.insertMettingType(mettingTypeDTO);}
 
 }

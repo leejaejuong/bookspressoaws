@@ -8,10 +8,16 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class debateBoardDTO {
+public class DebateBoardDTO {
    private Long noticeId;
    private Long debateId;
    private String title;
    private String opinion;
-   private String NoticeDate;
+   private String noticeDate;
+   private Long memberId;
+   private String nickname;
+   private String profileUuid;
+   private String profileUpload;
+
 }
+
