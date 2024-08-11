@@ -15,8 +15,8 @@ public class MainController {
     private final AladinService aladinService;
     @GetMapping("/")
     public String mainpage(Model model)throws Exception{
-        List<Aladinitem> aladin = aladinService.getApialadin();
-        model.addAttribute("aladin", aladin);
+//        List<Aladinitem> aladin = aladinService.getApialadin();
+//        model.addAttribute("aladin", aladin);
 
 
         return "mainpage/mainpage";

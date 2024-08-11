@@ -24,343 +24,58 @@
 
             </div>
             <ul class="post-object-man">
-                <li class="debate-main-box">
+                <li th:each="debateMain:${debateMain}" class="debate-main-box">
                     <div class="post-object-box debate-object-style">
+                        <div class="debate-object-book-back-box">
+                            <img class="debate-object-book-back" th:src="${debateMain.cover}"/>
+                        </div>
                         <div class="post-object-title">
-
                             <div class="post-title-user">
-                                <div class="post-title-font"> 토론 타이틀 </div>
+                                <div class="post-title-font" th:text="${debateMain.title}"> </div>
                             </div>
                         </div>
                         <!--                        사진부분-->
                         <div class="debate-book-box">
+
                                 <div class="debate-object-book-box">
-                                    <img class="debate-object-book-img" src="/img/nami.png"/>
+                                    <img class="debate-object-book-img" th:src="${debateMain.cover}"/>
                                 </div>
-
-
                         </div>
 
                         <ul class="book-ul-st1">
-                            <li class="meeting-type book-ul-style">혼자 하기</li>
-                            <li class="meeting-type book-ul-style">자유형</li>
-                            <li class="debate-type book-ul-style">오프라인</li>
+                            <li class="meeting-type book-ul-style" th:text="${debateMain.debateType}"></li>
+                            <li class="debate-type book-ul-style" th:text="${debateMain.meetingType}"></li>
                             <div class="meeting-date book-ul-style">
-                                <li>2023-07-03 </li>
-                                <li>~</li>
-                                <li>2023-07-30</li>
+                                <div th:text="${debateMain.debateStartDate}"></div>
+                                <div > &ensp; ~ &ensp;</div>
+                                <div th:text="${debateMain.debateEndDate}"></div>
                             </div>
                         </ul>
 
                         <div class="post-object-content-box">
-                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
-                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
-
-                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
-                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
-
-                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
-                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
-
-                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
-                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
+                            <div class="post-content-content" th:text="${debateMain.description}">
                             </div>
                         </div>
+
                         <button class="debate-button">
                             자세히 보기
                         </button>
                     </div>
                 </li>
-                <li class="debate-main-box">
-                    <div class="post-object-box debate-object-style">
-                        <div class="post-object-title">
-
-                            <div class="post-title-user">
-                                <div class="post-title-font"> 토론 타이틀 </div>
-                            </div>
-                        </div>
-                        <!--                        사진부분-->
-                        <div class="debate-book-box">
-                            <div class="debate-object-book-box">
-                                <img class="debate-object-book-img" src="/img/nami.png"/>
-                            </div>
-
-
-                        </div>
-
-                        <ul class="book-ul-st1">
-                            <li class="meeting-type book-ul-style">혼자 하기</li>
-                            <li class="meeting-type book-ul-style">자유형</li>
-                            <li class="debate-type book-ul-style">오프라인</li>
-                            <div class="meeting-date book-ul-style">
-                                <li>2023-07-03 </li>
-                                <li>~</li>
-                                <li>2023-07-30</li>
-                            </div>
-                        </ul>
-
-                        <div class="post-object-content-box">
-                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
-                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
-
-                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
-                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
-
-                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
-                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
-
-                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
-                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
-                            </div>
-                        </div>
-                        <div class="debate-button">
-                            자세히 보기
-                        </div>
-                    </div>
-                </li>
-                <li class="debate-main-box">
-                    <div class="post-object-box debate-object-style">
-                        <div class="post-object-title">
-
-                            <div class="post-title-user">
-                                <div class="post-title-font"> 토론 타이틀 </div>
-                            </div>
-                        </div>
-                        <!--                        사진부분-->
-                        <div class="debate-book-box">
-                            <div class="debate-object-book-box">
-                                <img class="debate-object-book-img" src="/img/nami.png"/>
-                            </div>
-
-
-                        </div>
-
-                        <ul class="book-ul-st1">
-                            <li class="meeting-type book-ul-style">혼자 하기</li>
-                            <li class="meeting-type book-ul-style">자유형</li>
-                            <li class="debate-type book-ul-style">오프라인</li>
-                            <div class="meeting-date book-ul-style">
-                                <li>2023-07-03 </li>
-                                <li>~</li>
-                                <li>2023-07-30</li>
-                            </div>
-                        </ul>
-
-                        <div class="post-object-content-box">
-                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
-                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
-
-                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
-                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
-
-                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
-                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
-
-                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
-                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
-                            </div>
-                        </div>
-                        <div class="debate-button">
-                            자세히 보기
-                        </div>
-                    </div>
-                </li>
-                <li class="debate-main-box">
-                    <div class="post-object-box debate-object-style">
-                        <div class="post-object-title">
-
-                            <div class="post-title-user">
-                                <div class="post-title-font"> 토론 타이틀 </div>
-                            </div>
-                        </div>
-                        <!--                        사진부분-->
-                        <div class="debate-book-box">
-                            <div class="debate-object-book-box">
-                                <img class="debate-object-book-img" src="/img/nami.png"/>
-                            </div>
-
-
-                        </div>
-
-                        <ul class="book-ul-st1">
-                            <li class="meeting-type book-ul-style">혼자 하기</li>
-                            <li class="meeting-type book-ul-style">자유형</li>
-                            <li class="debate-type book-ul-style">오프라인</li>
-                            <div class="meeting-date book-ul-style">
-                                <li>2023-07-03 </li>
-                                <li>~</li>
-                                <li>2023-07-30</li>
-                            </div>
-                        </ul>
-
-                        <div class="post-object-content-box">
-                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
-                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
-
-                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
-                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
-
-                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
-                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
-
-                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
-                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
-                            </div>
-                        </div>
-                        <div class="debate-button">
-                            자세히 보기
-                        </div>
-                    </div>
-                </li>
-                <li class="debate-main-box">
-                    <div class="post-object-box debate-object-style">
-                        <div class="post-object-title">
-
-                            <div class="post-title-user">
-                                <div class="post-title-font"> 토론 타이틀 </div>
-                            </div>
-                        </div>
-                        <!--                        사진부분-->
-                        <div class="debate-book-box">
-                            <div class="debate-object-book-box">
-                                <img class="debate-object-book-img" src="/img/nami.png"/>
-                            </div>
-
-
-                        </div>
-
-                        <ul class="book-ul-st1">
-                            <li class="meeting-type book-ul-style">혼자 하기</li>
-                            <li class="meeting-type book-ul-style">자유형</li>
-                            <li class="debate-type book-ul-style">오프라인</li>
-                            <div class="meeting-date book-ul-style">
-                                <li>2023-07-03 </li>
-                                <li>~</li>
-                                <li>2023-07-30</li>
-                            </div>
-                        </ul>
-
-                        <div class="post-object-content-box">
-                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
-                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
-
-                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
-                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
-
-                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
-                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
-
-                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
-                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
-                            </div>
-                        </div>
-                        <div class="debate-button">
-                            자세히 보기
-                        </div>
-                    </div>
-                </li>
-                <li class="debate-main-box">
-                    <div class="post-object-box debate-object-style">
-                        <div class="post-object-title">
-
-                            <div class="post-title-user">
-                                <div class="post-title-font"> 토론 타이틀 </div>
-                            </div>
-                        </div>
-                        <!--                        사진부분-->
-                        <div class="debate-book-box">
-                            <div class="debate-object-book-box">
-                                <img class="debate-object-book-img" src="/img/nami.png"/>
-                            </div>
-
-
-                        </div>
-
-                        <ul class="book-ul-st1">
-                            <li class="meeting-type book-ul-style">혼자 하기</li>
-                            <li class="meeting-type book-ul-style">자유형</li>
-                            <li class="debate-type book-ul-style">오프라인</li>
-                            <div class="meeting-date book-ul-style">
-                                <li>2023-07-03 </li>
-                                <li>~</li>
-                                <li>2023-07-30</li>
-                            </div>
-                        </ul>
-
-                        <div class="post-object-content-box">
-                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
-                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
-
-                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
-                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
-
-                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
-                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
-
-                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
-                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
-                            </div>
-                        </div>
-                        <div class="debate-button">
-                            자세히 보기
-                        </div>
-                    </div>
-                </li>
-                <li class="debate-main-box">
-                    <div class="post-object-box debate-object-style">
-                        <div class="post-object-title">
-
-                            <div class="post-title-user">
-                                <div class="post-title-font"> 토론 타이틀 </div>
-                            </div>
-                        </div>
-                        <!--                        사진부분-->
-                        <div class="debate-book-box">
-                            <div class="debate-object-book-box">
-                                <img class="debate-object-book-img" src="/img/nami.png"/>
-                            </div>
-
-
-                        </div>
-
-                        <ul class="book-ul-st1">
-                            <li class="meeting-type book-ul-style">혼자 하기</li>
-                            <li class="meeting-type book-ul-style">자유형</li>
-                            <li class="debate-type book-ul-style">오프라인</li>
-                            <div class="meeting-date book-ul-style">
-                                <li>2023-07-03 </li>
-                                <li>~</li>
-                                <li>2023-07-30</li>
-                            </div>
-                        </ul>
-
-                        <div class="post-object-content-box">
-                            <div class="post-content-content">옆 사람 보지 말고 내가 나아가는 방향만 보고 질주하자.’ 내가 힘들 때, 스스로를 다른 사람과 무심결에
-                                비교할 때마다 외우는 주문이다. 최고의 경쟁자는 바로 나 자신이다. 다른 사람이 아닌 내가 가는 길만 보고 가자.
-
-                                나는 새벽에 다양한 목표를 달성했다. 그러나 어떤 한 가지 목표를 이루기 위해 일찍 일어난 것은 아니다. 건강한 삶의 태도를 유지하고 주어진 시간을 조금 더
-                                의미 있게 사용하기 위해 주도적으로 생활 습관을 컨트롤했을 뿐이다.
-
-                                새벽은 나에게 여유를 선물하는 시간이지 무언가 끝내야 한다고 압박하는 시간이 아니다. 책을 끝까지 다 읽어야 한다는 부담을 느끼면 유의미한 회복의 시간을 만들
-                                수 없다. 반대로 편안한 마음으로 좋은 음악을 들으면서 책을 읽으면 몸이 그 시간을 기억할 것이다.
-
-                                새벽의 독서는 이를 통해 편안한 마음으로 새로운 지혜를 얻고, 자연스럽게 세상의 흐름을 이해하고, 생각의 틀에서 벗어나는 정도로만 즐기면 충분하다. 책으로
-                                날마다 성장하는 스스로의 모습을 보며 큰 성취감을 느낄 것이다.
-                            </div>
-                        </div>
-                        <div class="debate-button">
-                            자세히 보기
-                        </div>
-                    </div>
-                </li>
-
-
-
-
             </ul>
+<!--            페이징 처리-->
+            <div class="page-total-box">
+                <ul class="page-box">
+                    <a th:href="@{/debate/(page=${i})}" class="a-style" th:each="i:${#numbers.sequence(pageNum.startPage,pageNum.endPage)}">
+                        <li class="page-in-text" th:classappend="${pageNum.pageRequestDTO.page==i?'active':''}"  th:text="${i}"></li>
+                    </a>
+                </ul>
+            </div>
         </div>
     </div>
 </main>
+<script>
 
+</script>
 </body>
 </html>
