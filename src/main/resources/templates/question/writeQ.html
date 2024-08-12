@@ -21,40 +21,42 @@
             <div class="write-board">
                 
             <!-- 작성 글 -->
-                <form action="">
+                <form th:action="@{/qa/write}" method="post">
                     <div class="tr">
                         <div class="th">글제목</div>
                         <div class="title">
-                            <input type="text" name="" placeholder="게시글 제목">
+                            <input type="text" name="qTitle"  placeholder="게시글 제목">
                         </div>
                     </div>
                     <div class="tr">
                         <div class="th">작성자</div>
-                        <div class="td">아이디 or 닉네임</div>
+                        <div class="td" th:text="${nickname}"></div>
                     </div>
-                    <div class="tr">
-                        <div class="th">공개 여부</div>
-                        <div class="public">
-                            공개<input type="radio" name="" value="">
-                            비공개<input type="radio" name="" value="">   
-                        </div>
-                    </div>
+<!--                    <div class="tr">-->
+<!--                        <div class="th">공개 여부</div>-->
+<!--                        <div class="public">-->
+<!--                            공개<input type="radio" name="" value="">-->
+<!--                            비공개<input type="radio" name="" value="">   -->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="tr">
                         <div class="th">첨부파일</div>
                         <div class="attachment">
-                            <input type="text" name="">  
+                            <input type="text" name="">
                         </div>
                     </div>
                     <div class="tr content-row">
                         <div class="th">내용</div>
                         <div class="content-box">
-                            <textarea name="QandAcont" id="" cols="30" rows="10"></textarea>
+                            <textarea name="qContent" id="" cols="30" rows="10"></textarea>
                         </div>
                     
                     </div>
 
                     <div class="write-btn">
-                        <button type="button" class="back"><a th:href="@{/qa/list}">취소</a></button>
+                        <button type="button" class="back">
+                            <a th:href="@{/qa/list}">취소</a>
+                        </button>
                         <button class="submit">작성완료</button>  
                     </div>
                 </form>

@@ -23,32 +23,33 @@
 
         <h4>Q&A 게시판</h4>
         <div class="detail-board">
-          <div class="detail-title">title</div>
+          <div class="detail-title" th:text="${question.qTitle}"></div>
           <div class="view-info">
-            <span class="text">작성자 : <span>wirter</span></span>
-            <span class="text">작성일 : <span>wirte-date 14:59:35</span></span>
-            <span class="text">조회수 : <span>view-num</span></span>
+            <span class="text">작성자 : <span th:text="${question.nickname}"></span></span>
+            <span class="text">작성일 : <span th:text="${question.createDate}"></span></span>
+            <span class="text">조회수 : <span th:text="${question.viewCount}"></span></span>
           </div>
           <div class="content-box">
-            <div class="content">
-              writeQ에서 class="content-box"에 작성했던 내용
-            </div>
+            <div class="content" th:text="${question.qContent}"></div>
           </div>
-          <div class="answer-box">
-            <span class="answer-title">
-              관리자 답변
-              <span text="sysdate">(2024-07-29)</span>
-            </span>
-            <div class="answer-content">답변이다ㅏㅏ</div>
-          </div>
-        </div>
 
-        <div class="btns">
-          <!-- 작성한 회원이 아니라면 수정, 삭제 버튼은 보이지 않음  -->
-          <span class=""><a href="">목록으로</a></span>
-          <span class=""><a href="">수정</a></span>
-          <span class=""><a href="">삭제</a></span>
-          <span class=""><a href="">글쓰기</a></span>
+<!--          <div class="answer-box">-->
+<!--&lt;!&ndash;    th:if = {session.admin != null} 관리자의 식변번호가 존재하면 출력         &ndash;&gt;-->
+<!--            <span class="answer-title">-->
+<!--              관리자 답변-->
+<!--              <span text="sysdate">(2024-07-29)</span>-->
+<!--            </span>-->
+<!--            <div class="answer-content">답변이다ㅏㅏ</div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+          <div class="btns">
+            <!-- 작성한 회원이 아니라면 수정, 삭제 버튼은 보이지 않음  -->
+            <span class=""><a th:href="@{/qa/list}">목록으로</a></span>
+            <span class=""><a href="">수정</a></span>
+            <span class=""><a href="">삭제</a></span>
+            <span class=""><a th:href="@{/qa/write}">글쓰기</a></span>
+          </div>
         </div>
       </div>
     </div>

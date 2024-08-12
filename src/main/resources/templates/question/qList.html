@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- 동글 폰드 -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet"> -->
     <!-- jua 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/header/header.css}">
     <link rel="stylesheet" th:href="@{/css/question/qList.css}">
+    <script defer th:src="@{/js/question/qList.js}" th:inline="javascript"></script>
 </head>
 <body>
 
@@ -24,9 +21,9 @@
 
             <!-- 리스트 위에 정보 div -->
             <div class="content_gnb">
-                <div class="r-gnb">
+                <div>
                     <span>TOTAL</span>
-                    <span>num</span>
+                    <span th:text="${total}"></span>
                 </div>
                 <div class="search-box">
                     <form action="">
@@ -71,13 +68,16 @@
                     <tbody>
                         <!-- Q&A 내용  -->
 <!--          제목 누르면 디테일 페이지로 전환 코드 작성해야함              -->
-                        <tr>
-                            <td class="tc">1</td>
-                            <td class="tc">작성완료</td>
-                            <td class="tl">test</td>
-                            <td class="tc">user1</td>
-                            <td class="tc">2024.07.28.</td>
-                            <td class="tc">3</td>
+                        <tr th:each="board : ${list}">
+                            <td class="tc" th:text="${board.qBoardId}"></td>
+                            <td class="tc" th:text="${board.aStatus}" id="status"></td>
+<!--                             th:text="${board.aStatus}" th:data-id="${board.aStatus}" -->
+                            <td class="tl">
+                                    <a th:href="@{/qa/detail(qBoardId=${board.qBoardId})}" th:text="${board.qTitle}"></a>
+                            </td>
+                            <td class="tc" th:text="${board.nickname}"></td>
+                            <td class="tc" th:text="${board.createDate}"></td>
+                            <td class="tc" th:text="${board.viewCount}"></td>
                         </tr>
                     </tbody>
                 </table>
