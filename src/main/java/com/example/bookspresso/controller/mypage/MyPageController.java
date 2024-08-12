@@ -20,7 +20,7 @@ public class MyPageController {
     @GetMapping("/setting")
     public String setting(HttpSession session, Model model) {
 //        Long memberId = (Long) session.getAttribute("memberId");
-        Long memberId = 3L;
+        Long memberId = 1L;
 
 //        String introduce = (String)session.getAttribute("introduce");
         SettingDTO member = mypageService.findMember(memberId);
@@ -32,7 +32,7 @@ public class MyPageController {
 
     @GetMapping("/myDebate")
     public String myDebate(HttpSession session, Model model) {
-        Long memberId = 3L;
+        Long memberId = 1L;
         SettingDTO member = mypageService.findMember(memberId);
         MypageDebateDTO debate = null;
         try {
@@ -49,7 +49,7 @@ public class MyPageController {
 
     @GetMapping("/myBook")
     public String myBook(HttpSession session, Model model){
-        Long memberId = 3L;
+        Long memberId = 1L;
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);
@@ -57,7 +57,7 @@ public class MyPageController {
     }
     @GetMapping("/myPost")
     public String myPost(HttpSession session, Model model){
-        Long memberId = 3L;
+        Long memberId = 1L;
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);

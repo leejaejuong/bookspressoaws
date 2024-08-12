@@ -19,7 +19,7 @@ public class MypageApi {
 
     @PatchMapping("/member-introduce")
     public void updateIntroduce(HttpSession session, @RequestBody Map<String, String> introduceMap) {
-        Long memberId = 3L;
+        Long memberId = 1L;
 
         System.out.println(" introduceMap = " + introduceMap);
         String introduce = introduceMap.get("introduce");
@@ -29,7 +29,7 @@ public class MypageApi {
 
     @PatchMapping("/members-nickname")
     public void updateNickname(HttpSession session, @RequestBody Map<String, String> nicknameMap) {
-        Long memberId = 3L;
+        Long memberId = 1L;
         System.out.println(" nicknameMap = " + nicknameMap);
         String nickname = nicknameMap.get("nickname");
 
@@ -38,7 +38,7 @@ public class MypageApi {
 
     @PatchMapping("/members-email")
     public void updateEmail(HttpSession session, @RequestBody Map<String, String> emailMap) {
-        Long memberId = 3L;
+        Long memberId = 1L;
         System.out.println(" emailMap = " + emailMap);
         String email = emailMap.get("email");
 
@@ -47,7 +47,7 @@ public class MypageApi {
 
     @DeleteMapping("/members-delete")
     public void deleteMember(HttpSession session, @RequestBody Long memberId) {
-        Long member = 3L;
+        Long member = 1L;
 
         mypageService.deleteMembers(member);
     }
@@ -57,7 +57,7 @@ public class MypageApi {
                              HttpSession session){
         System.out.println("pfpFile = " + pfpFile.getOriginalFilename());
 //        Long memberId = (Long) session.getAttribute("memberId");
-        Long memberId = 3L;
+        Long memberId = 1L;
         try {
             mypageService.modifyProfile(pfpFile, memberId);
         } catch (IOException e) {
