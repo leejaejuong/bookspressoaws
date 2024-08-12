@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class MyPageController {
     @GetMapping("/setting")
     public String setting(HttpSession session, Model model) {
 //        Long memberId = (Long) session.getAttribute("memberId");
-        Long memberId = 3L;
+        Long memberId = 1L;
 
 //        String introduce = (String)session.getAttribute("introduce");
         SettingDTO member = mypageService.findMember(memberId);
@@ -32,24 +34,19 @@ public class MyPageController {
 
     @GetMapping("/myDebate")
     public String myDebate(HttpSession session, Model model) {
-        Long memberId = 3L;
+        Long memberId = 1L;
         SettingDTO member = mypageService.findMember(memberId);
-        MypageDebateDTO debate = null;
-        try {
-            debate = mypageService.findDebate(memberId);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
+        List<MypageDebateDTO> debateList = mypageService.findDebate(memberId);
 
-        System.out.println("debate = " + debate);
+        System.out.println("debateList = " + debateList);
         model.addAttribute("memberDto", member);
-        model.addAttribute("debateDto", debate);
+        model.addAttribute("debateList", debateList);
         return "mypage/myDebate";
     }
 
     @GetMapping("/myBook")
     public String myBook(HttpSession session, Model model){
-        Long memberId = 3L;
+        Long memberId = 1L;
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);
@@ -57,7 +54,7 @@ public class MyPageController {
     }
     @GetMapping("/myPost")
     public String myPost(HttpSession session, Model model){
-        Long memberId = 3L;
+        Long memberId = 1L;
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);
