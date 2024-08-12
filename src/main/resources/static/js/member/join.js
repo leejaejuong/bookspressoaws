@@ -10,34 +10,43 @@ let $successJoin = [];
  * 정규표현식 테스트 _> 아이디 이상함 
   */
 {
-    let $inputLoginId = $InputBox[0];
-
-    console.log("loginId = " + loginId);
+    // let $inputLoginId = $InputBox[0];
         //유효성 검사
-    let loginReg = /^[0-9a-zA-Z]{4,20}$/g;
+    let loginReg = /^[a-zA-Z0-9_]{4,20}$/g;
 
-    $inputLoginId.addEventListener('change', function (){
-        let loginId = this.value;
+    printBasicMsg(0)
 
-        console.log(loginReg.test(loginId));
+    $InputBox[0].addEventListener('change', function (){
+        //정규표현식 검사
+        let loginId = this.value.match(loginReg);
+        console.log(this.value);
+        console.log(loginId);
 
-        // fetch(`/join/check-loginId/${loginId}`, {method: 'POST'})
-        //     .then(resp=> resp.text())
-        //     .then(text => {
-        //         if (text != 0){
-        //             // 이미 존재하는 아이디
-        //             $inputMsg[0].innerHTML = "이미 존재하는 아이디입니다. ";
-        //             console.log("class name = "+$inputMsg[0].getAttribute("class"));
-        //             msgColorRed(0);
-        //
-        //         }else{
-        //             $inputMsg[0].innerHTML = "사용가능한 ID입니다. ";
-        //             console.log("class name = "+$inputMsg[0].getAttribute("class"));
-        //             $successJoin[0] = true;
-        //             msgColorBlue(0)
-        //
-        //         }
-        //     })
+        if (loginId != null){
+            fetch(`/join/check-loginId/${loginId}`, {method: 'POST'})
+                .then(resp=> resp.text())
+                .then(text => {
+                    if (text != 0){
+                        // 이미 존재하는 아이디
+                        $inputMsg[0].innerHTML = "이미 존재하는 아이디입니다. ";
+                        console.log("class name = "+$inputMsg[0].getAttribute("class"));
+                        msgColorRed(0);
+                        $successJoin[0] = false;
+                    }else{
+                        $inputMsg[0].innerHTML = "사용가능한 ID입니다. ";
+                        console.log("class name = "+$inputMsg[0].getAttribute("class"));
+                        $successJoin[0] = true;
+                        msgColorBlue(0)
+                    }
+                })
+        }else{
+            $inputMsg[0].innerText = "4 ~ 20자의 영문, 숫자와 특수문자 '_'만 사용해주세요.";
+            msgColorRed(0);
+            $successJoin[0] = false;
+        }
+
+
+
     })
 
 }
@@ -46,7 +55,7 @@ let $successJoin = [];
  * 8-16 자리 영문, 숫자, 특수문자 조합
  */
 {
-    // printBasicMsg(1);
+    printBasicMsg(1);
     let pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
 
     $InputBox[1].addEventListener('change', function () {
@@ -56,12 +65,14 @@ let $successJoin = [];
         if (pwReg.test(pw)){
             $inputMsg[1].innerText= "사용 가능한 비밀번호예요!";
             msgColorBlue(1);
+            $successJoin[1] = true;
         }
         else{
             // console.dir($inputMsg[1])
             $inputMsg[1].innerText =document.querySelector("#passwordInvalid").innerText;
             console.log("sfsf#### = " + $inputMsg[1].innerText);
             msgColorRed(1);
+            $successJoin[1] = false;
         }
     })
 
@@ -73,6 +84,7 @@ let $successJoin = [];
  *  닉네임 중복 검사 후 에러 메세지
  */
 {
+    printBasicMsg(2);
     $InputBox[2].addEventListener('change', function(){
         let nickname = this.value;
         console.log("nickname = " + nickname);
@@ -85,6 +97,7 @@ let $successJoin = [];
                 if (text != 0) {
                     $inputMsg[2].innerText = "사용 중인 닉네임입니다."
                     msgColorRed(2);
+                    $successJoin[2] = false;
                 }else{
                     $inputMsg[2].innerText = "사용 가능한 닉네임입니다 :) ";
                     msgColorBlue(2);
@@ -99,31 +112,35 @@ let $successJoin = [];
  *  이메일 유효성 검사 (정규표현식)
  */
 {
+    printBasicMsg(3);
     let emailReg = /^[A-Z0-9._]+@[A-Z0-9.-]+\.[A-Z]{2,3}$/i;
 
     $InputBox[3].addEventListener('change', function (){
 
-        let emailValue = this.value;
+        let emailValue = this.value.match(emailReg);
+        console.log(this.value);
         console.log(emailValue);
-        console.log(emailReg.test(emailValue));
 
-        if (emailReg.test(emailValue)){
+        if (emailValue != null){
             fetch(`/join/check-email/${emailValue}`, {method:'POST'})
                 .then(resp=>resp.text())
                 .then(result =>{
                     if (result != 0) {
                         $inputMsg[3].innerHTML = "이미 존재하는 회원입니다.";
                         msgColorRed(3);
+                        $successJoin[3] = false;
                     }else{
                         $successJoin[3] = true;
                         msgColorBlue(3);
                         console.log("이메일 입력 성공! == " + $successJoin);
+                        $inputMsg[3].innerHTML = "";
                     }
                 })
         }else{
             $inputMsg[3].innerHTML="잘못된 이메일 주소입니다. 이메일 주소를 정확하게 입력해주세요.";
             console.log($inputMsg[3].innerHTML);
             msgColorRed(3);
+            $successJoin[3] = false;
         }
     })
 }
@@ -163,35 +180,20 @@ let $successJoin = [];
  // 함수
 // input 칸에 blur일 때 나오는 기본 에러메서지 출력 함수
     function printBasicMsg(index){
-
-        // for (let i = 0; i < $InputBox.length; i++) {
-            $InputBox[index].addEventListener('blur', function (){
-                let inputName = this.getAttribute("name");
-                console.log("focusOut ::: "+inputName);
-                if (!this.value){
-                    let errorMsg = document.getElementById(inputName+"Invalid").innerHTML;
-                    console.log('errorMsg', errorMsg);
-                    msgColorRed(index);
-                    $inputMsg[index].innerHTML = errorMsg;
-                }else{
-                    // $inputMsg[num].innerHTML="";
-                }
+        $InputBox[index].addEventListener('blur', function (){
+            let inputName = this.getAttribute("name");
+            console.log("focusOut ::: "+inputName);
+            if (!this.value){
+                let errorMsg = document.getElementById(inputName+"Invalid").innerHTML;
+                console.log('errorMsg', errorMsg);
+                msgColorRed(index);
+                $inputMsg[index].innerHTML = errorMsg;
+                $successJoin[index] = false;
+            }
         })
-    // }
     }
-//
-// function changeMsgColor(index){
-//     let inputClass = $inputMsg[num].getAttribute("class");
-//     if(inputClass.includes('error')){
-//         $inputMsg[index].classList.replace("error", "pass");
-//         console.log("class = " + inputClass);
-//         // $inputMsg[i].
-//     }else{
-//         $inputMsg[index].classList.add("pass");
-//         console.log("class = " + inputClass);
-//     }
-// }
-//
+
+
 
     function msgColorBlue(index){
         let inputClass = $inputMsg[index].getAttribute("class");
@@ -227,27 +229,13 @@ let $successJoin = [];
 
 
      $joinBtn.addEventListener("click", function (){
-         // let joinFormArray = Array.from($joinForm);
-         //
-         // for (let i = 0; i < joinFormArray.length-1; i++) {
-         //     $successJoin[i] =Boolean(joinFormArray[i].value);
-         //
-         //     // console.log("num = " + joinFormArray.length);
-         //     // console.log("name = " + joinFormArray[i].name);
-         //     // console.log("value = " + joinFormArray[i].value );
-         // }
-         // console.log("array = " + successJoin);
-         //
-         // // let isBelowThreshold = (currentValue) => { currentValue = true;}
-         // let joinResult = successJoin.every(result => result===true);
-         //
-         // console.log("성공여부 = " + joinResult);
-         //
-         // if (joinResult){
-         //     $joinForm.submit()
-         // }
-        checkEmail();
+         let joinResult = $successJoin.every(result => result==true);
 
+         console.log("성공여부 = " + joinResult);
+
+         if (joinResult){
+             $joinForm.submit()
+         }
      })
 }
 

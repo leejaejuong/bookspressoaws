@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.question.QuestionMapper">
+<!--  질문 작성 write  -->
+    <insert id="insertBoard">
+        <selectKey resultType="Long" keyProperty="qBoardId" order="BEFORE">
+            SELECT SEQ_QUESTION_BOARD.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_QUESTION(Q_BOARD_ID, MEMBER_ID, Q_TITLE, Q_CONTENT)
+        VALUES (#{qBoardId}, #{memberId}, #{qTitle}, #{qContent})
+    </insert>
+
+    <select id="selectList">
+        SELECT Q.Q_BOARD_ID, Q.A_STATUS, Q.Q_TITLE,
+               M.MEMBER_ID, M.NICKNAME,
+               TO_CHAR(Q.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
+               Q.VIEW_COUNT
+        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+                                 ON Q.MEMBER_ID = M.MEMBER_ID
+        ORDER BY Q.Q_BOARD_ID DESC
+    </select>
+
+    <select id="selectTotal">
+        SELECT COUNT(Q_BOARD_ID)
+        FROM TBL_QUESTION
+    </select>
+
+    <select id="selectQuestion">
+        SELECT M.MEMBER_ID, Q.Q_BOARD_ID, Q.Q_TITLE, M.NICKNAME,
+               TO_CHAR(Q.CREATE_DATE,'YYYY-MM-DD HH24:MI:SS') AS CREATE_DATE,
+               Q.VIEW_COUNT, Q.Q_CONTENT
+        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+        ON Q.MEMBER_ID = M.MEMBER_ID
+        WHERE Q.Q_BOARD_ID = #{qBoardId}
+    </select>
+
+</mapper>

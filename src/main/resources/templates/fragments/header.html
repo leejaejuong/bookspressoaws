@@ -26,15 +26,15 @@
                 <li class="menu-button header-font"><a class="menu-text" th:href="@{/mypage/setting}">마이페이지</a></li>
             </ul>
         </div>
-        <nav class="nav">
+        <nav class="nav" th:if="${session.memberId==null}">
             <a th:href="@{/member/login}" class="nav-item login">로그인</a>
             <a th:href="@{/member/join}" class="nav-item signup">회원가입</a>
         </nav>
         <!--      th:unless= if 걸어서 로그인하면 로그아웃 나오게-->
 
-<!--        <nav class="nav logout">-->
-<!--            <a href="" class="nav-item logout">로그아웃</a>-->
-<!--        </nav>-->
+        <nav class="nav logout" th:if="${session.memberId!=null}">
+            <a th:href="@{/member/logout}" class="nav-item logout">로그아웃</a>
+        </nav>
     </div>
 <!--    검색 메뉴-->
 
