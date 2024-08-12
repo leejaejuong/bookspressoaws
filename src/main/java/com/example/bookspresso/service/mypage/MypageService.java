@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,9 +40,8 @@ public class MypageService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 번호"));
     }
 //     토론 정보 가져오기
-    public MypageDebateDTO findDebate(Long memberId){
-        return mypageDebateMapper.selectDebate(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 번호"));
+    public List<MypageDebateDTO> findDebate(Long memberId){
+        return mypageDebateMapper.selectDebate(memberId);
     }
 
     // 소개글 수정 서비스
@@ -77,8 +77,6 @@ public class MypageService {
         } catch (Exception e) {
             log.error(e.getMessage());
         }
-
-
         String originalFilename = multipartFile.getOriginalFilename();
         String uuid = UUID.randomUUID().toString();
 

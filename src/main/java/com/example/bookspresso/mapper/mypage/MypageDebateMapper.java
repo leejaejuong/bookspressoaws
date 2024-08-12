@@ -4,10 +4,10 @@ import com.example.bookspresso.dto.mypage.MypageDebateDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 @Mapper
 public interface MypageDebateMapper {
-    Optional<MypageDebateDTO> selectDebate(Long memberId);
-
+    List<MypageDebateDTO> selectDebate(Long memberId);
 }
