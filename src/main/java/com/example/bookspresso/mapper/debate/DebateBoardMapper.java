@@ -7,6 +7,7 @@ import com.example.bookspresso.dto.debate.board.DebateWriteDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface DebateBoardMapper {
@@ -17,7 +18,8 @@ public interface DebateBoardMapper {
     List<DebateBoardDTO> selectboard(Long debateId);
 //    토론페이지 댓글
     List<DebateBoardCommentDTO> selectBoardComment(Long noticeId);
-
+// 게시글 디테일 페이지
+    Optional<DebateBoardDTO> selectDetail(Long debateId, Long noticeId);
 //    토론작성
     void insertWrite(DebateWriteDTO debateWriteDTO );
 

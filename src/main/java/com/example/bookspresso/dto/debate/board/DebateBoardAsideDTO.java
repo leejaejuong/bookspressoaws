@@ -15,4 +15,5 @@ public class DebateBoardAsideDTO {
    private String outline;
    private String debateStartDate;
    private String debateEndDate;
+   private String debateId;
 }

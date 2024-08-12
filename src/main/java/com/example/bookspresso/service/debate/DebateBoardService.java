@@ -25,6 +25,11 @@ public class DebateBoardService {
     }
 //    토론 페이지 댓글
     public List<DebateBoardCommentDTO> selectComment(Long noticeId){return debateBoardMapper.selectBoardComment(noticeId);}
+//    토론 디테일
+    public DebateBoardDTO selectDetaill(Long debateId,Long noticeId) {
+        return debateBoardMapper.selectDetail(debateId, noticeId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 토론 게시물"));
+    }
 //    토론 작성
     public void addWrite(DebateWriteDTO debateWriteDTO){debateBoardMapper.insertWrite(debateWriteDTO);}
 

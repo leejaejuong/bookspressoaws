@@ -137,7 +137,9 @@
 .board-object-user-date {
     font-size: 10px;
 }
-
+.comment-total-box{
+    height: auto;
+}
 .content-content-box {
     overflow: hidden;
     word-break: break-word;
@@ -148,6 +150,8 @@
     margin: 10px;
     border-radius: 10px;
     height: 80%;
+    text-decoration-line: none;
+    color: inherit;
 }
 
 .board-object-user-btn {
@@ -160,6 +164,9 @@
 .bard-objleect-tito {
     width: 90%;
     margin: 10px 0;
+    text-decoration-line: none;
+   color: inherit;
+
 }
 
 .board-object-contnet {
