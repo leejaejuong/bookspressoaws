@@ -25,20 +25,20 @@
                 <div class="aside-object">
                     <img class="aside-img" th:src="${aside.cover}">
                 </div>
-                <div class="aside-text" name="meetingId">
+                <div class="aside-text" >
 
                 </div>
-                <div class="aside-title" name="ISBN13">
+                <div class="aside-title" >
                     <div th:text="${aside.title}"></div>
                 </div>
-                <div class="aside-text" name="title">
+                <div class="aside-text" >
                     <div th:text="${aside.outline}"></div>
                 </div>
                 <div class="aside-date">
-                    <div class="aside-date-text" th:text="${aside.debateStartDate}" name="debateStrtDate">
+                    <div class="aside-date-text" th:text="${aside.debateStartDate}" >
                     </div>
                     <span class="aside-date-text">&ensp; ~ &ensp;</span>
-                    <div class="aside-date-text" th:text="${aside.debateEndDate}" name="debateEndDate">
+                    <div class="aside-date-text" th:text="${aside.debateEndDate}" >
                     </div>
                 </div>
                 <div class="aside-button">
@@ -49,13 +49,13 @@
         <!--    게시판-->
            <div class="board-object-box">
             <div class="board-object-in-box">
-                <div class="board-comtent-box" th:each="debateBoard:${debateBoard}">
-                    <input type="hidden" class="hidden-noticeId" th:value="${debateBoard.noticeId}">
+                <div class="board-comtent-box">
+                    <input type="hidden" class="hidden-noticeId" th:value="${detail.noticeId}">
                     <div class="board-object-user">
                         <div><img class="debate-img" src="/img/user.png"/></div>
                         <div class="board-object-user-inpo">
-                            <div class="board-object-user-name" th:text="${debateBoard.nickname}"></div>
-                            <div class="board-object-user-date" th:text="${debateBoard.noticeDate}"></div>
+                            <div class="board-object-user-name" th:text="${detail.nickname}"></div>
+                            <div class="board-object-user-date" th:text="${detail.noticeDate}"></div>
 
                         </div>
                         <div class="board-object-user-btn">
@@ -72,11 +72,10 @@
                         </div>
                     </div>
                     <div class="content-total-box">
-
-                        <a th:href="@{/debate/detail(debateId=${debateBoard.debateId},noticeId=${debateBoard.noticeId})}" class="bard-objleect-tito" th:text="${debateBoard.title}"></a>
+                        <div class="bard-objleect-tito" th:text="${detail.title}"></div>
                         <div class="board-object-contnet">
-                            <a th:href="@{/debate/detail(debateId=${debateBoard.debateId},noticeId=${debateBoard.noticeId})}" class="content-content-box" th:utext="${debateBoard.opinion}"></a>
-
+                            <div class="content-content-box" th:utext="${detail.opinion}">
+                            </div>
                         </div>
 
                     </div>

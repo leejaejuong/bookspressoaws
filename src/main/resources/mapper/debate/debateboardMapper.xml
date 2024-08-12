@@ -3,7 +3,7 @@
 <mapper namespace="com.example.bookspresso.mapper.debate.DebateBoardMapper">
 <!--사이드 정보를 가져오는 값-->
     <select id="selectboardaside">
-        SELECT DB.ISBN13,B.COVER,B.TITLE,D.OUTLINE,
+        SELECT DB.ISBN13,DB.DEBATE_ID,B.COVER,B.TITLE,D.OUTLINE,
                TO_CHAR(D.DEBATE_START_DATE,'YYYY-MM-DD')AS DEBATE_START_DATE,
                TO_CHAR(D.DEBATE_END_DATE,'YYYY-MM-DD')AS DEBATE_END_DATE
         FROM TBL_DEBATE D  LEFT JOIN TBL_DEBATE_BOOK DB
@@ -40,6 +40,7 @@
         WHERE DC.NOTICE_ID=#{noticeId}
 
     </select>
+<!--    토론 작성 페이지-->
     <insert id="insertWrite">
         <selectKey resultType="long" keyProperty="noticeId" order="BEFORE">
             select SEQ_DEBATE_BOARD.nextval from dual
@@ -47,7 +48,21 @@
         INSERT INTO TBL_DEBATE_BOARD(NOTICE_ID, DEBATE_ID, TITLE, OPINION, NOTICE_DATE)
         VALUES (#{noticeId},#{debateId},#{title},#{opinion},TO_CHAR(SYSDATE,'YYYY-MM-DD'))
     </insert>
+<!-- 토론 디테일 페이지-->
+    <select id="selectDetail">
+        SELECT DB.NOTICE_ID,D.DEBATE_ID,DB.TITLE,DB.OPINION,TO_CHAR(DB.NOTICE_DATE,'YYYY-MM-DD')AS NOTICE_DATE,
+               MD.MEMBER_ID,M.NICKNAME,P.PROFILE_UUID,P.PROFILE_UPLOAD
+        FROM TBL_DEBATE D LEFT JOIN TBL_DEBATE_BOARD DB
+                                    ON D.DEBATE_ID = DB.DEBATE_ID
+                          JOIN TBL_MEMBER_DEBATE MD
+                               ON D.DEBATE_ID=MD.DEBATE_ID
+                          JOIN TBL_MEMBER M
+                               ON MD.MEMBER_ID=M.MEMBER_ID
+                          LEFT JOIN TBL_PROFILE P
+                                    ON M.MEMBER_ID=P.MEMBER_ID
+        WHERE DB.DEBATE_ID=#{debateId} AND DB.NOTICE_ID=#{noticeId}
 
+    </select>
 
 </mapper>
 

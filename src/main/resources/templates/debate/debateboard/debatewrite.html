@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/debate/debateboard.css}"/>
     <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/debate/debatewrite.css}"/>
     <script defer th:src="@{/js/debate/debatewrite.js}"></script>
@@ -22,32 +23,32 @@
         <!--    유저 정보-->
         <aside class="aside-total-box">
             <div class="sticky">
+                <input type="hidden" name="debateId" th:value="${aside.debateId}" class="debateId-value">
                 <div class="aside-object">
-                    <h1>책사진자리</h1>
+                    <img class="aside-img" th:src="${aside.cover}">
                 </div>
-                <div class="aside-text">
-                    <h3>온라인</h3>
+                <div class="aside-text" name="meetingId">
+
                 </div>
-                <div class="aside-text">
-                    <h2>돈키호테(책제목)</h2>
+                <div class="aside-title" name="ISBN13">
+                    <div th:text="${aside.title}"></div>
                 </div>
-                <div class="aside-text">
-                    <h4>돈키호테를 읽고 생각을 나눠요</h4>
-                    <div class="aside-date">
-                        <div class="aside-date-text">
-                            2024-07-04 ~
-                        </div>
-                        <div class="aside-date-text">
-                            2024-08-04
-                        </div>
+                <div class="aside-text" name="title">
+                    <div th:text="${aside.outline}"></div>
+                </div>
+                <div class="aside-date">
+                    <div class="aside-date-text" th:text="${aside.debateStartDate}" name="debateStrtDate">
+                    </div>
+                    <span class="aside-date-text">&ensp; ~ &ensp;</span>
+                    <div class="aside-date-text" th:text="${aside.debateEndDate}" name="debateEndDate">
                     </div>
                 </div>
-
             </div>
         </aside>
         <!--    게시판-->
         <div class="board-object-box">
             <form id="submitbtn" action="/debate/write" method="post">
+                <input type="hidden" name="debateId" th:value="${aside.debateId}">
                 <div class="write-total-box">
                     <div class="write-title-box">
                         <input type="text" name="title" class="write-title-text" placeholder="제목을 입력하세요" maxlength="70"/>
