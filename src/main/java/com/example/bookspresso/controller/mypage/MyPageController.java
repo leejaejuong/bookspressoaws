@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -34,16 +36,11 @@ public class MyPageController {
     public String myDebate(HttpSession session, Model model) {
         Long memberId = 1L;
         SettingDTO member = mypageService.findMember(memberId);
-        MypageDebateDTO debate = null;
-        try {
-            debate = mypageService.findDebate(memberId);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
+        List<MypageDebateDTO> debateList = mypageService.findDebate(memberId);
 
-        System.out.println("debate = " + debate);
+        System.out.println("debateList = " + debateList);
         model.addAttribute("memberDto", member);
-        model.addAttribute("debateDto", debate);
+        model.addAttribute("debateList", debateList);
         return "mypage/myDebate";
     }
 

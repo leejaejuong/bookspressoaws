@@ -1,15 +1,11 @@
 .layout_sidebar{
-    height: 100%;
-    display: block;
+    display: flex;
 }
 .sidebar_content{
+    height: 100%;
     background-color: #f7f5f0;
-    height: var(--vh);
     width: 250px;
     padding: 26px;
-    top : 0;
-    display: flex;
-    flex-direction: column;
 }
 .sidebar_header{
     margin-top: 50px;

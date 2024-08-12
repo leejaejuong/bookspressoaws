@@ -6,9 +6,8 @@ h1,h3{
     margin-bottom: .5em;
     font-weight: 500;
 }
-
 html{
-    --vh : 85vh;
+    height: 100%;
 }
 
 a{
@@ -179,8 +178,6 @@ a{
     width: 100%;
     height: 14.5rem;
     display: flex;
-    margin-bottom: 30px;
-    cursor: pointer;
 }
 
 .debate_book_info{
