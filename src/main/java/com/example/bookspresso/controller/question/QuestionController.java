@@ -26,6 +26,7 @@ public class QuestionController {
 
         model.addAttribute("total", questionService.selectTotal());
         model.addAttribute("list", list);
+        model.addAttribute("aStatus", "답변 미완료");
 
         return "question/qList";
     }
@@ -37,6 +38,7 @@ public class QuestionController {
 
         Long memberId = (Long)session.getAttribute("memberId");
 
+        //로그인 안하면 글쓰기 불가능
         if (memberId == null){
             return "redirect:/member/login";
         }
@@ -48,27 +50,25 @@ public class QuestionController {
 
     @PostMapping("/write")
     public String qaWrite(QuestionWriteDTO questionWriteDTO,
-                          @SessionAttribute("memberId") Long memberId){
-        questionWriteDTO.setMemberId(memberId);
+                          @SessionAttribute("memberId") Long memberId,
+                          Model model){
+        questionWriteDTO.setMemberId(memberId); //memberId저장
+        questionService.addQuestion(questionWriteDTO);  //boardId 저장
 
-        questionService.addQuestion(questionWriteDTO);
+//        model.addAttribute("nickname", questionWriteDTO.getNickname());
+
         System.out.println("write = " + questionWriteDTO);
 //        return "redirect:/qa/detail";
         return "redirect:/qa/list";
     }
 
     @GetMapping("/detail")
-    public String qaDetail(Long qBoardId,
-                           Model model){
+    public String qaDetail(Long qBoardId, Model model){
 
         QuestionDetailDTO question = questionService.findQuestion(qBoardId);
-
         model.addAttribute("question", question);
-//        model.addAttribute("qTitle", question.getQTitle());
-//        model.addAttribute("nickname", question.getNickname());
-//        model.addAttribute("qContent", question.getQContent());
-//        model.addAttribute("createDate", question.getCreateDate());
-//        model.addAttribute("viewCount", question.getViewCount());
+
+        question.setViewCount(question.getViewCount() + 1);     //조회수 +1
 
         System.out.println("#### = " + question);
         return "question/answerDetail";

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.admin.AdminMainMapper">
+
+    <select id="selectAdmin">
+        SELECT ADMIN_ID
+        FROM TBL_ADMIN
+        WHERE ADMIN_LOGIN_ID = #{adminLoginId} AND ADMIN_PASSWORD = #{adminPassword}
+    </select>
+
+    <select id="selectAdminCount">
+        SELECT COUNT(ADMIN_ID)
+        FROM TBL_ADMIN
+        WHERE ADMIN_LOGIN_ID = #{adminLoginId} AND ADMIN_PASSWORD = #{adminPassword}
+    </select>
+
+
+    <select id="selectAdminLoginId">
+        SELECT ADMIN_LOGIN_ID
+        FROM TBL_ADMIN
+        WHERE ADMIN_ID = #{adminId}
+    </select>
+
+
+
+</mapper>
