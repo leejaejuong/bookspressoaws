@@ -1,10 +1,7 @@
 package com.example.bookspresso.mapper.question;
 
 import com.example.bookspresso.dto.member.MemberJoinDTO;
-import com.example.bookspresso.dto.question.QuestionDetailDTO;
-import com.example.bookspresso.dto.question.QuestionListDTO;
-import com.example.bookspresso.dto.question.QuestionModifyDTO;
-import com.example.bookspresso.dto.question.QuestionWriteDTO;
+import com.example.bookspresso.dto.question.*;
 import com.example.bookspresso.mapper.member.MemberMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,12 +43,12 @@ class QuestionMapperTest {
     void insertBoard() {
         QuestionWriteDTO questionWriteDTO = new QuestionWriteDTO();
         questionWriteDTO.setMemberId(3L);
-        questionWriteDTO.setQContent("test");
-        questionWriteDTO.setQTitle("test");
+        questionWriteDTO.setQContent("test@");
+        questionWriteDTO.setQTitle("test@");
 
-        questionMapper.insertBoard(questionWriteDTO);
+        questionMapper.insertBoard(questionWriteDTO);   // 게시물 작성
 
-        List<QuestionListDTO> lists = questionMapper.selectList();
+        List<QuestionListDTO> lists = questionMapper.selectList(questionWriteDTO.getMemberId());
         System.out.println("lists = " + lists);
 
     }
@@ -69,7 +66,7 @@ class QuestionMapperTest {
         questionWriteDTO.setQTitle("test");
 
         questionMapper.insertBoard(questionWriteDTO);
-        int count = questionMapper.selectTotal();
+        int count = questionMapper.selectTotal(4L);
         System.out.println("@@@@@@@ count = " + count);
     }
 
@@ -113,10 +110,28 @@ class QuestionMapperTest {
         questionWriteDTO.setMemberId(3L);
         questionWriteDTO.setQContent("testsfdfsd");
         questionWriteDTO.setQTitle("testsfesedfs");
-        questionMapper.selectList();
+        questionMapper.insertBoard(questionWriteDTO);
 
-        questionMapper.deleteQuestion(41L);
-        questionMapper.selectList();
+        List<QuestionListDTO> questionListDTO = questionMapper.selectList(questionWriteDTO.getMemberId());
+
+        System.out.println("questionListDTO = " + questionListDTO);
+
+        questionMapper.deleteQuestion(questionWriteDTO.getQBoardId());
+        questionMapper.selectList(questionWriteDTO.getMemberId());
     }
+
+    @Test
+    public void selectQuestionList(){
+        QuestionSearchDTO questionSearchDTO = new QuestionSearchDTO();
+        questionSearchDTO.setMemberId(4L);
+        questionSearchDTO.setSearchType("qTitle");
+        questionSearchDTO.setKeyword("test");
+
+        List<QuestionListDTO> searchListDTOS = questionMapper.searchList(questionSearchDTO);
+
+        System.out.println(searchListDTOS);
+    }
+
+
 
 }
