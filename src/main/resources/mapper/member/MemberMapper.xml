@@ -9,7 +9,14 @@
         INSERT INTO TBL_MEMBER (MEMBER_ID, LOGIN_ID, PASSWORD, NICKNAME, EMAIL)
         VALUES (#{memberId}, #{loginId},#{password}, #{nickname}, #{email})
     </insert>
-
+<!--    회원가입시 프로필 자동생성-->
+<insert id="insertProfile">
+    <selectKey resultType="long" keyProperty="profileId" order="BEFORE">
+        SELECT SEQ_PROFILE_ID.nextval FROM DUAL
+    </selectKey>
+    INSERT INTO TBL_PROFILE(PROFILE_ID, MEMBER_ID, PROFILE_UUID, PROFILE_UPLOAD, PROFILE_NAME, INTRODUCE)
+    VALUES (#{profileId},#{memberId},NULL,NULL,NULL,'안녕하세요')
+</insert>
     <select id="selectLoginIdCount">
         SELECT COUNT(MEMBER_ID)
         FROM TBL_MEMBER

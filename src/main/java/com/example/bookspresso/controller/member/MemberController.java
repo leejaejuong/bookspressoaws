@@ -1,6 +1,7 @@
 package com.example.bookspresso.controller.member;
 
 import com.example.bookspresso.dto.member.MemberJoinDTO;
+import com.example.bookspresso.dto.member.ProfleJoinDTO;
 import com.example.bookspresso.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -26,13 +27,18 @@ public class MemberController {
     //회원가입 시 멤버 테이블의 데이터와 프로필 테이블의 데이터가 모두 들어가야함
 
     @PostMapping("/join")
-    public String join(MemberJoinDTO memberJoinDTO){
+    public String join(MemberJoinDTO memberJoinDTO, ProfleJoinDTO profleJoinDTO){
 // join.html에서 모든 input에 값을 입력하지 않으면 데이터가 전송되지 않게 설정
 //      // 특정 조건에 알맞은 아이디/이메일 설정 해야함
         System.out.println("@@@@@ memberJoinDTO = " + memberJoinDTO);
 
         try {
+            System.out.println("addmember실행");
             memberService.addMember(memberJoinDTO);
+            profleJoinDTO.setMemberId( memberJoinDTO.getMemberId());
+            System.out.println("memberJoinDTO = " + profleJoinDTO);
+            memberService.addProfle(profleJoinDTO);
+            System.out.println("프로필실행");
         } catch (IllegalStateException e) {
             log.error(e.toString());
 

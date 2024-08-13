@@ -12,6 +12,6 @@ public class PageRequestDTO {
    public PageRequestDTO() {
 //      기본생성자를 사용하여 쿼리스트링없이 페이징처리를함
    this.page = 1;
-   this.amount = 2;
+   this.amount = 12;
    }
 }

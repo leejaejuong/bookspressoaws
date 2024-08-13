@@ -33,6 +33,7 @@
     border-radius: 15px;
     background-color: #fff;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, .06), 2px 2px 10px rgba(0, 0, 0, .04);
+    height: 370px;
 }
 .book-box {
 padding: 20px 0;
@@ -136,11 +137,34 @@ font-size : 30px;
 }
 .debate-title{
     font-size: 20px;
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis
 
 }
 .debate-user{
     color:#6f6f6f;
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis
 }
+.book-title-style {
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    padding-left: 10px;
+}
+
 .book-content-style{
     overflow: hidden;
     word-break: break-word;

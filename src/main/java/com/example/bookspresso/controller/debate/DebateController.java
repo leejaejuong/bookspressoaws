@@ -29,13 +29,9 @@ public class DebateController {
     private final DebateBoardService debateBoardService;
 
     @GetMapping("/")
-    public String debate(PageRequestDTO pageRequestDTO, HttpSession session, Model model) {
+    public String debate(PageRequestDTO pageRequestDTO, Model model) {
 //        메인페이지
-        Long memberId = (Long)session.getAttribute("memberId");
 
-        if (memberId == null) {
-            return "redirect:/member/login";
-        }
         List<DebateMainPageDTO> debateMain = debateservice.findMainPage(pageRequestDTO);
         int total = debateservice.findTotal();
         PageSetDTO pageNum = new PageSetDTO(total, pageRequestDTO);
@@ -107,7 +103,6 @@ public class DebateController {
         debateservice.addInpo(debateinpoDTO);
 //     debateId 값은 시퀀스로 생성하기 때문에 위의 코드가 실행되야 생성되서 먼저 실행후 값을꺼내여 직접 넣어준다
         Long debateId = debateinpoDTO.getDebateId();
-        System.out.println("debateId = " + debateId);
         debateBookDTO.setDebateId(debateId);
         memberDebateDTO.setDebateId(debateId);
         debateservice.addConnection(debateBookDTO, memberDebateDTO);

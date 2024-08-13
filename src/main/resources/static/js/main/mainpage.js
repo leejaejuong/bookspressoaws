@@ -76,6 +76,11 @@
 
         bindEvents();
     });
+    let $selectbtn =document.querySelector('.book-button');
+    let debateId=document.querySelector('.debate-id').value;
+    $selectbtn.addEventListener('click',function (){
+        location.href=`/debate/board?debateId=${debateId}`
+    });
 }
 {// 오프라인
     document.addEventListener('DOMContentLoaded', () => {
@@ -153,6 +158,11 @@
         };
 
         bindEvents();
+    });
+    let $selectbtn =document.querySelector('.book-button');
+    let debateId=document.querySelector('.debate-id').value;
+    $selectbtn.addEventListener('click',function (){
+        location.href=`/debate/board?debateId=${debateId}`
     });
 }
 { //포스트
