@@ -18,7 +18,7 @@ public interface DebateMapper {
     void insertDebateInpo(DebateInpoDTO debateinpoDTO);
     //검색
     List<BookinpoDTO> selectbookinpo(String title);
-    int selectBookTotal();
+
 
     //    다대다
     void insertMemberDebate(MemberdebateDTO memberDebateDTO);

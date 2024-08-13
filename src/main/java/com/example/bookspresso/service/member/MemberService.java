@@ -1,6 +1,7 @@
 package com.example.bookspresso.service.member;
 
 import com.example.bookspresso.dto.member.MemberJoinDTO;
+import com.example.bookspresso.dto.member.ProfleJoinDTO;
 import com.example.bookspresso.mapper.member.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
@@ -26,6 +27,9 @@ public class MemberService {
         }//IllegalStateException : 객체의 상태가 호출된 메서드를 수행하기에 적절하지 않을 때 사용
 
         memberMapper.insertMember(memberJoinDTO);
+    }
+    public void addProfle(ProfleJoinDTO profleJoinDTO){
+        memberMapper.insertProfile(profleJoinDTO);
     }
 
     public int findLoginId(String loginId){

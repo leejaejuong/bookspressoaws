@@ -8,15 +8,18 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DebateonlineDTO {
+public class DebateMainDTO {
     private Long debateId;
     private String meetingType;
     private String debateType;
     private String title;
+    private String outLine;
+    private String bookTitle;
     private String description;
     private String debateStartDate;
     private String debateEndDate;
-    private String debateBookId;
+    private Long debateBookId;
     private String isbn13;
     private String cover;
+    private String author;
 }
