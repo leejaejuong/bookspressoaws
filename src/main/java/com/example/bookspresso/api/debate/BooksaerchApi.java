@@ -20,17 +20,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BooksaerchApi {
     private final Debateservice debateservice;
-    private final DebateBoardService debateBoardService;
+
 
     @GetMapping("/debate/inpos/{title}")
     public List<BookinpoDTO> debate(@PathVariable("title") String title) {
         return  debateservice.searchBookinpo(title);
     }
-    @GetMapping("debate/boards/{noticeId}")
-    public List<DebateBoardCommentDTO> debateBoard(@PathVariable("noticeId") Long noticeId) {
-        List<DebateBoardCommentDTO> commentDTOS = debateBoardService.selectComment(noticeId);
-        System.out.println("commentDTOS = " + commentDTOS);
-        return  commentDTOS;
 
-    }
 }

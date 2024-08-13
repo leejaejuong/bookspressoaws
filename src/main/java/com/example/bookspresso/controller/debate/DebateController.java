@@ -31,7 +31,11 @@ public class DebateController {
     @GetMapping("/")
     public String debate(PageRequestDTO pageRequestDTO, HttpSession session, Model model) {
 //        메인페이지
-        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        if (memberId == null) {
+            return "redirect:/member/login";
+        }
         List<DebateMainPageDTO> debateMain = debateservice.findMainPage(pageRequestDTO);
         int total = debateservice.findTotal();
         PageSetDTO pageNum = new PageSetDTO(total, pageRequestDTO);
@@ -118,7 +122,7 @@ public class DebateController {
     @GetMapping("/board")
     public String debateboard(Long debateId, HttpSession session, Model model) {
 
-        session.setAttribute("memberId", 1L);
+
 //        로그인 체크
         Long memberId = (Long) session.getAttribute("memberId");
         if (memberId == null) {
@@ -136,7 +140,7 @@ public class DebateController {
 
     @GetMapping("/write")
     public String debatewrite(Long debateId, HttpSession session, Model model) {
-        session.setAttribute("memberId", 1L);
+
         Long memberId = (Long) session.getAttribute("memberId");
         if (memberId == null) {
             return "redirect:/member/login";
@@ -147,8 +151,13 @@ public class DebateController {
     }
 
     @PostMapping("/write")
-    public String debatewrite(DebateWriteDTO debateWriteDTO) {
+    public String debatewrite(DebateWriteDTO debateWriteDTO,HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        if (memberId == null) {
+            return "redirect:/member/login";
+        }
         Long debateId = debateWriteDTO.getDebateId();
+        debateWriteDTO.setMemberId(memberId);
         debateWriteDTO.setDebateId(debateId);
         debateBoardService.addWrite(debateWriteDTO);
         return "redirect:/debate/board?debateId=" + debateId;
@@ -157,7 +166,7 @@ public class DebateController {
     @GetMapping("/detail")
     public String debatedetail(Long noticeId,Long debateId, HttpSession session, Model model) {
 
-        session.setAttribute("memberId", 1L);
+
         Long memberId = (Long) session.getAttribute("memberId");
         if (memberId == null) {
             return "redirect:/member/login";
