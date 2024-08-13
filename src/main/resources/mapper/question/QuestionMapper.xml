@@ -17,12 +17,14 @@
                Q.VIEW_COUNT
         FROM TBL_QUESTION Q JOIN TBL_MEMBER M
                                  ON Q.MEMBER_ID = M.MEMBER_ID
+        WHERE M.MEMBER_ID = #{memberId}
         ORDER BY Q.Q_BOARD_ID DESC
     </select>
 
     <select id="selectTotal">
         SELECT COUNT(Q_BOARD_ID)
         FROM TBL_QUESTION
+        WHERE MEMBER_ID = #{memberId}
     </select>
 
     <select id="selectQuestion">
@@ -44,4 +46,50 @@
         DELETE TBL_QUESTION
         WHERE Q_BOARD_ID = #{qBoardId}
     </delete>
+
+    <update id="updateViewCount">
+        UPDATE TBL_QUESTION
+        SET VIEW_COUNT = VIEW_COUNT +1
+        WHERE Q_BOARD_ID = #{qBoardId}
+    </update>
+
+<!-- ================================================================  -->
+<!--    <select id="searchList">-->
+<!--        SELECT B.BOARD_ID, B.TITLE, TO_CHAR(B.CREATED_DATE, 'YYYY-MM-DD') AS CREATED_DATE,-->
+<!--        M.LOGIN_ID-->
+<!--        FROM TBL_BOARD B JOIN TBL_MEMBER M-->
+<!--        ON B.MEMBER_ID = M.MEMBER_ID-->
+<!--        <trim prefix="WHERE" prefixOverrides="AND">-->
+<!--            <choose>-->
+<!--                <when test="searchType == 'title'">-->
+<!--                    TITLE LIKE '%' || #{keyword} || '%'-->
+<!--                </when>-->
+<!--                <when test="searchType == 'loginId'">-->
+<!--                    LOGIN_ID LIKE '%' || #{keyword} ||'%'-->
+<!--                </when>-->
+<!--            </choose>-->
+<!--            <if test="createdDate != null and createdDate != ''">-->
+<!--                AND TO_CHAR(B.CREATED_DATE, 'YYYY-MM-DD') >= #{createdDate}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--        ORDER BY B.BOARD_ID DESC-->
+<!--    </select>-->
+
+    <select id="searchList">
+        SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
+               MEMBER_ID, NICKNAME,
+               CREATE_DATE,
+               VIEW_COUNT
+        FROM (
+                 SELECT Q.Q_BOARD_ID, Q.A_STATUS, Q.Q_TITLE,
+                        M.MEMBER_ID, M.NICKNAME,
+                        TO_CHAR(Q.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
+                        Q.VIEW_COUNT
+                 FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+                                          ON Q.MEMBER_ID = M.MEMBER_ID
+                 WHERE M.MEMBER_ID = #{memberId}
+             )
+        WHERE Q_TITLE LIKE '%' || #{keyword} || '%'
+    </select>
+
 </mapper>

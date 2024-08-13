@@ -1,9 +1,6 @@
 package com.example.bookspresso.service.question;
 
-import com.example.bookspresso.dto.question.QuestionDetailDTO;
-import com.example.bookspresso.dto.question.QuestionListDTO;
-import com.example.bookspresso.dto.question.QuestionModifyDTO;
-import com.example.bookspresso.dto.question.QuestionWriteDTO;
+import com.example.bookspresso.dto.question.*;
 import com.example.bookspresso.mapper.question.QuestionMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,12 +20,12 @@ public class QuestionService {
         questionMapper.insertBoard(questionWriteDTO);
     }
 
-    public List<QuestionListDTO> findList(){
-        return questionMapper.selectList();
+    public List<QuestionListDTO> findList(Long memberId){
+        return questionMapper.selectList(memberId);
     }
 
-    public int selectTotal(){
-        return questionMapper.selectTotal();
+    public int selectTotal(Long memberId){
+        return questionMapper.selectTotal(memberId);
     }
 
     public QuestionDetailDTO findQuestion(Long qBoardId){
@@ -36,17 +33,10 @@ public class QuestionService {
                         .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 게시물 번호"));
     }
 
-    public Integer findCount(Long qBoardId){
-        Optional<QuestionDetailDTO> question = questionMapper.selectQuestion(qBoardId);
-        if(question.isPresent()){
-            question.get().setViewCount(question.get().getViewCount()+1);
-        }else {
-//            throw new Exception("question 게시);
-        }
 
-        return question.get().getViewCount();
+    public void updateViewCount(Long qBoardId){
+        questionMapper.updateViewCount(qBoardId);
     }
-
 
     public void modifyQuestion(QuestionModifyDTO questionModifyDTO){
         questionMapper.updateQuestion(questionModifyDTO);
@@ -54,6 +44,10 @@ public class QuestionService {
 
     public void deleteQuestion(Long qBoardId){
         questionMapper.deleteQuestion(qBoardId);
+    }
+
+    public List<QuestionListDTO> findSearchList(QuestionSearchDTO questionSearchDTO){
+        return questionMapper.searchList(questionSearchDTO);
     }
 
 }
