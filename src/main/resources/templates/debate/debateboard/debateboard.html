@@ -49,6 +49,7 @@
         <!--    게시판-->
            <div class="board-object-box">
             <div class="board-object-in-box">
+
                 <div class="board-comtent-box" th:each="debateBoard:${debateBoard}">
                     <input type="hidden" class="hidden-noticeId" th:value="${debateBoard.noticeId}">
                     <div class="board-object-user">
