@@ -45,8 +45,8 @@
         <selectKey resultType="long" keyProperty="noticeId" order="BEFORE">
             select SEQ_DEBATE_BOARD.nextval from dual
         </selectKey>
-        INSERT INTO TBL_DEBATE_BOARD(NOTICE_ID, DEBATE_ID, TITLE, OPINION, NOTICE_DATE)
-        VALUES (#{noticeId},#{debateId},#{title},#{opinion},TO_CHAR(SYSDATE,'YYYY-MM-DD'))
+        INSERT INTO TBL_DEBATE_BOARD(NOTICE_ID, DEBATE_ID, TITLE, OPINION, NOTICE_DATE,MEMBER_ID)
+        VALUES (#{noticeId},#{debateId},#{title},#{opinion},TO_CHAR(SYSDATE,'YYYY-MM-DD'),#{memberId})
     </insert>
 <!-- 토론 디테일 페이지-->
     <select id="selectDetail">
@@ -63,6 +63,36 @@
         WHERE DB.DEBATE_ID=#{debateId} AND DB.NOTICE_ID=#{noticeId}
 
     </select>
+
+<!--    게시물 수정-->
+    <update id="debateBoardUpdate">
+        UPDATE TBL_DEBATE_BOARD
+        SET TITLE=#{title},OPINION=#{opinion},NOTICE_DATE=SYSDATE
+        WHERE MEMBER_ID=#{memberId}
+    </update>
+<!--    게시물 삭제-->
+    <delete id="debateBoardDelete">
+        DELETE FROM TBL_DEBATE_BOARD
+        WHERE MEMBER_ID=#{memberId}
+    </delete>
+<!--    댓글 작성-->
+    <insert id="debateCommentInsert">
+        <selectKey resultType="long" keyProperty="commentId" order="BEFORE">
+            select SEQ_DEBATE_COMMENT.nextval from dual
+        </selectKey>
+        INSERT INTO TBL_DEBATE_COMMENT(COMMENT_ID, NOTICE_ID, MEMBER_ID, DEBATE_COMMENT, COMMENT_DATE)
+        VALUES (#{commentId},#{noticeId},#{memberId},#{debateComment},SYSDATE)
+    </insert>
+<!--    댓글 수정-->
+    <update id="debateCommentUpdate">
+        UPDATE TBL_DEBATE_COMMENT
+        SET DEBATE_COMMENT=#{debateComment},COMMENT_DATE=SYSDATE
+        WHERE MEMBER_ID=#{memberId} AND COMMENT_ID=#{commentId}
+    </update>
+    <delete id="debateCommentDelete">
+        DELETE FROM TBL_DEBATE_COMMENT
+        WHERE MEMBER_ID=#{memberId} AND COMMENT_ID=#{commentId}
+    </delete>
 
 </mapper>
 

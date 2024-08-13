@@ -8,11 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DebateWriteDTO {
-   private Long noticeId;
-   private Long debateId;
-   private String title;
-   private String opinion;
-   private String noticeDate;
+public class DebateCommentUpdateDTO {
+   private String debateComment;
+   private String commentDate;
    private Long memberId;
+   private Long commentId;
 }

@@ -209,9 +209,17 @@
     height: 24px;
 }
 
-.content-total-box {
-    margin: 0 45px;
-    border-radius: 8px;
+.comment-text{
+    padding: 10px 10px 10px 20px;
+    resize: none;
+    width: 750px;
+    height: 30px;
+
+    max-height: 76px;
+    border-radius: 50px;
+    border: 1px solid #dee2e6;
+    font-size: 20px;
+    outline:none;
 }
 
 /* 모달창 */
