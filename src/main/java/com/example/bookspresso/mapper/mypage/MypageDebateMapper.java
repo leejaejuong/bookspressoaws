@@ -10,4 +10,8 @@ import java.util.Optional;
 @Mapper
 public interface MypageDebateMapper {
     List<MypageDebateDTO> selectDebate(Long memberId);
+
+    List<MypageDebateDTO> selectMeeting(Long memberId);
+
+    List<MypageDebateDTO> selectEndDebate(Long memberId);
 }

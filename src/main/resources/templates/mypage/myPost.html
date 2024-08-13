@@ -34,7 +34,8 @@
                                     </div>
                                 </div>
                                 <div class="post_header_title">
-                                    <h1 th:text="${memberDto.nickname + ' 님의 페이지'}" class="post_header_title-primary"></h1>
+                                    <h1 th:text="${memberDto.nickname + ' 님의 페이지'}"
+                                        class="post_header_title-primary"></h1>
                                     <span class="post_header_title-second">글로 남기는 나만의 기록장</span>
                                 </div>
                             </div>
@@ -42,59 +43,60 @@
                         <div class="post_body">
                             <div class="post_body_list">
                                 <div class="post_list">
-                                <div class="post_content_empty">
+                                    <div class="post_content_empty">
                                     <span class="content-empty_title">
                                         아직 작성된 글이 없습니다.
                                     </span>
-                                </div>
-                                    <div style="display: none">
-                                        <div class="post_note">
-                                            <div class="post_note_info">
-                                                <div class="post_note_header">
-                                                    <div class="post_note_header_title">
-                                                        <span>코딩테스트</span>
-                                                    </div>
+                                    </div>
+                                    <div class="post_note">
+                                        <div class="post_note_info">
+                                            <div class="post_note_header">
+                                                <div class="post_note_header_title">
+                                                    <span>코딩테스트</span>
                                                 </div>
-                                                <div class="post_note_body">
-                                                    <div class="post_note_body_container">
-                                                        <div class="post_note_body_info">
-                                                            <div class="post_description">
-                                                                <p>코딩테스트</p>
-                                                            </div>
-                                                            <div class="post_note_footer">
-                                                                <div class="footer_author">
-                                                                    <div class="user-img-box">
-                                                                        <span class="user-img" style="width: 20px; height: 20px; line-height: 25px; font-size: 12px">
+                                            </div>
+                                            <div class="post_note_body">
+                                                <div class="post_note_body_container">
+                                                    <div class="post_note_body_info">
+                                                        <div class="post_description">
+                                                            <p>코딩테스트</p>
+                                                        </div>
+                                                        <div class="post_note_footer">
+                                                            <div class="footer_author">
+                                                                <div class="user-img-box">
+                                                                        <span class="user-img"
+                                                                              style="width: 20px; height: 20px; line-height: 25px; font-size: 12px">
                                                                             <img th:src="@{/img/사용자이미지.PNG}">
                                                                         </span>
-                                                                        <span style="margin-left: 10px" class="profile_nickname">송유</span>
-                                                                    </div>
-                                                                </div>
+                                                                    <span style="margin-left: 10px"
+                                                                          class="profile_nickname">송유</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="post_topic">
-                                                    <div class="post_topic_book">
-                                                        <img src="https://image.aladin.co.kr/product/34093/56/cover150/k982931181_1.jpg" alt="프런트엔드 개발을 위한 테스트 입문 - 프런트엔드 테스트 기초 지식부터 UI 컴포넌트 테스트, E2E 테스트 등 상황에 맞는 테스트 전략까지">
-                                                    </div>
-                                                </div>
                                             </div>
-                                          </div>
                                         </div>
-                                  </div>
+                                        <div class="post_topic">
+                                            <div class="post_topic_book">
+                                                <img src="https://image.aladin.co.kr/product/34093/56/cover150/k982931181_1.jpg"
+                                                     alt="프런트엔드 개발을 위한 테스트 입문 - 프런트엔드 테스트 기초 지식부터 UI 컴포넌트 테스트, E2E 테스트 등 상황에 맞는 테스트 전략까지">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            <div class="content-empty_action">
-                                <button type="button" class="post_button">포스트 만들기</button>
                             </div>
-                            </div>
+                        </div>
+                        <div class="content-empty_action">
+                            <button type="button" class="post_button">포스트 만들기</button>
                         </div>
                     </div>
                 </div>
-            </main>
         </div>
     </div>
+    </main>
+</div>
+</div>
 </div>
 </body>
 </html>

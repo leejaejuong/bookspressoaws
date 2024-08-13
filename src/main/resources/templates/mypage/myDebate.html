@@ -41,10 +41,12 @@
                                         (<span th:text="${debateList.size()}"></span>)
                                     </div>
                                     <div class="myDebate_body_tab" onclick="openTab('tab-gathering')">
-                                        모집 중(0)
+                                        모집 중
+                                        (<span th:text="${debateMeeting.size()}"></span>)
                                     </div>
                                     <div class="myDebate_body_tab" onclick="openTab('tab-closed')">
-                                        종료(0)
+                                        종료
+                                        (<span th:text="${debateEnd.size()}"></span>)
                                     </div>
                                 </div>
                                 <div class="body_content_top">
@@ -63,6 +65,7 @@
                                                             <a class="debate_button" th:href="@{/debate/}">토론 찾아보기</a>
                                                         </div>
                                                     </div>
+                                                    <!-- 반복 -->
                                                     <th:block th:unless="${debateList.isEmpty()}" th:each="debateDto : ${debateList}">
                                                         <div class="debate_tags">
                                                             <div class="tag_container">
@@ -114,14 +117,14 @@
                                                             </div>
                                                         </div>
                                                     </th:block>
-
+                                                    <!-- 반복 -->
                                                 </div>
                                             </div>
                                         </div>
                                     <div role="tabpanel" class="body_tab" id="tab-gathering"
                                          aria-labelledby="tab-gathering" aria-hidden="true">
                                         <div class="myDebate_body_list">
-                                            <div class="content-empty">
+                                            <div class="content-empty" th:if="${debateMeeting.isEmpty()}">
                                                         <span class="content-empty_title">
                                                             <div class="content-empty_item-primary">참여 신청한 모임이 없으시네요</div>
                                                             <div class="content-empty_item">지금 '모집 중'에서 마음에 드는 토론을 찾아보세요.</div>
@@ -132,6 +135,7 @@
                                             </div>
 
                                             <!-- 반복 -->
+                                            <th:block th:unless="${debateMeeting.isEmpty()}" th:each="debateDto : ${debateMeeting}">
                                             <div class="debate_tags">
                                                 <div class="tag_container">
                                                     <div class="tag_container_tags">
@@ -144,11 +148,11 @@
                                                 <!-- <a 진행중인 토론 페이지로 넘기기></a>-->
                                                 <div class="debate_book_info">
                                                     <div class="debate_book_header">
-                                                                <span class="debate_badge">
-                                                                    <div class="debate_book_header_title">
-                                                                        <span th:text="${debateDto?.title}"></span>
-                                                                    </div>
-                                                                </span>
+                                                        <span class="debate_badge">
+                                                            <div class="debate_book_header_title">
+                                                                <span th:text="${debateDto?.title}"></span>
+                                                            </div>
+                                                        </span>
                                                     </div>
                                                     <div class="debate_book_body">
                                                         <div class="debate_book_body_container">
@@ -181,20 +185,20 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            </th:block>
                                             <!-- 반복 -->
-
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="body_tab" id="tab-closed" aria-labelledby="tab-closed"
                                          aria-hidden="true">
                                         <div class="myDebate_body_list">
-                                            <div class="content-empty">
-                                                        <span class="content-empty_title">
-                                                            <div class="content-empty_item-primary">이미 참여해서 끝난 토론은 이곳에서 한꺼번에 확인할 수 있어요.</div>
-                                                        </span>
+                                            <div class="content-empty" th:if="${debateEnd.isEmpty()}">
+                                                <span class="content-empty_title">
+                                                    <div class="content-empty_item-primary">이미 참여해서 끝난 토론은 이곳에서 한꺼번에 확인할 수 있어요.</div>
+                                                </span>
                                             </div>
-
                                             <!-- 반복 -->
+                                            <th:block th:unless="${debateEnd.isEmpty()}" th:each="debateDto : ${debateEnd}">
                                             <div class="debate_tags">
                                                 <div class="tag_container">
                                                     <div class="tag_container_tags">
@@ -244,6 +248,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            </th:block>
                                             <!-- 반복 -->
                                         </div>
                                     </div>

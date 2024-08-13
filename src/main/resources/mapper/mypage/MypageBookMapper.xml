@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bookspresso.mapper.mypage.MypageBookMapper">
-
-
-
+    <select id="selectMemberBooks">
+        SELECT D.DEBATE_ID, D.MEETING_ID, B.TITLE, B.COVER
+        FROM TBL_DEBATE D JOIN TBL_MEMBER_DEBATE MD
+        ON D.DEBATE_ID = MD.DEBATE_ID
+        JOIN TBL_MEMBER M
+            ON M.MEMBER_ID =#{memberId} AND MD.MEMBER_ID = M.MEMBER_ID
+        JOIN TBL_DEBATE_BOOK DB
+            ON D.DEBATE_ID = DB.DEBATE_ID AND DB.MEMBER_ID = M.MEMBER_ID
+        JOIN TBL_BOOK B
+            ON B.ISBN13 = DB.ISBN13
+        <![CDATA[
+        WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        ]]>
+        ORDER BY DEBATE_ID ASC
+    </select>
 </mapper>

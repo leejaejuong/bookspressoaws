@@ -19,4 +19,10 @@ class MypageDebateMapperTest {
         List<MypageDebateDTO> list = mypageDebateMapper.selectDebate(3L);
         System.out.println("list = " + list);
     }
+
+    @Test
+    void selectMeeting() {
+        List<MypageDebateDTO> list = mypageDebateMapper.selectMeeting(1L);
+        System.out.println("list = " + list);
+    }
 }
