@@ -86,4 +86,26 @@ public class AladinService {
 
         return weekOfMonth;
     }
+
+        public List<Aladinitem> getApialadinMain(){
+            WebClient wc= WebClient.builder()
+                    .baseUrl("http://www.aladin.co.kr")
+                    .build();
+            AladinBody api = wc.get()
+                    .uri(uriBuilder ->
+                            uriBuilder.path("/ttb/api/ItemList.aspx")
+                                    .queryParam("TTBKey", apiKey)
+                                    .queryParam("Output", "JS")
+                                    .queryParam("QueryType", "Bestseller")
+                                    .queryParam("Version", "20131101")
+                                    .queryParam("SearchTarget", "Book")
+                                    .queryParam("MaxResults", "20")
+                                    .queryParam("cover", "200px")
+                                    .build()
+                    ).retrieve()
+                    .bodyToMono(AladinBody.class)
+                    .block();
+            List<Aladinitem> item = api.getItem();
+            return item;
+        }
 }

@@ -14,6 +14,6 @@ public class DebatePageRequestDTO {
    public DebatePageRequestDTO() {
 //      기본생성자를 사용하여 쿼리스트링없이 페이징처리를함
    this.page = 1;
-   this.amount = 4;
+   this.amount = 12;
    }
 }

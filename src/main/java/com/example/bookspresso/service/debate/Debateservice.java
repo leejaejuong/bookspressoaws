@@ -33,9 +33,7 @@ public class Debateservice {
     //책 검색
     public List<BookinpoDTO> searchBookinpo(String title){
         return debateMapper.selectbookinpo(title);}
-    public int findBookTotal(){
-        return debateMapper.selectBookTotal();
-    }
+
 
 
 

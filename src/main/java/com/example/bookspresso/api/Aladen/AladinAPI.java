@@ -36,7 +36,7 @@ public class AladinAPI {
     }
     @GetMapping("/aladen")
     public String aladen() {
-        aladinService.getApialadin();
+        aladinService.getApialadinMain();
         return "aladen";
     }
 }

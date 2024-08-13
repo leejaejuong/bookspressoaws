@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bookspresso.mapper.mainPage.MainPageMapper">
     <select id="selectonline">
-        SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, I.TITLE,B.DESCRIPTION,
+        SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, I.TITLE,I.OUTLINE,B.DESCRIPTION,B.AUTHOR,B.TITLE AS BOOK_TITLE,
                TO_CHAR(I.DEBATE_START_DATE,'YYYY-MM-DD')AS DEBATE_START_DATE, TO_CHAR(I.DEBATE_END_DATE,'YYYY-MM-DD')AS DEBATE_END_DATE,
                DB.DEBATE_BOOK_ID,DB.ISBN13,B.COVER
         FROM TBL_DEBATE I JOIN TBL_MEETING_TYPE T
@@ -14,6 +14,21 @@
                           JOIN TBL_BOOK B
                                ON DB.ISBN13 = B.ISBN13
         WHERE MEETING_TYPE='온라인'
-        ORDER BY DEBATE_ID DESC;
+        ORDER BY DEBATE_ID DESC
+    </select>
+    <select id="selectoffline">
+        SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, I.TITLE,I.OUTLINE,B.DESCRIPTION,B.AUTHOR,B.TITLE AS BOOK_TITLE,
+               TO_CHAR(I.DEBATE_START_DATE,'YYYY-MM-DD')AS DEBATE_START_DATE, TO_CHAR(I.DEBATE_END_DATE,'YYYY-MM-DD')AS DEBATE_END_DATE,
+               DB.DEBATE_BOOK_ID,DB.ISBN13,B.COVER
+        FROM TBL_DEBATE I JOIN TBL_MEETING_TYPE T
+                               ON I.MEETING_ID = T.MEETING_ID
+                          JOIN TBL_DEBATE_TYPE P
+                               ON I.DEBATE_TYPE_ID = P.DEBATE_TYPE_ID
+                          JOIN TBL_DEBATE_BOOK DB
+                               ON I.DEBATE_ID = DB.DEBATE_ID
+                          JOIN TBL_BOOK B
+                               ON DB.ISBN13 = B.ISBN13
+        WHERE MEETING_TYPE='오프라인'
+        ORDER BY DEBATE_ID DESC
     </select>
 </mapper>
