@@ -1,5 +1,6 @@
 package com.example.bookspresso.controller.mypage;
 
+import com.example.bookspresso.dto.mypage.MypageBookDTO;
 import com.example.bookspresso.dto.mypage.MypageDebateDTO;
 import com.example.bookspresso.dto.mypage.SettingDTO;
 import com.example.bookspresso.service.mypage.MypageService;
@@ -21,40 +22,46 @@ public class MyPageController {
 
     @GetMapping("/setting")
     public String setting(HttpSession session, Model model) {
-//        Long memberId = (Long) session.getAttribute("memberId");
-        Long memberId = 1L;
+        Long memberId = (Long) session.getAttribute("memberId");
 
-//        String introduce = (String)session.getAttribute("introduce");
+        if (memberId == null) {
+            return "redirect:/member/login";
+        }
+
         SettingDTO member = mypageService.findMember(memberId);
-
-//        model.addAttribute("introduceDto", introduce);
         model.addAttribute("memberDto", member);
         return "mypage/setting";
     }
 
     @GetMapping("/myDebate")
     public String myDebate(HttpSession session, Model model) {
-        Long memberId = 1L;
+        Long memberId = (Long) session.getAttribute("memberId");
+
         SettingDTO member = mypageService.findMember(memberId);
         List<MypageDebateDTO> debateList = mypageService.findDebate(memberId);
+        List<MypageDebateDTO> debateMeeting = mypageService.findMeeting(memberId);
+        List<MypageDebateDTO> debateEnd = mypageService.findEndDebate(memberId);
 
-        System.out.println("debateList = " + debateList);
         model.addAttribute("memberDto", member);
         model.addAttribute("debateList", debateList);
+        model.addAttribute("debateMeeting", debateMeeting);
+        model.addAttribute("debateEnd", debateEnd);
         return "mypage/myDebate";
     }
 
     @GetMapping("/myBook")
     public String myBook(HttpSession session, Model model){
-        Long memberId = 1L;
+        Long memberId = (Long) session.getAttribute("memberId");
         SettingDTO member = mypageService.findMember(memberId);
+        List<MypageBookDTO> memberBooks = mypageService.findMemberBooks(memberId);
 
+        model.addAttribute("memberBooks" , memberBooks);
         model.addAttribute("memberDto", member);
         return "mypage/myBook";
     }
     @GetMapping("/myPost")
     public String myPost(HttpSession session, Model model){
-        Long memberId = 1L;
+        Long memberId = (Long) session.getAttribute("memberId");
         SettingDTO member = mypageService.findMember(memberId);
 
         model.addAttribute("memberDto", member);

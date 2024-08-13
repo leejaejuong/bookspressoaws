@@ -1,9 +1,11 @@
 package com.example.bookspresso.service.mypage;
 
 import com.example.bookspresso.dto.mypage.MemberProfileDTO;
+import com.example.bookspresso.dto.mypage.MypageBookDTO;
 import com.example.bookspresso.dto.mypage.MypageDebateDTO;
 import com.example.bookspresso.dto.mypage.SettingDTO;
 import com.example.bookspresso.mapper.member.MemberMapper;
+import com.example.bookspresso.mapper.mypage.MypageBookMapper;
 import com.example.bookspresso.mapper.mypage.MypageDebateMapper;
 import com.example.bookspresso.mapper.mypage.SettingMapper;
 import lombok.RequiredArgsConstructor;
@@ -29,21 +31,33 @@ import java.util.UUID;
 public class MypageService {
     private final SettingMapper settingMapper;
     private final MypageDebateMapper mypageDebateMapper;
+    private final MypageBookMapper mypageBookMapper;
     private final MultipartProperties multipartProperties;
 
     @Value("${file.dir.pfp}")
     private String pfpFileDir;
 
+//    MypageDebate
     // 멤버 정보 가져오기
     public SettingDTO findMember(Long memberId) {
         return settingMapper.selectSetting(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 번호"));
     }
-//     토론 정보 가져오기
+//     토론중인 정보 가져오기
     public List<MypageDebateDTO> findDebate(Long memberId){
         return mypageDebateMapper.selectDebate(memberId);
     }
+//    모집중인 정보 가져오기
+    public List<MypageDebateDTO> findMeeting(Long memberId){
+        return mypageDebateMapper.selectMeeting(memberId);
+    }
+//    토론이 끝난 정보 가져오기
+    public List<MypageDebateDTO> findEndDebate(Long memberId){
+        return mypageDebateMapper.selectEndDebate(memberId);
+    }
 
+
+//    Setting
     // 소개글 수정 서비스
     public void modifyIntroduce(Long memberId, String introduce) {
         settingMapper.updateIntroduce(memberId, introduce);
@@ -124,6 +138,14 @@ public class MypageService {
         if(file.exists()) {
             file.delete();
         }
+    }
+
+
+//    MypageBook
+
+    // 읽은 책 정보 가져오기
+    public List<MypageBookDTO> findMemberBooks(Long memberId){
+        return mypageBookMapper.selectMemberBooks(memberId);
     }
 
 }
