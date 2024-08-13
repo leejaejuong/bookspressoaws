@@ -59,16 +59,15 @@ public class MemberController {
                         HttpSession session){
         Long memberId = null;
 
-//        try {
-//            memberId = memberService.findMemberId(loginId, password);
-//        } catch (IllegalArgumentException e) {
-//            System.out.println("존재하지 않는 회원정보");
-//            return "member/login";
-//        } catch (Exception e) {
-//            System.out.println("예상치 못한 예외");
-//            return "member/login";
-//        }
-        memberId = memberService.findMemberId(loginId, password);
+        try {
+            memberId = memberService.findMemberId(loginId, password);
+        } catch (IllegalArgumentException e) {
+            System.out.println("존재하지 않는 회원정보");
+            return "member/login";
+        } catch (Exception e) {
+            System.out.println("예상치 못한 예외");
+            return "member/login";
+        }
         session.setAttribute("memberId", memberId);
         System.out.println(loginId+" 회원의 회원번호 = " + session.getAttribute("memberId"));
         return "redirect:/";

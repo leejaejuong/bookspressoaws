@@ -12,6 +12,8 @@ public class AdMemberController {
     @GetMapping("/allList")
     public String totalList(){
 
+
+
         return "admin/member/allList";
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="/admin/member/css/main_gnb.css">
 </head>
 <body>
+<header class="header" th:fragment="adminHeader">
     <!-- 관리자 페이지 상단 헤더 -->
     <div class="gnb">
-        <span>logo</span>
-        <span>관리자 페이지</span>
+<!--        <span><img class="logo-img" src="/img/logo.png" alt="로고"/></span>-->
+        <span>BookSpresso</span>
         <span>
-            <a href="">북스프레소</a>
+            <a th:href="@{/templates/admin/main}">관리자 페이지</a>
         </span>
-        <span>
-            <a th:href="@{/admin/main}">toAdmin</a>
-        </span>
+        <span th:if="${session.adminId!=null}">
+            <a th:href="@{/admin/logout}">로그아웃</a></span>
     </div>
       <!-- /관리자 페이지 상단 헤더 -->
+</header>
 </body>
 </html>

@@ -9,21 +9,8 @@
 </head>
 <body>
 
+<header th:replace="~{admin/main/main_gnb :: adminHeader}"></header>
     <div class="full-screen">
-
-        <!-- 관리자 페이지 상단 헤더 -->
-        <div class="gnb">
-            <span>logo</span>
-             <span>관리자 페이지</span>
-             <span>
-                 <a href="">북스프레소</a>
-             </span>
-             <span>
-                <a th:href="@{/admin/main}">toAdmin</a>
-             </span>
-         </div>
-        <!-- /관리자 페이지 상단 헤더 -->
-
          <!-- 관리자 정보  -->
         <div class="info_area">
             <div class="info_area-img">
@@ -41,17 +28,17 @@
 
                 <ul class="admin_info">
                     <li>
-                        <strong>관리자정보1</strong>
-                        <span>관리자정보1</span>
+                        <strong>관리자 식별변호</strong>
+                        <span th:text="${adminId}"></span>
                     </li>
                     <li>
-                        <strong>관리자 정보2</strong>
-                        <span>관리자정보1</span>
+                        <strong>관리자 아이디</strong>
+                        <span th:text="${adminLoginId}"></span>
                     </li>
-                    <li>
-                        <strong>관리자 정보3</strong>
-                        <span>관리자정보1</span>
-                    </li>
+<!--                    <li>-->
+<!--                        <strong>관리자 정보3</strong>-->
+<!--                        <span>관리자정보1</span>-->
+<!--                    </li>-->
                     
                 </ul>
             </div>
