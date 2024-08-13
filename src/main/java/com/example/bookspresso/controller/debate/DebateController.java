@@ -146,7 +146,7 @@ public class DebateController {
     }
 
     @PostMapping("/write")
-    public String debatewrite(DebateWriteDTO debateWriteDTO,HttpSession session) {
+    public String debatewrite(DebateWriteDTO debateWriteDTO, HttpSession session) {
         Long memberId = (Long) session.getAttribute("memberId");
         if (memberId == null) {
             return "redirect:/member/login";
@@ -159,19 +159,46 @@ public class DebateController {
     }
 
     @GetMapping("/detail")
-    public String debatedetail(Long noticeId,Long debateId, HttpSession session, Model model) {
+    public String debatedetail(Long noticeId, Long debateId, HttpSession session, Model model) {
 
 
         Long memberId = (Long) session.getAttribute("memberId");
         if (memberId == null) {
             return "redirect:/member/login";
         }
-        DebateBoardDTO detail = debateBoardService.selectDetaill(debateId,noticeId);
+        DebateBoardDTO detail = debateBoardService.selectDetaill(debateId, noticeId);
         DebateBoardAsideDTO aside = debateBoardService.selectAside(debateId);
-        model.addAttribute("aside",aside);
-        model.addAttribute("detail",detail);
-        return"debate/debateboard/debatedetail";
+        model.addAttribute("aside", aside);
+        model.addAttribute("detail", detail);
+        return "debate/debateboard/debatedetail";
     }
+
+    @GetMapping("/modify")
+    public String debatemodify(@SessionAttribute("memberId") Long memberId, Model model, Long debateId) {
+//        Model model,Long noticeId,Long debateId
+        if (memberId == null) {
+            return "redirect:/member/login";
+        }
+        DebateBoardDTO detail = debateBoardService.selectDetaill(debateId, 121L);
+        System.out.println("detail = " + detail);
+        DebateBoardAsideDTO aside = debateBoardService.selectAside(debateId);
+        model.addAttribute("aside", aside);
+        model.addAttribute("detail", detail);
+        return "debate/debateboard/debatemodify";
+    }
+
+    @PostMapping("/modify")
+    public String debatemodify(DebateBoardUpdateDTO debateBoardUpdateDTO, @SessionAttribute("memberId") Long memberId) {
+        if (memberId == null) {
+            return "redirect:/member/login";
+        }
+//        Long debateId = debateWriteDTO.getDebateId();
+//        debateWriteDTO.setMemberId(memberId);
+//        debateWriteDTO.setDebateId(debateId);
+//        debateBoardService.addWrite(debateWriteDTO);
+        return "redirect:/debate/board?debateId=";
+    }
+
 
 }
 
