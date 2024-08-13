@@ -1,8 +1,6 @@
 package com.example.bookspresso.service.question;
 
-import com.example.bookspresso.dto.question.QuestionDetailDTO;
-import com.example.bookspresso.dto.question.QuestionListDTO;
-import com.example.bookspresso.dto.question.QuestionWriteDTO;
+import com.example.bookspresso.dto.question.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +26,20 @@ class QuestionServiceTest {
 
         questionService.addQuestion(questionWriteDTO);
 
-        List<QuestionListDTO> list = questionService.findList();
+        List<QuestionListDTO> list = questionService.findList(1L);
         System.out.println("list = " + list);
     }
 
     @Test
     void findList() {
+        QuestionWriteDTO questionWriteDTO = new QuestionWriteDTO();
+        questionWriteDTO.setMemberId(3L);
+        questionWriteDTO.setQContent("test");
+        questionWriteDTO.setQTitle("test");
+
+        questionService.addQuestion(questionWriteDTO);
+
+        questionService.findList(4L);
 
     }
 
@@ -52,7 +58,7 @@ class QuestionServiceTest {
         questionService.addQuestion(questionWriteDTO1);
         questionService.addQuestion(questionWriteDTO2);
 
-        int count = questionService.selectTotal();
+        int count = questionService.selectTotal(3L);
         System.out.println("##### count = " + count);
 
     }
@@ -66,6 +72,58 @@ class QuestionServiceTest {
 
         QuestionDetailDTO question = questionService.findQuestion(27L);
         System.out.println("question = " + question);
+    }
+
+    @Test
+    void updateQuestion() {
+        QuestionWriteDTO questionWriteDTO1 = new QuestionWriteDTO();
+        questionWriteDTO1.setMemberId(1L);
+        questionWriteDTO1.setQContent("test");
+        questionWriteDTO1.setQTitle("test");
+        questionService.addQuestion(questionWriteDTO1);
+
+        QuestionModifyDTO questionModifyDTO = new QuestionModifyDTO();
+        questionModifyDTO.setQContent("testdfsefsdfs");
+        questionModifyDTO.setQTitle("testsfefsefr");
+        questionModifyDTO.setQBoardId(questionWriteDTO1.getQBoardId());
+
+        questionService.modifyQuestion(questionModifyDTO);
+
+//        questionService.findList();
+
+
+    }
+    @Test
+    public void deleteQuestion() {
+        questionService.deleteQuestion(37L);
+//        questionService.findList();
+    }
+
+    @Test
+    public void updateViewCount(){
+        QuestionWriteDTO questionWriteDTO = new QuestionWriteDTO();
+        questionWriteDTO.setMemberId(1L);
+        questionWriteDTO.setQContent("testQuestion");
+        questionWriteDTO.setQTitle("testQuestion");
+
+        questionService.addQuestion(questionWriteDTO);
+
+        questionService.updateViewCount(questionWriteDTO.getQBoardId());
+        questionService.updateViewCount(questionWriteDTO.getQBoardId());
+        questionService.updateViewCount(questionWriteDTO.getQBoardId());
+//        List<QuestionListDTO> list = questionService.findList();
+//        System.out.println(list);
+    }
+
+    @Test
+    public void findSearchList(){
+        QuestionSearchDTO questionSearchDTO = new QuestionSearchDTO();
+        questionSearchDTO.setMemberId(4L);
+        questionSearchDTO.setSearchType("qTitle");
+        questionSearchDTO.setKeyword("토론");
+
+        List<QuestionListDTO> searchList = questionService.findSearchList(questionSearchDTO);
+        System.out.println("searchList = " + searchList);
     }
 
 }

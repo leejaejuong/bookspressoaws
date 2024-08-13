@@ -33,15 +33,16 @@
             <div class="content" th:text="${question.qContent}"></div>
           </div>
 
-<!--          <div class="answer-box">-->
-<!--&lt;!&ndash;    th:if = {session.admin != null} 관리자의 식변번호가 존재하면 출력         &ndash;&gt;-->
-<!--            <span class="answer-title">-->
-<!--              관리자 답변-->
-<!--              <span text="sysdate">(2024-07-29)</span>-->
-<!--            </span>-->
-<!--            <div class="answer-content">답변이다ㅏㅏ</div>-->
-<!--          </div>-->
-<!--        </div>-->
+          <div class="answer-box">
+<!--    th:if = {session.admin != null} 관리자의 식변번호가 존재하면 출력         -->
+            <span class="answer-title">
+              관리자 답변
+              <span text="sysdate">(2024-07-29)</span>
+            </span>
+            <div class="answer-content">답변이다ㅏㅏ</div>
+          </div>
+
+        </div>
 
           <div class="btns">
             <!-- 작성한 회원이 아니라면 수정, 삭제 버튼은 보이지 않음  -->
