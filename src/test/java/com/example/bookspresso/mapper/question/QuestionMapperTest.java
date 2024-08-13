@@ -3,6 +3,7 @@ package com.example.bookspresso.mapper.question;
 import com.example.bookspresso.dto.member.MemberJoinDTO;
 import com.example.bookspresso.dto.question.QuestionDetailDTO;
 import com.example.bookspresso.dto.question.QuestionListDTO;
+import com.example.bookspresso.dto.question.QuestionModifyDTO;
 import com.example.bookspresso.dto.question.QuestionWriteDTO;
 import com.example.bookspresso.mapper.member.MemberMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -85,8 +86,37 @@ class QuestionMapperTest {
         Optional<QuestionDetailDTO> questionDetailDTO = questionMapper.selectQuestion(questionWriteDTO.getQBoardId());
         System.out.println("detail = " + questionDetailDTO.isPresent());
 
+    }
 
+    @Test
+    void updateQuestion(){
+        QuestionWriteDTO questionWriteDTO = new QuestionWriteDTO();
+        questionWriteDTO.setMemberId(3L);
+        questionWriteDTO.setQContent("test");
+        questionWriteDTO.setQTitle("test");
 
+        questionMapper.insertBoard(questionWriteDTO);
+
+        QuestionModifyDTO questionModifyDTO = new QuestionModifyDTO();
+        questionModifyDTO.setQBoardId(questionWriteDTO.getQBoardId());
+        questionModifyDTO.setQContent("testerwerwer");
+        questionModifyDTO.setQTitle("testsdfsfes");
+
+        questionMapper.updateQuestion(questionModifyDTO);
+
+        System.out.println(questionModifyDTO + "############");
+    }
+
+    @Test
+    void deleteQuestion(){
+        QuestionWriteDTO questionWriteDTO = new QuestionWriteDTO();
+        questionWriteDTO.setMemberId(3L);
+        questionWriteDTO.setQContent("testsfdfsd");
+        questionWriteDTO.setQTitle("testsfesedfs");
+        questionMapper.selectList();
+
+        questionMapper.deleteQuestion(41L);
+        questionMapper.selectList();
     }
 
 }

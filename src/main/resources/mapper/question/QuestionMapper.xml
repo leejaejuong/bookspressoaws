@@ -34,4 +34,14 @@
         WHERE Q.Q_BOARD_ID = #{qBoardId}
     </select>
 
+    <update id="updateQuestion">
+        UPDATE TBL_QUESTION
+        SET Q_TITLE =#{qTitle}, Q_CONTENT = #{qContent}, CREATE_DATE = SYSDATE
+        WHERE Q_BOARD_ID = #{qBoardId}
+    </update>
+
+    <delete id="deleteQuestion">
+        DELETE TBL_QUESTION
+        WHERE Q_BOARD_ID = #{qBoardId}
+    </delete>
 </mapper>

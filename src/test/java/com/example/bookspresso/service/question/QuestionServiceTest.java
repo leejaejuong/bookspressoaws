@@ -2,6 +2,7 @@ package com.example.bookspresso.service.question;
 
 import com.example.bookspresso.dto.question.QuestionDetailDTO;
 import com.example.bookspresso.dto.question.QuestionListDTO;
+import com.example.bookspresso.dto.question.QuestionModifyDTO;
 import com.example.bookspresso.dto.question.QuestionWriteDTO;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -66,6 +67,31 @@ class QuestionServiceTest {
 
         QuestionDetailDTO question = questionService.findQuestion(27L);
         System.out.println("question = " + question);
+    }
+
+    @Test
+    void updateQuestion() {
+        QuestionWriteDTO questionWriteDTO1 = new QuestionWriteDTO();
+        questionWriteDTO1.setMemberId(1L);
+        questionWriteDTO1.setQContent("test");
+        questionWriteDTO1.setQTitle("test");
+        questionService.addQuestion(questionWriteDTO1);
+
+        QuestionModifyDTO questionModifyDTO = new QuestionModifyDTO();
+        questionModifyDTO.setQContent("testdfsefsdfs");
+        questionModifyDTO.setQTitle("testsfefsefr");
+        questionModifyDTO.setQBoardId(questionWriteDTO1.getQBoardId());
+
+        questionService.modifyQuestion(questionModifyDTO);
+
+        questionService.findList();
+
+
+    }
+    @Test
+    public void deleteQuestion() {
+        questionService.deleteQuestion(37L);
+        questionService.findList();
     }
 
 }
