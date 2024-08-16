@@ -178,6 +178,13 @@ table{
 .board-content .tl:last-child{
     padding-left: 5px;
 }
+/*.debate-title{*/
+/*    */
+/*    white-space: nowrap;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+
+/*}*/
 
 img {
     width: 15px;

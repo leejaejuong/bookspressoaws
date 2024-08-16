@@ -1,6 +1,7 @@
 package com.example.bookspresso.mapper.question;
 
-import com.example.bookspresso.dto.question.*;
+import com.example.bookspresso.dto.question.board.*;
+import com.example.bookspresso.dto.question.page.QPageRequestDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -26,6 +27,8 @@ public interface QuestionMapper {
 
 //    질문방 검색
     List<QuestionListDTO> searchList(QuestionSearchDTO questionSearchDTO);
+
+    List<QuestionListDTO> selectListWithPage(QPageRequestDTO qPageRequestDTO);
 
 
 }

@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" th:href="@{/css/admin/qa/toAnswer.css}"/>
+    <script defer th:src="@{/admin/qa/toAnswer.js}"></script>
   </head>
   <body>
     <div class="full-screen">
@@ -19,30 +20,30 @@
 
         <h4>Q&A 게시판</h4>
         <div class="detail-board">
-          <div class="detail-title">title</div>
-          <div class="view-info">
-            <span class="text">작성자 : <span>wirter</span></span>
-            <span class="text">작성일 : <span>wirte-date 14:59:35</span></span>
-          </div>
-          <div class="content-box">
-            <div class="content">
-              writeQ에서 class="content-box"에 작성했던 내용
+            <div class="detail-title" th:text="${list.qTitle}"></div>
+            <div class="view-info">
+              <span class="text">작성자 : <span th:text="${list.nickname}"></span></span>
+              <span class="text">작성일 : <span th:text="${list.createDate}"></span></span>
             </div>
-          </div>
+            <div class="content-box">
+              <div class="content" th:text="${list.qContent}"></div>
+            </div>
+
+
+          <form th:action="@{/admin/question/popup}" method="post">
           <div class="answer-box">
             <span class="answer-title">
-              관리자 답변
-              <span text="sysdate">(2024-07-29)</span>
+              관리자 답변 <span hidden th:text="${list.qBoardId}"></span>
+<!--              <span text="sysdate" name="createdDate"></span>-->
             </span>
-            <form action="">
             <div class="answer-content">
-                <textarea name="QandAcont" id="" cols="30" rows="10"></textarea>
+                <textarea name="aContent" cols="30" rows="10"></textarea>
             </div>
-            </form>
           </div>
           <div class="write-btn">
-            <button type="button">작성완료</button>
+            <button id="submit-btn">작성완료</button>
           </div>
+          </form>
         </div>
 
 

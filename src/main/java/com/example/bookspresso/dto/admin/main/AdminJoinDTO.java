@@ -1,4 +1,4 @@
-package com.example.bookspresso.dto.admin;
+package com.example.bookspresso.dto.admin.main;
 
 import lombok.*;
 

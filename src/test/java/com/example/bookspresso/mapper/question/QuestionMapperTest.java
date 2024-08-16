@@ -1,9 +1,7 @@
 package com.example.bookspresso.mapper.question;
 
-import com.example.bookspresso.dto.member.MemberJoinDTO;
-import com.example.bookspresso.dto.question.*;
-import com.example.bookspresso.mapper.member.MemberMapper;
-import org.junit.jupiter.api.BeforeEach;
+import com.example.bookspresso.dto.question.board.*;
+import com.example.bookspresso.dto.question.page.QPageRequestDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -130,6 +128,21 @@ class QuestionMapperTest {
         List<QuestionListDTO> searchListDTOS = questionMapper.searchList(questionSearchDTO);
 
         System.out.println(searchListDTOS);
+    }
+
+    @Test
+    public void selectListWithPage(){
+        System.out.println("그냥 리스트 = " + questionMapper.selectList(4L));
+
+        QPageRequestDTO qPageRequestDTO = new QPageRequestDTO();
+        qPageRequestDTO.setMemberId(4L);
+        qPageRequestDTO.setPage(1);
+        qPageRequestDTO.setAmount(3);
+
+        List<QuestionListDTO> listPages = questionMapper.selectListWithPage(qPageRequestDTO);
+        System.out.println(listPages);
+
+
     }
 
 

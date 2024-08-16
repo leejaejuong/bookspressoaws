@@ -13,7 +13,7 @@
 <!--        <span><img class="logo-img" src="/img/logo.png" alt="로고"/></span>-->
         <span>BookSpresso</span>
         <span>
-            <a th:href="@{/templates/admin/main}">관리자 페이지</a>
+            <a th:href="@{/admin/main}">관리자 페이지</a>
         </span>
         <span th:if="${session.adminId!=null}">
             <a th:href="@{/admin/logout}">로그아웃</a></span>

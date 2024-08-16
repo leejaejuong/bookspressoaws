@@ -1,15 +1,13 @@
 package com.example.bookspresso.service.question;
 
-import com.example.bookspresso.dto.question.*;
-import org.junit.jupiter.api.AfterAll;
+import com.example.bookspresso.dto.question.board.*;
+import com.example.bookspresso.dto.question.page.QPageRequestDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -125,5 +123,20 @@ class QuestionServiceTest {
         List<QuestionListDTO> searchList = questionService.findSearchList(questionSearchDTO);
         System.out.println("searchList = " + searchList);
     }
+
+    @Test
+    public void findListWithPage(){
+        questionService.findList(4L);
+
+        QPageRequestDTO qPageRequestDTO = new QPageRequestDTO();
+        qPageRequestDTO.setMemberId(4L);
+        qPageRequestDTO.setAmount(4);
+
+        List<QuestionListDTO> listWithPage = questionService.findListWithPage(qPageRequestDTO);
+        System.out.println("listWithPage = " + listWithPage);
+
+    }
+
+
 
 }

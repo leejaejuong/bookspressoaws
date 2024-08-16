@@ -29,7 +29,7 @@
                     <form th:action="@{/qa/list/search}" method="get">
                         <select name="searchType">
 <!--                            <option value="">제목 + 내용</option>-->
-                            <option name="searchType" value="qTitle">제목</option>
+                            <option value="qTitle">제목</option>
 <!--                            <option value="">내용</option>-->
                         </select>
                         <div class="input-box">
@@ -69,7 +69,7 @@
                         <!-- Q&A 내용  -->
                         <tr th:each="board : ${list}">
                             <td class="tc" th:text="${board.qBoardId}"></td>
-                            <td class="tc" th:text="${aStatus}" id="status"></td>
+                            <td class="tc" th:text="${board.aStatus}" id="status"></td>
 <!--                             th:text="${board.aStatus}" th:data-id="${board.aStatus}" -->
                             <td class="tl">
                                     <a th:href="@{/qa/detail(qBoardId=${board.qBoardId})}" th:text="${board.qTitle}"></a>
@@ -85,15 +85,18 @@
             <!-- 페이지 처리 -->
             <div class="page">
                 <span class="page-line">
-                    <span class="">&lt;&lt;</span>
-                    <span class="">&lt;</span>
-                    <span class="page-battom"><a href="">1</a></span>
-                    <span class="page-battom"><a href="">2</a></span>
-                    <span class="page-battom"><a href="">3</a></span>
-                    <span class="page-battom"><a href="">4</a></span>
-                    <span class="page-battom"><a href="">5</a></span>
-                    <span class="">&gt;</span>
-                    <span class="">&gt;&gt;</span>
+
+                    <a th:href="@{/qa/list(page=${qPageSetDTO.startPage - 1})}" th:if="${qPageSetDTO.prev}">
+                       <span class="">&lt</span>
+                    </a>
+
+                    <a th:href="@{/qa/list(page=${i})}"
+                       th:each="i : ${#numbers.sequence(qPageSetDTO.startPage, qPageSetDTO.endPage)}">
+                        <span class="page-battom" th:classappend="${qPageSetDTO.qPageRequestDTO.page == i ? 'active' : ''}" th:text="${i}"></span>
+                    </a>
+
+                    <a th:href="@{/qa/list(page=${qPageSetDTO.endPage + 1})}" th:if="${qPageSetDTO.next}"><span class="">&gt</span></a>
+
                 </span>
             </div>
         </div>
