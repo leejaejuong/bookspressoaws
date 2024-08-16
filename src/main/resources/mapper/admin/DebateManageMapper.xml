@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.admin.DebateManageMapper">
+    <select id="selectDebateList">
+        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+        DEBATE_START_DATE, DEBATE_END_DATE,
+        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+        FROM (
+            SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+            DEBATE_START_DATE, DEBATE_END_DATE,
+            DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+            FROM(
+                SELECT D.DEBATE_ID ,D.TITLE, D.MEETING_ID,
+                       TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD') AS GROUP_START_DATE,
+                       TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') AS GROUP_END_DATE,
+                    TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+                    TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD') AS DEBATE_END_DATE,
+                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE
+                FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B
+                ON D.DEBATE_ID = B.DEBATE_ID
+                WHERE D.DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                ORDER BY D.DEBATE_ID DESC
+                )
+            <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectDebateCount">
+        SELECT COUNT(D.DEBATE_ID)
+        FROM TBL_DEBATE D
+                 JOIN TBL_DEBATE_BOOK B
+                      ON D.DEBATE_ID = B.DEBATE_ID
+        WHERE DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+    </select>
+
+    <select id="selectSearchDebateList">
+        SELECT TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+        DEBATE_START_DATE, DEBATE_END_DATE,
+        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+        FROM (
+            SELECT ROWNUM AS RNUM, TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+            DEBATE_START_DATE, DEBATE_END_DATE,
+            DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+            FROM(
+                SELECT D.TITLE, D.MEETING_ID, D.GROUP_START_DATE, D.GROUP_END_DATE,
+                D.DEBATE_START_DATE, D.DEBATE_END_DATE,
+                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE
+                FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B
+                ON D.DEBATE_ID = B.DEBATE_ID
+                <trim prefix="WHERE" prefixOverrides="AND">
+                    DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+
+                        <choose>
+                            <when test="searchType == 'title'">
+                                TITLE LIKE '%' || #{keyword} || '%'
+                            </when>
+                            <when test="searchType == 'meetingId">
+                                MEETING_ID LIKE '%' || #{keyword} || '%'
+                            </when>
+                        </choose>
+
+                </trim>
+                ORDER BY D.DEBATE_ID DESC
+                )
+            <![CDATA[
+                WHERE ROWNUM <= #{page} * #{amount}
+                ]]>
+            )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+
+
+    <select id="selectEndDebateList">
+        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+               DEBATE_START_DATE, DEBATE_END_DATE,
+               DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+        FROM (
+                 SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+                        DEBATE_START_DATE, DEBATE_END_DATE,
+                        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+                 FROM(
+                         SELECT D.DEBATE_ID,
+                                D.TITLE, D.MEETING_ID,
+                                TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD') AS GROUP_START_DATE,
+                                TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') AS GROUP_END_DATE,
+                                TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+                                TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD') AS DEBATE_END_DATE,
+                                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE
+                         FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B
+                                                ON D.DEBATE_ID = B.DEBATE_ID
+                         <![CDATA[
+                         WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                         ]]>
+                         ORDER BY D.DEBATE_END_DATE DESC
+                     )
+            <![CDATA[
+                 WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectEndDebateCount">
+        SELECT COUNT(D.DEBATE_ID)
+        FROM TBL_DEBATE D
+                 JOIN TBL_DEBATE_BOOK B
+                      ON D.DEBATE_ID = B.DEBATE_ID
+        <![CDATA[
+        WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        ]]>
+    </select>
+
+
+    <select id="selectBookName">
+        SELECT B.TITLE
+        FROM TBL_BOOK B JOIN TBL_DEBATE_BOOK DB
+                             ON B.ISBN13 = DB.ISBN13
+        WHERE DB.DEBATE_ID = #{debateId}
+    </select>
+
+    <delete id="delectDebate">
+        DELETE TBL_DEBATE
+        WHERE DEBATE_ID = #{debateId}
+    </delete>
+
+
+</mapper>

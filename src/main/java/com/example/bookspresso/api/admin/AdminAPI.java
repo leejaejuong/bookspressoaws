@@ -13,7 +13,8 @@ public class AdminAPI {
     private final AdminService adminService;
 
     @PostMapping("/login/findAdminId/{loginId}/{password}")
-    public boolean login(@PathVariable String loginId, @PathVariable String password) {
+    public boolean login(@PathVariable String loginId,
+                         @PathVariable String password) {
         try {
             adminService.findAdminId(loginId, password);
             return true;
@@ -23,4 +24,8 @@ public class AdminAPI {
         }
 
     }
+
+
+
+
 }

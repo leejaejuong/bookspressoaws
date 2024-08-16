@@ -10,19 +10,9 @@
 
 </head>
 <body>
-    <div class="full-screen">
-           <!-- 공통 헤더  -->
-        <div class="gnb">
-           <span>logo</span>
-            <span>관리자 페이지</span>
-            <span>
-                <a href="">북스프레소</a>
-            </span>
-            <span>
-                <a th:href="@{/admin/main}">toAdmin</a>
-            </span>
-        </div>
-        <!-- /공통 헤더  -->
+<header th:replace="~{admin/main/main_gnb :: adminHeader}"></header>
+<div class="full-screen">
+
         <div class="header">
             <div class="sub">
                 <ul class="gnb-lists">

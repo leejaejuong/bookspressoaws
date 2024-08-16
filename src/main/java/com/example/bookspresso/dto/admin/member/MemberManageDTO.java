@@ -1,4 +1,4 @@
-package com.example.bookspresso.dto.admin;
+package com.example.bookspresso.dto.admin.member;
 
 import lombok.*;
 
@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AllMember {
+public class MemberManageDTO {
 
     String loginId;
     String nickname;
