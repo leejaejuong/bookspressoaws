@@ -6,11 +6,13 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/admin/main/main.css}">
     <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
+
 </head>
 <body>
 
+
 <header th:replace="~{admin/main/main_gnb :: adminHeader}"></header>
-    <div class="full-screen">
+<div class="full-screen">
          <!-- 관리자 정보  -->
         <div class="info_area">
             <div class="info_area-img">
@@ -63,9 +65,9 @@
             <div class="devate_manage">
                 <strong>토론 관리</strong>
                 <ul>
-                    <li><a th:href="@{/admin/discussion/onGoing}">현재 진행 중인 토론</a></li>
-                    <li><a th:href="@{/admin/discussion/finished}">종료된 토론</a></li>
-                    <li><a th:href="@{/admin/discussion/forcedOut}">삭제된 토론</a></li>
+                    <li><a th:href="@{/admin/debate/onGoing}">현재 진행 중인 토론</a></li>
+                    <li><a th:href="@{/admin/debate/finished}">종료된 토론</a></li>
+                    <li><a th:href="@{/admin/debate/forcedOut}">삭제된 토론</a></li>
                 </ul>
             </div>
             <div class="poster_manage">
@@ -80,7 +82,7 @@
             <div class="qa_manage">
                 <strong>Q&A</strong>
                 <ul>
-                    <li><a th:href="@{/admin/qa/question}">Q&A 리스트</a></li>
+                    <li><a th:href="@{/admin/question/list}">Q&A 리스트</a></li>
 <!--                    <li><a href="">답글 미완료 Q&A</a></li>-->
                 </ul>
             </div>

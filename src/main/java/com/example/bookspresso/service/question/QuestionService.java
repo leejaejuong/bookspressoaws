@@ -1,13 +1,13 @@
 package com.example.bookspresso.service.question;
 
-import com.example.bookspresso.dto.question.*;
+import com.example.bookspresso.dto.question.board.*;
+import com.example.bookspresso.dto.question.page.QPageRequestDTO;
 import com.example.bookspresso.mapper.question.QuestionMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -48,6 +48,10 @@ public class QuestionService {
 
     public List<QuestionListDTO> findSearchList(QuestionSearchDTO questionSearchDTO){
         return questionMapper.searchList(questionSearchDTO);
+    }
+
+    public List<QuestionListDTO> findListWithPage(QPageRequestDTO qPageRequestDTO){
+        return questionMapper.selectListWithPage(qPageRequestDTO);
     }
 
 }

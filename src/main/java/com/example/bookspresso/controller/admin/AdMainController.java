@@ -1,7 +1,5 @@
 package com.example.bookspresso.controller.admin;
 
-import com.example.bookspresso.dto.admin.AdminJoinDTO;
-import com.example.bookspresso.mapper.admin.AdminMainMapper;
 import com.example.bookspresso.service.admin.AdminService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

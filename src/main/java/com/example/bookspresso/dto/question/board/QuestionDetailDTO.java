@@ -1,4 +1,4 @@
-package com.example.bookspresso.dto.question;
+package com.example.bookspresso.dto.question.board;
 
 import lombok.*;
 

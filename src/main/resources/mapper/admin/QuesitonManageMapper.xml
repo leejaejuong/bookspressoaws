@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.admin.QuestionManageMapper">
+
+    <select id="selectQuestionList">
+
+        SELECT Q_BOARD_ID, Q_TITLE, CREATE_DATE,
+        A_STATUS, MEMBER_ID, NICKNAME
+        FROM (
+        SELECT ROWNUM AS RNUM, Q_BOARD_ID, Q_TITLE, CREATE_DATE,
+        A_STATUS, MEMBER_ID, NICKNAME
+        FROM(
+        SELECT Q.Q_BOARD_ID, Q.Q_TITLE, Q.CREATE_DATE, Q.A_STATUS,
+        M.MEMBER_ID, M.NICKNAME
+        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+        ON Q.MEMBER_ID = M.MEMBER_ID
+        ORDER BY Q.CREATE_DATE DESC
+        )
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ]]>
+        )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectQuestionCount">
+        SELECT COUNT(Q.Q_BOARD_ID)
+        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+                                 ON Q.MEMBER_ID = M.MEMBER_ID
+    </select>
+
+    <insert id="insertAnswer">
+        <selectKey resultType="long" keyProperty="answerId" order="BEFORE">
+            SELECT SEQ_ANSWER.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_ANSWER (ANSWER_ID, ADMIN_ID, Q_BOARD_ID, A_CONTENT)
+        VALUES ( #{answerId}, #{adminId}, #{qBoardId}, #{aContent} )
+    </insert>
+
+
+
+</mapper>

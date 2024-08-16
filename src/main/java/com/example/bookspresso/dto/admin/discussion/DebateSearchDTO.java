@@ -1,5 +1,4 @@
-package com.example.bookspresso.dto.question;
-
+package com.example.bookspresso.dto.admin.discussion;
 
 import lombok.*;
 
@@ -9,11 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class QuestionSearchDTO {
-
-//    private Long BoardId;
-    private Long memberId;
+public class DebateSearchDTO {
     private String searchType;
     private String keyword;
-
 }

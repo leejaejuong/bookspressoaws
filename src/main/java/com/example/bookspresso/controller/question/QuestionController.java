@@ -1,10 +1,11 @@
 package com.example.bookspresso.controller.question;
 
-import com.example.bookspresso.dto.member.MemberJoinDTO;
-import com.example.bookspresso.dto.question.QuestionDetailDTO;
-import com.example.bookspresso.dto.question.QuestionListDTO;
-import com.example.bookspresso.dto.question.QuestionSearchDTO;
-import com.example.bookspresso.dto.question.QuestionWriteDTO;
+import com.example.bookspresso.dto.question.board.QuestionDetailDTO;
+import com.example.bookspresso.dto.question.board.QuestionListDTO;
+import com.example.bookspresso.dto.question.board.QuestionSearchDTO;
+import com.example.bookspresso.dto.question.board.QuestionWriteDTO;
+import com.example.bookspresso.dto.question.page.QPageRequestDTO;
+import com.example.bookspresso.dto.question.page.QPageSetDTO;
 import com.example.bookspresso.service.question.QuestionService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -22,14 +23,34 @@ public class QuestionController {
     private final QuestionService questionService;
     private final HttpSession httpSession;
 
-    @GetMapping("/list")
-    public String qaList(Model model, HttpSession session){
-        Long memberId = (Long) session.getAttribute("memberId");
-        List<QuestionListDTO> list = questionService.findList(memberId);
+//    @GetMapping("/list")
+//    public String qaList(Model model, HttpSession session){
+//        Long memberId = (Long) session.getAttribute("memberId");
+//        List<QuestionListDTO> list = questionService.findList(memberId);
+//
+//        System.out.println("list = " + list);
+//
+//        model.addAttribute("total", questionService.selectTotal(memberId));
+//        model.addAttribute("list", list);
+//        model.addAttribute("aStatus", "답변 미완료");
+//
+//        return "question/qList";
+//    }
 
-        model.addAttribute("total", questionService.selectTotal(memberId));
+    @GetMapping("/list")
+    public String qaList(Model model, HttpSession session,
+                         QPageRequestDTO qPageRequestDTO){
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        qPageRequestDTO.setMemberId(memberId);
+        List<QuestionListDTO> list = questionService.findListWithPage(qPageRequestDTO);
+        int total = questionService.selectTotal(memberId);
+
+        QPageSetDTO qPageSetDTO = new QPageSetDTO(qPageRequestDTO, total);
+
+        model.addAttribute("total", total);
         model.addAttribute("list", list);
-        model.addAttribute("aStatus", "답변 미완료");
+        model.addAttribute("qPageSetDTO", qPageSetDTO);
 
         return "question/qList";
     }
@@ -40,11 +61,11 @@ public class QuestionController {
                                Model model){
 
         Long memberId = (Long) session.getAttribute("memberId");
+        questionSearchDTO.setMemberId(memberId);
 
         List<QuestionListDTO> list = questionService.findSearchList(questionSearchDTO);
         model.addAttribute("total", questionService.selectTotal(memberId));
         model.addAttribute("list", list);
-
 
         return "question/qList";
     }
