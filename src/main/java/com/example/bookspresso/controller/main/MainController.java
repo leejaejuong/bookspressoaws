@@ -3,7 +3,6 @@ package com.example.bookspresso.controller.main;
 import com.example.bookspresso.api.Aladen.Aladinitem;
 import com.example.bookspresso.dto.mainPage.DebateMainDTO;
 import com.example.bookspresso.service.aladen.AladinService;
-import com.example.bookspresso.service.debate.Debateservice;
 import com.example.bookspresso.service.mainPage.MainPageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

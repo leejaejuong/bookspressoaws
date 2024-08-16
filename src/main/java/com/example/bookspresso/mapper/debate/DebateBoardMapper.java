@@ -23,14 +23,14 @@ public interface DebateBoardMapper {
 //    게시물수정
     void debateBoardUpdate(DebateBoardUpdateDTO debateBoardUpdateDTO);
 //    게시물 삭제
-    void debateBoardDelete(Long memberId);
+    void debateBoardDelete(@Param("memberId") Long memberId,
+                           @Param("noticeId")Long noticeId);
 //    댓글 작성
     void debateCommentInsert(DebateCommentInsertDTO debateCommentInsertDTO);
 //    댓글 수정
     void debateCommentUpdate(DebateCommentUpdateDTO debateCommentUpdateDTO);
 //    댓글 삭제
-    void debateCommentDelete(@Param("memberId") Long memberId,
-                             @Param("commentId") Long commentId);
+    void debateCommentDelete(@Param("commentId") Long commentId);
 
 
 

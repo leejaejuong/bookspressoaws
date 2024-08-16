@@ -13,4 +13,6 @@ public class DebateBoardUpdateDTO {
    private String opinion;
    private String noticeDate;
    private Long memberId;
+   private Long noticeId;
+   private Long debateId;
 }

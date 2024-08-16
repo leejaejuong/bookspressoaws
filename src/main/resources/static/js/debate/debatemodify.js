@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let $subminbtn=document.querySelector('.gather-create-butten-dv1')
    $subminbtn.addEventListener("click", ()=>{
-  document.getElementById('opinion-hidden').value= document.querySelector('.write-content-text').innerHTML;
+    console.log(document.getElementById('opinion-hidden').value= document.querySelector('.write-content-text').innerHTML);
         document.getElementById('submitbtn').submit();
     });
 }

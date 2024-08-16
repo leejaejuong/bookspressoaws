@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,7 +36,7 @@ public class DebateBoardService {
         debateBoardMapper.debateBoardUpdate(debateBoardUpdateDTO);
    }
     //    게시물 삭제
-   public void removeBoard(Long memberId){debateBoardMapper.debateBoardDelete(memberId);}
+   public void removeBoard(Long memberId,Long noticeId){debateBoardMapper.debateBoardDelete(memberId,noticeId);}
 //    댓글 작성
     public void addComment(DebateCommentInsertDTO debateCommentInsertDTO){debateBoardMapper.debateCommentInsert(debateCommentInsertDTO);}
     //    댓글 수정
@@ -45,8 +44,8 @@ public class DebateBoardService {
         debateBoardMapper.debateCommentUpdate(debateCommentUpdateDTO);
     }
     //    댓글 삭제
-   public void removeComment(Long memberId,Long commentId){
-        debateBoardMapper.debateCommentDelete(memberId,commentId);
+   public void removeComment(Long commentId){
+        debateBoardMapper.debateCommentDelete(commentId);
    }
 
 

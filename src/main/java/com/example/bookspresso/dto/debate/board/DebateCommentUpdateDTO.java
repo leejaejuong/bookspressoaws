@@ -11,6 +11,5 @@ import lombok.*;
 public class DebateCommentUpdateDTO {
    private String debateComment;
    private String commentDate;
-   private Long memberId;
    private Long commentId;
 }

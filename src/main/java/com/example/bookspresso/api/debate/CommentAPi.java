@@ -24,24 +24,21 @@ public class CommentAPi {
     public void commentWrite(@PathVariable("noticId") Long noticId,
                              @RequestBody DebateCommentInsertDTO debateCommentInsertDTO,
                              @SessionAttribute("memberId") Long memberId) {
-        debateCommentInsertDTO.setNoticId(noticId);
+        debateCommentInsertDTO.setNoticeId(noticId);
         debateCommentInsertDTO.setMemberId(memberId);
 
         log.info("debateCommentDTO", debateCommentInsertDTO);
         debateBoardService.addComment(debateCommentInsertDTO);
     }
     @PatchMapping("/debate/details/{commentId}")
-    public void modifyComment(@PathVariable("CommentId")Long commentId,
-                              @RequestBody DebateCommentUpdateDTO debateCommentUpdateDTO,
-                              @SessionAttribute("memberId") Long memberId){
-            debateCommentUpdateDTO.setMemberId(memberId);
+    public void modifyComment(@PathVariable("commentId")Long commentId,
+                              @RequestBody DebateCommentUpdateDTO debateCommentUpdateDTO){
         debateCommentUpdateDTO.setCommentId(commentId);
         debateBoardService.modifyComment(debateCommentUpdateDTO);
     }
-    @DeleteMapping("/debate/details/{memberId}")
-    public void removeComment(@PathVariable("commentId")Long commentId,
-                              @SessionAttribute("memberId")Long memberId){
-        debateBoardService.removeComment(memberId,commentId);
+    @DeleteMapping("/debate/details/{commentId}")
+    public void removeComment(@PathVariable("commentId")Long commentId){
+        debateBoardService.removeComment(commentId);
 
     }
 }

@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 public class DebateBoardCommentDTO {
    private Long noticeId;
+   private Long memberId;
    private Long commentId;
    private String debateComment;
    private String commentDate;

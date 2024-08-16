@@ -10,7 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/debate/debateboard.css}"/>
     <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/debate/debatewrite.css}"/>
-    <script defer th:src="@{/js/debate/debatewrite.js}"></script>
+    <script defer th:src="@{/js/debate/debatemodify.js}"></script>
 
 
     <script defer th:src="@{/js/debate/debateboard.js}"></script>
@@ -49,9 +49,11 @@
         <div class="board-object-box">
             <form id="submitbtn" action="/debate/modify" method="post">
                 <input type="hidden" name="debateId" th:value="${aside.debateId}">
+                <input type="hidden" name="noticeId" th:value="${detail.noticeId}">
                 <div class="write-total-box">
                     <div class="write-title-box">
-                        <input type="text" name="title" class="write-title-text" th:placeholder="${detail.title}" maxlength="70"/>
+                        <input type="text" name="title" th:value="${detail.title}" class="write-title-text"  maxlength="70"/>
+<!--                        th:placeholder="${detail.title}"-->
                         <div class="title-count-box">
                             <p><span class="title-count">0</span>/70</p>
                         </div>

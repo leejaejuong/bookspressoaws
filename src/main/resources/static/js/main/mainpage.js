@@ -76,10 +76,15 @@
 
         bindEvents();
     });
-    let $selectbtn =document.querySelector('.book-button');
-    let debateId=document.querySelector('.debate-id').value;
-    $selectbtn.addEventListener('click',function (){
-        location.href=`/debate/board?debateId=${debateId}`
+    let $selectbtn =document.querySelectorAll('.book-button');
+    $selectbtn.forEach( e=>{
+        e.addEventListener('click',function (){
+            let $detail=this.closest('.show-style')
+                .querySelector('.book-button');
+            let debateId=this.closest('.show-style')
+                .querySelector('.debate-id').value;
+            location.href=`/debate/board?debateId=${debateId}`
+        });
     });
 }
 {// 오프라인
@@ -159,11 +164,17 @@
 
         bindEvents();
     });
-    let $selectbtn =document.querySelector('.book-button');
-    let debateId=document.querySelector('.debate-id').value;
-    $selectbtn.addEventListener('click',function (){
-        location.href=`/debate/board?debateId=${debateId}`
-    });
+    //자세히보기 버튼처리
+    let $selectbtn =document.querySelectorAll('.book-button-off');
+       $selectbtn.forEach( e=>{
+           e.addEventListener('click',function (){
+              let $detail=this.closest('.show-style')
+                  .querySelector('.book-button-off');
+              let debateId=this.closest('.show-style')
+                  .querySelector('.debate-id-off').value;
+               location.href=`/debate/board?debateId=${debateId}`
+           });
+       });
 }
 { //포스트
     document.addEventListener('DOMContentLoaded', () => {
