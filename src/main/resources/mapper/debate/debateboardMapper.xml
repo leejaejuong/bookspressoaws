@@ -29,7 +29,7 @@
     </select>
     <!--토론게시판 댓글-->
     <select id="selectBoardComment">
-        SELECT DC.NOTICE_ID,DC.COMMENT_ID,DC.DEBATE_COMMENT,TO_CHAR(DC.COMMENT_DATE,'YYYY-MM-DD')AS COMMENT_DATE,
+        SELECT DC.NOTICE_ID,M.MEMBER_ID,DC.COMMENT_ID,DC.DEBATE_COMMENT,TO_CHAR(DC.COMMENT_DATE,'YYYY-MM-DD')AS COMMENT_DATE,
                M.NICKNAME,P.PROFILE_UUID,P.PROFILE_UPLOAD
         FROM TBL_DEBATE_BOARD DB LEFT JOIN TBL_DEBATE_COMMENT DC
                                            ON DB.NOTICE_ID=DC.NOTICE_ID
@@ -38,6 +38,7 @@
                                  LEFT JOIN TBL_PROFILE P
                                            ON M.MEMBER_ID=P.MEMBER_ID
         WHERE DC.NOTICE_ID=#{noticeId}
+        ORDER BY COMMENT_ID DESC
 
     </select>
 <!--    토론 작성 페이지-->
@@ -68,12 +69,12 @@
     <update id="debateBoardUpdate">
         UPDATE TBL_DEBATE_BOARD
         SET TITLE=#{title},OPINION=#{opinion},NOTICE_DATE=SYSDATE
-        WHERE MEMBER_ID=#{memberId}
+        WHERE MEMBER_ID=#{memberId} AND NOTICE_ID=#{noticeId}
     </update>
 <!--    게시물 삭제-->
     <delete id="debateBoardDelete">
         DELETE FROM TBL_DEBATE_BOARD
-        WHERE MEMBER_ID=#{memberId}
+        WHERE MEMBER_ID=#{memberId} AND NOTICE_ID=#{noticeId}
     </delete>
 <!--    댓글 작성-->
     <insert id="debateCommentInsert">
@@ -87,11 +88,12 @@
     <update id="debateCommentUpdate">
         UPDATE TBL_DEBATE_COMMENT
         SET DEBATE_COMMENT=#{debateComment},COMMENT_DATE=SYSDATE
-        WHERE MEMBER_ID=#{memberId} AND COMMENT_ID=#{commentId}
+        WHERE  COMMENT_ID=#{commentId}
     </update>
+<!--    댓글 삭제-->
     <delete id="debateCommentDelete">
         DELETE FROM TBL_DEBATE_COMMENT
-        WHERE MEMBER_ID=#{memberId} AND COMMENT_ID=#{commentId}
+        WHERE COMMENT_ID=#{commentId}
     </delete>
 
 </mapper>

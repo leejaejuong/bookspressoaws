@@ -3,7 +3,10 @@ package com.example.bookspresso.controller.debate;
 import com.example.bookspresso.dto.debate.DebateInpoDTO;
 import com.example.bookspresso.dto.debate.N_N.DebateBookDTO;
 import com.example.bookspresso.dto.debate.N_N.MemberdebateDTO;
-import com.example.bookspresso.dto.debate.board.*;
+import com.example.bookspresso.dto.debate.board.DebateBoardAsideDTO;
+import com.example.bookspresso.dto.debate.board.DebateBoardDTO;
+import com.example.bookspresso.dto.debate.board.DebateBoardUpdateDTO;
+import com.example.bookspresso.dto.debate.board.DebateWriteDTO;
 import com.example.bookspresso.dto.debate.debateMain.DebateMainPageDTO;
 import com.example.bookspresso.dto.debate.page.DebatePageRequestDTO;
 import com.example.bookspresso.dto.debate.page.PageRequestDTO;
@@ -174,12 +177,15 @@ public class DebateController {
     }
 
     @GetMapping("/modify")
-    public String debatemodify(@SessionAttribute("memberId") Long memberId, Model model, Long debateId) {
-//        Model model,Long noticeId,Long debateId
+    public String debatemodify(@SessionAttribute("memberId") Long memberId,
+                               Long debateId,
+                               Model model,
+                               Long noticeId) {
+
         if (memberId == null) {
             return "redirect:/member/login";
         }
-        DebateBoardDTO detail = debateBoardService.selectDetaill(debateId, 121L);
+        DebateBoardDTO detail = debateBoardService.selectDetaill(debateId,noticeId);
         System.out.println("detail = " + detail);
         DebateBoardAsideDTO aside = debateBoardService.selectAside(debateId);
         model.addAttribute("aside", aside);
@@ -192,13 +198,22 @@ public class DebateController {
         if (memberId == null) {
             return "redirect:/member/login";
         }
-//        Long debateId = debateWriteDTO.getDebateId();
-//        debateWriteDTO.setMemberId(memberId);
-//        debateWriteDTO.setDebateId(debateId);
-//        debateBoardService.addWrite(debateWriteDTO);
-        return "redirect:/debate/board?debateId=";
+        debateBoardUpdateDTO.setMemberId(memberId);
+        System.out.println("debateBoardUpdateDTO = " + debateBoardUpdateDTO);
+        System.out.println("없데이트");
+        debateBoardService.modifyBoard(debateBoardUpdateDTO);
+        Long noticeId = debateBoardUpdateDTO.getNoticeId();
+        Long debateId = debateBoardUpdateDTO.getDebateId();
+        return "redirect:/debate/detail?debateId="+debateId+"&noticeId="+noticeId;
     }
-
+    @GetMapping("/remove")
+    public String remove(@SessionAttribute("memberId") Long memberId,Long noticeId,Long debateId){
+        if (memberId == null) {
+            return "redirect:/member/login";
+        }
+        debateBoardService.removeBoard(memberId,noticeId);
+        return "redirect:/debate/board?debateId="+debateId;
+    }
 
 }
 

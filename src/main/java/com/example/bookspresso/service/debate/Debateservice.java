@@ -5,7 +5,6 @@ import com.example.bookspresso.dto.debate.DebateInpoDTO;
 import com.example.bookspresso.dto.debate.N_N.DebateBookDTO;
 import com.example.bookspresso.dto.debate.N_N.MemberdebateDTO;
 import com.example.bookspresso.dto.debate.debateMain.DebateMainPageDTO;
-import com.example.bookspresso.dto.debate.page.DebatePageRequestDTO;
 import com.example.bookspresso.dto.debate.page.PageRequestDTO;
 import com.example.bookspresso.mapper.debate.DebateMapper;
 import lombok.RequiredArgsConstructor;

@@ -88,6 +88,13 @@ font-size : 30px;
     font-size: 15px;
     color: #8b8b8b;
 }
+.book-button-off{
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+    font-size: 15px;
+    color: #8b8b8b;
+}
 .meeting-type{
     list-style-type: none;
     border-radius: 4px;

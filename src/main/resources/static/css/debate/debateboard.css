@@ -62,6 +62,7 @@
     align-items: center;
 }
 .aside-title{
+
     font-size: 20px;
     padding: 10px 0;
 }
@@ -94,7 +95,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #dee2e6;
 
 }
@@ -153,11 +154,30 @@
     text-decoration-line: none;
     color: inherit;
 }
-
+.modify-total-box{
+    display: flex;
+    align-items: center
+}
+.modify-contnet{
+    width: 680px;
+    resize: none;
+    border-radius: 10px;
+    font-size: 17px;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+}
+.modify-content-btn{
+    margin-left: auto;
+    background-color:rgba(17 18 19);
+    color: #ffd200;
+    font-size: 15px;
+    width: 80px ;
+    height: 40px;
+    border-radius: 8px;
+}
 .board-object-user-btn {
     margin-left: auto;
     border: none;
-
 
 }
 
@@ -187,6 +207,7 @@
 
 .board-object-comment-inop-box {
     width: 100%;
+    height: auto;
     display: flex;
     margin: 10px 0;
     justify-content: space-between;
@@ -207,15 +228,33 @@
 .junjun-img {
     width: 24px;
     height: 24px;
+    padding: 10px;
 }
+.comment-btn{
+    display: flex;
+    font-size: 20px;
+    border-radius: 8px;
+    width: 100px;
+    height: 40px;
+    background-color: rgba(17 18 19);;
+    color: #ffd200;
+    align-items: center;
+    justify-content: center;
+}
+.comment-btn-box{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 20px;
+    margin-right:  30px;
 
+
+}
 .comment-text{
     padding: 10px 10px 10px 20px;
     resize: none;
     width: 750px;
-    height: 30px;
-
-    max-height: 76px;
+    min-height: 25px;
+    max-height: 228px;
     border-radius: 50px;
     border: 1px solid #dee2e6;
     font-size: 20px;
@@ -240,11 +279,22 @@
     color: rgb(228, 41, 30);
     font-size: 20px;
 }
-.modal-text1{
+.modal-modify {
     font-size: 20px;
     color: #8491a7;
     line-height: 28px;
+    border: none;
+    background-color: white;
+    padding-bottom:10px ;
 }
+.modal-modelete{
+    font-size: 20px;
+    color: #8491a7;
+    line-height: 28px;
+    border: none;
+    background-color: white;
+}
+
 .none {
     display: none;
 }

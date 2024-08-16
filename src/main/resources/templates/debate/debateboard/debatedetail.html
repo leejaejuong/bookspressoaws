@@ -10,7 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/debate/debateboard.css}"/>
     <link rel="stylesheet" th:href="@{/css/debate/postobject.css}"/>
 
-    <script defer th:src="@{/js/debate/debatedetail.js}"></script>
+    <script defer type="module" th:src="@{/js/debate/debatedetail.js}"></script>
 
 </head>
 <body>
@@ -51,6 +51,7 @@
             <div class="board-object-in-box">
                 <div class="board-comtent-box">
                     <input type="hidden" class="hidden-noticeId" th:value="${detail.noticeId}">
+
                     <div class="board-object-user">
                         <div><img class="debate-img" src="/img/user.png"/></div>
                         <div class="board-object-user-inpo">
@@ -58,17 +59,21 @@
                             <div class="board-object-user-date" th:text="${detail.noticeDate}"></div>
 
                         </div>
-                        <div class="board-object-user-btn">
+
+                        <div  class="board-object-user-btn">
                             <div class="board-object-btn">
                                 <img class="junjun-img" src="/img/junjun.png"/>
                             </div>
                             <div class="modal-total-box none">
                                 <div class="modal-in-box">
-                                    <div class="modal-text1"><p>수 &nbsp; 정</p></div>
-                                    <div class="modal-text1"><p> 삭 &nbsp; 제</p></div>
+                                    <button type="button" class="modal-modify"><p>수 &nbsp; 정</p></button>
+                                    <button type="button" class="modal-modelete"><p> 삭 &nbsp; 제</p></button>
                                 </div>
+
                                 <div class="modal-text"> 신 &nbsp; 고</div>
                             </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="content-total-box">
@@ -83,7 +88,8 @@
                     <div class="board-object-comment">
                         <div>댓글</div>
                         <div class="board-object-comment-inop-box">
-                            <textarea class="comment-text" placeholder="영감을 주는 답글을 남겨보세요"></textarea>
+                            <textarea class="comment-text" name="debateComment" placeholder="영감을 주는 답글을 남겨보세요"></textarea>
+                            <div class="comment-btn-box" ><button type="button" class="comment-btn"> 작성</button></div>
                         </div>
                     </div>
                     <!--                    댓글-->
@@ -92,10 +98,11 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
     </main>
-</div>
+        </div>
+<script th:inline="javascript">
+    let sessionMemberId=[[${session.memberId}]];
+
+</script>
 </body>
 </html>

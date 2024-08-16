@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 public class DebateCommentInsertDTO {
   private Long commentId;
-  private Long noticId;
+  private Long noticeId;
   private Long memberId;
   private String debateComment;
 

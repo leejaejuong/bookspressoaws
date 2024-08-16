@@ -1,6 +1,8 @@
 package com.example.bookspresso.dto.debate.page;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
