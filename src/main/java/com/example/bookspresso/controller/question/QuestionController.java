@@ -1,9 +1,6 @@
 package com.example.bookspresso.controller.question;
 
-import com.example.bookspresso.dto.question.board.QuestionDetailDTO;
-import com.example.bookspresso.dto.question.board.QuestionListDTO;
-import com.example.bookspresso.dto.question.board.QuestionSearchDTO;
-import com.example.bookspresso.dto.question.board.QuestionWriteDTO;
+import com.example.bookspresso.dto.question.board.*;
 import com.example.bookspresso.dto.question.page.QPageRequestDTO;
 import com.example.bookspresso.dto.question.page.QPageSetDTO;
 import com.example.bookspresso.service.question.QuestionService;
@@ -22,20 +19,6 @@ import java.util.List;
 public class QuestionController {
     private final QuestionService questionService;
     private final HttpSession httpSession;
-
-//    @GetMapping("/list")
-//    public String qaList(Model model, HttpSession session){
-//        Long memberId = (Long) session.getAttribute("memberId");
-//        List<QuestionListDTO> list = questionService.findList(memberId);
-//
-//        System.out.println("list = " + list);
-//
-//        model.addAttribute("total", questionService.selectTotal(memberId));
-//        model.addAttribute("list", list);
-//        model.addAttribute("aStatus", "답변 미완료");
-//
-//        return "question/qList";
-//    }
 
     @GetMapping("/list")
     public String qaList(Model model, HttpSession session,
@@ -57,15 +40,25 @@ public class QuestionController {
 
     @GetMapping("/list/search")
     public String qaSearchList(QuestionSearchDTO questionSearchDTO,
+                               QPageRequestDTO qPageRequestDTO,
                                HttpSession session,
                                Model model){
 
-        Long memberId = (Long) session.getAttribute("memberId");
+        Long memberId = (Long)session.getAttribute("memberId");
         questionSearchDTO.setMemberId(memberId);
 
-        List<QuestionListDTO> list = questionService.findSearchList(questionSearchDTO);
-        model.addAttribute("total", questionService.selectTotal(memberId));
+
+        List<QuestionListDTO> list = questionService.findSearchListWithPage(memberId,questionSearchDTO.getKeyword(),
+                qPageRequestDTO.getPage(), qPageRequestDTO.getAmount());
+
+        int total = questionService.findSearchTotal(memberId, questionSearchDTO.getKeyword(),
+                qPageRequestDTO.getPage(), qPageRequestDTO.getAmount());
+
+        QPageSetDTO qPageSetDTO = new QPageSetDTO(qPageRequestDTO, total);
+
+        model.addAttribute("total", total);
         model.addAttribute("list", list);
+        model.addAttribute("qPageSetDTO", qPageSetDTO);
 
         return "question/qList";
     }
@@ -82,7 +75,7 @@ public class QuestionController {
             return "redirect:/member/login";
         }
 
-//        model.addAttribute("nickname",);
+//        model.addAttribute("nickname", );
 
         return "question/writeQ";
     }
@@ -104,18 +97,42 @@ public class QuestionController {
     }
 
     @GetMapping("/detail")
-    public String qaDetail(Long qBoardId, Model model){
-        questionService.updateViewCount(qBoardId);   //조회수 +1
+    public String qaDetail(Long qBoardId,
+                           Model model){
+        questionService.updateViewCount(qBoardId);
+
         QuestionDetailDTO question = questionService.findQuestion(qBoardId);
         model.addAttribute("question", question);
 
-        System.out.println("#### count = " + question.getViewCount());
         return "question/answerDetail";
     }
 
     @GetMapping("/modify")
-    public String qaModify(Model model){
+    public String qaModify(Model model, Long qBoardId){
 
-        return null;
+        QuestionDetailDTO question = questionService.findQuestion(qBoardId);
+        model.addAttribute("question", question);
+
+        return "question/modifyQ";
+    }
+
+    @PostMapping("/modify")
+    public String qaModify(QuestionModifyDTO questionModifyDTO,
+                           RedirectAttributes redirectAttributes){
+
+        questionService.modifyQuestion(questionModifyDTO);
+        System.out.println("questionModifyDTO = " + questionModifyDTO);
+        redirectAttributes.addAttribute("qBoardId", questionModifyDTO.getQBoardId());
+        System.out.println("questionModifyDTO = " + questionModifyDTO);
+
+        return "redirect:/qa/detail";
+    }
+
+    @GetMapping("/drop")
+    public String qaDrop(Long qBoardId){
+
+        questionService.deleteQuestion(qBoardId);
+        System.out.println("drop = " + qBoardId);
+        return "redirect:/qa/list";
     }
 }

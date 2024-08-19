@@ -1,5 +1,6 @@
 package com.example.bookspresso.service.admin;
 
+import com.example.bookspresso.dto.admin.discussion.DebateSearchDTO;
 import com.example.bookspresso.dto.admin.discussion.ManageDebateDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageRequestDTO;
 import com.example.bookspresso.mapper.admin.DebateManageMapper;
@@ -33,24 +34,49 @@ class ManageDebateServiceTest {
 //    ManageDebateService manageDebateService;
 
     AdminPageRequestDTO adminPageRequestDTO;
+    DebateSearchDTO debateSearchDTO;
 
     @BeforeEach
     void setUp() {
         adminPageRequestDTO = new AdminPageRequestDTO();
+
+        debateSearchDTO = DebateSearchDTO.builder()
+                .searchType("bookName")
+                .keyword("으")
+                .build();
+
     }
 
-//    @Test
-//    void findDebateList() {
-//        doReturn(List.of(new ManageDebateDTO()))
-//                .when(debateManageMapper)
-//                .selectDebateList(adminPageRequestDTO);
-//
-//        List<ManageDebateDTO> debateList = manageDebateService.findDebateList(adminPageRequestDTO);
-//
-//        assertThat(debateList).isNotNull();
-//
-//        System.out.println(debateList);
-//    }
+    @Test
+    void findDebateList() {
+        doReturn(List.of(new ManageDebateDTO()))
+                .when(debateManageMapper)
+                .selectDebateList(adminPageRequestDTO);
+
+        List<ManageDebateDTO> debateList = manageDebateService.findDebateList(adminPageRequestDTO);
+
+        assertThat(debateList).isNotNull();
+
+        System.out.println(debateList);
+    }
+
+    @Test
+    void findSearchDebateList(){
+        List<ManageDebateDTO> list = manageDebateService.findSearchDebateList(debateSearchDTO.getSearchType(),
+                debateSearchDTO.getKeyword(),
+                adminPageRequestDTO.getPage(),
+                adminPageRequestDTO.getAmount());
+
+        System.out.println("list = " + list);
+
+        int total = manageDebateService.findSearchDebateTotal(debateSearchDTO.getSearchType(),
+                debateSearchDTO.getKeyword(),
+                adminPageRequestDTO.getPage(),
+                adminPageRequestDTO.getAmount());
+        System.out.println("total = " + total);
+
+    }
+
 
     @Test
     void findEndDebateList() {
@@ -73,6 +99,8 @@ class ManageDebateServiceTest {
 
     @Test
     void dropDebate() {
+
+
 
     }
 }

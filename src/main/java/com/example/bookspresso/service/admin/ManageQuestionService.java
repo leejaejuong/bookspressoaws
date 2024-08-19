@@ -2,6 +2,7 @@ package com.example.bookspresso.service.admin;
 
 import com.example.bookspresso.dto.admin.page.AdminPageRequestDTO;
 import com.example.bookspresso.dto.admin.qa.ManageQuestionListDTO;
+import com.example.bookspresso.dto.admin.qa.ModifyAnswer;
 import com.example.bookspresso.dto.admin.qa.QuestionAnswerDTO;
 import com.example.bookspresso.mapper.admin.QuestionManageMapper;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +26,24 @@ public class ManageQuestionService {
         return questionManageMapper.selectQuestionCount();
     }
 
+    public List<ManageQuestionListDTO> findFinishQuestionList(AdminPageRequestDTO adminPageRequestDTO){
+        return questionManageMapper.selectFinishQuestionList(adminPageRequestDTO);
+    }
+    public int findFinishQuestionCount(){
+        return questionManageMapper.selectFinishQuestionCount();
+    }
+
     public void addAnswer(QuestionAnswerDTO questionAnswerDTO){
         questionManageMapper.insertAnswer(questionAnswerDTO);
     }
 
+    public void updateAnswer(Long qBoardId){
+        questionManageMapper.updateAnswerStatus(qBoardId);
+    }
+
+    public void updateAnswerContent(ModifyAnswer modifyAnswer){
+        questionManageMapper.updateAnswer(modifyAnswer);
+    }
 
 
 }

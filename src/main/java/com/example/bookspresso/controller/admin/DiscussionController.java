@@ -1,5 +1,7 @@
 package com.example.bookspresso.controller.admin;
 
+import com.example.bookspresso.dto.admin.discussion.DebateSearchDTO;
+import com.example.bookspresso.dto.admin.discussion.FinishedDebateDTO;
 import com.example.bookspresso.dto.admin.discussion.ManageDebateDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageRequestDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageSetDTO;
@@ -21,9 +23,6 @@ public class DiscussionController {
 
     private final ManageDebateService manageDebateService;
 
-    public void modul(){
-
-    }
 
     // 현재 진행 중인 토론
     @GetMapping("/onGoing")
@@ -50,8 +49,10 @@ public class DiscussionController {
             String meetingType = manageDebateDTO.getMeetingId();
             manageDebateDTO.setMeetingId(meetingTypeId.get(meetingType));
 
-            String bookName = manageDebateService.findBookName(manageDebateDTO.getDebateId());
-            model.addAttribute("bookName", bookName);
+            System.out.println(manageDebateDTO +"###");
+
+//            String bookName = manageDebateService.findBookName(manageDebateDTO.getDebateId());
+//            model.addAttribute("bookName", bookName);
         });
 
         int total = manageDebateService.findDebateCount();
@@ -64,6 +65,29 @@ public class DiscussionController {
         model.addAttribute("adminPageSetDTO", adminPageSetDTO);
 
         return "admin/discussion/onGoingDc";
+    }
+
+    @GetMapping("/onGoing/search")
+    public String OnDebateSearch(DebateSearchDTO debateSearchDTO,
+                                 AdminPageRequestDTO adminPageRequestDTO,
+                                 Model model){
+
+        List<ManageDebateDTO> list = manageDebateService.findSearchDebateList(debateSearchDTO.getSearchType(),
+                debateSearchDTO.getKeyword(), adminPageRequestDTO.getPage(),
+                adminPageRequestDTO.getAmount());
+
+        int total = manageDebateService.findSearchDebateTotal(debateSearchDTO.getSearchType(),
+                debateSearchDTO.getKeyword(), adminPageRequestDTO.getPage(),
+                adminPageRequestDTO.getAmount());
+
+        AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
+
+        model.addAttribute("total", total);
+        model.addAttribute("list", list);
+        model.addAttribute("adminPageSetDTO", adminPageSetDTO);
+
+
+        return "/admin/discussion/onGoingDc";
     }
 
     @GetMapping("/finished")
@@ -104,6 +128,30 @@ public class DiscussionController {
 
         return "admin/discussion/finishedDc";
     }
+
+    @GetMapping("/finished/search")
+    public String finishedSearch(DebateSearchDTO debateSearchDTO,
+                                 AdminPageRequestDTO adminPageRequestDTO,
+                                 Model model){
+        List<FinishedDebateDTO> list = manageDebateService.findSearchEndDebateList(debateSearchDTO.getSearchType(),
+                debateSearchDTO.getKeyword(), adminPageRequestDTO.getPage(),
+                adminPageRequestDTO.getAmount());
+
+        int total = manageDebateService.findSearchEndDebateTotal(debateSearchDTO.getSearchType(),
+                debateSearchDTO.getKeyword(), adminPageRequestDTO.getPage(),
+                adminPageRequestDTO.getAmount());
+
+        AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
+        model.addAttribute("total", total);
+        model.addAttribute("list", list);
+        model.addAttribute("adminPageSetDTO", adminPageSetDTO);
+
+        return "admin/discussion/finishedDc";
+
+    }
+
+
+
 
     @GetMapping("/forcedOut")
     public String discussion(){

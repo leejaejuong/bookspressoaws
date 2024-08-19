@@ -33,7 +33,7 @@
                         <span>토론 검색</span>
                         <form th:action="@{/admin/debate/onGoing/search}" method="get">
                             <select name="searchType" size="1">
-                                <option value="bookName" >책 이름</option>
+                                <option value="bookName">책 이름</option>
                                 <option value="meetingType">모임 종류</option>
                             </select>
                             <input type="text" name="keyword">
@@ -87,7 +87,7 @@
                                     <th scope="col">토론 시작일</th>
                                     <th scope="col">토론 종료일</th>
                                 </tr>                               
-                            </thead>
+                               </thead>
                             <tbody>
                                 <th:block th:each="board : ${list}">
                                     <tr class="check-info">
@@ -117,7 +117,7 @@
                                             <div class="met-type">
                                                 <div>토론 제목 : <span th:text="${board.title}"></span></div>
                                                 <div>토론 종류 : <span th:text="${board.debateTypeId}"></span></div>
-                                                <div>토론 책 : <span th:text="${bookName}"></span></div>
+                                                <div>토론 책 : <span th:text="${board.bookName}"></span></div>
                                                 <div>토론 개요 : <span th:text="${board.outline}"></span></div>
                                             </div>
                                         </td>

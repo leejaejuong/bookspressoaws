@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bookspresso.mapper.admin.DebateManageMapper">
+<!--    <select id="selectDebateList">-->
+<!--        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,-->
+<!--        DEBATE_START_DATE, DEBATE_END_DATE,-->
+<!--        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE-->
+<!--        FROM (-->
+<!--            SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,-->
+<!--            DEBATE_START_DATE, DEBATE_END_DATE,-->
+<!--            DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE-->
+<!--            FROM(-->
+<!--                SELECT D.DEBATE_ID ,D.TITLE, D.MEETING_ID,-->
+<!--                       TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD') AS GROUP_START_DATE,-->
+<!--                       TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') AS GROUP_END_DATE,-->
+<!--                    TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,-->
+<!--                    TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD') AS DEBATE_END_DATE,-->
+<!--                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE-->
+<!--                FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B-->
+<!--                ON D.DEBATE_ID = B.DEBATE_ID-->
+<!--                WHERE D.DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')-->
+<!--                ORDER BY D.DEBATE_ID DESC-->
+<!--                )-->
+<!--            <![CDATA[-->
+<!--            WHERE ROWNUM <= #{page} * #{amount}-->
+<!--            ]]>-->
+<!--        )-->
+<!--        WHERE RNUM > (#{page} - 1) * #{amount}-->
+<!--    </select>-->
+
     <select id="selectDebateList">
-        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
-        DEBATE_START_DATE, DEBATE_END_DATE,
-        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,BOOK_NAME,
+               DEBATE_START_DATE, DEBATE_END_DATE,
+               DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
         FROM (
-            SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
-            DEBATE_START_DATE, DEBATE_END_DATE,
-            DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
-            FROM(
-                SELECT D.DEBATE_ID ,D.TITLE, D.MEETING_ID,
-                       TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD') AS GROUP_START_DATE,
-                       TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') AS GROUP_END_DATE,
-                    TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
-                    TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD') AS DEBATE_END_DATE,
-                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE
-                FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B
-                ON D.DEBATE_ID = B.DEBATE_ID
-                WHERE D.DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
-                ORDER BY D.DEBATE_ID DESC
-                )
+                 SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME, GROUP_START_DATE, GROUP_END_DATE,
+                        DEBATE_START_DATE, DEBATE_END_DATE,
+                        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+                 FROM(
+                         SELECT D.DEBATE_ID ,D.TITLE, D.MEETING_ID,TB.TITLE AS BOOK_NAME,
+                                TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD') AS GROUP_START_DATE,
+                                TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') AS GROUP_END_DATE,
+                                TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+                                TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD') AS DEBATE_END_DATE,
+                                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE
+                         FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B
+                                                ON D.DEBATE_ID = B.DEBATE_ID
+                                           JOIN TBL_BOOK TB
+                                                ON B.ISBN13 = TB.ISBN13
+                         WHERE D.DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                     )
             <![CDATA[
-            WHERE ROWNUM <= #{page} * #{amount}
+                 WHERE ROWNUM <= #{page} * #{amount}
             ]]>
         )
         WHERE RNUM > (#{page} - 1) * #{amount}
@@ -37,61 +65,123 @@
     </select>
 
     <select id="selectSearchDebateList">
-        SELECT TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,BOOK_NAME,
         DEBATE_START_DATE, DEBATE_END_DATE,
         DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
         FROM (
-            SELECT ROWNUM AS RNUM, TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+            SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME, GROUP_START_DATE, GROUP_END_DATE,
             DEBATE_START_DATE, DEBATE_END_DATE,
             DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
             FROM(
-                SELECT D.TITLE, D.MEETING_ID, D.GROUP_START_DATE, D.GROUP_END_DATE,
-                D.DEBATE_START_DATE, D.DEBATE_END_DATE,
-                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE
-                FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B
-                ON D.DEBATE_ID = B.DEBATE_ID
-                <trim prefix="WHERE" prefixOverrides="AND">
-                    DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
-
-                        <choose>
-                            <when test="searchType == 'title'">
-                                TITLE LIKE '%' || #{keyword} || '%'
-                            </when>
-                            <when test="searchType == 'meetingId">
-                                MEETING_ID LIKE '%' || #{keyword} || '%'
-                            </when>
-                        </choose>
-
+                SELECT DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME, GROUP_START_DATE, GROUP_END_DATE,
+                DEBATE_START_DATE, DEBATE_END_DATE,
+                DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+                FROM (
+                    SELECT D.DEBATE_ID,
+                    D.TITLE,
+                    D.MEETING_ID,
+                    TB.TITLE AS BOOK_NAME,
+                    TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD')  AS GROUP_START_DATE,
+                    TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD')    AS GROUP_END_DATE,
+                    TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+                    TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,
+                    B.DEBATE_BOOK_ID,
+                    D.DEBATE_TYPE_ID,
+                    D.OUTLINE
+                    FROM TBL_DEBATE D
+                    JOIN TBL_DEBATE_BOOK B
+                    ON D.DEBATE_ID = B.DEBATE_ID
+                    JOIN TBL_BOOK TB
+                    ON B.ISBN13 = TB.ISBN13
+                    WHERE D.DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                    ORDER BY DEBATE_START_DATE
+                )
+                <trim prefix="WHERE" prefixOverrides="OR">
+                    <choose>
+                        <when test="searchType == 'bookName' ">
+                            BOOK_NAME LIKE '%' || #{keyword} || '%'
+                        </when>
+                        <when test="searchType == 'meetingType' ">
+                            MEETING_ID LIKE '%' || #{keyword} || '%'
+                        </when>
+                    </choose>
                 </trim>
-                ORDER BY D.DEBATE_ID DESC
                 )
             <![CDATA[
-                WHERE ROWNUM <= #{page} * #{amount}
-                ]]>
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+            )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectSearchDebateTotal">
+        SELECT COUNT(DEBATE_ID)
+        FROM (
+                 SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME, GROUP_START_DATE, GROUP_END_DATE,
+                        DEBATE_START_DATE, DEBATE_END_DATE,
+                        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+                 FROM(
+                         SELECT DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME, GROUP_START_DATE, GROUP_END_DATE,
+                                DEBATE_START_DATE, DEBATE_END_DATE,
+                                DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+                         FROM (
+                                  SELECT D.DEBATE_ID,
+                                         D.TITLE,
+                                         D.MEETING_ID,
+                                         TB.TITLE AS BOOK_NAME,
+                                         TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD')  AS GROUP_START_DATE,
+                                         TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD')    AS GROUP_END_DATE,
+                                         TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+                                         TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,
+                                         B.DEBATE_BOOK_ID,
+                                         D.DEBATE_TYPE_ID,
+                                         D.OUTLINE
+                                  FROM TBL_DEBATE D
+                                           JOIN TBL_DEBATE_BOOK B
+                                                ON D.DEBATE_ID = B.DEBATE_ID
+                                           JOIN TBL_BOOK TB
+                                                ON B.ISBN13 = TB.ISBN13
+                                  WHERE D.DEBATE_END_DATE >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+                                  ORDER BY DEBATE_START_DATE
+                              )
+                                <trim prefix="WHERE" prefixOverrides="OR">
+                                    <choose>
+                                        <when test="searchType == 'bookName' ">
+                                            BOOK_NAME LIKE '%' || #{keyword} || '%'
+                                        </when>
+                                        <when test="searchType == 'meetingType' ">
+                                            MEETING_ID LIKE '%' || #{keyword} || '%'
+                                        </when>
+                                    </choose>
+                                </trim>
+                     )
+            <![CDATA[
+                 WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
             )
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
 
 
-
     <select id="selectEndDebateList">
-        SELECT TITLE, DEBATE_ID, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
+        SELECT TITLE, DEBATE_ID, MEETING_ID, BOOK_NAME,
                DEBATE_START_DATE, DEBATE_END_DATE,
-               DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+               DEBATE_TYPE_ID
         FROM (
-                 SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, GROUP_START_DATE, GROUP_END_DATE,
-                        DEBATE_START_DATE, DEBATE_END_DATE,
-                        DEBATE_BOOK_ID, DEBATE_TYPE_ID, OUTLINE
+                 SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,
+                        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID
                  FROM(
                          SELECT D.DEBATE_ID,
-                                D.TITLE, D.MEETING_ID,
-                                TO_CHAR(D.GROUP_START_DATE, 'YYYY-MM-DD') AS GROUP_START_DATE,
-                                TO_CHAR(D.GROUP_END_DATE, 'YYYY-MM-DD') AS GROUP_END_DATE,
+                                D.TITLE,
+                                D.MEETING_ID,
+                                TB.TITLE AS BOOK_NAME,
                                 TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
-                                TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD') AS DEBATE_END_DATE,
-                                B.DEBATE_BOOK_ID, D.DEBATE_TYPE_ID, D.OUTLINE
+                                TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,
+                                D.DEBATE_TYPE_ID
                          FROM TBL_DEBATE D JOIN TBL_DEBATE_BOOK B
                                                 ON D.DEBATE_ID = B.DEBATE_ID
+                                           JOIN TBL_BOOK TB
+                                                ON B.ISBN13 = TB.ISBN13
                          <![CDATA[
                          WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
                          ]]>
@@ -113,6 +203,184 @@
         WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
         ]]>
     </select>
+
+    <select id="selectSearchEndDebateList">
+        SELECT TITLE, DEBATE_ID, MEETING_ID,BOOK_NAME,
+        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID
+        FROM (
+        SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,
+        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID
+        FROM(
+        SELECT DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,
+        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID
+        FROM (
+        SELECT D.DEBATE_ID,
+        D.TITLE,
+        D.MEETING_ID,
+        TB.TITLE AS BOOK_NAME,
+        TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+        TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,
+        D.DEBATE_TYPE_ID
+        FROM TBL_DEBATE D
+        JOIN TBL_DEBATE_BOOK B
+        ON D.DEBATE_ID = B.DEBATE_ID
+        JOIN TBL_BOOK TB
+        ON B.ISBN13 = TB.ISBN13
+        <![CDATA[
+        WHERE D.DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        ]]>
+        ORDER BY DEBATE_START_DATE
+        )
+        <trim prefix="WHERE" prefixOverrides="OR">
+            <choose>
+                <when test="searchType == 'bookName' ">
+                    BOOK_NAME LIKE '%' || #{keyword} || '%'
+                </when>
+                <when test="searchType == 'meetingType' ">
+                    MEETING_ID LIKE '%' || #{keyword} || '%'
+                </when>
+            </choose>
+        </trim>
+        )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectSearchEndDebateTotal">
+        SELECT COUNT(DEBATE_ID)
+        FROM (
+        SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,
+        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID
+        FROM(
+        SELECT DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,
+        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID
+        FROM (
+        SELECT D.DEBATE_ID,
+        D.TITLE,
+        D.MEETING_ID,
+        TB.TITLE AS BOOK_NAME,
+        TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+        TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,
+        D.DEBATE_TYPE_ID
+        FROM TBL_DEBATE D
+        JOIN TBL_DEBATE_BOOK B
+        ON D.DEBATE_ID = B.DEBATE_ID
+        JOIN TBL_BOOK TB
+        ON B.ISBN13 = TB.ISBN13
+        <![CDATA[
+        WHERE D.DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        ]]>
+        ORDER BY DEBATE_START_DATE
+        )
+        <trim prefix="WHERE" prefixOverrides="OR">
+            <choose>
+                <when test="searchType == 'bookName' ">
+                    BOOK_NAME LIKE '%' || #{keyword} || '%'
+                </when>
+                <when test="searchType == 'meetingType' ">
+                    MEETING_ID LIKE '%' || #{keyword} || '%'
+                </when>
+            </choose>
+        </trim>
+        )
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+
+
+<!--    <select id="selectSearchEndDebateList">-->
+<!--        SELECT TITLE, DEBATE_ID, MEETING_ID,BOOK_NAME,-->
+<!--        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID-->
+<!--        FROM (-->
+<!--        SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,-->
+<!--        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID-->
+<!--        FROM(-->
+<!--        SELECT DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,-->
+<!--        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID-->
+<!--        FROM (-->
+<!--        SELECT D.DEBATE_ID,-->
+<!--        D.TITLE,-->
+<!--        D.MEETING_ID,-->
+<!--        TB.TITLE AS BOOK_NAME,-->
+<!--        TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,-->
+<!--        TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,-->
+<!--        D.DEBATE_TYPE_ID-->
+<!--        FROM TBL_DEBATE D-->
+<!--        JOIN TBL_DEBATE_BOOK B-->
+<!--        ON D.DEBATE_ID = B.DEBATE_ID-->
+<!--        JOIN TBL_BOOK TB-->
+<!--        ON B.ISBN13 = TB.ISBN13-->
+<!--        <![CDATA[-->
+<!--        WHERE D.DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')-->
+<!--        ]>-->
+<!--        ORDER BY DEBATE_START_DATE-->
+<!--        )-->
+<!--        <trim prefix="WHERE" prefixOverrides="OR">-->
+<!--            <choose>-->
+<!--                <when test="searchType == 'bookName' ">-->
+<!--                    BOOK_NAME LIKE '%' || #{keyword} || '%'-->
+<!--                </when>-->
+<!--                <when test="searchType == 'meetingType' ">-->
+<!--                    MEETING_ID LIKE '%' || #{keyword} || '%'-->
+<!--                </when>-->
+<!--            </choose>-->
+<!--        </trim>-->
+<!--        )-->
+<!--        WHERE ROWNUM <= #{page} * {amount}-->
+<!--        )-->
+<!--        WHERE RNUM > (#{page} - 1) * {amount}-->
+<!--    </select>-->
+
+<!--      -->
+<!--          -->
+<!--    <select id="selectSearchEndDebateTotal">-->
+<!--        SELECT COUNT(DEBATE_ID)-->
+<!--        FROM (-->
+<!--                 SELECT ROWNUM AS RNUM, DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,-->
+<!--                        DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID-->
+<!--                 FROM(-->
+<!--                         SELECT DEBATE_ID, TITLE, MEETING_ID, BOOK_NAME,-->
+<!--                                DEBATE_START_DATE, DEBATE_END_DATE, DEBATE_TYPE_ID-->
+<!--                         FROM (-->
+<!--                             SELECT D.DEBATE_ID,-->
+<!--                                    D.TITLE,-->
+<!--                                    D.MEETING_ID,-->
+<!--                                    TB.TITLE AS BOOK_NAME,-->
+<!--                                    TO_CHAR(D.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,-->
+<!--                                    TO_CHAR(D.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,-->
+<!--                                    D.DEBATE_TYPE_ID-->
+<!--                             FROM TBL_DEBATE D-->
+<!--                                      JOIN TBL_DEBATE_BOOK B-->
+<!--                                           ON D.DEBATE_ID = B.DEBATE_ID-->
+<!--                                      JOIN TBL_BOOK TB-->
+<!--                                           ON B.ISBN13 = TB.ISBN13-->
+<!--                                               <![CDATA[-->
+<!--                             WHERE D.DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')-->
+<!--                                 ]>-->
+<!--                             ORDER BY DEBATE_START_DATE-->
+<!--                         )-->
+<!--                             <trim prefix="WHERE" prefixOverrides="OR">-->
+<!--            <choose>-->
+<!--                <when test="searchType == 'bookName' ">-->
+<!--                    BOOK_NAME LIKE '%' || #{keyword} || '%'-->
+<!--                            </when>-->
+<!--                            <when test="searchType == 'meetingType' ">-->
+<!--                             MEETING_ID LIKE '%' || #{keyword} || '%'-->
+<!--                            </when>-->
+<!--                            </choose>-->
+<!--                            </trim>-->
+<!--                     )-->
+<!--                 WHERE ROWNUM <= #{page} * {amount}-->
+<!--             )-->
+<!--        WHERE RNUM > (#{page} - 1) * {amount}-->
+<!--    </select>-->
 
 
     <select id="selectBookName">

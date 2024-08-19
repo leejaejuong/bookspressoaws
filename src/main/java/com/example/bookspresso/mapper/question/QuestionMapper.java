@@ -3,6 +3,7 @@ package com.example.bookspresso.mapper.question;
 import com.example.bookspresso.dto.question.board.*;
 import com.example.bookspresso.dto.question.page.QPageRequestDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,9 +12,6 @@ import java.util.Optional;
 public interface QuestionMapper {
 
     void insertBoard(QuestionWriteDTO questionWriteDTO);
-
-    // 자기 자신의 질문만 보임 => 공개/비공개 필요 없음
-    List<QuestionListDTO> selectList(Long memberId);
 
     int selectTotal(Long memberId);
 
@@ -25,10 +23,18 @@ public interface QuestionMapper {
 
     void updateViewCount(Long qBoardId);
 
-//    질문방 검색
-    List<QuestionListDTO> searchList(QuestionSearchDTO questionSearchDTO);
+
 
     List<QuestionListDTO> selectListWithPage(QPageRequestDTO qPageRequestDTO);
 
+    List<QuestionListDTO> searchListWithPage(@Param("memberId") Long memberId,
+                                             @Param("keyword") String keyword,
+                                             @Param("page") int page,
+                                             @Param("amount") int amount);
+
+    int searchListTotal(@Param("memberId") Long memberId,
+                        @Param("keyword") String keyword,
+                        @Param("page") int page,
+                        @Param("amount") int amount);
 
 }

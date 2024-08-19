@@ -31,12 +31,12 @@
                 <div class="search">
                     <div class="search_box">
                         <span>토론 검색</span>
-                        <form action="">
-                            <select name="findMember" size="1">
-                                <option value="loginId">책 이름</option>
-                                <option value="nickname">모임 종류</option>
+                        <form th:action="@{/admin/debate/finished/search}">
+                            <select name="searchType" size="1">
+                                <option value="bookName">책 이름</option>
+                                <option value="meetingId">모임 종류</option>
                             </select>
-                            <input type="text" name="">
+                            <input type="text" name="keyword">
                             <button>검색</button>
                         </form>
                     </div>
@@ -56,11 +56,11 @@
                     <div class="board-content">
                         <table>
                             <colgroup>
-                                <col width="380px"/>
+                                <col width="350px"/>
                                 <col width="23px"/>
-                                <col width="100px"/>
-                                <col width="95px"/>
-                                <col width="120px"/>
+                                <col width="80px"/>
+                                <col width="80px"/>
+                                <col width="180px"/>
                                 <col width="105px"/>
                                 <col width="105px"/>
                             </colgroup>
@@ -97,7 +97,7 @@
                                     </td>
                                     <td class="tc" th:text="${board.meetingId}"></td>
                                     <td class="tc" th:text="${board.debateTypeId}"></td>
-                                    <td class="tc" th:text="${bookName}"></td>
+                                    <td class="tc" th:text="${board.bookName}"></td>
                                     <td class="tr" th:text="${board.debateStartDate}"></td>
                                     <td class="tr" th:text="${board.debateEndDate}"></td>
                                 </tr>

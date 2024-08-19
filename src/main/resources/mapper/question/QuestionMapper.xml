@@ -10,16 +10,7 @@
         VALUES (#{qBoardId}, #{memberId}, #{qTitle}, #{qContent})
     </insert>
 
-    <select id="selectList">
-        SELECT Q.Q_BOARD_ID, Q.A_STATUS, Q.Q_TITLE,
-               M.MEMBER_ID, M.NICKNAME,
-               TO_CHAR(Q.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
-               Q.VIEW_COUNT
-        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
-                                 ON Q.MEMBER_ID = M.MEMBER_ID
-        WHERE M.MEMBER_ID = #{memberId}
-        ORDER BY Q.Q_BOARD_ID DESC
-    </select>
+
 
     <select id="selectTotal">
         SELECT COUNT(Q_BOARD_ID)
@@ -27,18 +18,31 @@
         WHERE MEMBER_ID = #{memberId}
     </select>
 
+<!--    <select id="selectQuestion">-->
+<!--        SELECT M.MEMBER_ID, Q.Q_BOARD_ID, Q.Q_TITLE, M.NICKNAME,-->
+<!--               TO_CHAR(Q.CREATE_DATE,'YYYY-MM-DD HH24:MI:SS') AS CREATE_DATE,-->
+<!--               Q.VIEW_COUNT, Q.Q_CONTENT, Q.A_STATUS-->
+<!--        FROM TBL_QUESTION Q JOIN TBL_MEMBER M-->
+<!--                                 ON Q.MEMBER_ID = M.MEMBER_ID-->
+<!--        WHERE Q.Q_BOARD_ID = #{qBoardId}-->
+<!--    </select>-->
+
     <select id="selectQuestion">
-        SELECT M.MEMBER_ID, Q.Q_BOARD_ID, Q.Q_TITLE, M.NICKNAME,
-               TO_CHAR(Q.CREATE_DATE,'YYYY-MM-DD HH24:MI:SS') AS CREATE_DATE,
-               Q.VIEW_COUNT, Q.Q_CONTENT
-        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
-        ON Q.MEMBER_ID = M.MEMBER_ID
-        WHERE Q.Q_BOARD_ID = #{qBoardId}
+        SELECT T.Q_BOARD_ID, T.Q_TITLE, T.Q_CONTENT, T.CREATE_DATE, T.VIEW_COUNT, T.A_STATUS, T.MODIFIED_DATE,
+               T.MEMBER_ID, T.NICKNAME,
+               A.A_CONTENT, A.ANSWER_ID, A.CREATED_DATE, A.ADMIN_ID, A.ANSWER_MODIFIED_DATE
+        FROM (SELECT Q.Q_BOARD_ID, Q.Q_TITLE, Q.Q_CONTENT, Q.CREATE_DATE, Q.VIEW_COUNT, Q.A_STATUS, Q.MODIFIED_DATE,
+                     M.MEMBER_ID, M.NICKNAME
+              FROM TBL_MEMBER M JOIN TBL_QUESTION Q
+              ON M.MEMBER_ID = Q.MEMBER_ID) T LEFT OUTER JOIN TBL_ANSWER A
+        ON T.Q_BOARD_ID = A.Q_BOARD_ID
+        WHERE T.Q_BOARD_ID = #{qBoardId}
     </select>
+
 
     <update id="updateQuestion">
         UPDATE TBL_QUESTION
-        SET Q_TITLE =#{qTitle}, Q_CONTENT = #{qContent}, CREATE_DATE = SYSDATE
+        SET Q_TITLE =#{qTitle}, Q_CONTENT = #{qContent}, MODIFIED_DATE = SYSDATE
         WHERE Q_BOARD_ID = #{qBoardId}
     </update>
 
@@ -53,23 +57,6 @@
         WHERE Q_BOARD_ID = #{qBoardId}
     </update>
 
-    <select id="searchList">
-        SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
-               MEMBER_ID, NICKNAME,
-               CREATE_DATE,
-               VIEW_COUNT
-        FROM (
-                 SELECT Q.Q_BOARD_ID, Q.A_STATUS, Q.Q_TITLE,
-                        M.MEMBER_ID, M.NICKNAME,
-                        TO_CHAR(Q.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
-                        Q.VIEW_COUNT
-                 FROM TBL_QUESTION Q JOIN TBL_MEMBER M
-                                          ON Q.MEMBER_ID = M.MEMBER_ID
-                 WHERE M.MEMBER_ID = #{memberId}
-             )
-        WHERE Q_TITLE LIKE '%' || #{keyword} || '%'
-        ORDER BY Q_BOARD_ID DESC
-    </select>
 
     <select id="selectListWithPage">
         SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
@@ -94,6 +81,90 @@
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
 
+<!--    <select id="selectAnswer">-->
+<!--        SELECT Q.Q_BOARD_ID, A.CREATED_DATE, A.A_CONTENT,-->
+<!--               A.ANSWER_ID, A.ADMIN_ID-->
+<!--        FROM TBL_QUESTION Q JOIN TBL_ANSWER A-->
+<!--        ON Q.Q_BOARD_ID = A.Q_BOARD_ID-->
+<!--        WHERE A.Q_BOARD_ID = #{qBoardId}-->
+<!--    </select>-->
 
+    <select id="searchListWithPage">
+        SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
+        MEMBER_ID, NICKNAME,
+        CREATE_DATE,
+        VIEW_COUNT
+        FROM (
+        SELECT ROWNUM AS RNUM, Q_BOARD_ID, A_STATUS, Q_TITLE,
+        MEMBER_ID, NICKNAME,
+        CREATE_DATE,
+        VIEW_COUNT
+        FROM (
+        SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
+        MEMBER_ID, NICKNAME,
+        CREATE_DATE,
+        VIEW_COUNT
+        FROM (
+        SELECT Q.Q_BOARD_ID, Q.A_STATUS, Q.Q_TITLE,
+        M.MEMBER_ID, M.NICKNAME,
+        TO_CHAR(Q.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
+        Q.VIEW_COUNT
+        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+        ON Q.MEMBER_ID = M.MEMBER_ID
+        WHERE M.MEMBER_ID = #{memberId}
+        )
+        WHERE Q_TITLE LIKE '%' || #{keyword} || '%'
+        ORDER BY Q_BOARD_ID DESC
+        )
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ]]>
+        )
+        WHERE  RNUM> (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="searchListTotal">
+        SELECT COUNT(Q_BOARD_ID)
+        FROM (
+                 SELECT ROWNUM AS RNUM, Q_BOARD_ID, A_STATUS, Q_TITLE,
+                        MEMBER_ID, NICKNAME,
+                        CREATE_DATE,
+                        VIEW_COUNT
+                 FROM (
+                          SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
+                                 MEMBER_ID, NICKNAME,
+                                 CREATE_DATE,
+                                 VIEW_COUNT
+                          FROM (
+                                   SELECT Q.Q_BOARD_ID, Q.A_STATUS, Q.Q_TITLE,
+                                          M.MEMBER_ID, M.NICKNAME,
+                                          TO_CHAR(Q.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
+                                          Q.VIEW_COUNT
+                                   FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+                                                            ON Q.MEMBER_ID = M.MEMBER_ID
+                                   WHERE M.MEMBER_ID = #{memberId}
+                               )
+                          WHERE Q_TITLE LIKE '%' || #{keyword} || '%'
+                          ORDER BY Q_BOARD_ID DESC
+                      )
+        <![CDATA[
+                 WHERE ROWNUM <= #{page} * #{amount}
+        ]]>
+        )
+        WHERE  RNUM> (#{page} - 1) * #{amount}
+    </select>
+
+
+
+<!--    <trim prefix="WHERE" prefixOverrides="AND">-->
+<!--        <choose>-->
+<!--            <when test="searchType == 'qTitle'">-->
+<!--                WHERE Q_TITLE LIKE '%' || #{keyword} || '%'-->
+<!--            </when>-->
+<!--            <when test="searchType == 'aStatus'">-->
+<!--                WHERE Q_TITLE LIKE '%' || #{keyword} || '%'-->
+<!--            </when>-->
+<!--        </choose>-->
+<!--    </trim>-->
 
 </mapper>

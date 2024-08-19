@@ -27,11 +27,10 @@
                 </div>
                 <div class="search-box">
                     <form th:action="@{/qa/list/search}" method="get">
-                        <select name="searchType">
-<!--                            <option value="">제목 + 내용</option>-->
+                        <div name="searchType" class="search">
                             <option value="qTitle">제목</option>
-<!--                            <option value="">내용</option>-->
-                        </select>
+<!--                            <option value="aStatus">답변 상태</option>-->
+                        </div>
                         <div class="input-box">
                             <input type="text" name="keyword" placeholder="검색어를 입력해주세요">
                             <button>
@@ -69,7 +68,8 @@
                         <!-- Q&A 내용  -->
                         <tr th:each="board : ${list}">
                             <td class="tc" th:text="${board.qBoardId}"></td>
-                            <td class="tc" th:text="${board.aStatus}" id="status"></td>
+                            <td class="tc" th:if="${board.aStatus==true}"><span class="status clear">답장 완료</span></td>
+                            <td class="tc" th:unless="${board.aStatus==true}"><span class="status unclear">답장 미완료</span></td>
 <!--                             th:text="${board.aStatus}" th:data-id="${board.aStatus}" -->
                             <td class="tl">
                                     <a th:href="@{/qa/detail(qBoardId=${board.qBoardId})}" th:text="${board.qTitle}"></a>
