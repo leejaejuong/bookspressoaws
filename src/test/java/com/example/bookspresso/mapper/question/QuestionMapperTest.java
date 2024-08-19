@@ -46,8 +46,9 @@ class QuestionMapperTest {
 
         questionMapper.insertBoard(questionWriteDTO);   // 게시물 작성
 
-        List<QuestionListDTO> lists = questionMapper.selectList(questionWriteDTO.getMemberId());
-        System.out.println("lists = " + lists);
+//        List<QuestionListDTO> lists = questionMapper.selectListWithPage();
+//        System.out.println("lists = " + lists);
+
 
     }
 
@@ -110,12 +111,12 @@ class QuestionMapperTest {
         questionWriteDTO.setQTitle("testsfesedfs");
         questionMapper.insertBoard(questionWriteDTO);
 
-        List<QuestionListDTO> questionListDTO = questionMapper.selectList(questionWriteDTO.getMemberId());
+//        List<QuestionListDTO> questionListDTO = questionMapper.selectList(questionWriteDTO.getMemberId());
 
-        System.out.println("questionListDTO = " + questionListDTO);
-
-        questionMapper.deleteQuestion(questionWriteDTO.getQBoardId());
-        questionMapper.selectList(questionWriteDTO.getMemberId());
+//        System.out.println("questionListDTO = " + questionListDTO);
+//
+//        questionMapper.deleteQuestion(questionWriteDTO.getQBoardId());
+//        questionMapper.selectList(questionWriteDTO.getMemberId());
     }
 
     @Test
@@ -125,14 +126,13 @@ class QuestionMapperTest {
         questionSearchDTO.setSearchType("qTitle");
         questionSearchDTO.setKeyword("test");
 
-        List<QuestionListDTO> searchListDTOS = questionMapper.searchList(questionSearchDTO);
-
-        System.out.println(searchListDTOS);
+//        List<QuestionListDTO> searchListDTOS = questionMapper.searchList(questionSearchDTO);
+//
+//        System.out.println(searchListDTOS);
     }
 
     @Test
     public void selectListWithPage(){
-        System.out.println("그냥 리스트 = " + questionMapper.selectList(4L));
 
         QPageRequestDTO qPageRequestDTO = new QPageRequestDTO();
         qPageRequestDTO.setMemberId(4L);
@@ -144,6 +144,23 @@ class QuestionMapperTest {
 
 
     }
+
+
+    @Test
+    public void searchListWithPage(){
+        QPageRequestDTO qPageRequestDTO = new QPageRequestDTO();
+        qPageRequestDTO.setMemberId(4L);
+        qPageRequestDTO.setPage(1);
+        qPageRequestDTO.setAmount(3);
+
+        List<QuestionListDTO> list = questionMapper.searchListWithPage(qPageRequestDTO.getMemberId(),"s",1,3);
+        System.out.println("list = " + list);
+
+        questionMapper.searchListTotal(qPageRequestDTO.getMemberId(),"s",1,3);
+
+
+    }
+
 
 
 

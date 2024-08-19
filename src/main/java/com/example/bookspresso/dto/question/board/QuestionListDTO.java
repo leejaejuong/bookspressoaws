@@ -10,7 +10,7 @@ public class QuestionListDTO {
     private Long qBoardId;
     private String qTitle;
     private String createDate;
-    private String aStatus;
+    private boolean aStatus;
     private int viewCount;
     private String nickname;
     private int total;

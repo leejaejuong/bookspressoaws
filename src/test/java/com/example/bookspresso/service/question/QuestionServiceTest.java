@@ -24,8 +24,6 @@ class QuestionServiceTest {
 
         questionService.addQuestion(questionWriteDTO);
 
-        List<QuestionListDTO> list = questionService.findList(1L);
-        System.out.println("list = " + list);
     }
 
     @Test
@@ -37,7 +35,6 @@ class QuestionServiceTest {
 
         questionService.addQuestion(questionWriteDTO);
 
-        questionService.findList(4L);
 
     }
 
@@ -68,9 +65,14 @@ class QuestionServiceTest {
         questionWriteDTO1.setQContent("test");
         questionWriteDTO1.setQTitle("test");
 
-        QuestionDetailDTO question = questionService.findQuestion(27L);
+        QuestionDetailDTO question = questionService.findQuestion(37L);
         System.out.println("question = " + question);
     }
+
+//    @Test
+//    void findAnswer(){
+//        questionService.findAnswer(63L);
+//    }
 
     @Test
     void updateQuestion() {
@@ -120,13 +122,10 @@ class QuestionServiceTest {
         questionSearchDTO.setSearchType("qTitle");
         questionSearchDTO.setKeyword("토론");
 
-        List<QuestionListDTO> searchList = questionService.findSearchList(questionSearchDTO);
-        System.out.println("searchList = " + searchList);
     }
 
     @Test
     public void findListWithPage(){
-        questionService.findList(4L);
 
         QPageRequestDTO qPageRequestDTO = new QPageRequestDTO();
         qPageRequestDTO.setMemberId(4L);
@@ -134,6 +133,15 @@ class QuestionServiceTest {
 
         List<QuestionListDTO> listWithPage = questionService.findListWithPage(qPageRequestDTO);
         System.out.println("listWithPage = " + listWithPage);
+
+    }
+
+    @Test
+    public void findSearchListWithPage(){
+        List<QuestionListDTO> list = questionService.findSearchListWithPage(4L,"s", 1, 3);
+        System.out.println("list = " + list);
+
+        questionService.findSearchTotal(4L,"s", 1, 3);
 
     }
 

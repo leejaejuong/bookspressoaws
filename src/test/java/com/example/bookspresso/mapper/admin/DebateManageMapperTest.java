@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
@@ -34,14 +36,22 @@ class DebateManageMapperTest {
 
     @Test
     void selectDebateList() {
-        debateManageMapper.selectDebateList(adminPageRequestDTO);
-
+        List<ManageDebateDTO> list = debateManageMapper.selectDebateList(adminPageRequestDTO);
+        System.out.println(list);
     }
 
     @Test
     void selectDebateCount(){
         int count = debateManageMapper.selectDebateCount();
         System.out.println("#### Count = " + count);
+    }
+
+    @Test
+    void selectSearchDebateList() {
+        List<ManageDebateDTO> list = debateManageMapper.selectSearchDebateList("bookName","불안", adminPageRequestDTO.getPage(), adminPageRequestDTO.getAmount());
+        System.out.println(list);
+        int total = debateManageMapper.selectSearchDebateTotal("bookName","불안", adminPageRequestDTO.getPage(), adminPageRequestDTO.getAmount());
+        System.out.println("total = " + total);
     }
 
     @Test
@@ -60,9 +70,5 @@ class DebateManageMapperTest {
 
     }
 
-    @Test
-    void selectSearchDebateList() {
 
-//        debateManageMapper.selectSearchDebateList(adminPageRequestDTO, debateSearchDTO);
-    }
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header/header.css}">
+    <link rel="stylesheet" th:href="@{/css/question/writeQ.css}">
+    <script defer th:src="@{/js/question/writeQ.js}"></script>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+    <div class="full-screen">
+        <div class="screen">
+            <h1>Q&A 게시판</h1>
+
+            <h4>Q&A 게시판</h4>
+            <div class="write-board">
+                
+            <!-- 작성 글 -->
+                <form th:action="@{/qa/modify}" method="post">
+                    <div class="tr">
+                        <div class="th">글제목</div>
+                        <div class="title">
+                            <input type="text" name="qTitle" th:value="${question.qTitle}">
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">작성자</div>
+                        <div class="td" th:text="${question.nickname}"></div>
+                        <div><input type="hidden" name="qBoardId" th:value="${question.qBoardId}"></div>
+                    </div>
+
+                    <div class="tr">
+                        <div class="th">첨부파일</div>
+                        <div class="attachment">
+                            <input type="text" name="">
+                        </div>
+                    </div>
+                    <div class="tr content-row">
+                        <div class="th">내용</div>
+                        <div class="content-box">
+                            <textarea name="qContent" th:text="${question.qContent}" cols="30" rows="10"></textarea>
+                        </div>
+                    
+                    </div>
+
+                    <div class="write-btn">
+                        <button type="button" class="back">
+                            <a th:href="@{/qa/list}">취소</a>
+                        </button>
+                        <button class="submit" id="write-btn">작성완료</button>
+<!--                       th:data-id="${qBoardId}" -->
+                    </div>
+                </form>
+                
+
+
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

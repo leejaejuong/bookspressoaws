@@ -43,6 +43,13 @@ a{
     align-items: center;
 }
 
+.search {
+    padding :5.4px 9px;
+    border: 1px solid;
+    border-radius: 3px;
+    margin-right: 2px;
+}
+
 .search-box select{
     padding: 7px 8px 9px 10px;
 }
@@ -112,6 +119,15 @@ tbody .tl{
 tbody .tr{
     text-align:end;
     font-size: 14px;
+}
+
+.status {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 3px 4px;
+}
+.clear {
+    padding :3px 9.6px;
 }
 
 
