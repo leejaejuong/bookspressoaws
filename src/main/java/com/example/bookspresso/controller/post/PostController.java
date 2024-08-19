@@ -9,13 +9,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/post")
 public class PostController {
-    @GetMapping("/")
-    public String postmain(){
-
-        return "post/postmain";
+    @GetMapping("")
+    public String postMain(){
+        return "redirect:/post/list";
     }
+
+    @GetMapping("/list")
+    public String postList(){
+        return "post/list";
+    }
+
     @GetMapping("/write")
-    public String postwrite(){
-        return "post/postwrite";
+    public String postWrite(){
+        return "post/write";
     }
 }
+
+
+
+
+
+
+
+
+

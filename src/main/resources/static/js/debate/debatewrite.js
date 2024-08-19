@@ -48,7 +48,7 @@ function savePost() {
     posts.push(post);
     localStorage.setItem("posts", JSON.stringify(posts));
 
-    window.location.href = "/PostMain/postmain.html"; // 리다이렉션 경로 확인
+    window.location.href = "/PostMain/list.html"; // 리다이렉션 경로 확인
 }
 
 document.addEventListener("DOMContentLoaded", function () {
