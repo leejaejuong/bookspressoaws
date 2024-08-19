@@ -19,6 +19,8 @@ public class ManageDebateDTO {
      */
     Long debateId;
 
+    String bookName;
+
     String title;
     String meetingId;
     String groupStartDate;

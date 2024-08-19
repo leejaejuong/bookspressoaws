@@ -7,7 +7,7 @@ import lombok.*;
 public class QuestionModifyDTO {
 //    private  Long memberId;
     private Long qBoardId;
-    private  String qTitle;
-    private  String qContent;
-
+    private String qTitle;
+    private String qContent;
+    private String modifiedDate;
 }

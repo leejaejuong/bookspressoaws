@@ -14,8 +14,9 @@
         <div class="header">
             <div class="sub">
                 <ul class="gnb-lists">
-                    <li><a th:href="@{/admin/question/list}" class="on">Q&A 질문 리스트</a></li>
-                    <li><a th:href="@{/admin/question/finishList}">답글 완료 리스트</a></li>
+                    <li><a th:href="@{/admin/question/list}" >Q&A 질문 리스트</a></li>
+                    <li><a th:href="@{/admin/question/finishList}" class="on">답글 완료 리스트</a></li>
+<!--                    <li><a th:href="@{/admin/}">답변 미완료 Q&A</a></li>-->
                 </ul>
             </div>
         </div>
@@ -36,11 +37,11 @@
                     <div class="board-content">
                         <table>
                             <colgroup>
-                                <col width="350px"/>
+                                <col width="300px"/>
                                 <col width="160px"/>
                                 <col width="160px"/>
-                                <col width="100px"/>
-                                <col width="150px"/>
+                                <col width="160px"/>
+                                <col width="140px"/>
                             </colgroup>
                         
                             <thead>
@@ -48,7 +49,7 @@
                                     <th scope="col">제목</th>
                                     <th scope="col">작성 회원</th>
                                     <th scope="col">질문 작성일</th>
-                                    <th scope="col">답변상태</th>
+                                    <th scope="col">답글 작성일</th>
                                     <th scope="col">답변 작성 관리자</th>
                                 </tr>
                             </thead>
@@ -56,15 +57,17 @@
                                 <tr th:each="board : ${list}">
                                     <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
                                     <td class="tl to-answer">
-                                        <a th:href="@{/admin/question/popup(qBoardId=${board.qBoardId})}">
+                                        <a th:href="@{/admin/question/modify(qBoardId=${board.qBoardId})}">
                                             <span th:text="${board.qTitle}"></span>
                                         </a>
                                     </td>
                                     <td class="tc" th:text="${board.nickname}"></td>
                                     <td class="tc" th:text="${board.createDate}"></td>
-                                    <td class="tr" th:if="${board.aStatus==true}">답변 완료</td>
-                                    <td class="tr" th:unless="${board.aStatus==true}">답변 미완료</td>
-                                    <td class="tr" th:text="${board.adminId}"></td>
+                                    <td class="tc" th:if="${board.answerModifiedDate==null}" th:text="${board.createdDate}"></td>
+                                    <td class="tc" th:unless="${board.answerModifiedDate==null}" th:text="${board.answerModifiedDate}"></td>
+<!--                                    <td class="tr" th:if="${board.aStatus==true}">답변 완료</td>-->
+<!--                                    <td class="tr" th:unless="${board.aStatus==true}">답변 미완료</td>-->
+                                    <td class="tr" th:text="${board.adminLoginId}"></td>
                                 </tr>
 
                             </tbody>
@@ -80,15 +83,15 @@
         <div class="page">
             <span class="page-line">
 
-                <a th:href="@{/admin/question/list(page=${adminPageSetDTO.startPage - 1})}" th:if="${adminPageSetDTO.prev}">
+                <a th:href="@{/admin/question/finishList(page=${adminPageSetDTO.startPage - 1})}" th:if="${adminPageSetDTO.prev}">
                     <span>&lt</span>
                 </a>
 
-                <a th:href="@{/admin/question/list(page=${i})}"
+                <a th:href="@{/admin/question/finishList(page=${i})}"
                    th:each="i : ${#numbers.sequence(adminPageSetDTO.startPage, adminPageSetDTO.endPage)}">
                     <span class="page-battom" th:classappend="${adminPageSetDTO.adminPageRequestDTO.page == i ? 'active' : ''}" th:text="${i}"></span>
                 </a>
-                <a th:href="@{/admin/question/list(page=${adminPageSetDTO.endPage + 1})}" th:if="${adminPageSetDTO.next}">
+                <a th:href="@{/admin/question/finishList(page=${adminPageSetDTO.endPage + 1})}" th:if="${adminPageSetDTO.next}">
                     <span>&gt</span>
                 </a>
 

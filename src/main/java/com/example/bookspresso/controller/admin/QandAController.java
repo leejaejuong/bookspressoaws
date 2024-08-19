@@ -3,19 +3,23 @@ package com.example.bookspresso.controller.admin;
 import com.example.bookspresso.dto.admin.page.AdminPageRequestDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageSetDTO;
 import com.example.bookspresso.dto.admin.qa.ManageQuestionListDTO;
+import com.example.bookspresso.dto.admin.qa.ModifyAnswer;
 import com.example.bookspresso.dto.admin.qa.QuestionAnswerDTO;
 import com.example.bookspresso.dto.question.board.QuestionDetailDTO;
 import com.example.bookspresso.service.admin.ManageQuestionService;
 import com.example.bookspresso.service.question.QuestionService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.jar.Attributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -41,12 +45,25 @@ public class QandAController {
         return "admin/qa/question";
     }
 
+    @GetMapping("/finishList")
+    public String finishList(AdminPageRequestDTO adminPageRequestDTO,
+                             Model model){
+        List<ManageQuestionListDTO> list = manageQuestionService.findFinishQuestionList(adminPageRequestDTO);
+        int total = manageQuestionService.findFinishQuestionCount();
+
+        AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
+
+        model.addAttribute("list", list);
+        model.addAttribute("adminPageSetDTO",adminPageSetDTO);
+        return "admin/qa/finishList";
+    }
+
     @GetMapping("/popup")
     public String popup(Long qBoardId, Model model){
 //        return "redirect:/qa/detail";
         QuestionDetailDTO list = questionService.findQuestion(qBoardId);
-
-        model.addAttribute("list",list);
+        System.out.println("findList###### = " + list);
+        model.addAttribute("list", list);
 
         return "admin/qa/toAnswer";
     }
@@ -55,18 +72,37 @@ public class QandAController {
     public String popup(QuestionAnswerDTO questionAnswerDTO,
                         HttpSession session){
 
-
-        try {
-            questionAnswerDTO.setAdminId((Long)session.getAttribute("adminId"));
-            System.out.println("questionAnswerDTO =" + questionAnswerDTO);
-            manageQuestionService.addAnswer(questionAnswerDTO);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-
+        questionAnswerDTO.setAdminId((Long)session.getAttribute("adminId"));
+        System.out.println("@@@questionAnswerDTO =" + questionAnswerDTO);
+        
+//        manageQuestionService.addAnswer(questionAnswerDTO);
+//        manageQuestionService.updateAnswer(questionAnswerDTO.getQBoardId());
 
         return "redirect:/admin/question/list";
     }
+
+    @GetMapping("/modify")
+    public String modify(Long qBoardId, Model model){
+
+        QuestionDetailDTO list = questionService.findQuestion(qBoardId);
+        model.addAttribute("list", list);
+
+        return "admin/qa/modifyAnswer";
+    }
+
+    @PostMapping("/modify")
+    public String modify(ModifyAnswer modifyAnswer,
+                         HttpSession session,
+                         RedirectAttributes redirectAttributes){
+
+        modifyAnswer.setAdminId((Long)session.getAttribute("adminId"));
+        manageQuestionService.updateAnswerContent(modifyAnswer);
+
+        redirectAttributes.addAttribute("qBoardId", modifyAnswer.getQBoardId());
+
+        return "redirect:/admin/question/modify";
+    }
+
+
 
 }

@@ -20,9 +20,6 @@ public class QuestionService {
         questionMapper.insertBoard(questionWriteDTO);
     }
 
-    public List<QuestionListDTO> findList(Long memberId){
-        return questionMapper.selectList(memberId);
-    }
 
     public int selectTotal(Long memberId){
         return questionMapper.selectTotal(memberId);
@@ -46,12 +43,18 @@ public class QuestionService {
         questionMapper.deleteQuestion(qBoardId);
     }
 
-    public List<QuestionListDTO> findSearchList(QuestionSearchDTO questionSearchDTO){
-        return questionMapper.searchList(questionSearchDTO);
-    }
+
 
     public List<QuestionListDTO> findListWithPage(QPageRequestDTO qPageRequestDTO){
         return questionMapper.selectListWithPage(qPageRequestDTO);
+    }
+
+    public List<QuestionListDTO> findSearchListWithPage(Long memberId, String keyword, int page, int amount){
+        return questionMapper.searchListWithPage(memberId, keyword, page, amount);
+    }
+
+    public int findSearchTotal(Long memberId, String keyword, int page, int amount){
+        return  questionMapper.searchListTotal(memberId, keyword, page, amount);
     }
 
 }

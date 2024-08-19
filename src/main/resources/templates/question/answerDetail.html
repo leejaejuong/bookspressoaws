@@ -23,23 +23,23 @@
 
         <h4>Q&A 게시판</h4>
         <div class="detail-board">
-          <div class="detail-title" th:text="${question.qTitle}"></div>
+          <div class="detail-title" th:text="${question.QTitle}"></div>
           <div class="view-info">
             <span class="text">작성자 : <span th:text="${question.nickname}"></span></span>
             <span class="text">작성일 : <span th:text="${question.createDate}"></span></span>
+            <span class="text" th:if="${question.modifiedDate!=null}">수정일 : <span th:text="${question.modifiedDate}"></span></span>
             <span class="text">조회수 : <span th:text="${question.viewCount}"></span></span>
           </div>
           <div class="content-box">
-            <div class="content" th:text="${question.qContent}"></div>
+            <div class="content" th:text="${question.QContent}"></div>
           </div>
 
-          <div class="answer-box">
-<!--    th:if = {session.admin != null} 관리자의 식변번호가 존재하면 출력         -->
+          <div class="answer-box" th:if="${question.AStatus==true}">
             <span class="answer-title">
               관리자 답변
-              <span text="sysdate">(2024-07-29)</span>
+              <span th:text="${question.createdDate}"></span>
             </span>
-            <div class="answer-content">답변이다ㅏㅏ</div>
+            <div class="answer-content" th:text="${question.AContent}"></div>
           </div>
 
         </div>
@@ -47,8 +47,8 @@
           <div class="btns">
             <!-- 작성한 회원이 아니라면 수정, 삭제 버튼은 보이지 않음  -->
             <span class=""><a th:href="@{/qa/list}">목록으로</a></span>
-            <span class=""><a href="">수정</a></span>
-            <span class=""><a href="">삭제</a></span>
+            <span class="" th:if="${question.AStatus!=true}"><a th:href="@{/qa/modify(qBoardId=${question.QBoardId})}">수정</a></span>
+            <span class=""><a th:href="@{/qa/drop(qBoardId=${question.QBoardId})}">삭제</a></span>
             <span class=""><a th:href="@{/qa/write}">글쓰기</a></span>
           </div>
         </div>

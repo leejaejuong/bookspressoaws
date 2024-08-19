@@ -13,11 +13,14 @@ public class ManageQuestionListDTO {
     private Long memberId;
     private Long qBoardId;
     private Long adminId;
-//    private Long answerId;
     private String nickname;
     private String qTitle;
     private String createDate;
-    private boolean aStutas;
+    private boolean aStatus;
+    private String createdDate;
+    private String answerModifiedDate;
 
+    private Long answerId;
+    private String adminLoginId;
 
 }
