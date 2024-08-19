@@ -23,6 +23,12 @@ public class PostController {
     public String postWrite(){
         return "post/write";
     }
+
+
+    @GetMapping("/detail")
+    public String postdetail(){
+        return "post/postdetail";
+    }
 }
 
 

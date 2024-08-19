@@ -2,6 +2,7 @@ package com.example.bookspresso.controller.mypage;
 
 import com.example.bookspresso.dto.mypage.MypageBookDTO;
 import com.example.bookspresso.dto.mypage.MypageDebateDTO;
+import com.example.bookspresso.dto.mypage.MypagePostDTO;
 import com.example.bookspresso.dto.mypage.SettingDTO;
 import com.example.bookspresso.service.mypage.MypageService;
 import jakarta.servlet.http.HttpSession;
@@ -64,6 +65,9 @@ public class MyPageController {
         Long memberId = (Long) session.getAttribute("memberId");
         SettingDTO member = mypageService.findMember(memberId);
 
+        List<MypagePostDTO> memberPosts = mypageService.findMemberPosts(memberId);
+
+        model.addAttribute("memberPosts" , memberPosts);
         model.addAttribute("memberDto", member);
         return "mypage/myPost";
     }

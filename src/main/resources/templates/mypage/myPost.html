@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/mypage/myPost.css}">
+    <link rel="stylesheet" th:href="@{/css/footer/footer.css}"/>
     <script defer th:href="@{/js/mypage/myPost.js}"></script>
 </head>
 <body>
@@ -43,47 +44,52 @@
                         <div class="post_body">
                             <div class="post_body_list">
                                 <div class="post_list">
-                                    <div class="post_content_empty">
+                                    <div class="post_content_empty" th:if="${memberPosts.isEmpty()}">
                                     <span class="content-empty_title">
                                         아직 작성된 글이 없습니다.
                                     </span>
                                     </div>
-                                    <div class="post_note">
-                                        <div class="post_note_info">
-                                            <div class="post_note_header">
-                                                <div class="post_note_header_title">
-                                                    <span>코딩테스트</span>
+                                    <th:block th:unless="${memberPosts.isEmpty()}"
+                                              th:each="memberPost : ${memberPosts}">
+                                        <div class="post_note">
+                                            <div class="post_note_info">
+                                                <div class="post_note_header">
+                                                    <div class="post_note_header_title">
+                                                        <span th:text="${memberPost?.postTitle}"></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="post_note_body">
-                                                <div class="post_note_body_container">
-                                                    <div class="post_note_body_info">
-                                                        <div class="post_description">
-                                                            <p>코딩테스트</p>
-                                                        </div>
-                                                        <div class="post_note_footer">
-                                                            <div class="footer_author">
-                                                                <div class="user-img-box">
+                                                <div class="post_note_body">
+                                                    <div class="post_note_body_container">
+                                                        <div class="post_note_body_info">
+                                                            <div class="post_description">
+                                                                <p th:text="${memberPost?.postContent}"></p>
+                                                            </div>
+                                                            <div class="post_note_footer">
+                                                                <div class="footer_author">
+                                                                    <div class="user-img-box">
                                                                         <span class="user-img"
                                                                               style="width: 20px; height: 20px; line-height: 25px; font-size: 12px">
-                                                                            <img th:src="@{/img/사용자이미지.PNG}">
+                                                                            <img th:if="${memberDto.profileId == null}"
+                                                                                 th:src="@{/img/사용자이미지.PNG}">
+                                                                            <img th:unless="${memberDto.profileId == null}"
+                                                                                 th:src="@{'/pfp/' + ${memberDto.profileUpload} + '/' + ${memberDto.profileUuid + '_' + memberDto.profileName}}">
                                                                         </span>
-                                                                    <span style="margin-left: 10px"
-                                                                          class="profile_nickname">송유</span>
+                                                                        <span style="margin-left: 10px"
+                                                                              class="profile_nickname" th:text="${memberDto.nickname}"></span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="post_topic">
-                                            <div class="post_topic_book">
-                                                <img src="https://image.aladin.co.kr/product/34093/56/cover150/k982931181_1.jpg"
-                                                     alt="프런트엔드 개발을 위한 테스트 입문 - 프런트엔드 테스트 기초 지식부터 UI 컴포넌트 테스트, E2E 테스트 등 상황에 맞는 테스트 전략까지">
+                                            <div class="post_topic">
+                                                <div class="post_topic_book">
+                                                    <img th:src="${memberPost?.cover}">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </th:block>
                                 </div>
                             </div>
                         </div>
@@ -92,11 +98,12 @@
                         </div>
                     </div>
                 </div>
+            </main>
         </div>
     </div>
-    </main>
 </div>
 </div>
 </div>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
 </html>
