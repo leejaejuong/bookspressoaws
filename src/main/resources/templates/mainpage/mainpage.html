@@ -12,6 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/mainpage/mainpage.css}"/>
     <link rel="stylesheet" th:href="@{/css/debate/postobject.css}"/>
     <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer/footer.css}"/>
 </head>
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
@@ -174,10 +175,8 @@
             <div th:each="img:${aladin}" class="swiper-slide"><a th:href="${img.link}" target="_blank"><img class="img-style" th:src="${img.cover}" th:alt="${img.title}"/></a></div>
         </div>
     </div>
-
-<div class="box">푸터자리</div>
-
-
 </div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
 </html>

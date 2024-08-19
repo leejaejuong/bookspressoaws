@@ -18,4 +18,10 @@ public class PostController {
     public String postwrite(){
         return "post/postwrite";
     }
+
+
+    @GetMapping("/detail")
+    public String postdetail(){
+        return "post/postdetail";
+    }
 }

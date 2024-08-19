@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: inherit;
+    font-family: "Jua", sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.post_Detail_main{
+    height: 100%;
+}
+h1{
+    font-weight: 700;
+    font-size: 2.25em;
+    line-height: 52px;
+    color: black;
+    margin: .67em 0;
+    word-break: break-word;
+}
+.calender{
+    margin-right: 10px;
+}
+
+.view{
+    font-size: 16px;
+    min-width: 320px;
+    background-color: white;
+}
+
+.title_container{
+    max-width: 700px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+.flex_container{
+    justify-content: space-between;
+}
+.writer-info{
+    flex-direction: column;
+}
+li{
+    list-style: none;
+}
+[type=button]{
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: button;
+    outline: 0;
+}
+.detail{
+    position: relative;
+    margin: 32px 0 48px;
+}
+.diary_container{
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+}
+.book_container{
+    margin-top: 56px;
+    z-index: 1;
+    margin-bottom: 32px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+.book_container .background{
+    -webkit-filter: blur(16px);
+    filter: blur(16px);
+    background-position: 50% 50%;
+    background-size: 200%;
+    background-image: var(--background-image);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .15;
+}
+.book-picture{
+    margin: 24px 0 0;
+    max-height: none;
+    width: 184px;
+    border-radius: 0 4px 4px 0;
+    -webkit-filter: drop-shadow(0 0 2px rgba(0,0,0,.24)) drop-shadow(4px 8px 8px rgba(0,0,0,.1)) drop-shadow(12px 8px 24px rgba(0,0,0,.2));
+    position: relative;
+    height: 280px;
+}
+.book{
+    border-radius: 6px;
+}
+.book-name{
+    color: #6f6f6f;
+    font-size: 16px;
+}
+
+.book-produce{
+    color: #555;
+    margin-top: 24px;
+}
+.book-info{
+    color: #8b8b8b;
+    font-size: 14px;
+    margin-top: 6px;
+}
+.post_date_container{
+    padding-bottom: 32px;
+    border-bottom: 2px solid #f7f7f7;
+    margin-bottom: 32px;
+}
+.diary_container .title{
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.post_content_container{
+    padding-bottom: 32px;
+    border-bottom: 2px solid #f7f7f7;
+    margin-bottom: 32px;
+}
+.like{
+    padding: 32px 0;
+}
+.like_container{
+    max-width: 700px;
+    min-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 0;
+}
