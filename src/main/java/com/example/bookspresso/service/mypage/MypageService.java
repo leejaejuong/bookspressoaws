@@ -1,12 +1,10 @@
 package com.example.bookspresso.service.mypage;
 
-import com.example.bookspresso.dto.mypage.MemberProfileDTO;
-import com.example.bookspresso.dto.mypage.MypageBookDTO;
-import com.example.bookspresso.dto.mypage.MypageDebateDTO;
-import com.example.bookspresso.dto.mypage.SettingDTO;
+import com.example.bookspresso.dto.mypage.*;
 import com.example.bookspresso.mapper.member.MemberMapper;
 import com.example.bookspresso.mapper.mypage.MypageBookMapper;
 import com.example.bookspresso.mapper.mypage.MypageDebateMapper;
+import com.example.bookspresso.mapper.mypage.MypagePostMapper;
 import com.example.bookspresso.mapper.mypage.SettingMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +30,7 @@ public class MypageService {
     private final SettingMapper settingMapper;
     private final MypageDebateMapper mypageDebateMapper;
     private final MypageBookMapper mypageBookMapper;
+    private final MypagePostMapper mypagePostMapper;
     private final MultipartProperties multipartProperties;
 
     @Value("${file.dir.pfp}")
@@ -146,6 +145,13 @@ public class MypageService {
     // 읽은 책 정보 가져오기
     public List<MypageBookDTO> findMemberBooks(Long memberId){
         return mypageBookMapper.selectMemberBooks(memberId);
+    }
+
+//   MypagePost
+
+    // 회원 포스트 정보 가져오기
+    public List<MypagePostDTO> findMemberPosts(Long memberId){
+        return mypagePostMapper.selectPost(memberId);
     }
 
 }

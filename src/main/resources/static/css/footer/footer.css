@@ -1,0 +1,184 @@
+.main-footer {
+    position: relative;
+    background-color: #ffffff;
+    padding: 40px 0;
+    margin-top: 100px;
+}
+.main-footer-category {
+    max-width: 1256px;
+    margin: 0px auto;
+    padding: 0px 60px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 2fr;
+    column-gap: 30px;
+}
+.line {
+    width: 1px;
+    background-color: rgb(197, 224, 241);
+}
+
+.service-center {
+    color: rgb(48, 47, 47);
+}
+.center {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 2px;
+}
+.go-center {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.right-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+.footer-telephone {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px 8px;
+}
+
+.telephone {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-right: 6px;
+    padding-bottom: 5px;
+}
+.center-time {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.working-day {
+    padding-right: 10px;
+    font-size: 12px;
+    line-height: 20px;
+    white-space: wrap;
+    margin-bottom: 12px;
+}
+.work {
+    position: relative;
+    padding-left: 20px;
+}
+
+.work::before {
+    content: "•";
+    position: absolute;
+    font-size: 10px;
+    left: 7px;
+}
+
+.consulting {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+.kakaotalk,
+.email {
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    border-radius: 5px;
+    padding: 0px 8px;
+    font-weight: bold;
+    color: rgb(47, 52, 56);
+    border: 1px solid rgb(218, 221, 224);
+    width: fit-content;
+    white-space: nowrap;
+}
+.about-us {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, min-content);
+    grid-auto-flow: column;
+    gap: 20px 10px;
+}
+
+.guide {
+    font-size: 11px;
+    line-height: 16px;
+    display: inline-block;
+    color: rgb(47, 52, 56);
+    white-space: nowrap;
+}
+.guide-bold {
+    font-size: 11px;
+    line-height: 16px;
+    display: inline-block;
+    color: rgb(47, 52, 56);
+    white-space: nowrap;
+    font-weight: bold;
+}
+.guide:hover,
+.guide-bold:hover {
+    text-decoration: underline;
+}
+
+.company {
+    font-size: 11px;
+    line-height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    color: rgb(130, 140, 148);
+}
+.company-name-overflow {
+    overflow-x: hidden;
+}
+.company-name {
+    margin-left: -9px;
+}
+.company-address {
+    display: inline-block;
+    font-style: normal;
+}
+
+.information {
+    font-size: 11px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.bank {
+    font-weight: 700;
+    color: rgb(130, 140, 148);
+}
+.sponsor {
+    display: grid;
+    column-gap: 6px;
+    grid-template-columns: max-content min-content min-content;
+}
+.sponsor-service {
+    font-size: 10px;
+    line-height: 14px;
+    color: rgb(130, 140, 148);
+}
+.soonsor-box {
+    display: flex;
+    min-width: 102px;
+    height: 38px;
+    padding: 0px 6px;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.sns {
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.small-line {
+    margin: 0 4px;
+}
