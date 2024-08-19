@@ -38,9 +38,7 @@
 .book-box {
 padding: 20px 0;
 }
-.swiper-wrapper {
-/*background-color: #5C667B;*/
-}
+
 
 .manpage-debate-box{
     height: auto;
@@ -162,6 +160,7 @@ font-size : 30px;
     text-overflow: ellipsis
 }
 .book-title-style {
+
     overflow: hidden;
     word-break: break-word;
     display: -webkit-box;
@@ -220,6 +219,7 @@ font-size : 30px;
     user-select: none;
     height: 100%;
     padding-bottom: 10px;
+
 
  }
 .post-book-cover{
