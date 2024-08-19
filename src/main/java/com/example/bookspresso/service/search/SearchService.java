@@ -28,6 +28,6 @@ public class SearchService {
     public void addcomment(InsertBookCommentDTO commentDTO){searchMapper.insertbookcomment(commentDTO);}
 //    검색 디테일 댓글 수정
     public void modifycomment(UpdateBookCommentDTO updateBookCommentDTO){searchMapper.updatebookcomment(updateBookCommentDTO);}
-//    검색 디텡리 댓글 삭제
-    public void removecomment(Long commentId){searchMapper.deletbookcomment(commentId);}
+//    검색 디테일 댓글 삭제
+    public void removecomment(Long commentId){searchMapper.deletebookcomment(commentId);}
 }
