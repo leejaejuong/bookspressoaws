@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentAPi {
     private final DebateBoardService debateBoardService;
-    @GetMapping("debate/boards/{noticeId}")
+    @GetMapping("/debate/boards/{noticeId}")
     public List<DebateBoardCommentDTO> debateBoard(@PathVariable("noticeId") Long noticeId) {
 
         return  debateBoardService.selectComment(noticeId);

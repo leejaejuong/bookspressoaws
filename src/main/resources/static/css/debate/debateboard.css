@@ -193,16 +193,17 @@
     width: 100%;
     margin: 10px 0;
     padding-bottom: 30px;
-    border-bottom: 1px solid #dee2e6;
-
+}
+.content-total-box{
+    margin-bottom: 5px;
 }
 
 .board-object-comment {
     display: flex;
     flex-direction: column;
     height: auto;
-
-
+    border-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .board-object-comment-inop-box {

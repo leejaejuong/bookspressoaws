@@ -6,53 +6,25 @@
   <title>Document</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
   <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet" />
   <link rel="stylesheet" th:href="@{/css/search/search.css}"/>
 
   <script defer th:src="@{/js/search/search.js}"></script>
 </head>
-
+<header th:replace="~{fragments/header :: header}"></header>
 <body>
-  <div class="header_top">
-    <!-- 헤더의 윗부분 -->
-    <div class="header_top_inner"><!-- 닫기 버튼 -->
-    <a class="close_btn" href="javascript:window.history.back();">닫기</a>
-    </div>
-  </div>
+
   <div class="header_bottom">
-    <!-- 헤더의 아랫부분-->
-    <div class="header_bottom_inner"></div>
-    <a href="">
-      <img class="search_img" src="https://cdn-icons-png.flaticon.com/512/71/71403.png" alt="" />
-    </a>
     <div class="search_box">
-      <input type="text" style="border: none; font-size: 20px; font-weight: 700" placeholder="검색어를 입력하세요"
-        class="input_content"/>
+      <img class="search_img" src="https://cdn-icons-png.flaticon.com/512/71/71403.png" alt="" />
+      <input type="text" class="saerch-text" placeholder="검색어를 입력하세요"/>
     </div>
   </div>
   <!-- 최근 검색어 -->
-  <div class="recent_search">
-    <p class="text1">최근 검색어가 없습니다</p>
-    <p class="text2">도서를 검색해보세요</p>
-  </div>
+
   <div class="search_book">
-    <div class="search_book_list">
-      <div class="search_book_info">
-        <div class="search_book_pic">
-          <img class="book1" th:src="@{/img/search/book1.png}" alt="" />
-        </div>
-        <div class="search_book_text">
-          <h1 class="search_book_title">돼지책</h1>
-          <h2 class="search_book_content">글 그림 앤서니 브라운 옮긴이 허은미</h2>
-        </div>
-        <div class="choose_btn">
-          <button type="button" class="choose">선택</button>
-        </div>
-        <div class="exit_btn">
-          <button type="button" class="exit">닫기</button>
-        </div>
-      </div>
-    </div>
+
   </div>
 </body>
 
