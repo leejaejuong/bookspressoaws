@@ -36,7 +36,7 @@
                         <div class="book_description" th:text="${book.description}"></div>
                     </div>
                     <div class="link-btn">
-                        <a href="">
+                        <a href="/debate/">
                             <button type="button" class="read_btn">토론 하기</button>
                         </a>
                         <a th:href="${book.link}" target='_blank'>
@@ -144,7 +144,11 @@
         <div class="post_list_detail"></div>
     </div>
 
+</div>
+<script th:inline="javascript">
+    let sessionMemberId=[[${session.memberId}]];
 
+</script>
 </body>
 
 </html>

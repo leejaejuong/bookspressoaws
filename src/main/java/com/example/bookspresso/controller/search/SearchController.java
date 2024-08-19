@@ -3,6 +3,7 @@ package com.example.bookspresso.controller.search;
 import com.example.bookspresso.dto.mainPage.DebateMainDTO;
 import com.example.bookspresso.dto.search.SearchBookDTO;
 import com.example.bookspresso.service.search.SearchService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +23,16 @@ public class SearchController {
     }
     @GetMapping("/detail")
     public String searchDetail(String isbn13
-                                , Model model) {
+                                , Model model,
+                               HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        if (memberId == null) {
+            return "redirect:/member/login";
+        }
+
+
         SearchBookDTO book = searchService.findBook(isbn13);
         List<DebateMainDTO> finddebate = searchService.finddebate();
-
         model.addAttribute("book", book);
         model.addAttribute("debate", finddebate);
         return "search/detail";

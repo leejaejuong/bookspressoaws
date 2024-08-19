@@ -21,5 +21,5 @@ public interface SearchMapper {
 //    디테일 댓글 수정
     void updatebookcomment(UpdateBookCommentDTO updateBookCommentDTO);
 //    디테일 댓글 삭제
-    void deletbookcomment(Long commentId);
+    void deletebookcomment(Long commentId);
 }

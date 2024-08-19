@@ -14,6 +14,7 @@
      SELECT ISBN13,TITLE,AUTHOR,DESCRIPTION,PUBDATE,COVER
                   FROM TBL_BOOK
                      WHERE TITLE LIKE '%' || #{title} || '%'
+     ORDER BY TITLE DESC
     </select>
     <select id="selectBookTotal">
         SELECT COUNT(ISBN13)
