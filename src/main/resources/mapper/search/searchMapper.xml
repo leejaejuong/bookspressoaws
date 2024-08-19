@@ -2,32 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bookspresso.mapper.search.SearchMapper">
     <select id="selectBook">
-        select ISBN13, TITLE, DESCRIPTION, AUTHOR, COVER, LINK, TO_CHAR(PUBDATE,'YYYY,MM,DD')AS PUBDATE
+        select ISBN13, TITLE, DESCRIPTION, AUTHOR, COVER, LINK, TO_CHAR(PUBDATE, 'YYYY,MM,DD') AS PUBDATE
         FROM TBL_BOOK
-        WHERE ISBN13=#{isbn13}
+        WHERE ISBN13 = #{isbn13}
     </select>
 
-<select id="selectdebate">
-    SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, I.TITLE,I.OUTLINE,B.DESCRIPTION,B.AUTHOR,B.TITLE AS BOOK_TITLE,
-           TO_CHAR(I.DEBATE_START_DATE,'YYYY-MM-DD')AS DEBATE_START_DATE, TO_CHAR(I.DEBATE_END_DATE,'YYYY-MM-DD')AS DEBATE_END_DATE,
-           DB.DEBATE_BOOK_ID,DB.ISBN13,B.COVER
-    FROM TBL_DEBATE I JOIN TBL_MEETING_TYPE T
-                           ON I.MEETING_ID = T.MEETING_ID
-                      JOIN TBL_DEBATE_TYPE P
-                           ON I.DEBATE_TYPE_ID = P.DEBATE_TYPE_ID
-                      JOIN TBL_DEBATE_BOOK DB
-                           ON I.DEBATE_ID = DB.DEBATE_ID
-                      JOIN TBL_BOOK B
-                           ON DB.ISBN13 = B.ISBN13
-    <![CDATA[    WHERE (MEETING_TYPE='오프라인' OR MEETING_TYPE='온라인') AND DEBATE_END_DATE > SYSDATE ]]>
+    <select id="selectdebate">
+        SELECT I.DEBATE_ID,
+               T.MEETING_TYPE,
+               P.DEBATE_TYPE,
+               I.TITLE,
+               I.OUTLINE,
+               B.DESCRIPTION,
+               B.AUTHOR,
+               B.TITLE                                    AS BOOK_TITLE,
+               TO_CHAR(I.DEBATE_START_DATE, 'YYYY-MM-DD') AS DEBATE_START_DATE,
+               TO_CHAR(I.DEBATE_END_DATE, 'YYYY-MM-DD')   AS DEBATE_END_DATE,
+               DB.DEBATE_BOOK_ID,
+               DB.ISBN13,
+               B.COVER
+        FROM TBL_DEBATE I
+                 JOIN TBL_MEETING_TYPE T
+                      ON I.MEETING_ID = T.MEETING_ID
+                 JOIN TBL_DEBATE_TYPE P
+                      ON I.DEBATE_TYPE_ID = P.DEBATE_TYPE_ID
+                 JOIN TBL_DEBATE_BOOK DB
+                      ON I.DEBATE_ID = DB.DEBATE_ID
+                 JOIN TBL_BOOK B
+                      ON DB.ISBN13 = B.ISBN13
+    <![CDATA[    WHERE (MEETING_TYPE = '오프라인' OR MEETING_TYPE = '온라인')
+          AND DEBATE_END_DATE > SYSDATE ]]>
         ORDER BY DEBATE_ID DESC
-</select>
-<select id="selectlib">
-    SELECT LIBCODE, LIBNAME, ADDRESS, CLOSED, HOMEPAGE, LATITUDE, LONGITUDE, TEL
-    FROM TBL_LIB
-    WHERE LIBNAME LIKE '%' || #{libname} || '%'
-</select>
+    </select>
+    <select id="selectlib">
+        SELECT LIBCODE,
+               LIBNAME,
+               ADDRESS,
+               CLOSED,
+               HOMEPAGE,
+               LATITUDE,
+               LONGITUDE,
+               TEL
+        FROM TBL_LIB
+        WHERE LIBNAME LIKE '%' || #{libname} || '%'
+    </select>
+    <select id="selectbookcomment">
+        SELECT BC.COMMENT_ID,
+               BC.ISBN13,
+               BC.BOOK_COMMENT,
+               TO_CHAR(BC.BOOK_DATE, ('YYYY-MM-DD')) AS BOOK_DATE,
+               B.MEMBER_ID,
+               B.NICKNAME,
+               P.PROFILE_UPLOAD,
+               P.PROFILE_UUID,
+               P.PROFILE_NAME
+        FROM TBL_BOOK_COMMENT BC
+                 JOIN TBL_MEMBER B
+                      ON BC.MEMBER_ID = B.MEMBER_ID
+                 JOIN TBL_PROFILE P
+                      ON B.MEMBER_ID = P.MEMBER_ID
+        WHERE ISBN13 = #{isbn13}
+        order by COMMENT_ID DESC
+    </select>
+    <insert id="insertbookcomment">
+        <selectKey resultType="long" keyProperty="commentId" order="BEFORE">
+            select SEQ_BOOK_COMMENT.nextval from dual
+        </selectKey>
+        INSERT INTO TBL_BOOK_COMMENT(COMMENT_ID, ISBN13, BOOK_COMMENT, BOOK_DATE, MEMBER_ID)
+        VALUES (#{commentId},#{isbn13},#{bookComment},SYSDATE,#{memberId})
+    </insert>
+    <update id="updatebookcomment">
+        UPDATE TBL_BOOK_COMMENT
+        SET  BOOK_COMMENT=#{bookComment},BOOK_DATE=SYSDATE
+        WHERE  COMMENT_ID=#{commentId}
+    </update>
 
+    <delete id="deletebookcomment">
+        DELETE FROM TBL_BOOK_COMMENT
+        WHERE COMMENT_ID=#{commentId}
+    </delete>
 </mapper>
 
 

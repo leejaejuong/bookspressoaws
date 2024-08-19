@@ -346,11 +346,13 @@ a{
 }
 
 .review_wrap {
+  display: flex;
   height: 600px;
   width: 1400px;
   border-left: 1px solid #dfdfdf;
   margin-top: 10px;
   margin-left: 10px;
+  flex-direction: column;
 }
 
 .review_title {
@@ -363,7 +365,6 @@ a{
 .review_content_wrap {
   height: 520px;
   width: 1400px;
-  overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width:none;
 }
@@ -437,11 +438,14 @@ a{
 }
 
 .submit_btn {
-  display: block;
-  width: 80px;
-  height: 80px;
-  margin-left: 1290px;
-  margin-top: -83px;
+  width: 70px;
+  height:64px;
+  background-color: #333;
+  color: #fff;
+  margin-left: 10px;
+  font-size: 20px;
+  border-radius:4px ;
+  border: none;
 }
 
 .library_title {
@@ -552,6 +556,7 @@ a{
 .lib_name {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 .ul_wrap {
   width: 420px;
@@ -675,5 +680,86 @@ padding: 10px;
 .library-title{
   font-size: 25px;
   margin:20px 10px;
+}
+.board-object-btn{
+  width: 100px;
+}
+/* 모달창*/
+.modal-total-box {
+  display: flex;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  position: absolute;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+}
 
+.modal-text {
+  color: rgb(228, 41, 30);
+  font-size: 20px;
+}
+.modal-modify {
+  font-size: 20px;
+  color: #8491a7;
+  line-height: 28px;
+  border: none;
+  background-color: white;
+  padding-bottom:10px ;
+}
+.modal-modelete{
+  font-size: 20px;
+  color: #8491a7;
+  line-height: 28px;
+  border: none;
+  background-color: white;
+}
+
+.none {
+  display: none;
+}
+.modal-in-box{
+  display: flex;
+  color: #8491a7;
+  width: 60px;
+  flex-direction: column;
+  align-items: center;
+}
+.comment-write-box{
+  width: 1100px;
+  height: 55px;
+  padding-left: 20px;
+  font-size: 18px;
+  border-radius:4px ;
+  border: 1px solid #dfdfdf;
+}
+.review_input{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.modify-total-box{
+  display: flex;
+  align-items: center
+}
+.modify-contnet{
+  width: 680px;
+  resize: none;
+  border-radius: 10px;
+  font-size: 17px;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}
+.modify-content-btn{
+  margin-left: auto;
+  background-color:rgba(17 18 19);
+  color: #ffd200;
+  font-size: 15px;
+  width: 80px ;
+  height: 40px;
+  border-radius: 8px;
 }

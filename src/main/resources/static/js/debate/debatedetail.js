@@ -110,13 +110,12 @@ import * as comm from '../modul/comment.js';
         let debateComment =document.querySelector('.comment-text').value;
         if(debateComment  === ''){
 
-            console.log("댓글을 작성해주세요");
+            alert("댓글을 작성해주세요");
         }else{
           let commentObj={
               debateComment :debateComment
           };
           comm.addComment(noticeId,commentObj,function (){
-              let debateComment =document.querySelector('.comment-text').value='';
               comm.getComment(noticeId,displayCommentList);
           });
         }
@@ -153,7 +152,7 @@ import * as comm from '../modul/comment.js';
                                 <button class="modal-modify">수 &nbsp; 정</button>
                                 <button class="modal-modelete"> 삭 &nbsp; 제</button>
                             </div>
-                            <div class="modal-text"> 신 &nbsp; 고</div>
+                           
                         </div>`;}
 
 
