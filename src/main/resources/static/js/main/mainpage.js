@@ -260,7 +260,7 @@
         direction: "horizontal",
         loop: true,
         slidesPerView: 6,
-        spaceBetween: 50,
+        effect:'fade',
 
     });
 }

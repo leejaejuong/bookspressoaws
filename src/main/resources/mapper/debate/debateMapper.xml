@@ -51,7 +51,7 @@
                                         ON I.DEBATE_ID = DB.DEBATE_ID
                                  JOIN TBL_BOOK B
                                          ON DB.ISBN13 = B.ISBN13
-               WHERE MEETING_TYPE='온라인' OR MEETING_TYPE='오프라인'
+            <![CDATA[ WHERE (MEETING_TYPE='온라인' OR MEETING_TYPE='오프라인') AND DEBATE_END_DATE > SYSDATE ]]>
                                          ORDER BY DEBATE_ID DESC
                                       )
                              <![CDATA[
@@ -64,30 +64,6 @@
 <select id="selectTotal">
     SELECT COUNT(DEBATE_ID)FROM TBL_DEBATE
 </select>
-
-<!--예시쿼리-->
-    <select id="selectdebateinpo">
-        SELECT I.DEBATE_ID,T.MEETING_TYPE,P.DEBATE_TYPE, TITLE, OUTLINE,
-               TO_CHAR(I.GROUP_START_DATE,'YYYY-MM-DD') AS GROUP_START_DATE, TO_CHAR(GROUP_END_DATE,'YYYY-MM-DD')AS GROUP_END_DATE,
-               TO_CHAR(DEBATE_START_DATE,'YYYY-MM-DD')AS DEBATE_START_DATE, TO_CHAR(DEBATE_END_DATE,'YYYY-MM-DD')AS DEBATE_END_DATE
-        FROM TBL_DEBATE I JOIN TBL_MEETING_TYPE T
-                               ON I.MEETING_ID = T.MEETING_ID
-                          JOIN TBL_DEBATE_TYPE P
-                               ON I.DEBATE_TYPE_ID = P.DEBATE_TYPE_ID
-        WHERE I.DEBATE_ID=#{debateId}
-    </select>
-<!--    SELECT  ISBN13, TITLE, AUTHOR, DESCRIPTION, PUBDATE, COVER-->
-<!--    FROM(SELECT ROWNUM AS RNUM,ISBN13, TITLE, AUTHOR, DESCRIPTION, PUBDATE, COVER-->
-<!--    FROM (SELECT ISBN13,TITLE,AUTHOR,DESCRIPTION,PUBDATE,COVER-->
-<!--    FROM TBL_BOOK-->
-<!--    WHERE TITLE LIKE '%' || #{title} || '%'-->
-<!--    )-->
-<!--    <![CDATA[-->
-<!--             WHERE ROWNUM <= #{page} * #{amount}-->
-<!--                              ]]>-->
-<!--    )-->
-<!--    WHERE RNUM > (#{page} - 1) * #{amount}-->
-
 
 </mapper>
 

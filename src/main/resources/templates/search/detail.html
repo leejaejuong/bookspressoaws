@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/header/header.css}">
+    <link rel="stylesheet" th:href="@{/css/debate/postobject.css}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/search/search_detail.css}"/>
+    <script defer th:src="@{/js/search/search_detail.js}"></script>
+    <script type="text/javascript"src="//dapi.kakao.com/v2/maps/sdk.js?appkey=645fbc8cba0ca0783bdc4b611fc857c3"></script>
+</head>
+<body>
+<div class="header">
+    <header th:replace="~{fragments/header :: header}"></header>
+    <div class="detail_contents">
+        <div class="contents">
+            <!-- 헤더 및 도서 정보 시작 -->
+            <div class="book_info">
+                <div class="book_pic">
+                    <img class="pic_input" th:src="${book.cover}" th:alt="${book.title}">
+                </div>
+                <div class="book_cover">
+                    <div class="book_header">
+
+                        <div class="book_title" th:text="${book.title}"></div>
+                        <div class="book_author" th:text="${book.author}"></div>
+                            <div class="book_date" th:text="${book.pubdate}"></div>
+                            <div class="boder-line"></div>
+                            <div class="book_description" th:text="${book.description}"></div>
+                    </div>
+                        <div class="link-btn">
+                            <a href="" >  <button type="button" class="read_btn">토론 하기</button></a>
+                            <a th:href="${book.link}" target='_blank'> <button type="button" class="pick_btn">구입 하기</button></a>
+                        </div>
+                    </div>
+                </div>
+            <div class="similar_debate">
+                <div class="simliar_title">이 책과 비슷한 장르의 토론</div>
+                <div class="debate-box" id="debate">
+                    <div class="swiper-wrapper">
+                    <div class="manpage-debate-object-box swiper-slide"  th:each="debate:${debate}" >
+                        <div class="show-style">
+                            <!--                            사진부분 -->
+                            <div class="post-book-cover">
+                                <div class="post-object-book-box">
+                                    <div class="post-object-back-book">
+                                        <div class="post-object-book-back">
+                                            <img class="post-object-book" th:src="${debate.cover}"/>
+                                        </div>
+                                        <div class="post-object-book-box">
+                                            <img class="post-object-book-img" th:src="${debate.cover}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-title">
+                                <div class="book-ul-st">
+                                    <div class="meeting-type book-ul-style" th:text="${debate.debateType}"></div>
+                                    <div class="debate-type book-ul-style" th:text="${debate.meetingType}"></div>
+                                    <div class="meeting-date book-ul-style">
+                                        <div th:text="${debate.debateStartDate}"></div>
+                                        <div> &ensp; ~ &ensp;</div>
+                                        <div th:text="${debate.debateEndDate}"></div>
+                                    </div>
+                                </div>
+                                <div class="debate-title" th:text="${debate.bookTitle}"></div>
+                                <div class="debate-user" th:text="${debate.author}"></div>
+                            </div>
+                            <div class="book-content">
+                                <div class="book-title-style" th:text="${debate.outLine}"></div>
+                                <div class="book-content-con">
+                                    <div class="book-content-style" th:text="${debate.description}">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <a th:href="@{/debate/board(debateId=${debate.debateId})}">  <div class="book-button">자세히 보기</div>
+                           </a>
+                            <input class="debate-id" type="hidden" th:value="${debate.debateId}">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="review_wrap">
+                <div class="review_title">한 줄 리뷰</div>
+                <div class="review_content_wrap">
+                    <div class="review_info_wrap">
+                        <img class="profile" th:src="@{/img/search/profile.png}" alt="">
+                        <div class="wrap">
+                            <div class="review_nickname">이재정</div>
+                            <div class="review_date">2024-07-31</div>
+                            <div class="review_content">책 재밌네요</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="review_input">
+                <input>
+                <input type="text" placeholder="다양한 생각을 남겨주세요">
+                <button type="button" class="submit_btn">등록</button>
+            </div>
+            <div class="map-total-box">
+                <div class="library-title"> 주위 도서관 찾기</div>
+            <div class="library">
+
+                <div class="library_search_wrap">
+                    <div class="library_search">
+                        <div class="search_li">
+                                <span class="li_text">도서관명</span>
+                                <input type="text" class="input_lib_name">
+                                <button type="button" class="search_btn">검색</button>
+                            </div>
+
+                    </div>
+                    <div class=lib_search_result>
+
+                    </div>
+                </div>
+                <div class="library_map_wrap">
+                    <div class="library_type"></div>
+                    <div id="library_map">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+            <!-- 주변 도서관 -->
+            <div class="library_title"> 주위 도서관 검색</div>
+            <!-- 이 책의 포스트 -->
+            <div class="post_title">이 책의 포스트</div>
+            <div class="post_list">
+                <div class="post_list_detail"></div>
+                <div class="post_list_detail"></div>
+                <div class="post_list_detail"></div>
+                <div class="post_list_detail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

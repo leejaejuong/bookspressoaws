@@ -21,7 +21,6 @@ import java.util.List;
 public class BooksaerchApi {
     private final Debateservice debateservice;
 
-
     @GetMapping("/debate/inpos/{title}")
     public List<BookinpoDTO> debate(@PathVariable("title") String title) {
         return  debateservice.searchBookinpo(title);
