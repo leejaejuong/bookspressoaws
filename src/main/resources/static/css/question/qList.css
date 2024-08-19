@@ -37,8 +37,8 @@ a{
 }
 
 /* 큐앤에이 검색 */
-.search-box,
-.search-box > form{
+.modal__search-box,
+.modal__search-box > form{
     display: flex;
     align-items: center;
 }
@@ -50,7 +50,7 @@ a{
     margin-right: 2px;
 }
 
-.search-box select{
+.modal__search-box select{
     padding: 7px 8px 9px 10px;
 }
 .input-box{
