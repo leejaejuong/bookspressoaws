@@ -1,5 +1,6 @@
 package com.example.bookspresso.mapper.admin;
 
+import com.example.bookspresso.dto.admin.discussion.AttendMemberDTO;
 import com.example.bookspresso.dto.admin.discussion.DebateSearchDTO;
 import com.example.bookspresso.dto.admin.discussion.FinishedDebateDTO;
 import com.example.bookspresso.dto.admin.discussion.ManageDebateDTO;
@@ -46,9 +47,18 @@ public interface DebateManageMapper {
 
     void delectDebate(Long debateId);
 
-    List<ManageDebateDTO> selectSearchDebateList(AdminPageRequestDTO adminPageRequestDTO,
-                                                 DebateSearchDTO debateSearchDTO);
+//    List<ManageDebateDTO> selectSearchDebateList(AdminPageRequestDTO adminPageRequestDTO,
+//                                                 DebateSearchDTO debateSearchDTO);
 
+    List<AttendMemberDTO> selectAttendMember(Long debateId);
 
+    // 토론 삭제 처리
+    List<Long> selectDeleteElement(Long debateId);
+
+    void deleteDebate(Long debateId);
+    void deleteMemberDebate(Long debateId);
+    void deleteDebateBoard(Long debateId);
+    void deleteDebateBook(Long debateId);
+    void deleteDebateComment(Long commentId);
 
 }

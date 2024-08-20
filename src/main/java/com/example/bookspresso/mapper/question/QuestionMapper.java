@@ -33,8 +33,6 @@ public interface QuestionMapper {
                                              @Param("amount") int amount);
 
     int searchListTotal(@Param("memberId") Long memberId,
-                        @Param("keyword") String keyword,
-                        @Param("page") int page,
-                        @Param("amount") int amount);
+                        @Param("keyword") String keyword);
 
 }

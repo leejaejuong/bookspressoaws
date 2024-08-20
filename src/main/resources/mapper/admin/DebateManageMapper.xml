@@ -390,9 +390,41 @@
         WHERE DB.DEBATE_ID = #{debateId}
     </select>
 
-    <delete id="delectDebate">
-        DELETE TBL_DEBATE
-        WHERE DEBATE_ID = #{debateId}
+
+    
+    <select id="selectAttendMember">
+        SELECT MD.DEBATE_ID, MD.MEMBER_ID, M.NICKNAME
+        FROM TBL_MEMBER_DEBATE MD JOIN TBL_MEMBER M
+                                       ON MD.MEMBER_ID = M.MEMBER_ID
+        WHERE MD.DEBATE_ID = #{debateId}
+    </select>
+
+
+    <select id="selectDeleteElement">
+        SELECT DC.COMMENT_ID
+        FROM TBL_DEBATE_BOARD DB JOIN TBL_DEBATE_COMMENT DC
+                                      ON DB.NOTICE_ID = DC.NOTICE_ID
+        WHERE DB.DEBATE_ID = #{debateId}
+    </select>
+
+    <delete id="deleteDebate">
+        DELETE TBL_DEBATE WHERE DEBATE_ID = #{debateId}
+    </delete>
+
+    <delete id="deleteMemberDebate">
+        DELETE TBL_MEMBER_DEBATE WHERE DEBATE_ID = #{debateId}
+    </delete>
+
+    <delete id="deleteDebateBoard">
+        DELETE TBL_DEBATE_BOARD WHERE DEBATE_ID = #{debateId}
+    </delete>
+
+    <delete id="deleteDebateBook">
+        DELETE TBL_DEBATE_BOOK WHERE DEBATE_ID = #{debateId}
+    </delete>
+
+    <delete id="deleteDebateComment">
+        DELETE TBL_DEBATE_COMMENT WHERE COMMENT_ID = {commentId}
     </delete>
 
 

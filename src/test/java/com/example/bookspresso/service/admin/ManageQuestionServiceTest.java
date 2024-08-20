@@ -32,7 +32,7 @@ class ManageQuestionServiceTest {
 
         questionAnswerDTO = QuestionAnswerDTO.builder()
                 .adminId(1L)
-                .qBoardId(36L)
+                .qBoardId(63L)
                 .aContent("test 답변입니다!! ################")
                 .build();
 
@@ -65,19 +65,32 @@ class ManageQuestionServiceTest {
 
     @Test
     void addAnswer(){
-        manageQuestionService.addAnswer(questionAnswerDTO);
+        questionManageMapper.insertAnswer(questionAnswerDTO);
+        System.out.println(questionAnswerDTO);
     }
 
     @Test
-    void updateAnswer(){
-        manageQuestionService.updateAnswer(questionAnswerDTO.getQBoardId());
-    }
+    void updateAStatus(){
+        questionManageMapper.updateAStatus(questionAnswerDTO.getQBoardId());
 
-    @Test
-    void updateAnswerContent(){
-        manageQuestionService.updateAnswerContent(modifyAnswer);
     }
-
+//
+//    @Test
+//    void addAnswer(){
+//        manageQuestionService.addAnswer(questionAnswerDTO);
+//        ;
+//    }
+//
+//    @Test
+//    void updateAnswer(){
+//        manageQuestionService.updateAnswer(questionAnswerDTO.getQBoardId());
+//    }
+//
+//    @Test
+//    void updateAnswerContent(){
+//        manageQuestionService.updateAnswerContent(modifyAnswer);
+//    }
+//
 
 
 

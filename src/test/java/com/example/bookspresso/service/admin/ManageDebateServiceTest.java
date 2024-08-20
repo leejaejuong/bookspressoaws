@@ -100,6 +100,11 @@ class ManageDebateServiceTest {
     @Test
     void dropDebate() {
 
+    }
+
+    @Test
+    public void findAttendMemberList(){
+        manageDebateService.findAttendMemberList(195L);
 
 
     }

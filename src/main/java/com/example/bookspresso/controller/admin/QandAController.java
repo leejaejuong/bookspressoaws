@@ -53,6 +53,7 @@ public class QandAController {
 
         AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
 
+        model.addAttribute("total",total);
         model.addAttribute("list", list);
         model.addAttribute("adminPageSetDTO",adminPageSetDTO);
         return "admin/qa/finishList";
@@ -75,33 +76,33 @@ public class QandAController {
         questionAnswerDTO.setAdminId((Long)session.getAttribute("adminId"));
         System.out.println("@@@questionAnswerDTO =" + questionAnswerDTO);
         
-//        manageQuestionService.addAnswer(questionAnswerDTO);
-//        manageQuestionService.updateAnswer(questionAnswerDTO.getQBoardId());
+        manageQuestionService.addAnswer(questionAnswerDTO);
+        manageQuestionService.updateAStatus(questionAnswerDTO.getQBoardId());
 
         return "redirect:/admin/question/list";
     }
 
-    @GetMapping("/modify")
-    public String modify(Long qBoardId, Model model){
-
-        QuestionDetailDTO list = questionService.findQuestion(qBoardId);
-        model.addAttribute("list", list);
-
-        return "admin/qa/modifyAnswer";
-    }
-
-    @PostMapping("/modify")
-    public String modify(ModifyAnswer modifyAnswer,
-                         HttpSession session,
-                         RedirectAttributes redirectAttributes){
-
-        modifyAnswer.setAdminId((Long)session.getAttribute("adminId"));
-        manageQuestionService.updateAnswerContent(modifyAnswer);
-
-        redirectAttributes.addAttribute("qBoardId", modifyAnswer.getQBoardId());
-
-        return "redirect:/admin/question/modify";
-    }
+//    @GetMapping("/modify")
+//    public String modify(Long qBoardId, Model model){
+//
+//        QuestionDetailDTO list = questionService.findQuestion(qBoardId);
+//        model.addAttribute("list", list);
+//
+//        return "admin/qa/modifyAnswer";
+//    }
+//
+//    @PostMapping("/modify")
+//    public String modify(ModifyAnswer modifyAnswer,
+//                         HttpSession session,
+//                         RedirectAttributes redirectAttributes){
+//
+//        modifyAnswer.setAdminId((Long)session.getAttribute("adminId"));
+//        manageQuestionService.updateAnswerContent(modifyAnswer);
+//
+//        redirectAttributes.addAttribute("qBoardId", modifyAnswer.getQBoardId());
+//
+//        return "redirect:/admin/question/modify";
+//    }
 
 
 
