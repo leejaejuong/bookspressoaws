@@ -68,6 +68,11 @@ body {
 .swiper-wrapper{
   height: 400px;
 }
+.swiper-slide{
+  overflow: hidden;
+  width: 125px;
+  height: 181px;
+}
 .meeting-type{
   list-style-type: none;
   border-radius: 4px;

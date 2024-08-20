@@ -16,6 +16,7 @@
     padding-bottom: 10px;
 }
 .post-object-style{
+    height: 380px;
     margin: 12px;
     border-radius: 12px;
     overflow: hidden;
@@ -95,6 +96,7 @@ post-object-li{
     overflow: hidden;
 }
 .post-content-content{
+    height: 220px;
     overflow: hidden;
     word-break: break-word;
     display: -webkit-box;

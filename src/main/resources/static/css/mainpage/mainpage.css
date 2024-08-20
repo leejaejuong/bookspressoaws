@@ -217,7 +217,7 @@ font-size : 30px;
     padding-right: 1rem;
     list-style: none;
     user-select: none;
-    height: 100%;
+    height: 380px;
     padding-bottom: 10px;
 
 
@@ -245,7 +245,6 @@ scale:110%;
 
 }
 .swiper-slide{
-
   overflow: hidden;
     width: 125px;
     height: 181px;

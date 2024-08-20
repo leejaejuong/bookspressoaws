@@ -36,7 +36,8 @@
     margin-bottom: 20px;
 
 }
-.aside-img{
+
+.aside-img {
     width: 160px;
     height: 200px;
 }
@@ -61,13 +62,15 @@
     color: #ffd200;
     align-items: center;
 }
-.aside-title{
+
+.aside-title {
 
     font-size: 20px;
     padding: 10px 0;
 }
+
 .aside-text {
-    padding: 0 10px 5px 10px ;
+    padding: 0 10px 5px 10px;
     max-height: 54px;
     font-size: 15px;
     overflow: hidden;
@@ -76,18 +79,18 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-   color:rgb(87 91 92 );
+    color: rgb(87 91 92);
 
 }
 
 .aside-date-text {
     font-size: 15px;
-    color:rgb(87 91 92 );
+    color: rgb(87 91 92);
 }
 
 .aside-date {
     display: flex;
-    padding:10px 10px;
+    padding: 10px 10px;
 }
 
 .board-object-in-box {
@@ -99,7 +102,8 @@
     border-bottom: 1px solid #dee2e6;
 
 }
-.board-comtent-box{
+
+.board-comtent-box {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -138,9 +142,11 @@
 .board-object-user-date {
     font-size: 10px;
 }
-.comment-total-box{
+
+.comment-total-box {
     height: auto;
 }
+
 .content-content-box {
     overflow: hidden;
     word-break: break-word;
@@ -154,11 +160,13 @@
     text-decoration-line: none;
     color: inherit;
 }
-.modify-total-box{
+
+.modify-total-box {
     display: flex;
     align-items: center
 }
-.modify-contnet{
+
+.modify-contnet {
     width: 680px;
     resize: none;
     border-radius: 10px;
@@ -166,15 +174,17 @@
     padding: 10px;
     border: 1px solid #dee2e6;
 }
-.modify-content-btn{
+
+.modify-content-btn {
     margin-left: auto;
-    background-color:rgba(17 18 19);
+    background-color: rgba(17 18 19);
     color: #ffd200;
     font-size: 15px;
-    width: 80px ;
+    width: 80px;
     height: 40px;
     border-radius: 8px;
 }
+
 .board-object-user-btn {
     margin-left: auto;
     border: none;
@@ -185,7 +195,7 @@
     width: 90%;
     margin: 10px 0;
     text-decoration-line: none;
-   color: inherit;
+    color: inherit;
 
 }
 
@@ -194,8 +204,17 @@
     margin: 10px 0;
     padding-bottom: 30px;
 }
-.content-total-box{
+
+.content-total-box {
+
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.content-total-box-comment {
     margin-bottom: 5px;
+    padding: 10px 10px 10px 50px;
 }
 
 .board-object-comment {
@@ -203,7 +222,7 @@
     flex-direction: column;
     height: auto;
     border-bottom: 10px;
-    border-bottom: 1px solid #dee2e6;
+    /*border-bottom: 1px solid #dee2e6;*/
 }
 
 .board-object-comment-inop-box {
@@ -220,10 +239,27 @@
 }
 
 .debate-img {
-
     padding: 10px 10px 0 0px;
     width: 40px;
     height: 40px;
+}
+
+.board-object-img-box{
+    position: relative;
+}
+
+.board-object-img-box::before {
+
+    background-color: #d0d7deb3;
+    z-index: -1;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 140px;
+    /*margin-left: 20px;*/
+    top: -20px;
+    left: calc(50% - 5px);
 }
 
 .junjun-img {
@@ -231,7 +267,8 @@
     height: 24px;
     padding: 10px;
 }
-.comment-btn{
+
+.comment-btn {
     display: flex;
     font-size: 20px;
     border-radius: 8px;
@@ -242,15 +279,17 @@
     align-items: center;
     justify-content: center;
 }
-.comment-btn-box{
+
+.comment-btn-box {
     display: flex;
     flex-direction: row-reverse;
     margin-top: 20px;
-    margin-right:  30px;
+    margin-right: 30px;
 
 
 }
-.comment-text{
+
+.comment-text {
     padding: 10px 10px 10px 20px;
     resize: none;
     width: 750px;
@@ -259,7 +298,7 @@
     border-radius: 50px;
     border: 1px solid #dee2e6;
     font-size: 20px;
-    outline:none;
+    outline: none;
 }
 
 /* 모달창 */
@@ -280,15 +319,17 @@
     color: rgb(228, 41, 30);
     font-size: 20px;
 }
+
 .modal-modify {
     font-size: 20px;
     color: #8491a7;
     line-height: 28px;
     border: none;
     background-color: white;
-    padding-bottom:10px ;
+    padding-bottom: 10px;
 }
-.modal-modelete{
+
+.modal-modelete {
     font-size: 20px;
     color: #8491a7;
     line-height: 28px;
@@ -299,13 +340,14 @@
 .none {
     display: none;
 }
-.modal-in-box{
+
+.modal-in-box {
     display: flex;
     border-bottom: 1px solid #dee2e6;
     color: #8491a7;
     width: 60px;
     margin-bottom: 7px;
-    padding-bottom:7px ;
+    padding-bottom: 7px;
     flex-direction: column;
     align-items: center;
 }
