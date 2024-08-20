@@ -7,6 +7,7 @@ import lombok.*;
 public class PostDetailDTO {
     private String postTitle;
     private String postContent;
+    private String postComment;
     private String profileUuid;
     private String profileUpload;
     private String profileName;
