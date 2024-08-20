@@ -18,7 +18,6 @@ a{
     outline: none;
     color: black;
 }
-
 .layout_container{
     position: relative;
 }
@@ -219,7 +218,12 @@ a{
     font-size: 2rem;
     color: black;
 }
-.post_button{
+.content-empty_action{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.post_btn{
     border: 1px solid black;
     background-color: black;
     color: #ffd200;
