@@ -156,7 +156,7 @@ class QuestionMapperTest {
         List<QuestionListDTO> list = questionMapper.searchListWithPage(qPageRequestDTO.getMemberId(),"s",1,3);
         System.out.println("list = " + list);
 
-        questionMapper.searchListTotal(qPageRequestDTO.getMemberId(),"s",1,3);
+        questionMapper.searchListTotal(qPageRequestDTO.getMemberId(),"s");
 
 
     }

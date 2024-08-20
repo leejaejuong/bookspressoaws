@@ -126,32 +126,13 @@
     <select id="searchListTotal">
         SELECT COUNT(Q_BOARD_ID)
         FROM (
-                 SELECT ROWNUM AS RNUM, Q_BOARD_ID, A_STATUS, Q_TITLE,
-                        MEMBER_ID, NICKNAME,
-                        CREATE_DATE,
-                        VIEW_COUNT
-                 FROM (
-                          SELECT Q_BOARD_ID, A_STATUS, Q_TITLE,
-                                 MEMBER_ID, NICKNAME,
-                                 CREATE_DATE,
-                                 VIEW_COUNT
-                          FROM (
-                                   SELECT Q.Q_BOARD_ID, Q.A_STATUS, Q.Q_TITLE,
-                                          M.MEMBER_ID, M.NICKNAME,
-                                          TO_CHAR(Q.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
-                                          Q.VIEW_COUNT
-                                   FROM TBL_QUESTION Q JOIN TBL_MEMBER M
-                                                            ON Q.MEMBER_ID = M.MEMBER_ID
-                                   WHERE M.MEMBER_ID = #{memberId}
-                               )
-                          WHERE Q_TITLE LIKE '%' || #{keyword} || '%'
-                          ORDER BY Q_BOARD_ID DESC
-                      )
-        <![CDATA[
-                 WHERE ROWNUM <= #{page} * #{amount}
-        ]]>
-        )
-        WHERE  RNUM> (#{page} - 1) * #{amount}
+                 SELECT Q.Q_BOARD_ID, Q.Q_TITLE
+                 FROM TBL_QUESTION Q JOIN TBL_MEMBER M
+                                          ON Q.MEMBER_ID = M.MEMBER_ID
+                 WHERE M.MEMBER_ID = #{memberId}
+             )
+        WHERE Q_TITLE LIKE '%' || #{keyword} || '%'
+        ORDER BY Q_BOARD_ID DESC
     </select>
 
 

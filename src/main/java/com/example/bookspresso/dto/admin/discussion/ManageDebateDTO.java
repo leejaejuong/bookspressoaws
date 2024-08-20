@@ -2,6 +2,8 @@ package com.example.bookspresso.dto.admin.discussion;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -17,20 +19,20 @@ public class ManageDebateDTO {
     토론 종류, 토론 책, 토론 개요
     토론 참여 회원
      */
-    Long debateId;
+    private Long debateId;
+    private String bookName;
+    private String title;
+    private String meetingId;
+    private String groupStartDate;
+    private String groupEndDate;
+    private String debateStartDate;
+    private String debateEndDate;
+    private String debateTypeId;
+    private String debateBookId;
+    private String outline;
 
-    String bookName;
-
-    String title;
-    String meetingId;
-    String groupStartDate;
-    String groupEndDate;
-    String debateStartDate;
-    String debateEndDate;
-
-    String debateTypeId;
-    String debateBookId;
-    String outline;
+    // 토론 참여 한 회원 리스트
+    private List<AttendMemberDTO> attendList;
 
 //    String memberId;
 

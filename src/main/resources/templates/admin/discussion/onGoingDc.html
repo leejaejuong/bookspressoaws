@@ -94,7 +94,7 @@
                                         <!-- 토론 리스트 뿌려지는 곳 -->
                                         <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
                                         <td class="tc">
-                                            <input type="checkbox" class="checkAction check-boxes" th:value="${board.debateId}">
+                                            <input type="checkbox" class="checkAction check-boxes" th:value="${board.debateId}" value="checked">
                                         </td>
                                         <td class="tc">
                                             <span th:text="${board.title}" class="debate-title"></span>
@@ -125,9 +125,9 @@
                                         <td colspan="5">
                                             <div class="met-attend">
                                                 <div>토론 참여 회원</div>
-                                                <div class="met-attend-list">
-                                                    <span>userName</span>
-                                                    <span>user2</span>
+                                                <div class="met-attend-list" th:each="attendMember : ${board.getAttendList()}">
+                                                    <span class="attend-member" th:text="${attendMember.nickname}"></span>
+
                                                 </div>
                                             </div>
                                         </td>

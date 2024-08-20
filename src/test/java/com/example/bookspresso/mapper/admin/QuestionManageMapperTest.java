@@ -57,25 +57,46 @@ class QuestionManageMapperTest {
     @Test
     void insertAnswer(){
         questionManageMapper.insertAnswer(questionAnswerDTO);
-    }
 
-    @Test
-    void updateAnswerStatus(){
-        questionManageMapper.updateAnswerStatus(37L);
-//        System.out.println(questionDetailDTO.isAStatus());
+        System.out.println("insert $$ = " + questionAnswerDTO);
 
     }
     @Test
-    void updateAnswer(){
-        ModifyAnswer modifyAnswer;
-        modifyAnswer = ModifyAnswer.builder()
-                .aContent("modify test@@@@@2")
-                .adminId(1L)
-                .qBoardId(36L)
-                .build();
-
-        questionManageMapper.updateAnswer(modifyAnswer);
-
+    void updateAStatus(){
+        questionManageMapper.updateAStatus(101L);
 
     }
+
+
+
+//
+//    @Test
+//    void insertAnswer(){
+//        questionManageMapper.insertAnswer(questionAnswerDTO);
+//
+//        System.out.println(" ### dto = " + questionAnswerDTO);
+//
+//    }
+//
+//    @Test
+//    void updateAnswerStatus(){
+//        questionManageMapper.updateAnswerStatus(37L);
+////        System.out.println(questionDetailDTO.isAStatus());
+//
+//    }
+//    @Test
+//    void updateAnswer(){
+//        ModifyAnswer modifyAnswer;
+//        modifyAnswer = ModifyAnswer.builder()
+//                .aContent("modify test@@@@@2")
+//                .adminId(1L)
+//                .qBoardId(36L)
+//                .build();
+//
+//        questionManageMapper.updateAnswer(modifyAnswer);
+//
+//        System.out.println(" ### dto = " + questionAnswerDTO);
+//        System.out.println(" ### modify DTO = " + modifyAnswer);
+//
+//    }
 }

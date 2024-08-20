@@ -1,5 +1,6 @@
 package com.example.bookspresso.service.admin;
 
+import com.example.bookspresso.dto.admin.discussion.AttendMemberDTO;
 import com.example.bookspresso.dto.admin.discussion.FinishedDebateDTO;
 import com.example.bookspresso.dto.admin.discussion.ManageDebateDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageRequestDTO;
@@ -73,5 +74,12 @@ public class ManageDebateService {
     public void dropDebate(Long debateId){
         debateManageMapper.delectDebate(debateId);
     }
+
+    public List<AttendMemberDTO> findAttendMemberList(Long debateId){
+        return debateManageMapper.selectAttendMember(debateId);
+    }
+
+
+
 }
 
