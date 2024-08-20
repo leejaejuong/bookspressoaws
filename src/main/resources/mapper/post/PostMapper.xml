@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.post.PostMapper">
+    <insert id="insertPost" parameterType="postWriteDTO">
+        <selectKey keyProperty="postId" order="BEFORE" resultType="long">
+            SELECT SEQ_POST_ID.nextval FROM DUAL
+        </selectKey>
+        insert into TBL_POST (POST_ID, ISBN13, MEMBER_ID, POST_TITLE, POST_CONTENT)
+        values (#{postId}, #{isbn13}, #{memberId}, #{postTitle}, #{postContent})
+    </insert>
+</mapper>
