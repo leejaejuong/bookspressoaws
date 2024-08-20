@@ -51,8 +51,7 @@ public class QuestionController {
         List<QuestionListDTO> list = questionService.findSearchListWithPage(memberId,questionSearchDTO.getKeyword(),
                 qPageRequestDTO.getPage(), qPageRequestDTO.getAmount());
 
-        int total = questionService.findSearchTotal(memberId, questionSearchDTO.getKeyword(),
-                qPageRequestDTO.getPage(), qPageRequestDTO.getAmount());
+        int total = questionService.findSearchTotal(memberId, questionSearchDTO.getKeyword());
 
         QPageSetDTO qPageSetDTO = new QPageSetDTO(qPageRequestDTO, total);
 

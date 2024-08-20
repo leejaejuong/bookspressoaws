@@ -53,8 +53,8 @@ public class QuestionService {
         return questionMapper.searchListWithPage(memberId, keyword, page, amount);
     }
 
-    public int findSearchTotal(Long memberId, String keyword, int page, int amount){
-        return  questionMapper.searchListTotal(memberId, keyword, page, amount);
+    public int findSearchTotal(Long memberId, String keyword){
+        return  questionMapper.searchListTotal(memberId, keyword);
     }
 
 }

@@ -1,5 +1,6 @@
-
-
+let $allCheckBox = document.querySelector("#allCheck");
+let $checkBoxs = document.querySelectorAll(".check-boxes");
+let $debateDropBtn = document.querySelector('#drop-btn');
 let $detailBtn = document.querySelectorAll('.detail-btn');
 let $detailInfo = document.querySelectorAll('.view-info');
 {
@@ -28,24 +29,6 @@ let $detailInfo = document.querySelectorAll('.view-info');
 }
 
 {
-   let $allCheckBox = document.querySelector("#allCheck");
-   let $checkBoxs = document.querySelectorAll(".check-boxes");
-
-   // console.log($allCheckBox.checkbox);
-   // $allCheckBox.addEventListener('click',function (){
-   //
-   // if ($allCheckBox.checked){
-   //     console.log("checkk!!!");
-   //
-   //     for (let i = 0; i < $checkBoxs.length; i++) {
-   //         $checkBoxs[i].addEventListener('click');
-   //     }
-   //
-   // }else{
-   //     console.log("enchecked!!!");
-   // }
-   // })
-
     $allCheckBox.addEventListener('change',function (){
         let isChecked = $allCheckBox.checked;
         $checkBoxs.forEach(function (checkBox){
@@ -53,21 +36,55 @@ let $detailInfo = document.querySelectorAll('.view-info');
         })
     })
 
-    let debateDropBtn = document.querySelector('#drop-btn');
 
-    debateDropBtn.addEventListener('click',function (){
+}
 
 
-        // let value = $checkBoxs.val();
-        // console.log("## checkBox = " + value);
-        // fetch(`/debate/drop/${debateId}`, method='POST')
-        //     .then(resp => resp.text())
+
+    // let dropDebateLists = [];
+
+    // $checkBoxs.forEach(function () {
+    //     if (checkbox.checked){
+    //         dropDebateLists.push(checkbox.value);
+    //     }
+    // })
+
+
+
+
+
+    // debateDropBtn.addEventListener('click',function (){
+    //
+    //     // let value = $checkBoxs.val();
+    //     // console.log("## checkBox = " + value);
+    //     // fetch(`/debate/drop/${debateId}`, method='POST')
+    //     //     .then(resp => resp.text())
+    // })
+
+
+
+{
+    $debateDropBtn.addEventListener('click',() =>{
+        let dropDebateLists = [];
+
+        for (let i = 0; i < $checkBoxs.length; i++) {
+            if ($checkBoxs[i].checked){
+                dropDebateLists.push($checkBoxs[i].value);
+                console.log("삭제 할 것 " + $checkBoxs[i].value);
+            }else{
+                console.log("no drop");
+            }
+        }
+        console.log("dropDebateLists = " + dropDebateLists);
+
+        fetch(`/admin/debate/drop/${debateId}`,method="POST")
+            .then(resp => {
+                console.log("토론 삭제 성공!!")
+            })
     })
 
 
-
-
-
 }
+
 
 

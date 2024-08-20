@@ -141,7 +141,7 @@ class QuestionServiceTest {
         List<QuestionListDTO> list = questionService.findSearchListWithPage(4L,"s", 1, 3);
         System.out.println("list = " + list);
 
-        questionService.findSearchTotal(4L,"s", 1, 3);
+        questionService.findSearchTotal(4L,"s");
 
     }
 

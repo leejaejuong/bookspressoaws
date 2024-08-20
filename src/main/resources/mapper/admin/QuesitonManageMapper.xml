@@ -32,28 +32,22 @@
 
     <select id="selectFinishQuestionList">
 
-        SELECT Q_BOARD_ID, Q_TITLE, CREATE_DATE,
-               A_STATUS, MEMBER_ID, NICKNAME, ADMIN_ID, ADMIN_LOGIN_ID, CREATED_DATE, A_CONTENT
+        SELECT Q_TITLE, Q_BOARD_ID, A_STATUS, NICKNAME, CREATE_DATE,
+               ANSWER_ID,ANSWER_CREATED_DATE, ADMIN_LOGIN_ID
         FROM (
-                 SELECT ROWNUM AS RNUM, Q_BOARD_ID, Q_TITLE, CREATE_DATE,
-                        A_STATUS, MEMBER_ID, NICKNAME, ADMIN_ID, ADMIN_LOGIN_ID, CREATED_DATE, A_CONTENT, ANSWER_MODIFIED_DATE
+                 SELECT ROWNUM AS RNUM, Q_TITLE, Q_BOARD_ID, A_STATUS, NICKNAME, CREATE_DATE,
+                        ANSWER_ID,ANSWER_CREATED_DATE, ADMIN_LOGIN_ID
                  FROM(
-                         SELECT T.Q_BOARD_ID, T.Q_TITLE, T.CREATE_DATE, T.A_STATUS,
-                                T.MEMBER_ID, T.NICKNAME,
-                                T2.ADMIN_ID, T2.ADMIN_LOGIN_ID, T2.CREATED_DATE, T2.A_CONTENT, T2.ANSWER_MODIFIED_DATE
-                         FROM (SELECT Q.Q_BOARD_ID, Q.Q_TITLE, Q.CREATE_DATE, Q.A_STATUS,
-                                      M.MEMBER_ID, M.NICKNAME
-                               FROM TBL_QUESTION Q JOIN TBL_MEMBER M
-                                                        ON Q.MEMBER_ID = M.MEMBER_ID
-                               WHERE Q.A_STATUS = 1
-                               ORDER BY Q.CREATE_DATE DESC) T
-                                  JOIN
-                              (SELECT A.ADMIN_ID, A.ADMIN_LOGIN_ID,
-                                      AN.Q_BOARD_ID, AN.CREATED_DATE, AN.A_CONTENT, AN.ANSWER_MODIFIED_DATE
-                               FROM TBL_ADMIN A JOIN TBL_ANSWER AN
-                                                     ON A.ADMIN_ID = AN.ADMIN_ID) T2
-                         ON T.Q_BOARD_ID = T2.Q_BOARD_ID
-                         ORDER BY T2.CREATED_DATE DESC
+                         SELECT Q.Q_TITLE,Q.Q_BOARD_ID, Q.A_STATUS, M.NICKNAME, Q.CREATE_DATE,
+                                A.ANSWER_ID,A.CREATED_DATE AS ANSWER_CREATED_DATE, AD.ADMIN_LOGIN_ID
+                         FROM (TBL_QUESTION Q JOIN TBL_MEMBER M
+                               ON Q.MEMBER_ID = M.MEMBER_ID)
+                                  FULL OUTER JOIN
+                              (TBL_ANSWER A JOIN TBL_ADMIN AD
+                               ON A.ADMIN_ID = AD.ADMIN_ID)
+                              ON Q.Q_BOARD_ID = A.Q_BOARD_ID
+                         WHERE Q.A_STATUS = 1
+                         ORDER BY ANSWER_CREATED_DATE DESC
                      )
         <![CDATA[
                  WHERE ROWNUM <= #{page} * #{amount}
@@ -64,29 +58,50 @@
 
     <select id="selectFinishQuestionCount">
         SELECT COUNT(Q.Q_BOARD_ID)
-        FROM TBL_QUESTION Q JOIN TBL_MEMBER M
-                                 ON Q.MEMBER_ID = M.MEMBER_ID
+        FROM (TBL_QUESTION Q JOIN TBL_MEMBER M
+              ON Q.MEMBER_ID = M.MEMBER_ID)
+                 FULL OUTER JOIN
+             (TBL_ANSWER A JOIN TBL_ADMIN AD
+              ON A.ADMIN_ID = AD.ADMIN_ID)
+             ON Q.Q_BOARD_ID = A.Q_BOARD_ID
         WHERE Q.A_STATUS = 1
     </select>
 
     <insert id="insertAnswer">
-        <selectKey resultType="Long" keyProperty="answerId" order="BEFORE">
+        <selectKey resultType="long" keyProperty="answerId" order="BEFORE">
             SELECT SEQ_ANSWER.nextval FROM DUAL
         </selectKey>
-        INSERT INTO TBL_ANSWER (ANSWER_ID, ADMIN_ID, Q_BOARD_ID, A_CONTENT, CREATED_DATE)
+        INSERT INTO TBL_ANSWER (ANSWER_ID, ADMIN_ID, Q_BOARD_ID, A_CONTENT)
         VALUES (#{answerId}, #{adminId}, #{qBoardId}, #{aContent})
     </insert>
 
-    <update id="updateAnswerStatus">
-        UPDATE TBL_QUESTION SET A_STATUS = 1
+    <update id="updateAStatus">
+        UPDATE TBL_QUESTION
+        SET A_STATUS = 1
         WHERE Q_BOARD_ID = #{qBoardId}
     </update>
 
-    <update id="updateAnswer">
-        UPDATE TBL_ANSWER
-        SET A_CONTENT = #{aContent}, ADMIN_ID = #{adminId}, TBL_ANSWER.ANSWER_MODIFIED_DATE = SYSDATE
-        WHERE Q_BOARD_ID = #{qBoardId}
-    </update>
+
+
+<!--    <insert id="insertAnswer">-->
+<!--        <selectKey resultType="Long" keyProperty="answerId" order="BEFORE">-->
+<!--            SELECT SEQ_ANSWER.nextval FROM DUAL-->
+<!--        </selectKey>-->
+<!--        INSERT INTO TBL_ANSWER (ANSWER_ID, ADMIN_ID, Q_BOARD_ID, A_CONTENT)-->
+<!--        VALUES (#{answerId}, #{adminId}, #{qBoardId}, #{aContent})-->
+<!--    </insert>-->
+
+<!--    <update id="updateAnswerStatus">-->
+<!--        UPDATE TBL_QUESTION SET A_STATUS = 1-->
+<!--        WHERE Q_BOARD_ID = #{qBoardId}-->
+<!--    </update>-->
+
+<!--  답글 수정  -->
+<!--    <update id="updateAnswer">-->
+<!--        UPDATE TBL_ANSWER-->
+<!--        SET A_CONTENT = #{aContent}, ADMIN_ID = #{adminId}, ANSWER_MODIFIED_DATE = SYSDATE-->
+<!--        WHERE Q_BOARD_ID = #{qBoardId}-->
+<!--    </update>-->
 
 
 </mapper>
