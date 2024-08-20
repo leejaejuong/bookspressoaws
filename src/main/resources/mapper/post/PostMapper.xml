@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.post.PostMapper">
+<!--    메인페이지-->
+  <select id="mainWithpage">
+      SELECT POST_ID, ISBN13, POST_TITLE, MEMBER_ID, NICKNAME,POST_CONTENT, CREATE_DATE, PROFILE_ID, PROFILE_UUID, PROFILE_UPLOAD, PROFILE_NAME, COVER
+      FROM( SELECT ROWNUM AS RNUM,POST_ID,NICKNAME, ISBN13, POST_TITLE, MEMBER_ID, POST_CONTENT, CREATE_DATE, PROFILE_ID, PROFILE_UUID, PROFILE_UPLOAD, PROFILE_NAME, COVER
+            FROM(SELECT P.POST_ID,P.ISBN13,M.NICKNAME,P.POST_TITLE,M.MEMBER_ID,P.POST_CONTENT,TO_CHAR(P.CREATE_DATE,'YYYY-MM-DD')AS CREATE_DATE,
+                        TP.PROFILE_ID,TP.PROFILE_UUID,TP.PROFILE_UPLOAD,TP.PROFILE_NAME,B.COVER
+                 FROM TBL_POST P JOIN TBL_MEMBER M
+                                      ON P.MEMBER_ID = M.MEMBER_ID
+                                 JOIN TBL_PROFILE TP
+                                      ON M.MEMBER_ID = TP.MEMBER_ID
+                                 JOIN TBL_BOOK B
+                                      ON P.ISBN13 = B.ISBN13
+                 ORDER BY POST_ID DESC
+                )
+                <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+                              ]]>
+        )WHERE RNUM > (#{page} - 1) * #{amount}
+  </select>
+<!--페이징 처리를 위한 토탈 카운트-->
+    <select id="selectTotal">
+        SELECT COUNT(DEBATE_ID)FROM TBL_DEBATE
+    </select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
