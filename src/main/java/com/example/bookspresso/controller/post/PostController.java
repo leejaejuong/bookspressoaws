@@ -2,14 +2,21 @@ package com.example.bookspresso.controller.post;
 
 import com.example.bookspresso.dto.post.PostWriteDTO;
 import com.example.bookspresso.service.post.PostService;
+import com.example.bookspresso.dto.debate.page.PageRequestDTO;
+import com.example.bookspresso.dto.debate.page.PageSetDTO;
+import com.example.bookspresso.dto.post.PostMainDTO;
+import com.example.bookspresso.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+
+import java.util.List;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -23,7 +30,13 @@ public class PostController {
     }
 
     @GetMapping("/list")
-    public String postList(){
+    public String postList(PageRequestDTO pageRequestDTO,Model model){
+        List<PostMainDTO> addmain = postService.addmain(pageRequestDTO);
+        int total = postService.findTotal();
+        PageSetDTO pageNum = new PageSetDTO(total,pageRequestDTO);
+        model.addAttribute("addmain", addmain);
+        model.addAttribute("pageNum", pageNum);
+
         return "post/list";
     }
 
