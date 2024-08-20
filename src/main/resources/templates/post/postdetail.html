@@ -18,23 +18,25 @@
             <div class="title">
                 <div class="title_container">
                     <!--   여기에 포스트 타이틀을 가져온다     -->
-                    <h1>용의자 X의 헌신</h1>
+                    <div class="post_title">용의자 X의 헌신
+                        <div class="like">
+                            <button type="button" class="like_btn">
+                             <span>
+                              <img class="editor_icon_heart" src="/img/search/empty_heart.png">
+                               좋아요
+                              </span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="flex_container">
                         <div class="user-img-box">
-                        <span class="user-img" style="width: 60px; height: 60px; line-height: 50px;">
+                                <span class="user-img" style="width: 60px; height: 60px; line-height: 50px;">
 
-                        </span>
+                              </span>
                         </div>
                         <div class="writer-info">
                             <div class="nickname">재정</div>
                             <p class="date">2024. 08. 18</p>
-                        </div>
-                        <div class="more-item">
-                            <button type="button"></button>
-                            <ul class="more-ul" style="display: none">
-                                <li>수정</li>
-                                <li>삭제</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -78,15 +80,73 @@
                                 <br>
                                 그런데 전혀 생각지도 못한... 가히 충격적이다.. 마지막에는 나도 광광 울뻔:(
                             </p>
+                        </div>
 
+                        <div class="comment_container">
+                            <h3 class="post_comment_info">
+                                댓글
+                                <span class="number">923</span>
+                            </h3>
+                            <ul class="comment_list">
+                                <li>
+                                    <div><!-- 사용자 이미지 --></div>
+                                    <div class="info">
+                                        <p class="nickname">송호</p>
+                                        <span class="date">2024.08.19</span>
+                                        <pre class="post_comment">용의자x의헌신.. 제목그대로 헌신을 다하지만 이것이 사랑이라기보다 동경이었고 허상이었던..</pre>
+                                        <div class="more">
+                                            <button type="button" class="more_btn">
+                                                <img src="/img/more.png" alt="더보기">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div><!-- 사용자 이미지 --></div>
+                                    <div class="info">
+                                        <p class="nickname">재정</p>
+                                        <span class="date">2024.08.18</span>
+                                        <pre class="post_comment">하남자의 사랑법</pre>
+                                        <div class="more">
+                                            <button type="button" class="more_btn">
+                                                <img src="/img/more.png" alt="더보기">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div><!-- 사용자 이미지 --></div>
+                                    <div class="info">
+                                        <p class="nickname">은비</p>
+                                        <span class="date">2024.08.17</span>
+                                        <pre class="post_comment">마지막에 이시가미가 울분에 이기지 못하고 운 부분이 시각적으로 상상이됐다.</pre>
+                                        <div class="more">
+                                            <button type="button" class="more_btn">
+                                                <img src="/img/more.png" alt="더보기">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="comment_register">
+                                <div class="register">
+                                    <div class="comment_textarea_box">
+                                        <div class="inner">
+                                            <label>
+                                                <span class="comment_label">댓글</span>
+                                                <textarea placeholder="다양한 생각을 남겨주세요."
+                                                          class="comment_textarea"></textarea>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="comment_btn">
+                                        <span>등록</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="like">
-            <div class="like_container">
-
             </div>
         </div>
     </section>
