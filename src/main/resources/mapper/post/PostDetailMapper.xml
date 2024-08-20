@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.post.PostDetailMapper">
+    <select id="selectPostDetail">
+        SELECT PC.POST_ID, PC.COMMENT_CONTENT, PC.CREATE_DATE,
+               P.POST_TITLE, P.POST_CONTENT,
+               B.COVER, B.TITLE, B.AUTHOR, B.PUBDATE
+        FROM TBL_POST_COMMENT PC JOIN TBL_POST P
+                                      ON PC.POST_ID = P.POST_ID
+                                 JOIN TBL_BOOK B
+                                      ON P.ISBN13 = B.ISBN13
+        WHERE P.POST_ID = #{postId}
+    </select>
+
+</mapper>
