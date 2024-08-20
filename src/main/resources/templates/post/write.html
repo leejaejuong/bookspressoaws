@@ -10,6 +10,8 @@
     <link rel="stylesheet" th:href="@{/css/post/board.css}"/>
     <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/post/write.css}"/>
+    <script defer th:src="@{/js/post/find-book-modal.js}"></script>
+    <script defer th:src="@{/js/post/editor-api.js}"></script>
     <script defer th:src="@{/js/post/write.js}"></script>
 </head>
 <body>
@@ -55,10 +57,10 @@
     </section>
 
     <form id="submitbtn" th:action="@{/post/write}" method="post">
-        <input type="hidden" name="isbn" id="isbn">
+        <input type="hidden" name="isbn13" id="isbn13">
         <div class="write-total-box">
             <div class="write-title-box">
-                <input type="text" name="title" class="write-title-text" placeholder="제목을 입력하세요" maxlength="70"/>
+                <input type="text" name="postTitle" id="postTitle" class="write-title-text" placeholder="제목을 입력하세요" maxlength="70"/>
                 <div class="title-count-box">
                     <p><span class="title-count">0</span>/70</p>
                 </div>
@@ -93,11 +95,9 @@
 
             <div class="write-content-box">
                 <div id="editor" contenteditable="true" class="write-content-text"></div>
-                <input type="hidden" name="opinion" id="opinion-hidden">
-                <!--                        <textarea class="write-content-text" ></textarea>-->
             </div>
             <div class="gather-create-butten-div">
-                <button type="button" class="gather-create-butten-dv1 nexttype">
+                <button type="button" id="save-btn" class="gather-create-butten-dv1 nexttype">
                     저장
                 </button>
             </div>
