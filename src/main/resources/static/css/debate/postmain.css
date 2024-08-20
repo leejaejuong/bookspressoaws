@@ -65,6 +65,10 @@ post-object-li{
 .post-title-user{
     margin: 5px 0;
 }
+.create-date{
+    font-size: 10px;
+    color: #8491a7;
+}
 .junjun{
     width: 24px;
     height: 35px;
@@ -120,4 +124,35 @@ post-object-li{
     text-overflow: ellipsis;
     height: 80px;
 
+}
+/*페이징 처리*/
+.a-style {
+    text-align: center;
+    text-decoration: none;
+    color: inherit; }
+.page-total-box{
+    display: flex;
+    justify-content: center;
+}
+.page-box{
+    display: flex;
+    list-style-type: none;
+
+}
+.page-in-text{
+    /*border: 1px solid #212529;*/
+    width: 30px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 40px;
+    background-color: white;
+    color: #ffd200;
+    cursor: pointer;
+
+}
+.active{
+    background-color: #212529;
+    color: #ffd200;
 }
