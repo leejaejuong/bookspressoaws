@@ -1,29 +1,29 @@
 // 신고하기 모달창
 {
-    let $modals = document.querySelectorAll('.board-object-btn');
-    let $modalBtnList = document.querySelectorAll('.modal-total-box');
-
-    // console.log(" 모달탈 클릭")
-
-    $modals.forEach(modal => {
-        modal.addEventListener('click', function () {
-            let $modalBtn = this.closest('.board-object-user-btn')
-                .querySelector('.modal-total-box');
-            $modalBtn.classList.remove('none');
-        });
-    });
-
-    document.body.addEventListener('click', function (e) {
-        let target = e.target;
-        // console.log(target)
-        if (target.classList.contains('junjun-img')) {
-            return;
-        }
-
-        $modalBtnList.forEach(btn => {
-            btn.classList.add('none');
-        });
-    });
+    // let $modals = document.querySelectorAll('.board-object-btn');
+    // let $modalBtnList = document.querySelectorAll('.modal-total-box');
+    //
+    // // console.log(" 모달탈 클릭")
+    //
+    // $modals.forEach(modal => {
+    //     modal.addEventListener('click', function () {
+    //         let $modalBtn = this.closest('.board-object-user-btn')
+    //             .querySelector('.modal-total-box');
+    //         $modalBtn.classList.remove('none');
+    //     });
+    // });
+    //
+    // document.body.addEventListener('click', function (e) {
+    //     let target = e.target;
+    //     // console.log(target)
+    //     if (target.classList.contains('junjun-img')) {
+    //         return;
+    //     }
+    //
+    //     $modalBtnList.forEach(btn => {
+    //         btn.classList.add('none');
+    //     });
+    // });
 
 }
 //버튼처리
@@ -80,25 +80,14 @@
               <div class="board-object-comment">
             <div class="board-object-comment-inop-box">
                 <div class="board-object-user-comment">
-                    <div><img class="debate-img" src="/img/user.png"/></div>
+                    <div  class="board-object-img-box"><img class="debate-img" src="/img/user.png"/></div>
                     <div class="board-object-user-inpo">
                         <div class="board-object-user-name" >${comment.nickname}</div>
                         <div class="board-object-user-date" >${comment.commentDate}</div>
                     </div>
-                    <div class="board-object-user-btn">
-                        <div class="board-object-btn">
-                            <img class="junjun-img" src="/img/junjun.png"/>
-                        </div>
-                        <div class="modal-total-box none">
-                            <div class="modal-in-box">
-                                <div class="modal-text1"><p>수 &nbsp; 정</p></div>
-                                <div class="modal-text1"><p> 삭 &nbsp; 제</p></div>
-                            </div>
-                            <div class="modal-text"> 신 &nbsp; 고</div>
-                        </div>
-                    </div>
+      
                 </div>
-                <div class="content-total-box">${comment.debateComment}</div>
+                <div class="content-total-box-comment">${comment.debateComment}</div>
             </div>
         </div>
 

@@ -13,6 +13,7 @@ import com.example.bookspresso.dto.debate.page.PageRequestDTO;
 import com.example.bookspresso.dto.debate.page.PageSetDTO;
 import com.example.bookspresso.service.debate.DebateBoardService;
 import com.example.bookspresso.service.debate.Debateservice;
+import com.example.bookspresso.service.post.PostService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,7 @@ import java.util.List;
 public class DebateController {
     private final Debateservice debateservice;
     private final DebateBoardService debateBoardService;
+
 
     @GetMapping("/")
     public String debate(PageRequestDTO pageRequestDTO, Model model) {
