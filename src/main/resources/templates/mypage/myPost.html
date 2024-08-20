@@ -75,7 +75,8 @@
                                                                                  th:src="@{'/pfp/' + ${memberDto.profileUpload} + '/' + ${memberDto.profileUuid + '_' + memberDto.profileName}}">
                                                                         </span>
                                                                         <span style="margin-left: 10px"
-                                                                              class="profile_nickname" th:text="${memberDto.nickname}"></span>
+                                                                              class="profile_nickname"
+                                                                              th:text="${memberDto.nickname}"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -94,7 +95,9 @@
                             </div>
                         </div>
                         <div class="content-empty_action">
-                            <button type="button" class="post_button">포스트 만들기</button>
+                            <a class="post_btn" th:href="@{post/write}">
+                                포스트 만들기
+                            </a>
                         </div>
                     </div>
                 </div>
