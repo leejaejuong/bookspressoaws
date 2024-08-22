@@ -2,13 +2,12 @@ package com.example.bookspresso.controller.post;
 
 import com.example.bookspresso.dto.debate.page.PageRequestDTO;
 import com.example.bookspresso.dto.debate.page.PageSetDTO;
-import com.example.bookspresso.dto.mypage.SettingDTO;
+import com.example.bookspresso.dto.post.PostCommentDTO;
 import com.example.bookspresso.dto.post.PostDetailDTO;
 import com.example.bookspresso.dto.post.PostMainDTO;
 import com.example.bookspresso.dto.post.PostWriteDTO;
 import com.example.bookspresso.service.mypage.MypageService;
 import com.example.bookspresso.service.post.PostService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -67,15 +66,13 @@ public class PostController {
                              @SessionAttribute(value = "memberId", required = false)Long memberId,
                              Model model){
 
-
-
         if(memberId == null){
             return "redirect:/member/login";
         }
+        List<PostCommentDTO> postComment = postService.findPostComment(postId);
         PostDetailDTO postDetail = postService.findPostDetail(postId);
-        System.out.println("postDetail = " + postDetail);
         model.addAttribute("postDetail",postDetail);
-
+        model.addAttribute("postComment",postComment);
 
         return "post/postdetail";
     }
