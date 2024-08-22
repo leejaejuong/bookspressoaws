@@ -222,8 +222,6 @@ $addcommentbtn.addEventListener('click',function (){
 addcommentList(isbn13,commentList);
 
     // 코멘트 불러오기
-
-
     function commentList(obj) {
         let tags = ''
         obj.forEach(comment => {
@@ -254,13 +252,10 @@ addcommentList(isbn13,commentList);
                             tags +=`
                     </div>
                             `;
-
-
         });
 
         document.querySelector('.review_content_wrap').innerHTML = tags;
     }
-
 
 //     api 통신
     function addcommentList(isbn13, callback) {

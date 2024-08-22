@@ -11,5 +11,38 @@
         WHERE P.POST_ID=#{postId}
     </select>
 
+    <select id="selectPostComment">
+        SELECT PC.COMMENT_ID,
+               PC.COMMENT_CONTENT,
+               TO_CHAR(PC.CREATE_DATE, ('YYYY-MM-DD')) AS CREATE_DATE,
+               M.MEMBER_ID,
+               M.NICKNAME,
+               P.PROFILE_UUID,
+               P.PROFILE_UPLOAD,
+               P.PROFILE_NAME
+        FROM TBL_POST_COMMENT PC
+                 JOIN TBL_MEMBER M
+                      ON PC.MEMBER_ID = M.MEMBER_ID
+                 JOIN TBL_PROFILE P
+                      ON M.MEMBER_ID = P.MEMBER_ID
+        WHERE POST_ID = #{postId}
+        order by COMMENT_ID DESC;
+    </select>
 
+    <insert id="insertPostComment">
+        <selectKey resultType="long" keyProperty="commentId" order="BEFORE">
+            select SEQ_POST_COMMENT.nextval from dual
+        </selectKey>
+        INSERT INTO TBL_POST_COMMENT(COMMENT_ID, POST_ID,MEMBER_ID, COMMENT_CONTENT, CREATE_DATE)
+        VALUES (#{commentId},#{postId},#{memberId},#{commentContent},SYSDATE)
+    </insert>
+    <update id="updatePostComment">
+        UPDATE TBL_POST_COMMENT
+        SET  COMMENT_CONTENT=#{commentContent},CREATE_DATE=SYSDATE
+        WHERE  COMMENT_ID=#{commentId}
+    </update>
+    <delete id="deletePostComment">
+        DELETE FROM TBL_POST_COMMENT
+        WHERE COMMENT_ID=#{commentId}
+    </delete>
 </mapper>
