@@ -15,8 +15,7 @@ class PostDetailMapperTest {
 @Autowired PostDetailMapper postDetailMapper;
     @Test
     void selectPostDetail() {
-        List<PostDetailDTO> postDetailDTOS = postDetailMapper.selectPostDetail(1L);
-        System.out.println("postDetailDTOS = " + postDetailDTOS);
+
     }
 
 }

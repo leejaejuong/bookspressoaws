@@ -68,8 +68,6 @@ const swiper = new Swiper("#debate", {
     direction: "horizontal",
     loop: true,
     slidesPerView: 4,
-    spaceBetween: 50,
-
 });
 
 
@@ -173,7 +171,6 @@ $addcommentbtn.addEventListener('click',function (){
             let $btnBox = e.target.closest('.board-object-user-btn')
                 .querySelector('.modal-total-box');
             $btnBox.classList.remove('none');
-
         }
     });
     document.body.addEventListener('click', function (e) {
