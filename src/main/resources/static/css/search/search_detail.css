@@ -419,15 +419,8 @@ a{
   margin-left: 10px;
 }
 
-.like {
-  width: 60px;
-  height: 30px;
-  border: 1px solid black;
-  border-radius: 16px;
-  margin: 98px 20px 0 0;
-  text-align: center;
-  line-height: 32px;
-  font-size: 20px;
+.like{
+
 }
 
 .like_img {

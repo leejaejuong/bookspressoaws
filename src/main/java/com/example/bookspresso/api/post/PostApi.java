@@ -16,6 +16,7 @@ public class PostApi {
 
     @GetMapping("/posts/details/{postId}")
     public List<PostCommentDTO> findComment(@PathVariable("postId") Long postId) {
+
         List<PostCommentDTO> findcomment = postService.findPostComment(postId);
         System.out.println("findcomment = " + findcomment);
         return findcomment;

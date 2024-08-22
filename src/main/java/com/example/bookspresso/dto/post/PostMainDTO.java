@@ -9,16 +9,16 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class PostMainDTO {
-    Long postId;
-    String isbn13;
-    Long memberId;
-    String postTitle;
-    String postContent;
-    String createDate;
-    String nickName;
-    String profileId;
-    String profileUuid;
-    String profileUpload;
-    String profileName;
-    String cover;
+   private Long postId;
+   private String isbn13;
+   private Long memberId;
+   private String postTitle;
+   private String postContent;
+   private String createDate;
+   private String nickName;
+   private String profileId;
+   private String profileUuid;
+   private String profileUpload;
+   private String profileName;
+   private String cover;
 }

@@ -22,16 +22,16 @@
 
                     <div class="post_title" th:text="${postDetail.title}"></div>
 
-                    <div class="flex_container" th:value="${postDetail.postId}">
+
                     <div class="flex_container" th:data-id="${postDetail.postId}">
-                        <div class="user-img-box">
-                                <span class="user-img" style="width: 60px; height: 60px; line-height: 50px;">
+
 
                             <div class="writer-info-user">
                             <div class="nickname" th:text="${postDetail.nickname}"></div>
                             <div class="date" th:text="${postDetail.createDate}"></div>
                             </div>
-                                <div class="like">
+                        <div class="writer-user-chose">
+                            <div class="like-btn">
                                     <button type="button" class="like_btn">
                                         <div>
                                             <img class="editor_icon_heart" src="/img/search/empty_heart.png">
@@ -39,8 +39,24 @@
                                         </div>
                                     </button>
                             </div>
+                            <th:block th:if="${postDetail.memberId==session.memberId}">
+                            <div style="cursor: pointer"  class="board-object-user-btn">
+                                <div class="board-object-btn">
+                                    <img class="more-img"src="/img/more.png"/>
+                                </div>
+                                <div class="modal-total-box none">
+                                    <div class="modal-in-box">
 
-                    </div>
+                                        <button type="button" class="modal-modify">수 &nbsp; 정</button>
+                                        <button type="button" class="modal-modelete"> 삭 &nbsp; 제</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </th:block>
+                        </div>
+
+
                 </div>
             </div>
             <div class="detail">
@@ -49,16 +65,16 @@
                         <!-- 책 커버 배경 -->
                         <div class="book-total-box">
 
-                        <div th:style="'background-image: url(' + ${postDetail.cover} + ')'" class="background">
 
-<!--                             <img class="book_container" th:src="${postDetail.cover}" th:alt="${postDetail.title}">-->
-
-                        </div>
                         <!-- 포스트 타이틀 제목  -->
-                        <div class="post-title" th:text="${postDetail.title}">용의자 X의 헌신</div>
+                        <div class="post-title" th:text="${postDetail.title}"></div>
+                            <div class="post-description"th:text="${postDetail.description}"></div>
                         <!--  책 제목  -->
-
+                            <div class="book-back">
+                                <img class="book_container" th:src="${postDetail.cover}" th:alt="${postDetail.title}">
+                            </div>
                             <div class="book-picture book">
+
                                 <picture>
                                     <img class="book"
                                          th:src="${postDetail.cover}"
@@ -78,7 +94,7 @@
                         </div>
                         <div class="post_content_container">
                             <p class="title">독서 일기</p>
-                            <p class="text" th:text="${postDetail.postContent}">
+                            <p class="text" th:utext="${postDetail.postContent}">
 
                             </p>
                         </div>
@@ -111,6 +127,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 </div>

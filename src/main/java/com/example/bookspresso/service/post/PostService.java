@@ -44,4 +44,7 @@ public class PostService {
     public void deleteComment(Long commentId){
         postDetailMapper.deletePostComment(commentId);
     }
+    public PostModifySelectDTO modifySelet(Long postId){return postDetailMapper.selectmodify(postId);}
+    public void modify(PostWriteDTO postWriteDTO){postDetailMapper.updatemodify(postWriteDTO);}
+    public void remove(Long postId){postDetailMapper.deletePost(postId);}
 }
