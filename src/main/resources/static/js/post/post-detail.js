@@ -1,8 +1,34 @@
+//게시글 버튼처리
+{
+    let $upbtn = document.querySelector('.board-object-btn');
+    $upbtn.addEventListener("click", function (e){
+        if(e.target.classList.contains('board-object-btn')){
+            let $btnBox = e.target.closest('.board-object-user-btn')
+                .querySelector('.modal-total-box');
+            $btnBox.classList.remove('none');
+        }
+    });
+    let $modifybtn = document.querySelector('.modal-modify');
+    let $delectbtn = document.querySelector('.modal-modelete');
+    let postId = document.querySelector(".flex_container").dataset.id;
+
+    $modifybtn.addEventListener('click', function(){
+
+        location.href=`/post/modify?postId=${postId}`
+    });
+    $delectbtn.addEventListener('click',function (){
+        console.log("클릭");
+        location.href=`/post/remove?postId=${postId}`
+    })
+
+}
+
+
 // 포스트 댓글
 {
     let $addComment = document.querySelector('.comment_btn');
     let postId = document.querySelector('.flex_container').dataset.id
-    console.log(postId)
+
 
     $addComment.addEventListener('click' , function (){
         let commentContent = document.querySelector('.comment_textarea').value;
@@ -24,7 +50,6 @@
     let $commntWrap=document.querySelector('.ul_comment_list');
     $commntWrap.addEventListener('click',function (e){
         if(e.target.classList.contains('board-object-btn')){
-            console.log("클릭")
             let $btnBox = e.target.closest('.board-object-user-btn')
                 .querySelector('.modal-total-box');
             $btnBox.classList.remove('none');

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>토론하기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/post/board.css}"/>
+    <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
+    <link rel="stylesheet" th:href="@{/css/post/write.css}"/>
+    <script defer th:src="@{/js/post/find-book-modal.js}"></script>
+    <script defer th:src="@{/js/post/editor-api.js}"></script>
+    <script defer th:src="@{/js/post/write.js}"></script>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main>
+<!-- ===============모달=============== -->
+<div id="modal" class="none"> <!-- none -->
+    <div class="modal__box none">
+        <div class="modal__box-back">
+            <section class="modal__search-sec">
+                <div class="modal__search-box">
+                    <label for="search-box__search-input">
+                        <span class="search-box__search-icon"></span>
+                    </label>
+                    <input type="text" id="search-box__search-input">
+                    <button id="search-box__close-btn">닫기</button>
+                </div>
+            </section>
+            <section class="modal__list-sec"> <!--none-->
+                <ul class="modal__list">
+
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- ===============/모달=============== -->
+
+
+<!--    게시판-->
+<div class="board-object-box">
+    <section class="select-book-sec">
+        <div class="select-book--select">
+            <img class="select-book__book-icon" src="/img/debate/book.svg">
+            <span class="select-book__text">책을 선택하세요.</span>
+        </div>
+        <div class="select-book--selected none">
+            <img src="https://image.aladin.co.kr/product/32649/26/coversum/8954695973_1.jpg" alt="" class="select-book__book-img">
+            <span class="select-book__book-title"></span>
+            <span class="select-book__book-author"></span>
+            <span class="select-book__book-content"></span>
+        </div>
+    </section>
+
+    <form id="submitbtn" th:action="@{/post/modify}" method="post">
+        <input type="hidden" name="isbn13" id="isbn13">
+        <input type="hidden" name="postId" th:value="${modify.postId}">
+        <div class="write-total-box">
+            <div class="write-title-box" >
+                <input type="text" th:value="${modify.postTitle}" name="postTitle" id="postTitle" class="write-title-text" placeholder="제목을 입력하세요" maxlength="70"/>
+                <div class="title-count-box">
+                    <p><span class="title-count" >0</span>/70</p>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button type="button" onclick="execCmd('bold')" title="Bold"><i class="fas fa-bold"></i></button>
+                <button type="button" onclick="execCmd('italic')" title="Italic"><i class="fas fa-italic"></i></button>
+                <button type="button" onclick="execCmd('underline')" title="Underline"><i class="fas fa-underline"></i>
+                </button>
+                <button type="button" onclick="execCmd('createLink')" title="Insert Link"><i class="fas fa-link"></i>
+                </button>
+                <button type="button" onclick="document.getElementById('imageInput').click()" title="Insert Image"><i
+                        class="fas fa-image"></i></button>
+                <input type="file" id="imageInput" style="display:none" onchange="insertImage(this)">
+                <button type="button" onclick="execCmd('formatBlock', '<h1>')" title="Header 1"><i
+                        class="fas fa-heading"></i> H1
+                </button>
+                <button type="button" onclick="execCmd('formatBlock', '<h2>')" title="Header 2"><i
+                        class="fas fa-heading"></i> H2
+                </button>
+                <button type="button" onclick="execCmd('insertUnorderedList')" title="Unordered List"><i
+                        class="fas fa-list-ul"></i></button>
+                <button type="button" onclick="execCmd('insertOrderedList')" title="Ordered List"><i
+                        class="fas fa-list-ol"></i></button>
+                <button type="button" onclick="execCmd('justifyLeft')" title="Align Left"><i
+                        class="fas fa-align-left"></i></button>
+                <button type="button" onclick="execCmd('justifyCenter')" title="Align Center"><i
+                        class="fas fa-align-center"></i></button>
+                <button type="button" onclick="execCmd('justifyRight')" title="Align Right"><i
+                        class="fas fa-align-right"></i></button>
+            </div>
+
+            <div class="write-content-box">
+                <div id="editor" contenteditable="true" class="write-content-text" th:utext="${modify.postContent}"></div>
+            </div>
+            <div class="gather-create-butten-div">
+                <button type="button" id="save-btn" class="gather-create-butten-dv1 nexttype">
+                    수정
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</main>
+</body>
+</html>

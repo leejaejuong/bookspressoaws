@@ -1,9 +1,6 @@
 package com.example.bookspresso.mapper.post;
 
-import com.example.bookspresso.dto.post.InsertPostCommentDTO;
-import com.example.bookspresso.dto.post.PostCommentDTO;
-import com.example.bookspresso.dto.post.PostDetailDTO;
-import com.example.bookspresso.dto.post.UpdatePostCommentDTO;
+import com.example.bookspresso.dto.post.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -24,5 +21,10 @@ public interface PostDetailMapper {
 
     // 포스트 댓글 삭제
     void deletePostComment(Long commentId);
+
+//    포스트수정
+    PostModifySelectDTO selectmodify(Long PostId);
+    void updatemodify(PostWriteDTO postWriteDTO);
+    void deletePost(Long postId);
 
 }

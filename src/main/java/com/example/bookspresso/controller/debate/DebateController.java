@@ -201,8 +201,6 @@ public class DebateController {
             return "redirect:/member/login";
         }
         debateBoardUpdateDTO.setMemberId(memberId);
-        System.out.println("debateBoardUpdateDTO = " + debateBoardUpdateDTO);
-        System.out.println("없데이트");
         debateBoardService.modifyBoard(debateBoardUpdateDTO);
         Long noticeId = debateBoardUpdateDTO.getNoticeId();
         Long debateId = debateBoardUpdateDTO.getDebateId();

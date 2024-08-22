@@ -2,10 +2,7 @@ package com.example.bookspresso.controller.post;
 
 import com.example.bookspresso.dto.debate.page.PageRequestDTO;
 import com.example.bookspresso.dto.debate.page.PageSetDTO;
-import com.example.bookspresso.dto.post.PostCommentDTO;
-import com.example.bookspresso.dto.post.PostDetailDTO;
-import com.example.bookspresso.dto.post.PostMainDTO;
-import com.example.bookspresso.dto.post.PostWriteDTO;
+import com.example.bookspresso.dto.post.*;
 import com.example.bookspresso.service.mypage.MypageService;
 import com.example.bookspresso.service.post.PostService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +21,7 @@ import java.util.List;
 @RequestMapping("/post")
 public class PostController {
     private final PostService postService;
-    private final MypageService mypageService;
+
 
     @GetMapping("")
     public String postMain(){
@@ -75,6 +72,32 @@ public class PostController {
         model.addAttribute("postComment",postComment);
 
         return "post/postdetail";
+    }
+    @GetMapping("/modify")
+    public String postModify(Long postId,
+                             @SessionAttribute(value = "memberId", required = false)Long memberId,
+                             Model model,PostModifySelectDTO postModifySelectDTO){
+        if(memberId == null){
+            return "redirect:/member/login";
+        }
+        postModifySelectDTO.setMemberId(memberId);
+        PostModifySelectDTO modify = postService.modifySelet(postId);
+        model.addAttribute("modify",modify);
+
+        return "post/modify";
+    }
+    @PostMapping("modify")
+    public String postModify(@SessionAttribute(value = "memberId", required = false)Long memberId,
+                             PostWriteDTO postWriteDTO){
+        postWriteDTO.setMemberId(memberId);
+        Long postId = postWriteDTO.getPostId();
+        postService.modify(postWriteDTO);
+        return "redirect:/post/detail?postId="+postId;
+    }
+    @GetMapping("/remove")
+    public String remove(Long postId){
+        postService.remove(postId);
+        return "redirect:/post/list";
     }
 }
 
