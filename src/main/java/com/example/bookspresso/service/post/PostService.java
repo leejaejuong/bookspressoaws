@@ -1,9 +1,7 @@
 package com.example.bookspresso.service.post;
 
 import com.example.bookspresso.dto.debate.page.PageRequestDTO;
-import com.example.bookspresso.dto.post.PostDetailDTO;
-import com.example.bookspresso.dto.post.PostMainDTO;
-import com.example.bookspresso.dto.post.PostWriteDTO;
+import com.example.bookspresso.dto.post.*;
 import com.example.bookspresso.mapper.post.PostDetailMapper;
 import com.example.bookspresso.mapper.post.PostMapper;
 import lombok.RequiredArgsConstructor;
@@ -32,5 +30,18 @@ public class PostService {
 
     public PostDetailDTO findPostDetail(Long postId){
         return postDetailMapper.selectPostDetail(postId);
+    }
+
+    public List<PostCommentDTO> findPostComment(Long postId){
+        return postDetailMapper.selectPostComment(postId);
+    }
+    public void addComment(InsertPostCommentDTO insertPostCommentDTO){
+        postDetailMapper.insertPostComment(insertPostCommentDTO);
+    }
+    public void modifyComment(UpdatePostCommentDTO updatePostCommentDTO){
+        postDetailMapper.updatePostComment(updatePostCommentDTO);
+    }
+    public void deleteComment(Long commentId){
+        postDetailMapper.deletePostComment(commentId);
     }
 }
