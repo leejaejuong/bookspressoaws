@@ -26,7 +26,7 @@
                  JOIN TBL_PROFILE P
                       ON M.MEMBER_ID = P.MEMBER_ID
         WHERE POST_ID = #{postId}
-        order by COMMENT_ID DESC;
+        order by COMMENT_ID DESC
     </select>
 
     <insert id="insertPostComment">

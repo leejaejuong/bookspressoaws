@@ -1,6 +1,6 @@
 package com.example.bookspresso.mapper.post;
 
-import com.example.bookspresso.dto.post.PostDetailDTO;
+import com.example.bookspresso.dto.post.PostCommentDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +15,8 @@ class PostDetailMapperTest {
 @Autowired PostDetailMapper postDetailMapper;
     @Test
     void selectPostDetail() {
-
+        List<PostDetailDTO> postDetailDTOS = postDetailMapper.selectPostDetail(1L);
+        System.out.println("postDetailDTOS = " + postDetailDTOS);
     }
 
 }

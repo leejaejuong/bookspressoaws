@@ -23,6 +23,9 @@
                     <div class="post_title" th:text="${postDetail.title}"></div>
 
                     <div class="flex_container" th:value="${postDetail.postId}">
+                    <div class="flex_container" th:data-id="${postDetail.postId}">
+                        <div class="user-img-box">
+                                <span class="user-img" style="width: 60px; height: 60px; line-height: 50px;">
 
                             <div class="writer-info-user">
                             <div class="nickname" th:text="${postDetail.nickname}"></div>
@@ -83,22 +86,10 @@
                         <div class="comment_container">
                             <h3 class="post_comment_info">
                                 댓글
-                                <span class="number">923</span>
+                                <span class="number" th:text="${postComment.size()}"></span>
                             </h3>
-                            <ul class="comment_list">
-                                <li>
-                                    <div><!-- 사용자 이미지 --></div>
-                                    <div class="info">
-                                        <p class="nickname">송호</p>
-                                        <span class="date">2024.08.19</span>
-                                        <pre class="post_comment">용의자x의헌신.. 제목그대로 헌신을 다하지만 이것이 사랑이라기보다 동경이었고 허상이었던..</pre>
-                                        <div class="more">
-                                            <button type="button" class="more_btn">
-                                                <img src="/img/more.png" alt="더보기">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
+                            <ul class="ul_comment_list">
+
                             </ul>
                             <div class="comment_register">
                                 <div class="register">
@@ -124,5 +115,10 @@
     </section>
 </div>
 <footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<script th:inline="javascript">
+    let sessionMemberId=[[${session.memberId}]];
+</script>
+
 </body>
 </html>

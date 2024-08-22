@@ -242,7 +242,6 @@ addcommentList(isbn13,commentList);
                                     <button type="button" class="modal-modify">수 &nbsp; 정</button>
                                     <button type="button" class="modal-modelete"> 삭 &nbsp; 제</button>
                                 </div>
-
                             </div>
                         </div>
                             `}

@@ -1,6 +1,5 @@
 package com.example.bookspresso.api.mypage;
 
-import com.example.bookspresso.dto.mypage.SettingDTO;
 import com.example.bookspresso.service.mypage.MypageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -45,10 +44,8 @@ public class MypageApi {
         mypageService.modifyEmail(memberId, email);
     }
 
-    @DeleteMapping("/members-delete")
-    public void deleteMember(HttpSession session) {
-        Long memberId = (Long) session.getAttribute("memberId");
-
+    @DeleteMapping("/members-delete/{memberId}")
+    public void deleteMember(@PathVariable("memberId") Long memberId, HttpSession session) {
         mypageService.deleteMembers(memberId);
     }
 

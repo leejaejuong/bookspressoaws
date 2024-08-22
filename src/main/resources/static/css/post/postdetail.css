@@ -255,6 +255,9 @@ li{
     color: #555;
     margin: 4px 0;
 }
+.board-object-btn{
+    width: 30px;
+}
 .more{
     position: absolute;
     right: 0;
@@ -307,4 +310,65 @@ li{
     border-radius: 4px;
     color: white;
     background-color: #313131;
+}
+/* 모달창*/
+.modal-total-box {
+    display: flex;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    position: absolute;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-modify {
+    font-size: 20px;
+    color: #8491a7;
+    line-height: 28px;
+    border: none;
+    background-color: white;
+    padding-bottom:10px ;
+}
+.modal-modelete{
+    font-size: 20px;
+    color: #8491a7;
+    line-height: 28px;
+    border: none;
+    background-color: white;
+}
+.none {
+    display: none;
+}
+.modal-in-box{
+    display: flex;
+    color: #8491a7;
+    width: 60px;
+    flex-direction: column;
+    align-items: center;
+}
+.modify-total-box{
+    display: flex;
+    align-items: center
+}
+.modify-contnet{
+    width: 550px;
+    resize: none;
+    border-radius: 10px;
+    font-size: 17px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #dee2e6;
+}
+.modify-content-btn{
+    margin-left: auto;
+    background-color:rgba(17 18 19);
+    color: #ffd200;
+    font-size: 15px;
+    width: 80px ;
+    height: 40px;
+    border-radius: 8px;
 }
