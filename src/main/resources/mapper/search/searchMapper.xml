@@ -46,6 +46,7 @@
         FROM TBL_LIB
         WHERE LIBNAME LIKE '%' || #{libname} || '%'
     </select>
+<!--    댓글 -->
     <select id="selectbookcomment">
         SELECT BC.COMMENT_ID,
                BC.ISBN13,

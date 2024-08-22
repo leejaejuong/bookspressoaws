@@ -30,7 +30,7 @@ public class PostService {
         return postMapper.selectTotal();
     }
 
-    public List<PostDetailDTO> findPostDetail(Long postId){
+    public PostDetailDTO findPostDetail(Long postId){
         return postDetailMapper.selectPostDetail(postId);
     }
 }

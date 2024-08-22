@@ -1,6 +1,6 @@
 package com.example.bookspresso.mapper.post;
 
-import com.example.bookspresso.dto.post.PostMainDTO;
+import com.example.bookspresso.dto.post.PostDetailDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,10 +11,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
-class PostMapperTest {
-@Autowired PostMapper postMapper;
+class PostDetailMapperTest {
+@Autowired PostDetailMapper postDetailMapper;
     @Test
-    void mainWithpage() {
-      ;
+    void selectPostDetail() {
+        List<PostDetailDTO> postDetailDTOS = postDetailMapper.selectPostDetail(1L);
+        System.out.println("postDetailDTOS = " + postDetailDTOS);
     }
+
 }

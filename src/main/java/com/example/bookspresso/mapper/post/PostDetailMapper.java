@@ -8,5 +8,5 @@ import java.util.List;
 @Mapper
 public interface PostDetailMapper {
     // 포스트 데이터 가져오기
-    List<PostDetailDTO> selectPostDetail(Long postId);
+    PostDetailDTO selectPostDetail(Long postId);
 }
