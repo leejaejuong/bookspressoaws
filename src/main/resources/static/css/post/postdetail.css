@@ -44,14 +44,20 @@ h1{
     margin: 0 auto;
 }
 .flex_container{
-    justify-content: flex-start;
+    margin-top:10px ;
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
+
+}
+.writer-info-user{
+    display: flex;
+    flex-direction: column;
 }
 .writer-info{
     display: flex;
     font-size: 1em;
-    flex-direction: column;
+
 }
 li{
     list-style: none;
@@ -79,30 +85,51 @@ li{
     width: 100%;
     margin: 0 auto;
 }
-.book_container{
-    margin-top: 56px;
-    z-index: 1;
-    margin-bottom: 32px;
-    padding: 32px;
+.book-total-box{
     display: flex;
-    align-items: center;
+    width: 700px;
+    height: 400px;
     flex-direction: column;
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
+    align-items: center;
+    position:relative;
+    z-index: 1;
+    margin-bottom: 20px;
 }
-.book_container .background{
+/*.book_container{*/
+/*    margin-top: 56px;*/
+/*    z-index: 1;*/
+/*    margin-bottom: 32px;*/
+/*    padding: 32px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    flex-direction: column;*/
+/*    border-radius: 12px;*/
+/*    position: relative;*/
+/*    overflow: hidden;*/
+/*}*/
+.background{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+
+}
+.book_container{
+    width: 700px;
+    height: 400px;
     -webkit-filter: blur(16px);
     filter: blur(16px);
     background-position: 50% 50%;
     background-size: 200%;
-    background-image: var(--background-image);
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: .15;
+     z-index: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .book-picture{
     margin: 24px 0 0;
@@ -124,12 +151,10 @@ li{
 }
 .book{
     border-radius: 6px;
-    height: 100%;
+    width: 123px;
+    height: 184px;
 }
-.book-name{
-    color: #6f6f6f;
-    font-size: 16px;
-}
+
 
 .book-produce{
     color: #555;
@@ -169,7 +194,7 @@ li{
     padding: 7px 16px;
     border-radius: 100px;
     font-size: 12px;
-    margin-bottom: 16px;
+
     color: #8b8b8b;
 }
 .editor_icon_heart{

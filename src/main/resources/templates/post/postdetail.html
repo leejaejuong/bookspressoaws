@@ -22,24 +22,24 @@
 
                     <div class="post_title" th:text="${postDetail.title}"></div>
 
+                    <div class="flex_container" th:value="${postDetail.postId}">
                     <div class="flex_container" th:data-id="${postDetail.postId}">
                         <div class="user-img-box">
                                 <span class="user-img" style="width: 60px; height: 60px; line-height: 50px;">
 
-                              </span>
-                        </div>
-                        <div class="writer-info">
+                            <div class="writer-info-user">
                             <div class="nickname" th:text="${postDetail.nickname}"></div>
                             <div class="date" th:text="${postDetail.createDate}"></div>
-                           <div> <div class="like">
-                                <button type="button" class="like_btn">
-                                    <div>
-                                        <img class="editor_icon_heart" src="/img/search/empty_heart.png">
-                                        좋아요
-                                    </div>
-                                </button>
-                            </div></div>
-                        </div>
+                            </div>
+                                <div class="like">
+                                    <button type="button" class="like_btn">
+                                        <div>
+                                            <img class="editor_icon_heart" src="/img/search/empty_heart.png">
+                                            좋아요
+                                        </div>
+                                    </button>
+                            </div>
+
                     </div>
                 </div>
             </div>
@@ -47,25 +47,28 @@
                 <div class="detail_container">
                     <div class="diary_container">
                         <!-- 책 커버 배경 -->
-                        <div class="book_container" th:src="${postDetail.cover}" th:alt="${postDetail.title}"  >
-                            </div >
-                            <span class="background"></span>
-                            <!-- 포스트 타이틀 제목  -->
-                            <div class="post-title" th:text="${postDetail.title}" >용의자 X의 헌신</div>
-                            <!--  책 제목  -->
-                            <div class="book-name">갈릴레오</div>
-                            <a href="">
-                                <div class="book-picture book">
-                                    <picture>
-                                        <img class="book"
-                                             th:src="${postDetail.cover}"
-                                             alt="도서 썸네일" width="184px" style="min-height: 0">
-                                    </picture>
-                                </div>
-                            </a>
-                            <p class="book-produce" th:text="${postDetail.author}"></p>
-                            <p class="book-info" th:text="${postDetail.pubdate}"></p>
-                        </img>
+                        <div class="book-total-box">
+
+                        <div th:style="'background-image: url(' + ${postDetail.cover} + ')'" class="background">
+
+<!--                             <img class="book_container" th:src="${postDetail.cover}" th:alt="${postDetail.title}">-->
+
+                        </div>
+                        <!-- 포스트 타이틀 제목  -->
+                        <div class="post-title" th:text="${postDetail.title}">용의자 X의 헌신</div>
+                        <!--  책 제목  -->
+
+                            <div class="book-picture book">
+                                <picture>
+                                    <img class="book"
+                                         th:src="${postDetail.cover}"
+                                         alt="도서 썸네일" width="184px" style="min-height: 0">
+                                </picture>
+                            </div>
+                        <p class="book-produce" th:text="${postDetail.author}"></p>
+                        <p class="book-info" th:text="${postDetail.pubdate}"></p>
+                        </div>
+
                         <div class="post_date_container">
                             <p class="title">독서 일자</p>
                             <img class="calender" src="/img/캘린더.png">

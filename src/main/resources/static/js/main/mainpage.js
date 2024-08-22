@@ -255,7 +255,7 @@
     })
 }
 {
-    const swiper = new Swiper("#book", {
+    const swiper1 = new Swiper("#book", {
         // Optional parameters
         direction: "horizontal",
         loop: true,

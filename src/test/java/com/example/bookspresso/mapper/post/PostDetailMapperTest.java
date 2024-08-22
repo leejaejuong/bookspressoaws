@@ -8,14 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 class PostDetailMapperTest {
 @Autowired PostDetailMapper postDetailMapper;
     @Test
-    void selectPostComment() {
-        List<PostCommentDTO> list = postDetailMapper.selectPostComment(1L);
-        System.out.println(list);
+    void selectPostDetail() {
+        List<PostDetailDTO> postDetailDTOS = postDetailMapper.selectPostDetail(1L);
+        System.out.println("postDetailDTOS = " + postDetailDTOS);
     }
 
 }
