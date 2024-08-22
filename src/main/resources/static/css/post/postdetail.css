@@ -187,10 +187,15 @@ li{
     color: #6f6f6f;
 }
 .post_title{
-    display: flex;
+    overflow: hidden;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
     font-size: 30px;
     margin-top: 30px;
-    justify-content: space-between;
+
 }
 .post_comment_info{
     display: block;

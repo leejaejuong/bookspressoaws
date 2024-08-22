@@ -63,18 +63,19 @@ public class PostController {
 
 
     @GetMapping("/detail")
-    public String postdetail(HttpSession session, Model model){
-        Long memberId = (Long) session.getAttribute("memberId");
-        SettingDTO member = mypageService.findMember(memberId);
+    public String postdetail(Long postId,
+                             @SessionAttribute(value = "memberId", required = false)Long memberId,
+                             Model model){
 
-        Long postId = (Long) session.getAttribute("postId");
-        List<PostDetailDTO> postDetail = postService.findPostDetail(postId);
+
 
         if(memberId == null){
             return "redirect:/member/login";
         }
-        model.addAttribute("memberDto", member);
-        model.addAttribute("postDetail", postDetail);
+        PostDetailDTO postDetail = postService.findPostDetail(postId);
+        System.out.println("postDetail = " + postDetail);
+        model.addAttribute("postDetail",postDetail);
+
 
         return "post/postdetail";
     }
