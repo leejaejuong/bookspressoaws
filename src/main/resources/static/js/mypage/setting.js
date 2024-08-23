@@ -37,12 +37,12 @@ let cancelEdit = () => editMode(false);
         // console.log('click')
         let value = $editTextarea.value;
         console.log(value)
-        let object = {introduce : value}
+        let object = {introduce: value}
 
         fetch('/member-introduce', {
-            method : 'PATCH',
-            headers : {'Content-Type' : 'application/json'},
-            body : JSON.stringify(object)
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(object)
         }).then(resp => resp)
             .then(resp => console.log(resp))
 
@@ -52,17 +52,17 @@ let cancelEdit = () => editMode(false);
     let $nickNameBtn = document.querySelector('.nickname_confirmBtn')
     let $editNickname = document.querySelector('.nickname-input')
 
-    $nickNameBtn.addEventListener('click' , function (){
+    $nickNameBtn.addEventListener('click', function () {
         // console.log('클릭')
         let value = $editNickname.value;
         console.log(value)
 
-        let object = {nickname : value}
+        let object = {nickname: value}
 
-        fetch('/members-nickname' , {
-            method : 'PATCH',
-            headers : {'Content-Type' : 'application/json'},
-            body : JSON.stringify(object)
+        fetch('/members-nickname', {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(object)
         }).then(resp => resp)
             .then(resp => console.log(resp))
     });
@@ -72,17 +72,17 @@ let cancelEdit = () => editMode(false);
     let $emailBtn = document.querySelector('.email_confirmBtn')
     let $editEmail = document.querySelector('.email-input')
 
-    $emailBtn.addEventListener('click', function (){
+    $emailBtn.addEventListener('click', function () {
         // console.log('click')
         let value = $editEmail.value;
         console.log(value)
 
-        let object = {email : value}
+        let object = {email: value}
 
         fetch('/members-email', {
-            method : 'PATCH',
-            headers : {'Content-Type' : 'application/json'},
-            body : JSON.stringify(object)
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(object)
         }).then(resp => resp)
             .then(resp => console.log(resp))
     });
@@ -91,23 +91,12 @@ let cancelEdit = () => editMode(false);
 
 {   // 회원 탈퇴 처리
     // DOM 요소 선택
-    const modal = document.getElementById("modal-delete");
     const deleteBtn = document.getElementById("deleteBtn");
-    const cancelBtn = document.getElementById("cancelBtn");
-    const closeBtn = document.querySelector(".delete_close");
     const agreeCheckBox = document.getElementById("agreeCheckBox");
     const errorMessage = document.getElementById("error-message");
 
-// 모달 닫기 기능
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-    };
-    cancelBtn.onclick = function() {
-        modal.style.display = "none";
-    };
-
 // 탈퇴 버튼 클릭 시
-    deleteBtn.onclick = function(e ){
+    deleteBtn.onclick = function () {
         // 필수 체크박스 확인
         if (!agreeCheckBox.checked) {
             errorMessage.style.display = "block";
@@ -116,39 +105,26 @@ let cancelEdit = () => editMode(false);
             errorMessage.style.display = "none";
         }
 
-
-
-        removeMember(memberId, function() {
+        removeMember(function () {
             alert("회원 탈퇴가 완료되었습니다.");
             window.location.href = "/member/login";
         });
     };
-
 // 탈퇴 API 호출 함수
-    function removeMember(memberId, callback) {
-        fetch(`/members-delete/${memberId}`, {
+    function removeMember() {
+        fetch(`/members-delete`, {
             method: 'DELETE',
         }).then(resp => {
             if (!resp.ok) {
                 throw new Error('응답 오류');
             }
-            return resp.text(); // 응답이 JSON이 아닌 텍스트라면 사용
         }).then(() => {
-            callback();
         }).catch(error => {
             console.error("문제 발생:", error);
             alert("탈퇴 처리 중 문제가 발생했습니다. 다시 시도해 주세요.");
         });
     }
-
-// 모달 외부 클릭 시 닫기
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    };
 }
-
 
 {
     // 이미지 삽입
@@ -169,13 +145,13 @@ let cancelEdit = () => editMode(false);
             imgTag.setAttribute('src', src);
         })
 
-    //     서버 통신
+        //     서버 통신
         let formData = new FormData();
         formData.append("file", file)
 
         fetch('/members-pfp-file', {
-            method : "PATCH",
-            body : formData
+            method: "PATCH",
+            body: formData
         }).then(resp => console.log(resp))
     });
 }
@@ -280,14 +256,13 @@ let cancelEdit = () => editMode(false);
         let deleteBtn = document.getElementById('deleteBtn')
 
         if (!agreeCheckbox.checked) {
-            deleteBtn.addEventListener("click", function (){
+            deleteBtn.addEventListener("click", function () {
                 erorrMeg.style.display = "block"
             })
         } else {
-            agreeCheckbox.addEventListener("click", function (){
+            agreeCheckbox.addEventListener("click", function () {
                 erorrMeg.style.display = "none"
             })
-            alert('탈퇴가 완료되었습니다.');
             d_modal.style.display = "none"
         }
     });
