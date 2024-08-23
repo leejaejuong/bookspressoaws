@@ -89,6 +89,67 @@ let cancelEdit = () => editMode(false);
 }
 
 
+{   // 회원 탈퇴 처리
+    // DOM 요소 선택
+    const modal = document.getElementById("modal-delete");
+    const deleteBtn = document.getElementById("deleteBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const closeBtn = document.querySelector(".delete_close");
+    const agreeCheckBox = document.getElementById("agreeCheckBox");
+    const errorMessage = document.getElementById("error-message");
+
+// 모달 닫기 기능
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    };
+    cancelBtn.onclick = function() {
+        modal.style.display = "none";
+    };
+
+// 탈퇴 버튼 클릭 시
+    deleteBtn.onclick = function(e ){
+        // 필수 체크박스 확인
+        if (!agreeCheckBox.checked) {
+            errorMessage.style.display = "block";
+            return;
+        } else {
+            errorMessage.style.display = "none";
+        }
+
+
+
+        removeMember(memberId, function() {
+            alert("회원 탈퇴가 완료되었습니다.");
+            window.location.href = "/member/login";
+        });
+    };
+
+// 탈퇴 API 호출 함수
+    function removeMember(memberId, callback) {
+        fetch(`/members-delete/${memberId}`, {
+            method: 'DELETE',
+        }).then(resp => {
+            if (!resp.ok) {
+                throw new Error('응답 오류');
+            }
+            return resp.text(); // 응답이 JSON이 아닌 텍스트라면 사용
+        }).then(() => {
+            callback();
+        }).catch(error => {
+            console.error("문제 발생:", error);
+            alert("탈퇴 처리 중 문제가 발생했습니다. 다시 시도해 주세요.");
+        });
+    }
+
+// 모달 외부 클릭 시 닫기
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+}
+
+
 {
     // 이미지 삽입
     let $fileInput = document.querySelector('#fileInput')

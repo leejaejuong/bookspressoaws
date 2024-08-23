@@ -139,16 +139,13 @@ public class MypageService {
         }
     }
 
-
 //    MypageBook
-
     // 읽은 책 정보 가져오기
     public List<MypageBookDTO> findMemberBooks(Long memberId){
         return mypageBookMapper.selectMemberBooks(memberId);
     }
 
-//   MypagePost
-
+    //   MypagePost
     // 회원 포스트 정보 가져오기
     public List<MypagePostDTO> findMemberPosts(Long memberId){
         return mypagePostMapper.selectPost(memberId);

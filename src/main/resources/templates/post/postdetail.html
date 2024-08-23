@@ -21,8 +21,6 @@
                     <!--   여기에 포스트 타이틀을 가져온다     -->
 
                     <div class="post_title" th:text="${postDetail.title}"></div>
-
-
                     <div class="flex_container" th:data-id="${postDetail.postId}">
 
 
@@ -46,16 +44,13 @@
                                 </div>
                                 <div class="modal-total-box none">
                                     <div class="modal-in-box">
-
                                         <button type="button" class="modal-modify">수 &nbsp; 정</button>
                                         <button type="button" class="modal-modelete"> 삭 &nbsp; 제</button>
-
                                     </div>
                                 </div>
                             </div>
                             </th:block>
                         </div>
-
 
                 </div>
             </div>
@@ -64,8 +59,6 @@
                     <div class="diary_container">
                         <!-- 책 커버 배경 -->
                         <div class="book-total-box">
-
-
                         <!-- 포스트 타이틀 제목  -->
                         <div class="post-title" th:text="${postDetail.title}"></div>
                             <div class="post-description"th:text="${postDetail.description}"></div>
@@ -104,9 +97,7 @@
                                 댓글
                                 <span class="number" th:text="${postComment.size()}"></span>
                             </h3>
-                            <ul class="ul_comment_list">
-
-                            </ul>
+                            <ul class="ul_comment_list"></ul>
                             <div class="comment_register">
                                 <div class="register">
                                     <div class="comment_textarea_box">

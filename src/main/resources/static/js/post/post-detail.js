@@ -13,22 +13,18 @@
     let postId = document.querySelector(".flex_container").dataset.id;
 
     $modifybtn.addEventListener('click', function(){
-
         location.href=`/post/modify?postId=${postId}`
     });
     $delectbtn.addEventListener('click',function (){
         console.log("클릭");
         location.href=`/post/remove?postId=${postId}`
     })
-
 }
-
 
 // 포스트 댓글
 {
     let $addComment = document.querySelector('.comment_btn');
     let postId = document.querySelector('.flex_container').dataset.id
-
 
     $addComment.addEventListener('click' , function (){
         let commentContent = document.querySelector('.comment_textarea').value;
@@ -98,8 +94,6 @@
         }
     });
     addcommentList(postId,commentList);
-
-
 
 
 // 코멘트 불러오기
