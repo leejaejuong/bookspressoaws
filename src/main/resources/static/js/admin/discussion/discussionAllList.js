@@ -61,7 +61,12 @@ let $detailInfo = document.querySelectorAll('.view-info');
     //     //     .then(resp => resp.text())
     // })
 
-
+// let paramString =
+// let params = URLSearchParams();
+// dropDebateLists.forEach((debateId)=>{
+//     params.append("debateId", debateId);
+// });
+// console.log("params = " + params);
 
 {
     $debateDropBtn.addEventListener('click',() =>{
@@ -77,10 +82,20 @@ let $detailInfo = document.querySelectorAll('.view-info');
         }
         console.log("dropDebateLists = " + dropDebateLists);
 
-        fetch(`/admin/debate/drop/${debateId}`,method="POST")
-            .then(resp => {
-                console.log("토론 삭제 성공!!")
-            })
+
+
+        fetch(`/admin/debate/drop/${dropDebateLists}`,{method : "POST"
+        }).then(resp => {
+            if (!resp.ok) {
+                throw new Error('응답 오류');
+            }
+            return resp;
+        }).catch(error => {
+            console.error("문제 발생 : ", error)
+        });
+
+        location.replace("admin/debate/onGoing");
+
     })
 
 

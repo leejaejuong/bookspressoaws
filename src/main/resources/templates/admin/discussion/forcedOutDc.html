@@ -38,12 +38,12 @@
                 <!-- 멤버 검색  -->
                 <div class="search_box">
                     <span>토론 검색</span>
-                    <form action="">
-                        <select name="findMember" size="1">
-                            <option value="loginId">책 이름</option>
-                            <option value="nickname">모임 종류</option>
+                    <form th:action="admin/debate/finished/search">
+                        <select name="searchType" size="1">
+                            <option value="bookName">책 이름</option>
+                            <option value="meetingType">모임 종류</option>
                         </select>
-                        <input type="text" name="">
+                        <input type="text" name="keyword">
                         <button>검색</button>
                     </form>
                 </div>

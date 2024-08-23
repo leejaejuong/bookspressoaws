@@ -130,8 +130,8 @@ public class QuestionController {
     @GetMapping("/drop")
     public String qaDrop(Long qBoardId){
 
-        questionService.deleteQuestion(qBoardId);
-        System.out.println("drop = " + qBoardId);
+        questionService.dropQuesiton(qBoardId);
+
         return "redirect:/qa/list";
     }
 }

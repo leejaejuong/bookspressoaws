@@ -18,15 +18,6 @@
         WHERE MEMBER_ID = #{memberId}
     </select>
 
-<!--    <select id="selectQuestion">-->
-<!--        SELECT M.MEMBER_ID, Q.Q_BOARD_ID, Q.Q_TITLE, M.NICKNAME,-->
-<!--               TO_CHAR(Q.CREATE_DATE,'YYYY-MM-DD HH24:MI:SS') AS CREATE_DATE,-->
-<!--               Q.VIEW_COUNT, Q.Q_CONTENT, Q.A_STATUS-->
-<!--        FROM TBL_QUESTION Q JOIN TBL_MEMBER M-->
-<!--                                 ON Q.MEMBER_ID = M.MEMBER_ID-->
-<!--        WHERE Q.Q_BOARD_ID = #{qBoardId}-->
-<!--    </select>-->
-
     <select id="selectQuestion">
         SELECT T.Q_BOARD_ID, T.Q_TITLE, T.Q_CONTENT, T.CREATE_DATE, T.VIEW_COUNT, T.A_STATUS, T.MODIFIED_DATE,
                T.MEMBER_ID, T.NICKNAME,
@@ -46,10 +37,6 @@
         WHERE Q_BOARD_ID = #{qBoardId}
     </update>
 
-    <delete id="deleteQuestion">
-        DELETE TBL_QUESTION
-        WHERE Q_BOARD_ID = #{qBoardId}
-    </delete>
 
     <update id="updateViewCount">
         UPDATE TBL_QUESTION
@@ -136,16 +123,17 @@
     </select>
 
 
+<!--  question & answer 쿼리 삭제    -->
+    <delete id="deleteQuestion">
+        DELETE FROM TBL_QUESTION WHERE Q_BOARD_ID = #{qBoardId}
+    </delete>
+    <delete id="deleteAnswer">
+        DELETE FROM TBL_ANSWER WHERE Q_BOARD_ID = #{qBoardId}
+    </delete>
+    <select id="answerCount">
+        SELECT COUNT(Q_BOARD_ID) FROM TBL_ANSWER WHERE Q_BOARD_ID = #{qBoardId}
+    </select>
 
-<!--    <trim prefix="WHERE" prefixOverrides="AND">-->
-<!--        <choose>-->
-<!--            <when test="searchType == 'qTitle'">-->
-<!--                WHERE Q_TITLE LIKE '%' || #{keyword} || '%'-->
-<!--            </when>-->
-<!--            <when test="searchType == 'aStatus'">-->
-<!--                WHERE Q_TITLE LIKE '%' || #{keyword} || '%'-->
-<!--            </when>-->
-<!--        </choose>-->
-<!--    </trim>-->
+
 
 </mapper>

@@ -35,7 +35,7 @@
           <div class="answer-box">
             <span class="answer-title">
               관리자 답변
-              <span text="sysdate" th:if="${list.answerModifiedDate==null}"name="createdDate" th:text="${list.createdDate}"></span>
+              <span text="sysdate" th:if="${list.answerModifiedDate==null}" name="createdDate" th:text="${list.createdDate}"></span>
               <span text="sysdate" th:unless="${list.answerModifiedDate==null}" name="answerModifiedDate" th:text="${list.answerModifiedDate}"></span>
             </span>
             <input type="hidden" id="qBoardId" name="qBoardId" th:value="${list.QBoardId}">

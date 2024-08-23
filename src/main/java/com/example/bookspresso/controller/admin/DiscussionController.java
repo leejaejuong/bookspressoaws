@@ -7,7 +7,9 @@ import com.example.bookspresso.dto.admin.discussion.ManageDebateDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageRequestDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageSetDTO;
 import com.example.bookspresso.service.admin.ManageDebateService;
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,19 +27,6 @@ public class DiscussionController {
 
     private final ManageDebateService manageDebateService;
 
-    @Bean
-    void modal(){
-        Map<String, String> debateTypeId = new HashMap<String, String>();
-        debateTypeId.put("1","공고형");
-        debateTypeId.put("2","자유형");
-        debateTypeId.put("3","장르형");
-        debateTypeId.put("4","혼자서");
-
-        Map<String, String> meetingTypeId = new HashMap<String, String>();
-        meetingTypeId.put("1", "온라인");
-        meetingTypeId.put("2", "오프라인");
-        meetingTypeId.put("3", "혼자서");
-    }
 
 //    private final Map<String, String> debateTypeId;
 
@@ -48,30 +37,9 @@ public class DiscussionController {
 
         List<ManageDebateDTO> list = manageDebateService.findDebateList(adminPageRequestDTO);
 
-        Map<String, String> debateTypeId = new HashMap<String, String>();
-        debateTypeId.put("1","공고형");
-        debateTypeId.put("2","자유형");
-        debateTypeId.put("3","장르형");
-        debateTypeId.put("4","혼자서");
-
-        Map<String, String> meetingTypeId = new HashMap<String, String>();
-        meetingTypeId.put("1", "온라인");
-        meetingTypeId.put("2", "오프라인");
-        meetingTypeId.put("3", "혼자서");
-
         list.forEach(manageDebateDTO ->{
-            String debateType = manageDebateDTO.getDebateTypeId();
-//            manageDebateDTO.setDebateTypeId();
-            manageDebateDTO.setDebateTypeId(debateTypeId.get(debateType));
-
-            String meetingType = manageDebateDTO.getMeetingId();
-            manageDebateDTO.setMeetingId(meetingTypeId.get(meetingType));
-
-            System.out.println(manageDebateDTO +"###");
-
             List<AttendMemberDTO> attendMemberList = manageDebateService.findAttendMemberList(manageDebateDTO.getDebateId());
             manageDebateDTO.setAttendList(attendMemberList);
-
         });
 
 
@@ -115,27 +83,9 @@ public class DiscussionController {
 
         List<ManageDebateDTO> list = manageDebateService.findEndDebateList(adminPageRequestDTO);
 
-        Map<String, String> debateTypeId = new HashMap<String, String>();
-        debateTypeId.put("1","공고형");
-        debateTypeId.put("2","자유형");
-        debateTypeId.put("3","장르형");
-        debateTypeId.put("4","혼자서");
-
-        Map<String, String> meetingTypeId = new HashMap<String, String>();
-        meetingTypeId.put("1", "온라인");
-        meetingTypeId.put("2", "오프라인");
-        meetingTypeId.put("3", "혼자서");
-
         list.forEach(manageDebateDTO ->{
-            String debateType = manageDebateDTO.getDebateTypeId();
-            manageDebateDTO.setDebateTypeId(debateTypeId.get(debateType));
-
-            String meetingType = manageDebateDTO.getMeetingId();
-            manageDebateDTO.setMeetingId(meetingTypeId.get(meetingType));
-
-            String bookName = manageDebateService.findBookName(manageDebateDTO.getDebateId());
-            model.addAttribute("bookName", bookName);
-            System.out.println("#################bookName = " + bookName);
+            List<AttendMemberDTO> attendMemberList = manageDebateService.findAttendMemberList(manageDebateDTO.getDebateId());
+            manageDebateDTO.setAttendList(attendMemberList);
         });
 
         int total = manageDebateService.findEndDebateCount();
@@ -170,12 +120,26 @@ public class DiscussionController {
     }
 
 
+    @GetMapping("/recruiting")
+    public String recruiting(AdminPageRequestDTO adminPageRequestDTO,
+                             DebateSearchDTO debateSearchDTO,
+                             Model model){
+
+        List<ManageDebateDTO> list = manageDebateService.findRecruitingDebate(adminPageRequestDTO);
+
+        int total = manageDebateService.findRecrutingDebateCount(debateSearchDTO);
+
+        AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
+
+        model.addAttribute("total", total);
+        model.addAttribute("list", list);
+        model.addAttribute("adminPageSetDTO", adminPageSetDTO);
 
 
-    @GetMapping("/forcedOut")
-    public String discussion(){
-        return "admin/discussion/forcedOutDc";
+        return "admin/discussion/recruitingDc";
     }
+
+
 
 
 }

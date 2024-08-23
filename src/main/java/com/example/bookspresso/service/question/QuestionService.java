@@ -57,4 +57,16 @@ public class QuestionService {
         return  questionMapper.searchListTotal(memberId, keyword);
     }
 
+    public void dropQuesiton(Long qBoardId){
+        int answerCount = questionMapper.answerCount(qBoardId);
+//        관리자의 답변이 존재하면
+        if(answerCount != 0){
+                questionMapper.deleteAnswer(qBoardId);
+                questionMapper.deleteQuestion(qBoardId);
+        }else {
+            questionMapper.deleteQuestion(qBoardId);
+        }
+
+    }
+
 }

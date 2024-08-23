@@ -19,8 +19,6 @@ public interface QuestionMapper {
 
     void updateQuestion(QuestionModifyDTO questionModifyDTO);
 
-    void deleteQuestion(Long qBoardId);
-
     void updateViewCount(Long qBoardId);
 
 
@@ -34,5 +32,12 @@ public interface QuestionMapper {
 
     int searchListTotal(@Param("memberId") Long memberId,
                         @Param("keyword") String keyword);
+
+//    question & answer 쿼리 삭제
+
+    void deleteQuestion(Long qBoardId);
+    void deleteAnswer(Long qBoardId);
+    int answerCount(Long qBoardId);
+
 
 }

@@ -145,6 +145,13 @@ class QuestionServiceTest {
 
     }
 
+    @Test
+    public void dropQuestion(){
+
+        questionService.dropQuesiton(71L);
+
+    }
+
 
 
 }

@@ -15,6 +15,7 @@ public class QuestionAnswerDTO {
     Long adminId;
     String aContent;
     String createdDate;
+    String answerModifiedDate;
 
 
 }

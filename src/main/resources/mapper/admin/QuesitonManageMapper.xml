@@ -75,33 +75,18 @@
         VALUES (#{answerId}, #{adminId}, #{qBoardId}, #{aContent})
     </insert>
 
-    <update id="updateAStatus">
-        UPDATE TBL_QUESTION
-        SET A_STATUS = 1
+    <update id="updateAnswerStatus">
+        UPDATE TBL_QUESTION SET A_STATUS = 1
         WHERE Q_BOARD_ID = #{qBoardId}
     </update>
 
 
-
-<!--    <insert id="insertAnswer">-->
-<!--        <selectKey resultType="Long" keyProperty="answerId" order="BEFORE">-->
-<!--            SELECT SEQ_ANSWER.nextval FROM DUAL-->
-<!--        </selectKey>-->
-<!--        INSERT INTO TBL_ANSWER (ANSWER_ID, ADMIN_ID, Q_BOARD_ID, A_CONTENT)-->
-<!--        VALUES (#{answerId}, #{adminId}, #{qBoardId}, #{aContent})-->
-<!--    </insert>-->
-
-<!--    <update id="updateAnswerStatus">-->
-<!--        UPDATE TBL_QUESTION SET A_STATUS = 1-->
-<!--        WHERE Q_BOARD_ID = #{qBoardId}-->
-<!--    </update>-->
-
 <!--  답글 수정  -->
-<!--    <update id="updateAnswer">-->
-<!--        UPDATE TBL_ANSWER-->
-<!--        SET A_CONTENT = #{aContent}, ADMIN_ID = #{adminId}, ANSWER_MODIFIED_DATE = SYSDATE-->
-<!--        WHERE Q_BOARD_ID = #{qBoardId}-->
-<!--    </update>-->
+    <update id="updateAnswer">
+        UPDATE TBL_ANSWER
+        SET A_CONTENT = #{aContent}, ADMIN_ID = #{adminId}, ANSWER_MODIFIED_DATE = SYSDATE
+        WHERE Q_BOARD_ID = #{qBoardId}
+    </update>
 
 
 </mapper>

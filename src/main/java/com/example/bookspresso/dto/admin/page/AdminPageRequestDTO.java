@@ -7,6 +7,8 @@ import lombok.ToString;
 @Setter @Getter @ToString
 public class AdminPageRequestDTO {
 
+    private String searchType;
+    private String keyword;
     private int page;
     private int amount;
 
