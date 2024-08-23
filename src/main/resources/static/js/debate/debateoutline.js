@@ -218,8 +218,8 @@
     let $contentErr3 = document.querySelector('.content-err3');
     let $contentErr4 = document.querySelector('.content-err4');
     let $contentErr5 = document.querySelector('.content-err5');
-
-    let isn13=$bookTotalBox.getAttribute("isbn13");
+    let $isbn13 = document.querySelector('.gather-isbn13-hidden');
+    console.log($isbn13);
 
     $nexttype.addEventListener("click", () => {
         //타이틀 값검사
@@ -251,17 +251,19 @@
             $contentErr4.style.display = "none";
         }
         //책정보 검사
-        if(isn13===''){
+        if($isbn13.value ===''){
+            console.log("실행")
             $bookTotalBox.style.border = "1px solid #ff4d4f";
             $contentErr5.style.display="flex";
         }else{
+            console.log("실행")
             $bookTotalBox.style.border = "1px solid #dee2e6";
             $contentErr5.style.display="none";
         }
 
         if (!($titleBox.value === '' || $contentBox.value === '' ||
             $groupEndDate.value === '' || $debateStartDate.value === ''||
-            isn13==='')) {
+            isbn13.value==='')) {
             document.getElementById('submitbtn').submit();
         }
 
