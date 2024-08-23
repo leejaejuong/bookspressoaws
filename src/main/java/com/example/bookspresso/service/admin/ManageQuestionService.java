@@ -35,26 +35,13 @@ public class ManageQuestionService {
 
     public void addAnswer(QuestionAnswerDTO questionAnswerDTO){
         questionManageMapper.insertAnswer(questionAnswerDTO);
-    }
-
-    public void updateAStatus(Long qBoardId){
-        questionManageMapper.updateAStatus(qBoardId);
+        questionManageMapper.updateAnswerStatus(questionAnswerDTO.getQBoardId());
     }
 
 
-
-
-//    public void addAnswer(QuestionAnswerDTO questionAnswerDTO){
-//        questionManageMapper.insertAnswer(questionAnswerDTO);
-//    }
-//
-//    public void updateAnswer(Long qBoardId){
-//        questionManageMapper.updateAnswerStatus(qBoardId);
-//    }
-//
-//    public void updateAnswerContent(ModifyAnswer modifyAnswer){
-//        questionManageMapper.updateAnswer(modifyAnswer);
-//    }
+    public void updateAnswerContent(QuestionAnswerDTO questionAnswerDTO){
+        questionManageMapper.updateAnswer(questionAnswerDTO);
+    }
 
 
 }

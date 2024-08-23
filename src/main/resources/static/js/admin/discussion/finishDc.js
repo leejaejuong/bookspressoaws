@@ -21,7 +21,8 @@ let $detailInfo = document.querySelectorAll('.view-info');
                 console.log($detailInfo[i].getAttribute("class"));
             }
 
-
         })
     }
 }
+
+// a 태그 에서 href="" 이면 새로고침 된다. 그 주소로 이동 하는 것

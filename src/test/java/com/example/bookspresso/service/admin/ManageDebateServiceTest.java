@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,17 +22,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 @SpringBootTest
-//@ExtendWith(MockitoExtension.class)
+@Transactional
 class ManageDebateServiceTest {
 
     @Autowired DebateManageMapper debateManageMapper;
     @Autowired ManageDebateService manageDebateService;
 
-    @Mock
-//    DebateManageMapper debateManageMapper;
-//
-//    @InjectMocks
-//    ManageDebateService manageDebateService;
 
     AdminPageRequestDTO adminPageRequestDTO;
     DebateSearchDTO debateSearchDTO;
@@ -39,6 +35,9 @@ class ManageDebateServiceTest {
     @BeforeEach
     void setUp() {
         adminPageRequestDTO = new AdminPageRequestDTO();
+        adminPageRequestDTO.setAmount(5);
+        adminPageRequestDTO.setSearchType("bookName");
+        adminPageRequestDTO.setKeyword("으");
 
         debateSearchDTO = DebateSearchDTO.builder()
                 .searchType("bookName")
@@ -89,23 +88,33 @@ class ManageDebateServiceTest {
     @Test
     void findDebateCount(){
         int debateCount = manageDebateService.findDebateCount();
-        assertThat(debateCount).isEqualTo(1);
+        assertThat(debateCount).isEqualTo(22);
     }
 
     @Test
     public void findBookName(){
-        debateManageMapper.selectBookName(301L);
+        manageDebateService.findBookName(301L);
     }
 
-    @Test
-    void dropDebate() {
-
-    }
 
     @Test
     public void findAttendMemberList(){
         manageDebateService.findAttendMemberList(195L);
-
-
     }
+
+    @Test
+    public void dropDebate(){
+
+        manageDebateService.dropDebate(321L);
+    }
+
+    @Test
+    public void findRecruitingDebate(){
+        int recrurtingDebateCount = manageDebateService.findRecrutingDebateCount(debateSearchDTO);
+        System.out.println(recrurtingDebateCount);
+        List<ManageDebateDTO> recruitingDebate = manageDebateService.findRecruitingDebate(adminPageRequestDTO);
+        System.out.println(recruitingDebate);
+    }
+
+
 }

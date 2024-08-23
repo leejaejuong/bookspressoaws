@@ -15,6 +15,7 @@ class PostMapperTest {
 @Autowired PostMapper postMapper;
     @Test
     void mainWithpage() {
-      ;
+        List<PostMainDTO> postMainDTOS = postMapper.mainWithpage();
+        System.out.println("postMainDTOS = " + postMainDTOS);
     }
 }

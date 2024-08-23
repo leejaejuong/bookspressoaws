@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookspresso.mapper.admin.PosterManageMapper">
+   
+    <select id="selectPosterList">
+        SELECT POST_ID, POST_TITLE, CREATE_DATE,
+               MEMBER_ID, NICKNAME, BOOK_NAME
+        FROM (SELECT ROWNUM AS RNUM, POST_ID, POST_TITLE, CREATE_DATE,
+               MEMBER_ID, NICKNAME, BOOK_NAME
+        FROM(
+        SELECT P.POST_ID, P.POST_TITLE, TO_CHAR(P.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
+               M.MEMBER_ID,M.NICKNAME,
+               B.TITLE AS BOOK_NAME
+        FROM TBL_POST P JOIN TBL_BOOK B
+                             ON P.ISBN13 = B.ISBN13
+                        JOIN TBL_MEMBER M
+                             ON P.MEMBER_ID = M.MEMBER_ID)
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ]]>
+        )
+        WHERE RNUM > ( #{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectPosterCount">
+        SELECT COUNT(P.POST_ID)
+        FROM TBL_POST P JOIN TBL_BOOK B
+                             ON P.ISBN13 = B.ISBN13
+                        JOIN TBL_MEMBER M
+                             ON P.MEMBER_ID = M.MEMBER_ID
+    </select>
+    
+    <select id="selectSearchPosterList">
+            SELECT POST_ID, POST_TITLE, CREATE_DATE,
+               MEMBER_ID, NICKNAME, BOOK_NAME
+        FROM (SELECT ROWNUM AS RNUM, POST_ID, POST_TITLE, CREATE_DATE,
+               MEMBER_ID, NICKNAME, BOOK_NAME
+        FROM(
+        SELECT P.POST_ID, P.POST_TITLE, TO_CHAR(P.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
+               M.MEMBER_ID,M.NICKNAME,
+               B.TITLE AS BOOK_NAME
+        FROM TBL_POST P JOIN TBL_BOOK B
+                             ON P.ISBN13 = B.ISBN13
+                        JOIN TBL_MEMBER M
+                             ON P.MEMBER_ID = M.MEMBER_ID
+                    <trim prefix="WHERE" prefixOverrides="OR">
+                        <choose>
+                            <when test="searchType == 'postTitle'">
+                                P.POST_TITLE like '%' || #{keyword} || '%'
+                            </when>
+                            <when test="searchType == 'bookName' ">
+                                B.TITLE like '%' || #{keyword} || '%'
+                            </when>
+                            <when test="searchType == 'nickname' ">
+                                M.NICKNAME like '%' || #{keyword} || '%'
+                            </when>
+                        </choose>
+                    </trim>
+        )<![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ]]>
+        )
+        WHERE RNUM > ( #{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectSearchCount">
+        SELECT COUNT(P.POST_ID)
+        FROM TBL_POST P JOIN TBL_BOOK B
+        ON P.ISBN13 = B.ISBN13
+        JOIN TBL_MEMBER M
+        ON P.MEMBER_ID = M.MEMBER_ID
+        <trim prefix="WHERE" prefixOverrides="OR">
+            <choose>
+                <when test="searchType == 'postTitle'">
+                    P.POST_TITLE like '%' || #{keyword} || '%'
+                </when>
+                <when test="searchType == 'bookName' ">
+                    B.TITLE like '%' || #{keyword} || '%'
+                </when>
+                <when test="searchType == 'nickname' ">
+                    M.NICKNAME like '%' || #{keyword} || '%'
+                </when>
+            </choose>
+        </trim>
+    </select>
+    
+    <delete id="deletePoster">
+        DELETE TBL_POST WHERE POST_ID = #{postId}
+    </delete>
+
+    <delete id="deletePostComment">
+        DELETE  TBL_POST_COMMENT WHERE POST_ID = #{postId};
+    </delete>
+    
+    
+</mapper>

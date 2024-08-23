@@ -12,14 +12,17 @@ import java.util.List;
 @Builder
 public class FinishedDebateDTO {
 
-    String title;
-    String bookName;
-    String meetingId;
-    String debateTypeId;
-    String debateStartDate;
-    String debateEndDate;
-    Long debateId;
+    private String title;
+    private String bookName;
+    private String meetingId;
+    private String meetingType;
+    private String debateTypeId;
+    private String debateType;
+    private String debateStartDate;
+    private String debateEndDate;
+    private Long debateId;
 
+    private List<AttendMemberDTO> attendList;
 //    List<String> debateMembers;
 
 }

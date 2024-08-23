@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface DebateManageMapper {
@@ -45,7 +46,7 @@ public interface DebateManageMapper {
 
     String selectBookName(Long debateId);
 
-    void delectDebate(Long debateId);
+//    void delectDebate(Long debateId);
 
 //    List<ManageDebateDTO> selectSearchDebateList(AdminPageRequestDTO adminPageRequestDTO,
 //                                                 DebateSearchDTO debateSearchDTO);
@@ -53,12 +54,15 @@ public interface DebateManageMapper {
     List<AttendMemberDTO> selectAttendMember(Long debateId);
 
     // 토론 삭제 처리
-    List<Long> selectDeleteElement(Long debateId);
+    Optional<Long> selectNoticeId(Long debateId);
 
     void deleteDebate(Long debateId);
     void deleteMemberDebate(Long debateId);
     void deleteDebateBoard(Long debateId);
     void deleteDebateBook(Long debateId);
-    void deleteDebateComment(Long commentId);
+    void deleteDebateComment(Long noticeId);
 
+    //현재 모집중인 토론
+    List<ManageDebateDTO> selectRecruitingDebate(AdminPageRequestDTO adminPageRequestDTO);
+    int selectRecruitingCount(DebateSearchDTO debateSearchDTO);
 }
