@@ -77,32 +77,31 @@ public class QandAController {
         System.out.println("@@@questionAnswerDTO =" + questionAnswerDTO);
         
         manageQuestionService.addAnswer(questionAnswerDTO);
-        manageQuestionService.updateAStatus(questionAnswerDTO.getQBoardId());
 
         return "redirect:/admin/question/list";
     }
 
-//    @GetMapping("/modify")
-//    public String modify(Long qBoardId, Model model){
+    @GetMapping("/modify")
+    public String modify(Long qBoardId, Model model){
+
+        QuestionDetailDTO list = questionService.findQuestion(qBoardId);
+        model.addAttribute("list", list);
+
+        return "admin/qa/modifyAnswer";
+    }
 //
-//        QuestionDetailDTO list = questionService.findQuestion(qBoardId);
-//        model.addAttribute("list", list);
-//
-//        return "admin/qa/modifyAnswer";
-//    }
-//
-//    @PostMapping("/modify")
-//    public String modify(ModifyAnswer modifyAnswer,
-//                         HttpSession session,
-//                         RedirectAttributes redirectAttributes){
-//
-//        modifyAnswer.setAdminId((Long)session.getAttribute("adminId"));
-//        manageQuestionService.updateAnswerContent(modifyAnswer);
-//
-//        redirectAttributes.addAttribute("qBoardId", modifyAnswer.getQBoardId());
-//
-//        return "redirect:/admin/question/modify";
-//    }
+    @PostMapping("/modify")
+    public String modify(QuestionAnswerDTO questionAnswerDTO,
+                         HttpSession session,
+                         RedirectAttributes redirectAttributes){
+
+        questionAnswerDTO.setAdminId((Long)session.getAttribute("adminId"));
+        manageQuestionService.updateAnswerContent(questionAnswerDTO);
+
+        redirectAttributes.addAttribute("qBoardId", questionAnswerDTO.getQBoardId());
+
+        return "redirect:/admin/question/modify";
+    }
 
 
 

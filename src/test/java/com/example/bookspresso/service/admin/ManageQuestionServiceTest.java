@@ -32,8 +32,8 @@ class ManageQuestionServiceTest {
 
         questionAnswerDTO = QuestionAnswerDTO.builder()
                 .adminId(1L)
-                .qBoardId(63L)
-                .aContent("test 답변입니다!! ################")
+                .qBoardId(103L)
+                .aContent(" <service> test 답변입니다!! ################")
                 .build();
 
         modifyAnswer = ModifyAnswer.builder()
@@ -69,11 +69,11 @@ class ManageQuestionServiceTest {
         System.out.println(questionAnswerDTO);
     }
 
-    @Test
-    void updateAStatus(){
-        questionManageMapper.updateAStatus(questionAnswerDTO.getQBoardId());
-
-    }
+//    @Test
+//    void updateAStatus(){
+//        questionManageMapper.updateAStatus(questionAnswerDTO.getQBoardId());
+//
+//    }
 //
 //    @Test
 //    void addAnswer(){
@@ -86,10 +86,11 @@ class ManageQuestionServiceTest {
 //        manageQuestionService.updateAnswer(questionAnswerDTO.getQBoardId());
 //    }
 //
-//    @Test
-//    void updateAnswerContent(){
-//        manageQuestionService.updateAnswerContent(modifyAnswer);
-//    }
+    @Test
+    void updateAnswerContent(){
+        manageQuestionService.updateAnswerContent(questionAnswerDTO);
+        System.out.println("questionAnswerDTO = " + questionAnswerDTO);
+    }
 //
 
 

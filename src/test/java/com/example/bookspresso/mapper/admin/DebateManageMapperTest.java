@@ -6,6 +6,7 @@ import com.example.bookspresso.dto.admin.discussion.ManageDebateDTO;
 import com.example.bookspresso.dto.admin.page.AdminPageRequestDTO;
 import com.example.bookspresso.dto.debate.DebateInpoDTO;
 import com.example.bookspresso.mapper.debate.DebateMapper;
+import com.example.bookspresso.service.admin.ManageDebateService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -27,15 +29,18 @@ class DebateManageMapperTest {
     AdminPageRequestDTO adminPageRequestDTO;
     DebateSearchDTO debateSearchDTO;
     DebateInpoDTO debateInpoDTO;
+    @Autowired
+    private ManageDebateService manageDebateService;
 
 
     @BeforeEach
     void setUp() {
         adminPageRequestDTO = new AdminPageRequestDTO();
+        adminPageRequestDTO.setAmount(4);
 
         debateSearchDTO = DebateSearchDTO.builder()
-                .searchType("qTitle")
-                .keyword("푸바오")
+                .searchType("postTitle")
+                .keyword("은")
                 .build();
 
         debateInpoDTO = DebateInpoDTO.builder()
@@ -98,14 +103,40 @@ class DebateManageMapperTest {
     void selectDeleteElement(){
 //        debateMapper.insertDebateInpo(debateInpoDTO);
 
-        List<Long> commentIds = debateManageMapper.selectDeleteElement(321L);
-        System.out.println("commentIds = " + commentIds);
+        Optional<Long> noticeId = debateManageMapper.selectNoticeId(321L);
+        System.out.println("noticeId = " + noticeId);
 
     }
 
     @Test
     void deleteBoards(){
-        debateMapper.insertDebateInpo(debateInpoDTO);
+        Optional<Long> noticeId = debateManageMapper.selectNoticeId(321L);
+        System.out.println("noticeId = " + noticeId);
+
+        // 토론 -> 토론 board -> debate-member -> 토론 comment
+        //
+        // debate -> debate-book
+        debateManageMapper.deleteDebateBook(321L);
+        // 토론 참여한 사람들만 댓글 작성 가능
+        debateManageMapper.deleteMemberDebate(321L);
+
+        debateManageMapper.deleteDebateComment(noticeId.get());
+
+        debateManageMapper.deleteDebateBoard(321L);
+
+        // 가장 마지막에 삭제
+        debateManageMapper.deleteDebate(321L);
+    }
+
+    @Test
+    void selectRecruitingCount(){
+        adminPageRequestDTO.setSearchType("postTitle");
+        adminPageRequestDTO.setKeyword("테스트");
+        List<ManageDebateDTO> list = debateManageMapper.selectRecruitingDebate(adminPageRequestDTO);
+        System.out.println("list = " + list);
+
+        int i = debateManageMapper.selectRecruitingCount(debateSearchDTO);
+        System.out.println("i = " + i);
 
     }
 

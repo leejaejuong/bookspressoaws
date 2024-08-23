@@ -1,7 +1,10 @@
 package com.example.bookspresso.mapper.question;
 
+import com.example.bookspresso.dto.member.MemberJoinDTO;
 import com.example.bookspresso.dto.question.board.*;
 import com.example.bookspresso.dto.question.page.QPageRequestDTO;
+import com.example.bookspresso.mapper.member.MemberMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,35 +17,39 @@ import java.util.Optional;
 @Transactional
 class QuestionMapperTest {
 @Autowired QuestionMapper questionMapper;
-//@Autowired MemberMapper memberMapper;
-//    QuestionWriteDTO questionWriteDTO;
-//    MemberJoinDTO memberJoinDTO;
-//    @BeforeEach
-//    void setUp() {
-//        memberJoinDTO = MemberJoinDTO.builder()
-//                .memberId(1L)
-//                .loginId("aaaa")
-//                .password("aaaaaa")
-//                .email("sfdmfse@naver.com")
-//                .nickname("aaa@aa")
-//                .build();
-//
-//        memberMapper.insertMember(memberJoinDTO);
-//
-//        questionWriteDTO = QuestionWriteDTO.builder()
-//                .qTitle("aaaa")
-//                .qContent("aaaaa")
-//                .memberId(1L)
-//                .build();
-//
-//    }
+@Autowired
+MemberMapper memberMapper;
+    QuestionWriteDTO questionWriteDTO;
+    MemberJoinDTO memberJoinDTO;
 
-    @Test
-    void insertBoard() {
+    @BeforeEach
+    void setUp() {
+        memberJoinDTO = MemberJoinDTO.builder()
+                .memberId(1L)
+                .loginId("aaaa")
+                .password("aaaaaa")
+                .email("sfdmfse@naver.com")
+                .nickname("aaa@aa")
+                .build();
+
+        memberMapper.insertMember(memberJoinDTO);
+
+        questionWriteDTO = QuestionWriteDTO.builder()
+                .qTitle("aaaa")
+                .qContent("aaaaa")
+                .memberId(1L)
+                .build();
+
         QuestionWriteDTO questionWriteDTO = new QuestionWriteDTO();
         questionWriteDTO.setMemberId(3L);
         questionWriteDTO.setQContent("test@");
         questionWriteDTO.setQTitle("test@");
+
+    }
+
+    @Test
+    void insertBoard() {
+
 
         questionMapper.insertBoard(questionWriteDTO);   // 게시물 작성
 
@@ -103,21 +110,7 @@ class QuestionMapperTest {
         System.out.println(questionModifyDTO + "############");
     }
 
-    @Test
-    void deleteQuestion(){
-        QuestionWriteDTO questionWriteDTO = new QuestionWriteDTO();
-        questionWriteDTO.setMemberId(3L);
-        questionWriteDTO.setQContent("testsfdfsd");
-        questionWriteDTO.setQTitle("testsfesedfs");
-        questionMapper.insertBoard(questionWriteDTO);
 
-//        List<QuestionListDTO> questionListDTO = questionMapper.selectList(questionWriteDTO.getMemberId());
-
-//        System.out.println("questionListDTO = " + questionListDTO);
-//
-//        questionMapper.deleteQuestion(questionWriteDTO.getQBoardId());
-//        questionMapper.selectList(questionWriteDTO.getMemberId());
-    }
 
     @Test
     public void selectQuestionList(){
@@ -159,6 +152,14 @@ class QuestionMapperTest {
         questionMapper.searchListTotal(qPageRequestDTO.getMemberId(),"s");
 
 
+    }
+
+    @Test
+    public void deleteQuestion(){
+        questionMapper.insertBoard(questionWriteDTO);
+
+        questionMapper.deleteQuestion(questionWriteDTO.getQBoardId());
+        questionMapper.deleteAnswer(questionWriteDTO.getQBoardId());
     }
 
 

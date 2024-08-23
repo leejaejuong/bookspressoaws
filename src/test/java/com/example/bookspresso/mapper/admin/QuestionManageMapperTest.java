@@ -29,7 +29,7 @@ class QuestionManageMapperTest {
 
         questionAnswerDTO = QuestionAnswerDTO.builder()
                 .adminId(1L)
-                .qBoardId(63L)
+                .qBoardId(103L)
                 .aContent("test 답변입니다!! ################")
                 .build();
     }
@@ -61,15 +61,11 @@ class QuestionManageMapperTest {
         System.out.println("insert $$ = " + questionAnswerDTO);
 
     }
-    @Test
-    void updateAStatus(){
-        questionManageMapper.updateAStatus(101L);
-
-    }
 
 
 
-//
+
+
 //    @Test
 //    void insertAnswer(){
 //        questionManageMapper.insertAnswer(questionAnswerDTO);
@@ -77,26 +73,20 @@ class QuestionManageMapperTest {
 //        System.out.println(" ### dto = " + questionAnswerDTO);
 //
 //    }
-//
-//    @Test
-//    void updateAnswerStatus(){
-//        questionManageMapper.updateAnswerStatus(37L);
-////        System.out.println(questionDetailDTO.isAStatus());
-//
-//    }
-//    @Test
-//    void updateAnswer(){
-//        ModifyAnswer modifyAnswer;
-//        modifyAnswer = ModifyAnswer.builder()
-//                .aContent("modify test@@@@@2")
-//                .adminId(1L)
-//                .qBoardId(36L)
-//                .build();
-//
-//        questionManageMapper.updateAnswer(modifyAnswer);
-//
-//        System.out.println(" ### dto = " + questionAnswerDTO);
-//        System.out.println(" ### modify DTO = " + modifyAnswer);
-//
-//    }
+
+    @Test
+    void updateAnswerStatus(){
+        questionManageMapper.updateAnswerStatus(37L);
+//        System.out.println(questionDetailDTO.isAStatus());
+
+    }
+    @Test
+    void updateAnswer(){
+
+        questionManageMapper.updateAnswer(questionAnswerDTO);
+
+        System.out.println(" ### dto = " + questionAnswerDTO);
+
+
+    }
 }

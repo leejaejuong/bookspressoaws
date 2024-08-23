@@ -78,7 +78,12 @@ public class MemberController {
 
     @GetMapping("/findId")
     public String findId(){
+
         return "member/findId";
+    }
+    @PostMapping("/findId")
+    public String findId(int a){
+        return null;
     }
 
     @GetMapping("/findPassword")
