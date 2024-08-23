@@ -1,12 +1,14 @@
 let loginId = document.querySelector('.loginId')
 let name = document.querySelector('.name');
-let email =document.querySelector('.email');
+let $email =document.querySelector('#email');
 let certifiNum = document.querySelector('.certifi-num');
+let $certifiBtn = document.querySelector('.certifi-btn');
 
 let $findIdForm = document.querySelector('#findId-form');
 let $findPwForm = document.querySelector('#findPw-form');
 
-let  findBtn= document.querySelector('#find-btn');
+let findBtn= document.querySelector('#find-btn');
+
 
 {
     findBtn.addEventListener('click',()=>{
@@ -40,4 +42,21 @@ let  findBtn= document.querySelector('#find-btn');
         }
 
     })
+}
+
+//인증번호 발송
+{
+    let email = $email.value;
+    if (email!=null){
+        $certifiBtn.addEventListener('click', function (){
+
+            fetch(`findId/email/${email}`, method='POST')
+                .then(resp=> resp.text())
+                .then(text =>{
+                    if(text == true){
+                        console.log("이메일 전송 성공!")
+                    }
+                })
+        })
+    }
 }

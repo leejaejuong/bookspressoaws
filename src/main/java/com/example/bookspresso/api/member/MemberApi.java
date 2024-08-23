@@ -1,5 +1,6 @@
 package com.example.bookspresso.api.member;
 
+import com.example.bookspresso.service.member.MailService;
 import com.example.bookspresso.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberApi {
 
     private final MemberService memberService;
+    private final MailService mailService;
 
     // 회원가입
     @PostMapping("/join/check-loginId/{loginId}")
@@ -47,6 +49,25 @@ public class MemberApi {
             return false;
         }
 
+    }
+
+
+    //아이디 찾기
+    @PostMapping("/findId/email/{email}")
+    public String emailCertifiedNumber(@PathVariable("email") String email){
+
+        System.out.println("emain@@" + email);
+        int findEmail = memberService.findEmail(email);
+        System.out.println("findEmail = " + findEmail);
+
+        if(findEmail == 1){
+            String authNumber = mailService.sendEmail(email);
+            System.out.println("이메일 인증번호 발송 성공!");
+            return authNumber;
+        }else{
+            new Exception().printStackTrace();
+            return null;
+        }
     }
 
 }

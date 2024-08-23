@@ -79,12 +79,18 @@ public class MemberController {
     @GetMapping("/findId")
     public String findId(){
 
+
+
+
+
         return "member/findId";
     }
-    @PostMapping("/findId")
-    public String findId(int a){
-        return null;
-    }
+//    @PostMapping("/findId")
+//    public String findId(HttpSession session,
+//                         String email, String certifiedNumber){
+//
+//        return null;
+//    }
 
     @GetMapping("/findPassword")
     public String findPassword(){
