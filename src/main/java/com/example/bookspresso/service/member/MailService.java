@@ -18,7 +18,7 @@ public class MailService {
 
     private final JavaMailSender javaMailSender;
     private final SpringTemplateEngine templateEngine;
-    private final ServletContext servletContext;
+//    private final ServletContext servletContext;
 
     public String sendEmail(String emailAddress){
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -29,8 +29,8 @@ public class MailService {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "utf-8");
 
             mimeMessageHelper.setTo(emailAddress);  //보내는 주소 설정
-            mimeMessageHelper.setSubject("메일 제목입니다."); //메일 제목 설정
-            mimeMessageHelper.setText(setContext("인증번호 : " + authNumber), true);  // 메일 본문 내용
+            mimeMessageHelper.setSubject("[북스프레소] 이메일 인증번호 안내"); //메일 제목 설정
+            mimeMessageHelper.setText(setContext(authNumber), true);  // 메일 본문 내용
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -40,14 +40,16 @@ public class MailService {
 
     }
 
+    // 전송할 메일 내용
     //thymeleaf를 활용하여 html 만들기
     public String setContext(String content) {
         Context context = new Context(); // 타임리프에서 제공하는 객체
         context.setVariable("content", content);
 
-        return templateEngine.process("mail-template", context);
+        return templateEngine.process("member/mail-template", context);
     }
 
+    //인증번호 생성
     public String makeAuthNumber() {
         Random r = new Random();
         String authNumber = "";
