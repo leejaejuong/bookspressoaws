@@ -70,4 +70,7 @@ public class MemberApi {
         }
     }
 
+    // 회원 탈퇴
+
+
 }

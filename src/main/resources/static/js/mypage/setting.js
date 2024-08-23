@@ -272,4 +272,10 @@ let cancelEdit = () => editMode(false);
         d_modal.style.display = "none"
     });
 }
+ // 회원 탈퇴
+{
+    let dropMember = document.querySelector('#deleteBtn');
 
+    // dropMember.addEventListener('click', ()=>{
+    // })
+}

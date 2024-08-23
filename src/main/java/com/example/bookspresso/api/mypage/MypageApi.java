@@ -1,5 +1,6 @@
 package com.example.bookspresso.api.mypage;
 
+import com.example.bookspresso.service.admin.ManageMemberService;
 import com.example.bookspresso.service.mypage.MypageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MypageApi {
     private final MypageService mypageService;
+    private final ManageMemberService manageMemberService;
 
     @PatchMapping("/member-introduce")
     public void updateIntroduce(HttpSession session, @RequestBody Map<String, String> introduceMap) {
@@ -44,10 +46,11 @@ public class MypageApi {
         mypageService.modifyEmail(memberId, email);
     }
 
-    @DeleteMapping("/members-delete")
+    @DeleteMapping("/members-delet")
     public void deleteMember(HttpSession session) {
         Long memberId = (Long) session.getAttribute("memberId");
-        mypageService.deleteMembers(memberId);
+//        mypageService.deleteMembers(memberId);
+        manageMemberService.dropMember(memberId);
     }
 
     @PatchMapping("/members-pfp-file")
@@ -62,4 +65,7 @@ public class MypageApi {
             log.error(e.getMessage());
         }
     }
+
+
+
 }
