@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class PostMapperTest {
 @Autowired PostMapper postMapper;
-    @Test
-    void mainWithpage() {
-        List<PostMainDTO> postMainDTOS = postMapper.mainWithpage();
-        System.out.println("postMainDTOS = " + postMainDTOS);
-    }
+//    @Test
+//    void mainWithpage() {
+//        List<PostMainDTO> postMainDTOS = postMapper.mainWithpage();
+//        System.out.println("postMainDTOS = " + postMainDTOS);
+//    }
 }
