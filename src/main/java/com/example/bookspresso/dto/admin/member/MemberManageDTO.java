@@ -10,10 +10,14 @@ import lombok.*;
 @Builder
 public class MemberManageDTO {
 
-    String loginId;
-    String nickname;
-    int debateNum;
-    int posterNum;
+    private Long memberId;
+    private String loginId;
+    private String nickname;
+    private String email;
+    private String joinDate;
+    private int debateNum;
+    private int posterNum;
+
 //    String createdDate; //  가입일
 
 

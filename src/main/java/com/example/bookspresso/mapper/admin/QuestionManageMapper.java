@@ -20,14 +20,10 @@ public interface QuestionManageMapper {
     int selectFinishQuestionCount();
 
     void insertAnswer(QuestionAnswerDTO questionAnswerDTO);
-    void updateAStatus(Long qBoardId);
-//    void updateAnswer();
 
-//    void insertAnswer(QuestionAnswerDTO questionAnswerDTO);
-//
-//    void updateAnswerStatus(Long qBoardId);
-//
-//    void updateAnswer(ModifyAnswer modifyAnswer);
+    void updateAnswerStatus(Long qBoardId);
+
+    void updateAnswer(QuestionAnswerDTO questionAnswerDTO);
 
 
 

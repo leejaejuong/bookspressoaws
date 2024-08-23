@@ -15,8 +15,8 @@
         <div class="header">
             <div class="sub">
                 <ul class="gnb-lists">
-                    <li><a th:href="@{/admin/debate/recruiting}">현재 모집 중인 토론</a></li>
-                    <li><a th:href="@{/admin/debate/onGoing}" class="on">현재 진행 중인 토론</a></li>
+                    <li><a th:href="@{/admin/debate/recruiting}"  class="on">현재 모집 중인 토론</a></li>
+                    <li><a th:href="@{/admin/debate/onGoing}">현재 진행 중인 토론</a></li>
                     <li><a th:href="@{/admin/debate/finished}">종료된 토론</a></li>
                 </ul>
             </div>
@@ -31,10 +31,11 @@
                 <div class="search">
                     <div class="search_box">
                         <span>토론 검색</span>
-                        <form th:action="@{/admin/debate/onGoing/search}" method="get">
+                        <form th:action="@{/}" method="get">
                             <select name="searchType" size="1">
                                 <option value="bookName">책 이름</option>
                                 <option value="meetingType">모임 종류</option>
+                                <option value="debateType">토론 종류</option>
                             </select>
                             <input type="text" name="keyword">
                             <button>검색</button>
@@ -49,7 +50,7 @@
                 <div class="board">
                     <div class="board-title">
                         <span><strong>현재 진행 중인 토론장</strong></span>
-                        <span th:text="${total}"></span>
+<!--                        <span th:text="${}"></span>-->
                     </div>
                     <div class="board-action">
                         <span>선택 토론장을</span>
@@ -82,11 +83,11 @@
                                         </div>
                                     </th>
                                     <th scope="col">모임 종류</th>
+                                    <th scope="col">토론 종류</th>
+                                    <th scope="col">토론 모임장</th>
                                     <th scope="col">모집 시작일</th>
                                     <th scope="col">모집 종료일</th>
-                                    <th scope="col">토론 시작일</th>
-                                    <th scope="col">토론 종료일</th>
-                                </tr>                               
+                                </tr>
                                </thead>
                             <tbody>
                                 <th:block th:each="board : ${list}">
@@ -105,10 +106,10 @@
                                             </div>
                                         </td>
                                         <td class="tc" th:text="${board.meetingType}"></td>
+                                        <td class="tr" th:text="${board.debateType}"></td>
+                                        <td class="tr" th:text="${board.bookName}"></td>
                                         <td class="tr" th:text="${board.groupStartDate}"></td>
                                         <td class="tr" th:text="${board.groupEndDate}"></td>
-                                        <td class="tr" th:text="${board.debateStartDate}"></td>
-                                        <td class="tr" th:text="${board.debateEndDate}"></td>
                                     </tr>
 
     <!--                                토론장 디테일 정보 -->
@@ -143,19 +144,19 @@
             </div>
         </div>
 
-        <!-- 페이지 버튼 -->
+         페이지 버튼
         <div class="page">
             <span class="page-line">
 
-                <a th:href="@{/admin/debate/onGoing(page=${adminPageSetDTO.startPage - 1})}" th:if="${adminPageSetDTO.prev}">
+                <a th:href="@{/admin/debate/recruiting(page=${adminPageSetDTO.startPage - 1})}" th:if="${adminPageSetDTO.prev}">
                     <span>&lt</span>
                 </a>
 
-                <a th:href="@{/admin/debate/onGoing(page=${i})}"
+                <a th:href="@{/admin/debate/recruiting(page=${i})}"
                    th:each="i : ${#numbers.sequence(adminPageSetDTO.startPage, adminPageSetDTO.endPage)}">
                     <span class="page-battom" th:classappend="${adminPageSetDTO.adminPageRequestDTO.page == i ? 'active' : ''}" th:text="${i}"></span>
                 </a>
-                <a th:href="@{/admin/debate/onGoing(page=${adminPageSetDTO.endPage + 1})}" th:if="${adminPageSetDTO.next}">
+                <a th:href="@{/admin/debate/recruiting(page=${adminPageSetDTO.endPage + 1})}" th:if="${adminPageSetDTO.next}">
                     <span>&gt</span>
                 </a>
 

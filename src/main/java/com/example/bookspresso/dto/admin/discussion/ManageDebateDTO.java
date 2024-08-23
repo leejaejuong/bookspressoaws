@@ -23,11 +23,13 @@ public class ManageDebateDTO {
     private String bookName;
     private String title;
     private String meetingId;
+    private String meetingType;
     private String groupStartDate;
     private String groupEndDate;
     private String debateStartDate;
     private String debateEndDate;
     private String debateTypeId;
+    private String debateType;
     private String debateBookId;
     private String outline;
 
