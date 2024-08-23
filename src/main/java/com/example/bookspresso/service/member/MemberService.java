@@ -51,5 +51,4 @@ public class MemberService {
         return memberMapper.selectMemberId(loginId, password)
                 .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 회원 정보입니다."));
     }
-
 }

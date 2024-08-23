@@ -109,9 +109,6 @@
     });
     addcommentList(postId,commentList);
 
-
-
-
 // 코멘트 불러오기
 function commentList(obj) {
     let tags = ''

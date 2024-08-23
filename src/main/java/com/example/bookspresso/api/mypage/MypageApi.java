@@ -44,8 +44,9 @@ public class MypageApi {
         mypageService.modifyEmail(memberId, email);
     }
 
-    @DeleteMapping("/members-delete/{memberId}")
-    public void deleteMember(@PathVariable("memberId") Long memberId, HttpSession session) {
+    @DeleteMapping("/members-delete")
+    public void deleteMember(HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
         mypageService.deleteMembers(memberId);
     }
 
