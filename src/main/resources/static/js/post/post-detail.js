@@ -1,6 +1,6 @@
 //게시글 버튼처리
 {
-    let $upbtn = document.querySelector('.board-object-btn');
+    let $upbtn = document.querySelector('.writer-user-chose');
     $upbtn.addEventListener("click", function (e){
         if(e.target.classList.contains('board-object-btn')){
             let $btnBox = e.target.closest('.board-object-user-btn')
@@ -8,18 +8,29 @@
             $btnBox.classList.remove('none');
         }
     });
-    let $modifybtn = document.querySelector('.modal-modify');
-    let $delectbtn = document.querySelector('.modal-modelete');
-    let postId = document.querySelector(".flex_container").dataset.id;
 
-    $modifybtn.addEventListener('click', function(){
-
-        location.href=`/post/modify?postId=${postId}`
-    });
-    $delectbtn.addEventListener('click',function (){
-        console.log("클릭");
-        location.href=`/post/remove?postId=${postId}`
+    let $modify = document.querySelector('.writer-user-chose');
+    $modify.addEventListener("click",function (e){
+    let clsList =e.target.classList;
+        let postId = document.querySelector(".flex_container").dataset.id;
+        if(clsList.contains('modal-modify')){
+            location.href=`/post/modify?postId=${postId}`
+        }else if(clsList.contains('modal-modelete')){
+            location.href=`/post/remove?postId=${postId}`
+        }
     })
+    // let $modifybtn = document.querySelector('.modal-modify');
+    // let $delectbtn = document.querySelector('.modal-modelete');
+    // let postId = document.querySelector(".flex_container").dataset.id;
+    //
+    // $modifybtn.addEventListener('click', function(){
+    //
+    //     location.href=`/post/modify?postId=${postId}`
+    // });
+    // $delectbtn.addEventListener('click',function (){
+    //     console.log("클릭");
+    //     location.href=`/post/remove?postId=${postId}`
+    // })
 
 }
 
@@ -32,7 +43,6 @@
 
     $addComment.addEventListener('click' , function (){
         let commentContent = document.querySelector('.comment_textarea').value;
-        console.log(commentContent)
         if(commentContent === ''){
            alert("댓글을 작성해주세요");
        }else{

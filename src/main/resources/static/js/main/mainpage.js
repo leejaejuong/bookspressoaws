@@ -252,7 +252,16 @@
         };
 
         bindEvents();
-    })
+    });
+    let $selectbtn =document.querySelectorAll('.book-button-post');
+    $selectbtn.forEach( e=>{
+        e.addEventListener('click',function (){
+            let postId=this.closest('.manpage-debate-object-box')
+                .querySelector('.post-object-title').dataset.id;
+            location.href=`/post/detail?postId=${postId}`
+
+        });
+    });
 }
 {
     const swiper1 = new Swiper("#book", {

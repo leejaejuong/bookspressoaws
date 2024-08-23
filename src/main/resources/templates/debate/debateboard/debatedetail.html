@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/debate/debateboard.css}"/>
     <link rel="stylesheet" th:href="@{/css/debate/postobject.css}"/>
-
+    <link rel="stylesheet" th:href="@{/css/footer/footer.css}"/>
     <script defer type="module" th:src="@{/js/debate/debatedetail.js}"></script>
 
 </head>
@@ -99,6 +99,7 @@
             </div>
     </main>
         </div>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 <script th:inline="javascript">
     let sessionMemberId=[[${session.memberId}]];
 

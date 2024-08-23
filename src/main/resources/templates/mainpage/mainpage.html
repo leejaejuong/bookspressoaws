@@ -125,7 +125,7 @@
             <ul class="post-object-man" id="post">
                 <li class="manpage-debate-object-box" th:each="addmain:${addmain}">
                     <div class="post-object-box post-object-style">
-                        <div class="post-object-title">
+                        <div class="post-object-title" th:data-id="${addmain.postId}">
                             <div class="user-img-box"><img class="user-img" src="/img/user.png"/></div>
                             <div class="post-title-user">
                                 <div th:text="${addmain.nickName}"></div>
@@ -134,7 +134,7 @@
                         </div>
                         <!--                        사진부분-->
                         <div class="post-object-book-box">
-                            <div class="post-object-back-book">
+                            <div class="post-object-back-book" >
                                 <div class="post-object-book-back">
                                     <img class="post-object-book" th:src="${addmain.cover}"/>
                                 </div>
@@ -148,11 +148,9 @@
                             <div class="post-content-content" th:utext="${addmain.postContent}">
                             </div>
                         </div>
-                        <a  th:href="@{/post/detail(postId=${addmain.postId})}">
-                        <div class="book-button">
+                        <div class="book-button-post">
                             자세히 보기
                         </div>
-                        </a>
                     </div>
                 </li>
             </ul>
