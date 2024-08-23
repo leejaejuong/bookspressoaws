@@ -10,6 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/debate/debatemain.css}"/>
     <link rel="stylesheet" th:href="@{/css/header/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/mainpage/mainpage.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer/footer.css}"/>
     <script defer th:src="@{/js/debate/debatemain.js}"></script>
 </head>
 <body>
@@ -74,8 +75,6 @@
         </div>
     </div>
 </main>
-<script>
-
-</script>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
 </html>

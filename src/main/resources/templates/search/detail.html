@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/search/search_detail.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer/footer.css}"/>
     <script defer th:src="@{/js/search/search_detail.js}"></script>
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=645fbc8cba0ca0783bdc4b611fc857c3"></script>
@@ -133,6 +134,7 @@
     </div>
 
 </div>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 <script th:inline="javascript">
     let sessionMemberId=[[${session.memberId}]];
 
