@@ -37,11 +37,35 @@ function insertImage(event) {
     
     // 저장 버튼 이벤트 처리
     document.querySelector('#save-btn').addEventListener('click', function () {
-        const title = document.getElementById("postTitle").value;
+        const title = document.getElementById("postTitle");
         const editor = document.getElementById("editor");
         const content = editor.innerHTML;
+        const isbn13=document.getElementById("isbn13");
+        let $isbn13Mag=document.querySelector('.error-mag-isbn13');
+        let $titleMag=document.querySelector('.error-mag-title');
+        let $contenMag=document.querySelector('.error-mag-content');
+        let $isbn13error=document.querySelector('.select-book-sec');
+        let $titleeroor = document.querySelector('.write-title-text');
+        let $contenteroor = document.querySelector('.write-content-text');
 
-        // console.log(content)
+        // DB 무결성을 위한 값검사
+        //책선택
+        if(isbn13.value ===''){
+            $isbn13error.style.border="1px solid #ff4d4f";
+            $isbn13Mag.style.display="flex";
+        }else{
+            $isbn13error.style.border = "1px solid #dee2e6";
+            $isbn13Mag.style.display = "none";
+        }
+        // 타이틀
+        if(title.value ===''){
+            $titleeroor.style.border="1px solid #ff4d4f";
+            $titleMag.style.display="flex";
+        }else{
+            $titleeroor.style.border = "1px solid #dee2e6";
+            $titleMag.style.display = "none";
+        }
+
 
         const $textarea = document.createElement('textarea');
 
@@ -49,10 +73,21 @@ function insertImage(event) {
         $textarea.style.display='none'
         $textarea.innerText = content;
 
-        const $form = document.forms[0];
+        if($textarea.value ===''){
+            $contenteroor.style.border="1px solid #ff4d4f";
+            $contenMag.style.display="flex";
+        }else{
+            $contenteroor.style.border = "1px solid #dee2e6";
+            $contenMag.style.display = "none";
+        }
 
-        $form.appendChild($textarea);
-        $form.submit();
+        if(!(isbn13.value ===''||title.value ===''||$textarea.value ==='')){
+            const $form = document.forms[0];
+
+            $form.appendChild($textarea);
+            $form.submit();
+        }
+
     });
 }
 
