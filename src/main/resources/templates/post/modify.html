@@ -55,13 +55,14 @@
             <span class="select-book__book-content"></span>
         </div>
     </section>
-
+    <div class="error-mag-isbn13"> 책을 선택해주세요</div>
     <form id="submitbtn" th:action="@{/post/modify}" method="post">
         <input type="hidden" name="isbn13" id="isbn13">
         <input type="hidden" name="postId" th:value="${modify.postId}">
         <div class="write-total-box">
             <div class="write-title-box" >
                 <input type="text" th:value="${modify.postTitle}" name="postTitle" id="postTitle" class="write-title-text" placeholder="제목을 입력하세요" maxlength="70"/>
+                <div class="error-mag-title "> 제목을 입력해주세요</div>
                 <div class="title-count-box">
                     <p><span class="title-count" >0</span>/70</p>
                 </div>
@@ -97,6 +98,7 @@
             <div class="write-content-box">
                 <div id="editor" contenteditable="true" class="write-content-text" th:utext="${modify.postContent}"></div>
             </div>
+            <div class="error-mag-content"> 글작성을 해주세요</div>
             <div class="gather-create-butten-div">
                 <button type="button" id="save-btn" class="gather-create-butten-dv1 nexttype">
                     수정

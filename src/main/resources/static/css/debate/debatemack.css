@@ -126,32 +126,9 @@ input[type='radio']:checked{
     display: flex;
     justify-content: center;
 }
-.aside-total-box{
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-    padding: 28px 20px;
-    width: 200px;
-    height: 900px;
 
 
-}
-.sticky{
-    flex-direction: column;
-    display: flex;
-    position:sticky;
-    top:20px;
-    padding-bottom: 10px;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    align-items: center
-}
-.aside-object{
-    width: 104px;
-    height: 104px;
-    margin: 20px 0;
-    border:1px solid #000000;
-}
+
 .board-object-box{
     display: flex;
     flex-direction: column;
@@ -163,13 +140,7 @@ input[type='radio']:checked{
 
 }
 
-.aside-text{
-    padding-bottom: 5px;
-    max-height: 54px;
-}
-.aside-mypage{
-    flex-direction: row;
-}
+
 .gather-create-butten-dv1{
     border : 1px #212529;
     background-color: #212529;
