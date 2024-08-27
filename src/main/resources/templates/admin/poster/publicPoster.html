@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
     <link rel="stylesheet" th:href="@{/css/admin/poster/poster.css}">
-    <script defer th:src="@{/js/admin/poster/poster.js}"></script>
+    <script defer type="module" th:src="@{/js/admin/poster/poster.js}"></script>
 </head>
 <body>
 <header th:replace="~{admin/main/main_gnb :: adminHeader}"></header>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="board-action">
                         <span>선택 포스트를</span>
-                        <span>삭제</span>
+                        <span id="drop-btn">삭제</span>
                     </div>
                     <!-- 포스터 정보  -->
                     <div class="board-content">
@@ -69,7 +69,7 @@
                             <thead>
                                 <tr class="table-header">
                                     <th scope="col">
-                                        <input type="checkbox" class="checkAction" name="check" value="">
+                                        <input type="checkbox" id="allCheck" class="checkAction" name="check" >
                                     </th>
                                     <th scope="col">포스트 제목</th>
                                     <th scope="col">책 제목</th>
@@ -82,7 +82,7 @@
                                     <!-- 토론 리스트 뿌려지는 곳 -->
                                     <!-- tc: 테이블 센터 정렬 / tl: 테이블 왼쪽 정렬 -->
                                     <td class="tc" >
-                                        <input type="checkbox" class="checkAction" name="check" value="">                                        
+                                        <input type="checkbox" class="checkAction check-boxes" name="check" th:value="${board.postId}">
                                     </td>
                                     <td class="tl" th:text="${board.postTitle}"></td>
                                     <td class="tl" th:text="${board.bookName}"></td>

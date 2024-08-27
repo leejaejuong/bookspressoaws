@@ -10,7 +10,7 @@ let $successJoin = [];
  * 정규표현식 테스트 _> 아이디 이상함 
   */
 {
-    // let $inputLoginId = $InputBox[0];
+    //아이디 중복 검사
         //유효성 검사
     let loginReg = /^[a-zA-Z0-9_]{4,20}$/g;
 

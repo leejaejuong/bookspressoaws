@@ -39,7 +39,6 @@
                                            ON M.MEMBER_ID=P.MEMBER_ID
         WHERE DC.NOTICE_ID=#{noticeId}
         ORDER BY COMMENT_ID DESC
-
     </select>
 <!--    토론 작성 페이지-->
     <insert id="insertWrite">

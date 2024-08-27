@@ -51,4 +51,22 @@ public class MemberService {
         return memberMapper.selectMemberId(loginId, password)
                 .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 회원 정보입니다."));
     }
+
+    public String findLoginIdEmail(String email){
+
+        return memberMapper.selectLoginIdEmail(email)
+                .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 이메일입니다.")
+        );
+
+    }
+
+    //비밀번호 변경
+    public void modifyPassword(String loginId, String newPw){
+        try {
+            memberMapper.updatePassword(loginId, newPw);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

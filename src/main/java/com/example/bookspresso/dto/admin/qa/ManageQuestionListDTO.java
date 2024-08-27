@@ -17,7 +17,7 @@ public class ManageQuestionListDTO {
     private String qTitle;
     private String createDate;
     private boolean aStatus;
-    private String createdDate;
+    private String answerCreatedDate;
     private String answerModifiedDate;
 
     private Long answerId;

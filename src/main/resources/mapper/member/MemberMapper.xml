@@ -42,6 +42,17 @@
         WHERE LOGIN_ID = #{loginId} AND PASSWORD = #{password}
     </select>
 
+    <select id="selectLoginIdEmail">
+        SELECT LOGIN_ID
+        FROM TBL_MEMBER
+        WHERE EMAIL = #{email}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE TBL_MEMBER
+        SET PASSWORD = #{newPw}
+        WHERE LOGIN_ID = #{loginId}
+    </update>
 
 
 

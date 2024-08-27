@@ -33,13 +33,14 @@
     <select id="selectFinishQuestionList">
 
         SELECT Q_TITLE, Q_BOARD_ID, A_STATUS, NICKNAME, CREATE_DATE,
-               ANSWER_ID,ANSWER_CREATED_DATE, ADMIN_LOGIN_ID
+               ANSWER_ID, ANSWER_CREATED_DATE, ADMIN_LOGIN_ID,ANSWER_MODIFIED_DATE
         FROM (
                  SELECT ROWNUM AS RNUM, Q_TITLE, Q_BOARD_ID, A_STATUS, NICKNAME, CREATE_DATE,
-                        ANSWER_ID,ANSWER_CREATED_DATE, ADMIN_LOGIN_ID
+                        ANSWER_ID,ANSWER_CREATED_DATE, ADMIN_LOGIN_ID,ANSWER_MODIFIED_DATE
                  FROM(
                          SELECT Q.Q_TITLE,Q.Q_BOARD_ID, Q.A_STATUS, M.NICKNAME, Q.CREATE_DATE,
-                                A.ANSWER_ID,A.CREATED_DATE AS ANSWER_CREATED_DATE, AD.ADMIN_LOGIN_ID
+                                A.ANSWER_ID,A.CREATED_DATE AS ANSWER_CREATED_DATE, AD.ADMIN_LOGIN_ID,
+                                A.ANSWER_MODIFIED_DATE
                          FROM (TBL_QUESTION Q JOIN TBL_MEMBER M
                                ON Q.MEMBER_ID = M.MEMBER_ID)
                                   FULL OUTER JOIN
