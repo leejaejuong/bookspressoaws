@@ -30,6 +30,7 @@ public class AdminAPI {
     }
 
 
+    //회원 삭제
     @PostMapping("admin/member/drop/{dropMemberLists}")
     public void dropMember(@PathVariable ArrayList<Long> dropMemberLists) {
         for(Long memberId : dropMemberLists){

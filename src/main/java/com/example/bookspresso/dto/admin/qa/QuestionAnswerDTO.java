@@ -14,7 +14,7 @@ public class QuestionAnswerDTO {
     Long qBoardId;
     Long adminId;
     String aContent;
-    String createdDate;
+    String answerCreatedDate;
     String answerModifiedDate;
 
 

@@ -130,12 +130,11 @@ class DebateManageMapperTest {
 
     @Test
     void selectRecruitingCount(){
-        adminPageRequestDTO.setSearchType("postTitle");
-        adminPageRequestDTO.setKeyword("테스트");
+
         List<ManageDebateDTO> list = debateManageMapper.selectRecruitingDebate(adminPageRequestDTO);
         System.out.println("list = " + list);
 
-        int i = debateManageMapper.selectRecruitingCount(debateSearchDTO);
+        int i = debateManageMapper.selectRecruitingCount();
         System.out.println("i = " + i);
 
     }

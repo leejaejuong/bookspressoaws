@@ -4,22 +4,11 @@ let loginBtn = document.querySelector('#loginBtn');
 let $loginForm = document.querySelector('#login-form');
 {
 
+
+
     loginBtn.addEventListener('click', function () {
-        let loginId = $idForm.value;
-        let password = $pwForm.value;
-        // 단순 값이 들어오면 - 값이 널이 아니라면 submit 실행
-        console.log("id : " + $idForm.value);
-        console.log("pw : " + $pwForm.value);
-        // if ($idForm.value&&$pwForm.value){
-        //     console.log("ture");
-        //     $loginForm.submit();
-        // }else {
-        //     console.log("false");
-        //     // failedLoginModal();
-        //     // 로그인 실패 모달 출력
-        //     // continue; 반복문에서만 사용가능
-        //
-        // }
+      let loginId = $idForm.value;
+      let password = $pwForm.value;
 
         fetch(`/login/findMemberId/${loginId}/${password}`, {method: 'POST'})
             .then(resp => resp.text())
@@ -32,11 +21,9 @@ let $loginForm = document.querySelector('#login-form');
                     failedLoginModal();
                 }
             })
-
-
     })
 
-
+}
 // 로그인 실패 모달 창 실행 함수
     {
         function failedLoginModal() {
@@ -53,4 +40,3 @@ let $loginForm = document.querySelector('#login-form');
         }
 
     }
-}

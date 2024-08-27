@@ -22,7 +22,7 @@ public class QuestionDetailDTO {
     private Long answerId;
     private Long adminId;
     private String aContent;
-    private String createdDate;
+    private String answerCreatedDate;
     private String answerModifiedDate;
 
 

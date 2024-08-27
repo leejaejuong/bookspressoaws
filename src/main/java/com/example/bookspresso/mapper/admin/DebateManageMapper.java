@@ -55,6 +55,9 @@ public interface DebateManageMapper {
 
     // 토론 삭제 처리
     Optional<Long> selectNoticeId(Long debateId);
+    int selectNoticeIdCount(Long debateId);
+    int selectDebateBoard(Long debateId);
+    int selectCommentCount(Long noticeId);
 
     void deleteDebate(Long debateId);
     void deleteMemberDebate(Long debateId);
@@ -64,5 +67,12 @@ public interface DebateManageMapper {
 
     //현재 모집중인 토론
     List<ManageDebateDTO> selectRecruitingDebate(AdminPageRequestDTO adminPageRequestDTO);
-    int selectRecruitingCount(DebateSearchDTO debateSearchDTO);
+    int selectRecruitingCount();
+
+    List<ManageDebateDTO> selectSearchRecruitingDebate(@Param("searchType") String searchType,
+                                 @Param("keyword") String keyword,
+                                 @Param("page") int page,
+                                 @Param("amount") int amount);
+    int selectSearchRecruitingCount(@Param("searchType") String searchType,
+                                    @Param("keyword") String keyword);
 }

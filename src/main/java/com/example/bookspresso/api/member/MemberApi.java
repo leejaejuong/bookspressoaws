@@ -1,5 +1,6 @@
 package com.example.bookspresso.api.member;
 
+import com.example.bookspresso.service.admin.ManageMemberService;
 import com.example.bookspresso.service.member.MailService;
 import com.example.bookspresso.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ public class MemberApi {
 
     private final MemberService memberService;
     private final MailService mailService;
+    private final ManageMemberService manageMemberService;
 
     // 회원가입
     @PostMapping("/join/check-loginId/{loginId}")
@@ -53,7 +55,7 @@ public class MemberApi {
 
 
     //아이디 찾기
-    @PostMapping("/findId/email/{email}")
+    @PostMapping("/find/email/{email}")
     public String emailCertifiedNumber(@PathVariable("email") String email){
 
         System.out.println("emain@@" + email);
@@ -70,7 +72,31 @@ public class MemberApi {
         }
     }
 
-    // 회원 탈퇴
+    //비밀번호 찾기
+    @PostMapping("/find/loginId/{email}")
+    public String emailLoginIdEmail(@PathVariable("email") String email){
+        try {
+            return memberService.findLoginIdEmail(email);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    // 비밀번호 변경
+    @PostMapping("/update/password/{loginId}/{newPw}")
+    public boolean updatePassword(@PathVariable("loginId") String loginId,
+                               @PathVariable("newPw") String newPw){
+
+        try {
+            memberService.modifyPassword(loginId, newPw);
+            System.out.println("loginId = " + loginId);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
 }

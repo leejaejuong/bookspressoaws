@@ -83,6 +83,18 @@ class MemberMapperTest {
         System.out.println("emailCount = " + emailCount);
     }
 
+    @Test
+    void selectLoginIdEmail(){
+        String loginId = memberMapper.selectLoginIdEmail("eunbiyang74@gmail.com").get();
+        System.out.println("s = " + loginId);
+
+    }
+    @Test
+    void updatePw(){
+        memberMapper.updatePassword("sql","dmsql1234@@");
+        System.out.println("성공!");
+    }
+
 
 
 }

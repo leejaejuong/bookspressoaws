@@ -58,6 +58,15 @@ class MemberServiceTest {
         System.out.println("memberId = " + memberId);
     }
 
+    @Test
+    void findLoginIdEmail(){
+        memberService.findLoginIdEmail("eunbiyang74@gmail.com");
+
+    }
+    @Test
+    void modifyPw(){
+        memberService.modifyPassword("d333333", "slfkmase@@");
+    }
 
 
 
