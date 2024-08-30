@@ -21,7 +21,8 @@
         <div class="itemBox">
             <form th:action="@{/member/login}" method="post" id="login-form">
                 <div><input type="text" name="loginId" id="idForm" class="inputBox" placeholder="아이디"></div>
-                <div><input type="password" name="password" id="pwForm" class="inputBox" placeholder="비밀번호"></div>
+                <div><input type="password" name="password" id="pwForm" class="inputBox" placeholder="비밀번호"
+                autocomplete="off"></div>
                 <button type="button" class="loginBtn" id="loginBtn">로그인</button>
             </form>
             

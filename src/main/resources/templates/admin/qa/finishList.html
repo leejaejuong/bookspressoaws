@@ -63,7 +63,7 @@
                                     </td>
                                     <td class="tc" th:text="${board.nickname}"></td>
                                     <td class="tc" th:text="${board.createDate}"></td>
-                                    <td class="tc" th:if="${board.answerModifiedDate==null}" th:text="${board.createdDate}"></td>
+                                    <td class="tc" th:if="${board.answerModifiedDate==null}" th:text="${board.answerCreatedDate}"></td>
                                     <td class="tc" th:unless="${board.answerModifiedDate==null}" th:text="${board.answerModifiedDate}"></td>
 <!--                                    <td class="tr" th:if="${board.aStatus==true}">답변 완료</td>-->
 <!--                                    <td class="tr" th:unless="${board.aStatus==true}">답변 미완료</td>-->

@@ -35,4 +35,8 @@ public interface MemberMapper {
                                  @Param("password") String password);
 // 회원 식별번호에는 null이 절대 들어가면 안되므로 optional 사용
 
+    Optional<String> selectLoginIdEmail(String email);
+
+    void updatePassword(String loginId, String newPw);
+
 }

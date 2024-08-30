@@ -1,44 +1,22 @@
+import {dropDebate} from "../modul/debateModul.js";
 
-let $detailBtn = document.querySelectorAll('.detail-btn');
-let $detailInfo = document.querySelectorAll('.view-info');
+let $debateDropBtn = document.querySelector('#drop-btn');
+let $allCheckBox = document.querySelector("#allCheck");
+let $checkBoxs = document.querySelectorAll(".check-boxes");
+
+    // 체크 박스 전체 선택
 {
-
-    /**
-     * 토론리스트의 버튼을 누르면 토론의 상세 정보를 볼 수 있다.
-     */
-
-    for (let i = 0; i < $detailBtn.length; i++) {
-        $detailBtn[i].addEventListener('click', function (){
-            let info = $detailInfo[i].getAttribute("class");
-            console.log("버튼 class 이름 : " + info);
-
-            if(info == "view-info"){
-                $detailInfo[i].classList.add("detailOff");
-                console.log($detailInfo[i].getAttribute("class"));
-            }else{
-                $detailInfo[i].classList.remove("detailOff");
-                console.log($detailInfo[i].getAttribute("class"));
-            }
-
-
+    $allCheckBox.addEventListener('change',function (){
+        let isChecked = $allCheckBox.checked;
+        $checkBoxs.forEach(function (checkBox){
+            checkBox.checked = isChecked;
         })
-    }
-
-
-
-    // $detailBtn.addEventListener('click', function (){
-    //     console.log($detailInfo.getAttribute("class"));
-    //     let info=$detailInfo.getAttribute("class");
-    //
-    //     if (info=="view-info"){
-    //         $detailInfo.classList.add("detailOff");
-    //         console.log($detailInfo.getAttribute("class"));
-    //     }else{
-    //         $detailInfo.classList.remove("detailOff");
-    //         console.log($detailInfo.getAttribute("class"));
-    //     }
-    //
-    // })
-
-
+    })
+}
+{
+    $debateDropBtn.addEventListener('click',() =>{
+        dropDebate();
+        console.log("포스트 삭제 성공!");
+        location.reload();
+    })
 }

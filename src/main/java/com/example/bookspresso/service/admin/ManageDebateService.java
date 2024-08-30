@@ -60,7 +60,7 @@ public class ManageDebateService {
         return debateManageMapper.selectSearchEndDebateTotal(searchType, keyword, page, amount);
     }
 
-// xxxxx
+
     public List<ManageDebateDTO> findEndDebateList(AdminPageRequestDTO adminPageRequestDTO){
         return debateManageMapper.selectEndDebateList(adminPageRequestDTO);
     }
@@ -78,30 +78,56 @@ public class ManageDebateService {
         return debateManageMapper.selectAttendMember(debateId);
     }
 
-//    //토론 삭제 처리
-//    public void dropDebate(Long debateId){
-//        // 토론에 사용하는 책 삭제
-//        debateManageMapper.deleteDebateBook(debateId);
-//
-//        //토론 댓글 삭제
-//        List<Long> commentIds = debateManageMapper.selectDeleteElement(debateId);
-//        for (Long commentId : commentIds){
-//            debateManageMapper.deleteDebateComment(commentId);
-//        }
-//        //토론 게시글 삭제
-//        debateManageMapper.deleteDebateBoard(debateId);
-//        //토론 info? 삭제
-//        debateManageMapper.delectDebate(debateId);
-//    }
 
     public void dropDebate(Long debateId){
 
         debateManageMapper.deleteDebateBook(debateId);
         debateManageMapper.deleteMemberDebate(debateId);
-        Long noticeId = debateManageMapper.selectNoticeId(debateId).get();
+        int debateBoardCount = debateManageMapper.selectDebateBoard(debateId);
+        int noticeIdCount = debateManageMapper.selectNoticeIdCount(debateId);
+        // 보드가 존재하면 댓글의 존재여부를 확인해야함
+        if (debateBoardCount != 0){
+            if (noticeIdCount != 0 ){
+                Long noticeId = debateManageMapper.selectNoticeId(debateId).get();
+                int commentCount = debateManageMapper.selectCommentCount(noticeId);
+                if (commentCount != 0){
+                    debateManageMapper.deleteDebateComment(noticeId);
+                }
+            }
+            debateManageMapper.deleteDebateBoard(debateId);
+        }
+        debateManageMapper.deleteDebate(debateId);
 
-        debateManageMapper.deleteDebateComment(noticeId);
-        debateManageMapper.deleteDebateBoard(debateId);
+
+//        if (noticeIdCount != 0){
+//            Long noticeId = debateManageMapper.selectNoticeId(debateId).get();
+//            int commentCount = debateManageMapper.selectCommentCount(noticeId);
+//            if (commentCount != 0){
+//                debateManageMapper.deleteDebateComment(noticeId);
+//            }
+//            debateManageMapper.selectDebateBoard(debateId);
+//        }
+//        debateManageMapper.deleteDebate(debateId);
+
+//        int debateBoardCount = debateManageMapper.selectDebateBoard(debateId);
+//        System.out.println("debateBoardCount = " + debateBoardCount);
+//        if (debateBoardCount != 0){
+//            Long noticeId = debateManageMapper.selectNoticeId(debateId).get();
+//            System.out.println("noticeId = " + noticeId);
+//            int commentCount = debateManageMapper.selectCommentCount(noticeId);
+//            System.out.println("commentCount = " + commentCount);
+//            if (commentCount != 0) {
+//                debateManageMapper.deleteDebateComment(noticeId);
+//                System.out.println("토론댓글 삭제");
+//            }else { //삭제
+//                System.out.println("토론 댓글 없음 ");
+//            }
+//            debateManageMapper.deleteDebateBoard(debateId);
+//            System.out.println("토론 보드 삭제 ");
+//        }else { // 삭제
+//            System.out.println(" 토론 글작성 없음 ");
+//        }
+
         debateManageMapper.deleteDebate(debateId);
     }
 
@@ -110,8 +136,16 @@ public class ManageDebateService {
         return debateManageMapper.selectRecruitingDebate(adminPageRequestDTO);
     }
 
-    public int findRecrutingDebateCount(DebateSearchDTO debateSearchDTO){
-        return debateManageMapper.selectRecruitingCount(debateSearchDTO);
+    public int findRecruitingDebateCount(){
+        return debateManageMapper.selectRecruitingCount();
+    }
+
+    //현재 모집 중인 토론 검색
+    public List<ManageDebateDTO> findSearchRecruitingDebate(String searchType, String keyword, int page, int amount){
+        return debateManageMapper.selectSearchRecruitingDebate(searchType, keyword, page, amount);
+    }
+    public int findSearchRecruitingDebateTotal(String searchType, String keyword){
+        return debateManageMapper.selectSearchRecruitingCount(searchType, keyword);
     }
 
 

@@ -16,9 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/admin/debate")
@@ -54,6 +52,7 @@ public class DiscussionController {
         return "admin/discussion/onGoingDc";
     }
 
+    //진행 중인 토론 검색
     @GetMapping("/onGoing/search")
     public String OnDebateSearch(DebateSearchDTO debateSearchDTO,
                                  AdminPageRequestDTO adminPageRequestDTO,
@@ -77,6 +76,7 @@ public class DiscussionController {
         return "/admin/discussion/onGoingDc";
     }
 
+    //종료된 토론
     @GetMapping("/finished")
     public String endDiscussion(Model model,
                                 AdminPageRequestDTO adminPageRequestDTO){
@@ -120,14 +120,41 @@ public class DiscussionController {
     }
 
 
+    //모집 중인 토론
     @GetMapping("/recruiting")
     public String recruiting(AdminPageRequestDTO adminPageRequestDTO,
-                             DebateSearchDTO debateSearchDTO,
                              Model model){
 
         List<ManageDebateDTO> list = manageDebateService.findRecruitingDebate(adminPageRequestDTO);
+        list.forEach(manageDebateDTO -> {
+            List<AttendMemberDTO> attendMemberList = manageDebateService.findAttendMemberList(manageDebateDTO.getDebateId());
+            manageDebateDTO.setAttendList(attendMemberList);
+        });
 
-        int total = manageDebateService.findRecrutingDebateCount(debateSearchDTO);
+        int total = manageDebateService.findRecruitingDebateCount();
+
+        AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
+
+        model.addAttribute("total", total);
+        model.addAttribute("list", list);
+        model.addAttribute("adminPageSetDTO", adminPageSetDTO);
+
+
+        return "admin/discussion/recruitingDc";
+    }
+
+    @GetMapping("/recruiting/search")
+    public String recruitingSearch(DebateSearchDTO debateSearchDTO,
+                                   AdminPageRequestDTO adminPageRequestDTO,
+                                   Model model){
+
+        List<ManageDebateDTO> list = manageDebateService.findSearchRecruitingDebate(debateSearchDTO.getSearchType(), debateSearchDTO.getKeyword(),
+                adminPageRequestDTO.getPage(), adminPageRequestDTO.getAmount());
+        list.forEach(manageDebateDTO -> {
+            List<AttendMemberDTO> attendMemberList = manageDebateService.findAttendMemberList(manageDebateDTO.getDebateId());
+            manageDebateDTO.setAttendList(attendMemberList);
+        });
+        int total = manageDebateService.findSearchRecruitingDebateTotal(debateSearchDTO.getSearchType(), debateSearchDTO.getKeyword());
 
         AdminPageSetDTO adminPageSetDTO = new AdminPageSetDTO(adminPageRequestDTO, total);
 

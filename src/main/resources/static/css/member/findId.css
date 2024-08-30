@@ -4,9 +4,10 @@
     font-family: "Jua", sans-serif;
     color: #212529;
 }
-a{
-    text-decoration: none;
-}
+/*a{*/
+/*    text-decoration-line: none;*/
+/*    color: #e9c9ab;;*/
+/*}*/
 
 .full-screen {
     display: flex;
@@ -17,74 +18,30 @@ a{
 
 .title{
     padding-bottom: 50px;
-    
+
     font-size: 32px;
     font-weight: normal;
     color: #444;
 }
-.total-box{
-    border-bottom: 1px solid #666;
-    border-right: 1px solid #666;
-    border-left: 1px solid #666;
-}
-/* 휴대폰. 이메일 인증 선택 칸 */
-.tap-find {
-    list-style: none;
-    display: flex;
-    width: 960px;
 
-    /* margin-bottom: 100px; */
-    background-color: #FBFBFB;
 
-}
-
-.tap-find > li{
-    width: 50%;
-    height: 47px;
-    border: 1px solid #666;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    
-
-}
-/*.tap-find > .on {*/
-/*    position:relative;*/
-/*    background-color: #FFFFFF;*/
-/*    border-left-color: #FFFFFF ;*/
-/*    border-right-color: #FFFFFF ;*/
-/*    border-bottom-color: #FFFFFF;*/
-/*}*/
-
-/* 데이터 입력 */
 .itemBoxs {
     padding: 124px 99px;
-
+    border: 1px solid #666;
 }
 
 .itemBoxs > p{
     font-weight: bold;
     font-size: 15px;
-    margin-bottom: 25px;
 }
 
-ul,li {
-    margin: 0;
-    padding: 0;
+ul {
+    margin-top: 25px;
 }
 
-ul > .item {
-    display: flex;
-    flex-direction: row;
-   
-}
-ul > .item {
-    list-style: none;
-}
+
 .box-text {
-    background-color: #e9c9ab;
+    background-color: #f7f5f0;
     width: 146px;
     height: 38px;
     padding: 24px 0 0 39px;
@@ -92,45 +49,47 @@ ul > .item {
 
 .box-text > .text {
     font-size: 15px;
-    color: #212529;
-    
+    color: #666;
+
 }
 
 .box-input {
     width: 535px;
-    height: 40px;
+    /*height: 40px;*/
     padding: 12px 20px;
+    display: flex;
+    align-items: center;
 }
 
-.box-input > input {
+.box-input > find {
     width: 336px;
     height: 38px;
     padding: 0 18px 1px 18px;
-    
+
     font-size: 15px;
-    /* color: #212529; */
+    color: #444;
 
     border: 1px solid #eaeaea;
-
 }
 
-.certifi-btn{
-    padding: 9px 12px;
-    margin-left: 5px;
-    border-radius: 3px;
-    background-color: #212529;
-    color: #e9c9ab;
+ul > .item {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #eaeaea ;
+    border-top: 1px solid #eaeaea ;
+    list-style: none;
 }
 
 
-.submit-btn {
+
+.button {
     display: flex;
     justify-content: center;
 
     margin-top: 40px;
 }
 
-.submit-btn > button {
+.button > button {
     width: 212px;
     height: 60px;
     margin: 0 5px;
@@ -140,6 +99,11 @@ ul > .item {
     background-color: #212529;
     color: #e9c9ab;
 }
+button > a {
+    text-decoration-line: none;
+    color: #e9c9ab;
+}
+
 
 .item-under {
     width: 878px;
@@ -154,14 +118,12 @@ ul > .item {
     padding: 9px 13px;
     border: 1px solid #ababab;
 
-    font-size: 13px;   
+    font-size: 13px;
     text-decoration-line: none;
 }
 
 .joinBtn,
-.qaBtn{
+.qaBtn {
     background-color: #9C9C9C;
     color: white;
-    /*background-color: #212529;*/
-    /*color: #e9c9ab;*/
 }

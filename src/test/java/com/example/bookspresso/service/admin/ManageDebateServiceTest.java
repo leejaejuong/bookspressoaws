@@ -36,8 +36,7 @@ class ManageDebateServiceTest {
     void setUp() {
         adminPageRequestDTO = new AdminPageRequestDTO();
         adminPageRequestDTO.setAmount(5);
-        adminPageRequestDTO.setSearchType("bookName");
-        adminPageRequestDTO.setKeyword("으");
+
 
         debateSearchDTO = DebateSearchDTO.builder()
                 .searchType("bookName")
@@ -105,13 +104,13 @@ class ManageDebateServiceTest {
     @Test
     public void dropDebate(){
 
-        manageDebateService.dropDebate(321L);
+        manageDebateService.dropDebate(288L);
     }
 
     @Test
     public void findRecruitingDebate(){
-        int recrurtingDebateCount = manageDebateService.findRecrutingDebateCount(debateSearchDTO);
-        System.out.println(recrurtingDebateCount);
+        int recruritingDebateCount = manageDebateService.findRecruitingDebateCount();
+        System.out.println(recruritingDebateCount);
         List<ManageDebateDTO> recruitingDebate = manageDebateService.findRecruitingDebate(adminPageRequestDTO);
         System.out.println(recruitingDebate);
     }

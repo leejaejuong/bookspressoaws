@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/admin/main/main_gnb.css}">
     <link rel="stylesheet" th:href="@{/css/admin/discussion/manageDiscussion.css}">
-    <script defer th:src="@{/js/admin/discussion/discussionAllList.js}"></script>
+    <script defer type="module" th:src="@{/js/admin/discussion/recruiting.js}"></script>
 </head>
 <body>
 
@@ -25,13 +25,13 @@
         
         <div class="body">
             <div class="body-content">
-                <h1>현재 진행 중인 토론장</h1>
+                <h1>현재 모집 중인 토론장</h1>
 
                 <!-- 토론 검색  -->
                 <div class="search">
                     <div class="search_box">
                         <span>토론 검색</span>
-                        <form th:action="@{/}" method="get">
+                        <form th:action="@{/admin/debate/recruiting/search}" method="get">
                             <select name="searchType" size="1">
                                 <option value="bookName">책 이름</option>
                                 <option value="meetingType">모임 종류</option>
@@ -49,13 +49,12 @@
                 <!-- 토론 리스트 -->
                 <div class="board">
                     <div class="board-title">
-                        <span><strong>현재 진행 중인 토론장</strong></span>
-<!--                        <span th:text="${}"></span>-->
+                        <span><strong>현재 모집 중인 토론장</strong></span>
+                        <span th:text="${total}"></span>
                     </div>
                     <div class="board-action">
                         <span>선택 토론장을</span>
                         <span id="drop-btn">강제 종료</span>
-                        <!-- <span>강제 탈퇴</span> -->
                     </div>
                     <!-- 회원 정보  -->
                     <div class="board-content">
@@ -84,9 +83,9 @@
                                     </th>
                                     <th scope="col">모임 종류</th>
                                     <th scope="col">토론 종류</th>
-                                    <th scope="col">토론 모임장</th>
                                     <th scope="col">모집 시작일</th>
                                     <th scope="col">모집 종료일</th>
+                                    <th scope="col">토론 시작일</th>
                                 </tr>
                                </thead>
                             <tbody>
@@ -106,10 +105,10 @@
                                             </div>
                                         </td>
                                         <td class="tc" th:text="${board.meetingType}"></td>
-                                        <td class="tr" th:text="${board.debateType}"></td>
-                                        <td class="tr" th:text="${board.bookName}"></td>
+                                        <td class="tc" th:text="${board.debateType}"></td>
                                         <td class="tr" th:text="${board.groupStartDate}"></td>
                                         <td class="tr" th:text="${board.groupEndDate}"></td>
+                                        <td class="tr" th:text="${board.debateStartDate}"></td>
                                     </tr>
 
     <!--                                토론장 디테일 정보 -->
@@ -144,7 +143,7 @@
             </div>
         </div>
 
-         페이지 버튼
+<!--         페이지 버튼-->
         <div class="page">
             <span class="page-line">
 
