@@ -204,11 +204,11 @@
     padding-bottom: 30px;
 }
 
-.content-total-box {
+.content-total-box-coment {
 
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid #dee2e6;
+
 }
 
 .content-total-box-comment {
@@ -292,7 +292,8 @@
     padding: 10px 10px 10px 20px;
     resize: none;
     width: 750px;
-    min-height: 25px;
+    height: 25px;
+    min-height: 10px;
     max-height: 228px;
     border-radius: 50px;
     border: 1px solid #dee2e6;

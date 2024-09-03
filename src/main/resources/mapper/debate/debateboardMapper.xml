@@ -52,14 +52,15 @@
     <select id="selectDetail">
         SELECT DB.NOTICE_ID,D.DEBATE_ID,DB.TITLE,DB.OPINION,TO_CHAR(DB.NOTICE_DATE,'YYYY-MM-DD')AS NOTICE_DATE,
                MD.MEMBER_ID,M.NICKNAME,P.PROFILE_UUID,P.PROFILE_UPLOAD
-        FROM TBL_DEBATE D LEFT JOIN TBL_DEBATE_BOARD DB
+        FROM TBL_DEBATE_BOARD DB LEFT JOIN TBL_DEBATE D
                                     ON D.DEBATE_ID = DB.DEBATE_ID
                           JOIN TBL_MEMBER_DEBATE MD
                                ON D.DEBATE_ID=MD.DEBATE_ID
                           JOIN TBL_MEMBER M
-                               ON MD.MEMBER_ID=M.MEMBER_ID
+                               ON DB.MEMBER_ID=M.MEMBER_ID
                           LEFT JOIN TBL_PROFILE P
                                     ON M.MEMBER_ID=P.MEMBER_ID
+
         WHERE DB.DEBATE_ID=#{debateId} AND DB.NOTICE_ID=#{noticeId}
 
     </select>

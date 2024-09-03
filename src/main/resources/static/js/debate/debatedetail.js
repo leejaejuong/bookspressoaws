@@ -158,7 +158,7 @@ import * as comm from '../modul/comment.js';
 
             tags+=` </div>
                 </div>
-                <div class="content-total-box">${comment.debateComment}</div>
+                <div class="content-total-box-coment">${comment.debateComment}</div>
             </div>
         </div>
 

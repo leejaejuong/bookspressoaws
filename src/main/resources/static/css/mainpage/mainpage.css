@@ -85,6 +85,7 @@ font-size : 30px;
     padding-top: 12px;
     font-size: 15px;
     color: #8b8b8b;
+    text-decoration-line:none;
 }
 .book-button-post{
     display: flex;
