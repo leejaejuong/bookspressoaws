@@ -87,6 +87,9 @@ font-size : 30px;
     color: #8b8b8b;
     text-decoration-line:none;
 }
+.post-list-btn{
+    text-decoration-line:none;
+}
 .book-button-post{
     display: flex;
     justify-content: center;

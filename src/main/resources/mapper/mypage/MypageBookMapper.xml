@@ -12,7 +12,7 @@
         JOIN TBL_BOOK B
             ON B.ISBN13 = DB.ISBN13
         <![CDATA[
-        WHERE DEBATE_END_DATE < TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+        WHERE DEBATE_END_DATE < TO_DATE(SYSDATE, 'YYYY-MM-DD')
         ]]>
         ORDER BY DEBATE_ID ASC
     </select>
