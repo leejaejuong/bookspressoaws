@@ -76,7 +76,7 @@ body {
 .debate-object-box{
   border: 10px;
   width: 320px;
-  height: 370px;
+  height: 380px;
 }
 .meeting-type{
   list-style-type: none;
@@ -670,7 +670,7 @@ font-size: 15px;
 }
 .show-style{
   width: 300px;
-  height: 320px;
+  height: 340px;
   padding: 10px;
   border-radius: 14px;
   margin: 10px;
