@@ -263,7 +263,7 @@
 
         if (!($titleBox.value === '' || $contentBox.value === '' ||
             $groupEndDate.value === '' || $debateStartDate.value === ''||
-            isbn13.value==='')) {
+            $isbn13.value==='')) {
             document.getElementById('submitbtn').submit();
         }
 
